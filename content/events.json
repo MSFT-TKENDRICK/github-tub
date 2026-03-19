@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "evt-copilot-dev-days-2026",
+    "name": "GitHub Copilot Dev Days 2026 (March 15–May 15)",
+    "start": "2026-03-15",
+    "end": "2026-05-15",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/github/GitHub-Copilot-Dev-Days",
+    "location": "Global (local user-group events)",
+    "evidence": {
+      "quote": "GitHub Copilot Dev Days 2026 – Community Event Kit ✨ A global, community-led event series for developers to explore hands-on, AI-assisted coding with GitHub Copilot. GitHub Copilot Dev Days is a global, in-person user group initiative taking place from March 15th to May 15th 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:42:57.458Z"
+    }
+  }
+]
