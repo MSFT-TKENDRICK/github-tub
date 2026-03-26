@@ -14,5 +14,37 @@
       "via": "html",
       "checkedAt": "2026-11-05T23:42:57.458Z"
     }
+  },
+  {
+    "id": "evt-kubecon-eu-2026",
+    "name": "KubeCon + CloudNativeCon Europe 2026",
+    "start": "2026-03-23",
+    "end": "2026-03-26",
+    "kind": "conference",
+    "role": "sponsor",
+    "url": "https://events.linuxfoundation.org/archive/2026/kubecon-cloudnativecon-europe",
+    "location": "Amsterdam, Netherlands",
+    "evidence": {
+      "quote": "technologists from leading open source and cloud native communities in Amsterdam, Netherlands from 23-26 March, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:42:58.466Z"
+    }
+  },
+  {
+    "id": "evt-rsac-2026",
+    "name": "GitHub at RSAC 2026",
+    "start": "2026-03-24",
+    "end": "2026-03-24",
+    "kind": "conference",
+    "role": "speaker",
+    "url": "https://github.com/resources/events/github-rsac2026",
+    "location": "San Francisco, CA",
+    "evidence": {
+      "quote": "CVE Collapse (session code VLG-T02) Speaker: Madison Oliver, Staff Manager, Security Research, GitHub March 24, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:42:58.675Z"
+    }
   }
 ]
