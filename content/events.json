@@ -46,5 +46,21 @@
       "via": "html",
       "checkedAt": "2026-11-05T23:42:58.675Z"
     }
+  },
+  {
+    "id": "evt-vulncon-2026",
+    "name": "VulnCon 2026",
+    "start": "2026-04-16",
+    "end": "2026-04-16",
+    "kind": "conference",
+    "role": "speaker",
+    "url": "https://securitylab.github.com/events/vulncon2026",
+    "location": "Scottsdale, AZ",
+    "evidence": {
+      "quote": "VulnCon 2026 April 16, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:42:59.260Z"
+    }
   }
 ]
