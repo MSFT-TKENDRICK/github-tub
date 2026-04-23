@@ -62,5 +62,21 @@
       "via": "html",
       "checkedAt": "2026-11-05T23:42:59.260Z"
     }
+  },
+  {
+    "id": "evt-devoxx-france-2026",
+    "name": "Devoxx France 2026",
+    "start": "2026-04-22",
+    "end": "2026-04-24",
+    "kind": "conference",
+    "role": "speaker",
+    "url": "https://securitylab.github.com/events/2026-04-22-devoxx-france",
+    "location": "Paris, France",
+    "evidence": {
+      "quote": "Devoxx France 2026 April 22-24, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:42:59.466Z"
+    }
   }
 ]
