@@ -78,5 +78,21 @@
       "via": "html",
       "checkedAt": "2026-11-05T23:42:59.466Z"
     }
+  },
+  {
+    "id": "evt-pycon-us-2026",
+    "name": "PyCon US 2026",
+    "start": "2026-05-16",
+    "end": "2026-05-16",
+    "kind": "conference",
+    "role": "speaker",
+    "url": "https://securitylab.github.com/events/pyconus2026",
+    "location": "Long Beach",
+    "evidence": {
+      "quote": "PyCon US 2026 May 16, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:42:59.599Z"
+    }
   }
 ]
