@@ -94,5 +94,51 @@
       "via": "html",
       "checkedAt": "2026-11-05T23:42:59.599Z"
     }
+  },
+  {
+    "id": "evt-microsoft-build-2026",
+    "name": "GitHub Social Club at Microsoft Build 2026",
+    "start": "2026-06-01",
+    "end": "2026-06-01",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/resources/events/github-microsoft-build26",
+    "evidence": {
+      "quote": "Social Club Monday, June 1",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:42:59.871Z"
+    }
+  },
+  {
+    "id": "evt-openclaw-after-hours-2026",
+    "name": "OpenClaw: After Hours at GitHub",
+    "start": "2026-06-03",
+    "end": "2026-06-03",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.blog/open-source/register-now-for-openclaw-after-hours-github",
+    "location": "GitHub HQ, San Francisco, CA",
+    "evidence": {
+      "quote": "June 3, 2026, we are hosting OpenClaw: After Hours",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:00.946Z"
+    }
+  },
+  {
+    "id": "evt-beyond-build-ai-developer-day-2026",
+    "name": "Beyond Build: AI Developer Day",
+    "start": "2026-06-04",
+    "end": "2026-06-04",
+    "kind": "other",
+    "role": "host",
+    "url": "https://github.com/resources/events/github-microsoft-build26",
+    "evidence": {
+      "quote": "Beyond Build: AI Developer Day Thursday, June 4",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:00.990Z"
+    }
   }
 ]
