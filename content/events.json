@@ -140,5 +140,20 @@
       "via": "html",
       "checkedAt": "2026-11-05T23:43:00.990Z"
     }
+  },
+  {
+    "id": "evt-ai-engineer-worlds-fair-2026",
+    "name": "GitHub Next at AI Engineer World’s Fair 2026",
+    "start": "2026-07-02",
+    "end": "2026-07-02",
+    "kind": "conference",
+    "role": "speaker",
+    "url": "https://githubnext.com/talks/realtime-multiplayer-automation-and-you",
+    "evidence": {
+      "quote": "Next's shared workspace for people and coding agents. Idan Gazit Jul 2, 2026 Presented at AI Engineer World's Fair",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:01.482Z"
+    }
   }
 ]
