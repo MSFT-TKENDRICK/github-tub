@@ -155,5 +155,37 @@
       "via": "html",
       "checkedAt": "2026-11-05T23:43:01.482Z"
     }
+  },
+  {
+    "id": "evt-dev-days-2026",
+    "name": "Dev Days 2026 (September 1–October 31)",
+    "start": "2026-09-01",
+    "end": "2026-10-31",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/github/dev-days",
+    "location": "Global (local user-group events)",
+    "evidence": {
+      "quote": "Dev Days is a global, in-person user group initiative taking place from September 1st to October 31st 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:01.957Z"
+    }
+  },
+  {
+    "id": "evt-github-connect-tour-2026",
+    "name": "GitHub Connect Tour: APAC",
+    "start": "2026-09-03",
+    "end": "2026-12-03",
+    "kind": "conference",
+    "role": "host",
+    "url": "https://github.com/resources/events/github-connect-tour",
+    "location": "Melbourne, Auckland, Wellington, Singapore, Bangkok, Shanghai",
+    "evidence": {
+      "quote": "Connect with local tech leaders and GitHub experts to accelerate your team's developer velocity. Ready to build with us? Select your city below to check out the agenda and join the tour. APAC Melbourne | Sept 3, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:02.223Z"
+    }
   }
 ]
