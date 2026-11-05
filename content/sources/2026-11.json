@@ -1,0 +1,3 @@
+[
+  {"id":"s-29b3350fcf5d","url":"https://code.visualstudio.com/updates/v1_145","kind":"vscode","publisher":"Visual Studio Code","title":"Visual Studio Code 1.145","published":"2026-11-04","role":"primary","retrieved":"2026-11-05T19:37:18.674Z","via":"html","sha256":"88fb37aabe48c7fdf738eefb5765ad68b138d6582551accf6e6d2504cd20194f","bytes":23225,"check":{"ok":true,"status":200,"at":"2026-11-05T19:37:18.675Z","finalUrl":"https://code.visualstudio.com/updates/v1_145"}}
+]
