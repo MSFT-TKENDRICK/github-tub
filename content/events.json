@@ -187,5 +187,196 @@
       "via": "html",
       "checkedAt": "2026-11-05T23:43:02.223Z"
     }
+  },
+  {
+    "id": "evt-game-off-2026",
+    "name": "GitHub Game Off 2026",
+    "start": "2026-11-01",
+    "end": "2026-12-01",
+    "kind": "other",
+    "role": "host",
+    "url": "https://github.blog/open-source/gaming/game-off-2026-the-theme-is-shift",
+    "evidence": {
+      "quote": "Game Off 2026: The theme is SHIFT GitHub's annual month-long game jam is back for its 14th year! This November, make a game inspired by the theme SHIFT. Change gears, swap perspectives, bend reality, or just press a certain key. Lee Reilly · @leereilly November 1, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:02.731Z"
+    }
+  },
+  {
+    "id": "evt-agentic-day-nyc-2026",
+    "name": "Agentic Day: NYC",
+    "start": "2026-11-09",
+    "end": "2026-11-09",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "New York, NY",
+    "evidence": {
+      "quote": "Agentic Day: NYC Explore GitHub Universe updates with hands-on Copilot demos and agentic workflows. New York, NY November 9, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.358Z"
+    }
+  },
+  {
+    "id": "evt-agentic-day-chicago-2026",
+    "name": "GitHub Agentic Day: Chicago",
+    "start": "2026-11-16",
+    "end": "2026-11-16",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Chicago, IL",
+    "evidence": {
+      "quote": "GitHub Agentic Day: Chicago Explore GitHub Universe updates with hands-on Copilot demos and agentic workflows. Chicago, IL November 16, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.415Z"
+    }
+  },
+  {
+    "id": "evt-github-social-club-ignite-2026",
+    "name": "GitHub Social Club at Microsoft Ignite",
+    "start": "2026-11-17",
+    "end": "2026-11-17",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "San Francisco, CA",
+    "evidence": {
+      "quote": "Social Club Join Microsoft Ignite attendees for hands-on building, bites, sips, and networking. San Francisco, CA November 17",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.162Z"
+    }
+  },
+  {
+    "id": "evt-microsoft-ignite-2026",
+    "name": "Microsoft Ignite 2026",
+    "start": "2026-11-17",
+    "end": "2026-11-20",
+    "kind": "conference",
+    "role": "attendee",
+    "url": "https://github.com/resources/events",
+    "location": "San Francisco, CA",
+    "evidence": {
+      "quote": "Microsoft Ignite 2026 See the AI and cloud roadmap first, get hands-on with what's shipping, and connect with experts. San Francisco, CA November 17–20, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.212Z"
+    }
+  },
+  {
+    "id": "evt-universe-road-sydney-2026",
+    "name": "GitHub Universe on the Road: Sydney",
+    "start": "2026-11-17",
+    "end": "2026-11-17",
+    "kind": "conference",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Sydney, Australia",
+    "evidence": {
+      "quote": "GitHub Universe on the Road: Sydney Experience the best of GitHub Universe with product insights, customer stories, and networking. Sydney, Australia November 17, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.474Z"
+    }
+  },
+  {
+    "id": "evt-universe-road-toronto-2026",
+    "name": "GitHub Universe on the Road: Toronto",
+    "start": "2026-11-18",
+    "end": "2026-11-18",
+    "kind": "conference",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Toronto, Canada",
+    "evidence": {
+      "quote": "GitHub Universe on the Road: Toronto Experience the best of GitHub Universe with product insights, customer stories, and networking. Toronto, Canada November 18, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.537Z"
+    }
+  },
+  {
+    "id": "evt-agentic-day-boston-2026",
+    "name": "Agentic Day: Boston",
+    "start": "2026-11-19",
+    "end": "2026-11-19",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Burlington, MA",
+    "evidence": {
+      "quote": "Agentic Day: Boston Explore GitHub Universe updates with hands-on Copilot demos and agentic workflows. Burlington, MA November 19, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.652Z"
+    }
+  },
+  {
+    "id": "evt-agentic-day-montreal-2026",
+    "name": "Agentic Day: Montréal",
+    "start": "2026-11-19",
+    "end": "2026-11-19",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Montréal, QC",
+    "evidence": {
+      "quote": "Agentic Day: Montréal Explore GitHub Universe updates with hands-on Copilot demos and agentic workflows. Montréal, QC November 19, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.599Z"
+    }
+  },
+  {
+    "id": "evt-webinar-measuring-what-matters-2026",
+    "name": "Webinar: Measuring What Matters: Proving the ROI of AI-Powered Engineering",
+    "start": "2026-11-19",
+    "end": "2026-11-19",
+    "kind": "webinar",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Online",
+    "evidence": {
+      "quote": "Measuring What Matters: Proving the ROI of AI-Powered Engineering Measure the impact of GitHub Copilot and agentic workflows with real outcomes, not anecdotes. Online November 19",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.257Z"
+    }
+  },
+  {
+    "id": "evt-webinar-code-hygiene-2026",
+    "name": "Webinar: AI Code Hygiene: Deslopification",
+    "start": "2026-11-21",
+    "end": "2026-11-21",
+    "kind": "webinar",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Online",
+    "evidence": {
+      "quote": "AI Code Hygiene: Deslopification Catch it early, fix it automatically, and merge with confidence. Online November 21, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.702Z"
+    }
+  },
+  {
+    "id": "evt-universe-road-paris-2026",
+    "name": "GitHub Universe on the Road: Paris",
+    "start": "2026-11-30",
+    "end": "2026-11-30",
+    "kind": "conference",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Paris, France",
+    "evidence": {
+      "quote": "GitHub Universe on the Road: Paris Experience the best of GitHub Universe with product insights, customer stories, and networking. Paris, France November 30, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.761Z"
+    }
   }
 ]
