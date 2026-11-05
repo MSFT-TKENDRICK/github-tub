@@ -10,19 +10,19 @@
     {
       "id": "vscode",
       "name": "Visual Studio Code",
-      "blurb": "Best-in-class feature velocity",
+      "blurb": "Product updates and release notes",
       "order": 2
     },
     {
       "id": "visualstudio",
       "name": "Visual Studio",
-      "blurb": "Powerful features, updated less frequently",
+      "blurb": "Product updates and release notes",
       "order": 3
     },
     {
       "id": "jetbrains-others",
       "name": "JetBrains & other IDEs",
-      "blurb": "IntelliJ-based IDEs, Xcode, Eclipse and more",
+      "blurb": "Copilot updates across other developer tools",
       "order": 4
     },
     {
