@@ -1,0 +1,234 @@
+{
+  "schema": 1,
+  "sections": [
+    {
+      "id": "copilot",
+      "name": "GitHub Copilot",
+      "blurb": "Updates not specific to an IDE",
+      "order": 1
+    },
+    {
+      "id": "vscode",
+      "name": "Visual Studio Code",
+      "blurb": "Best-in-class feature velocity",
+      "order": 2
+    },
+    {
+      "id": "visualstudio",
+      "name": "Visual Studio",
+      "blurb": "Powerful features, updated less frequently",
+      "order": 3
+    },
+    {
+      "id": "jetbrains-others",
+      "name": "JetBrains & other IDEs",
+      "blurb": "IntelliJ-based IDEs, Xcode, Eclipse and more",
+      "order": 4
+    },
+    {
+      "id": "platform",
+      "name": "GitHub platform",
+      "blurb": "Actions, collaboration, repositories and enterprise",
+      "order": 5
+    },
+    {
+      "id": "security",
+      "name": "Security",
+      "blurb": "Code security, supply chain and secret protection",
+      "order": 6
+    },
+    {
+      "id": "events",
+      "name": "Events & announcements",
+      "blurb": "Conference news and launches",
+      "order": 7
+    },
+    {
+      "id": "research",
+      "name": "Research & innovation",
+      "blurb": "GitHub Next, Security Lab and research labs",
+      "order": 8
+    }
+  ],
+  "areas": [
+    {
+      "id": "models",
+      "name": "Models"
+    },
+    {
+      "id": "agents",
+      "name": "Agents"
+    },
+    {
+      "id": "code-review",
+      "name": "Code review"
+    },
+    {
+      "id": "chat-ide",
+      "name": "Chat & completions"
+    },
+    {
+      "id": "cli",
+      "name": "CLI & terminal"
+    },
+    {
+      "id": "extensibility",
+      "name": "MCP & extensibility"
+    },
+    {
+      "id": "admin",
+      "name": "Administration & policy"
+    },
+    {
+      "id": "actions",
+      "name": "GitHub Actions"
+    },
+    {
+      "id": "collaboration",
+      "name": "Issues, projects & pull requests"
+    },
+    {
+      "id": "repos",
+      "name": "Repositories & Git"
+    },
+    {
+      "id": "apis",
+      "name": "APIs & developer platform"
+    },
+    {
+      "id": "code-security",
+      "name": "Code security"
+    },
+    {
+      "id": "supply-chain",
+      "name": "Supply chain"
+    },
+    {
+      "id": "secrets",
+      "name": "Secret protection"
+    },
+    {
+      "id": "community",
+      "name": "Community, education & open source"
+    },
+    {
+      "id": "research",
+      "name": "Research"
+    },
+    {
+      "id": "events",
+      "name": "Events"
+    },
+    {
+      "id": "other",
+      "name": "Other"
+    }
+  ],
+  "tiers": [
+    {
+      "id": "headline",
+      "name": "Headline"
+    },
+    {
+      "id": "notable",
+      "name": "Notable"
+    },
+    {
+      "id": "minor",
+      "name": "Also shipped"
+    }
+  ],
+  "tags": [
+    "Release",
+    "Improvement",
+    "Deprecation",
+    "Announcement",
+    "Research"
+  ],
+  "stages": [
+    {
+      "id": "ga",
+      "name": "Generally available"
+    },
+    {
+      "id": "preview",
+      "name": "Public preview"
+    },
+    {
+      "id": "private-preview",
+      "name": "Private preview"
+    },
+    {
+      "id": "experimental",
+      "name": "Experimental"
+    },
+    {
+      "id": "none",
+      "name": ""
+    }
+  ],
+  "plans": [
+    "Free",
+    "Pro",
+    "Pro+",
+    "Business",
+    "Enterprise"
+  ],
+  "ides": [
+    {
+      "id": "vscode",
+      "name": "VS Code"
+    },
+    {
+      "id": "visualstudio",
+      "name": "Visual Studio"
+    },
+    {
+      "id": "jetbrains",
+      "name": "JetBrains"
+    },
+    {
+      "id": "xcode",
+      "name": "Xcode"
+    },
+    {
+      "id": "eclipse",
+      "name": "Eclipse"
+    },
+    {
+      "id": "neovim",
+      "name": "Neovim"
+    },
+    {
+      "id": "cli",
+      "name": "Copilot CLI"
+    },
+    {
+      "id": "web",
+      "name": "github.com"
+    },
+    {
+      "id": "mobile",
+      "name": "GitHub Mobile"
+    },
+    {
+      "id": "desktop",
+      "name": "GitHub Desktop"
+    }
+  ],
+  "sources": [
+    "changelog",
+    "blog",
+    "vscode",
+    "vscode-blog",
+    "visualstudio",
+    "jetbrains",
+    "docs",
+    "next",
+    "security-lab",
+    "research",
+    "event",
+    "release",
+    "other"
+  ]
+}
