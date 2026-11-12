@@ -12,7 +12,7 @@
       "quote": "GitHub Copilot Dev Days 2026 – Community Event Kit ✨ A global, community-led event series for developers to explore hands-on, AI-assisted coding with GitHub Copilot. GitHub Copilot Dev Days is a global, in-person user group initiative taking place from March 15th to May 15th 2026",
       "status": 200,
       "via": "html",
-      "checkedAt": "2026-11-05T23:42:57.458Z"
+      "checkedAt": "2026-11-19T15:50:02.893Z"
     }
   },
   {
@@ -28,7 +28,7 @@
       "quote": "technologists from leading open source and cloud native communities in Amsterdam, Netherlands from 23-26 March, 2026",
       "status": 200,
       "via": "html",
-      "checkedAt": "2026-11-05T23:42:58.466Z"
+      "checkedAt": "2026-11-19T15:50:03.306Z"
     }
   },
   {
@@ -44,7 +44,7 @@
       "quote": "CVE Collapse (session code VLG-T02) Speaker: Madison Oliver, Staff Manager, Security Research, GitHub March 24, 2026",
       "status": 200,
       "via": "html",
-      "checkedAt": "2026-11-05T23:42:58.675Z"
+      "checkedAt": "2026-11-19T15:50:03.540Z"
     }
   },
   {
@@ -60,7 +60,7 @@
       "quote": "VulnCon 2026 April 16, 2026",
       "status": 200,
       "via": "html",
-      "checkedAt": "2026-11-05T23:42:59.260Z"
+      "checkedAt": "2026-11-19T15:50:03.810Z"
     }
   },
   {
@@ -76,7 +76,7 @@
       "quote": "Devoxx France 2026 April 22-24, 2026",
       "status": 200,
       "via": "html",
-      "checkedAt": "2026-11-05T23:42:59.466Z"
+      "checkedAt": "2026-11-19T15:50:04.000Z"
     }
   },
   {
@@ -92,7 +92,7 @@
       "quote": "PyCon US 2026 May 16, 2026",
       "status": 200,
       "via": "html",
-      "checkedAt": "2026-11-05T23:42:59.599Z"
+      "checkedAt": "2026-11-19T15:50:04.188Z"
     }
   },
   {
@@ -107,7 +107,7 @@
       "quote": "Social Club Monday, June 1",
       "status": 200,
       "via": "html",
-      "checkedAt": "2026-11-05T23:42:59.871Z"
+      "checkedAt": "2026-11-19T15:50:04.458Z"
     }
   },
   {
@@ -123,7 +123,7 @@
       "quote": "June 3, 2026, we are hosting OpenClaw: After Hours",
       "status": 200,
       "via": "html",
-      "checkedAt": "2026-11-05T23:43:00.946Z"
+      "checkedAt": "2026-11-19T15:50:05.117Z"
     }
   },
   {
@@ -138,7 +138,7 @@
       "quote": "Beyond Build: AI Developer Day Thursday, June 4",
       "status": 200,
       "via": "html",
-      "checkedAt": "2026-11-05T23:43:00.990Z"
+      "checkedAt": "2026-11-19T15:50:05.123Z"
     }
   },
   {
@@ -153,7 +153,7 @@
       "quote": "Next's shared workspace for people and coding agents. Idan Gazit Jul 2, 2026 Presented at AI Engineer World's Fair",
       "status": 200,
       "via": "html",
-      "checkedAt": "2026-11-05T23:43:01.482Z"
+      "checkedAt": "2026-11-19T15:50:05.342Z"
     }
   },
   {
@@ -169,7 +169,7 @@
       "quote": "Dev Days is a global, in-person user group initiative taking place from September 1st to October 31st 2026",
       "status": 200,
       "via": "html",
-      "checkedAt": "2026-11-05T23:43:01.957Z"
+      "checkedAt": "2026-11-19T15:50:05.886Z"
     }
   },
   {
@@ -185,7 +185,23 @@
       "quote": "Connect with local tech leaders and GitHub experts to accelerate your team's developer velocity. Ready to build with us? Select your city below to check out the agenda and join the tour. APAC Melbourne | Sept 3, 2026",
       "status": 200,
       "via": "html",
-      "checkedAt": "2026-11-05T23:43:02.223Z"
+      "checkedAt": "2026-11-19T15:50:06.143Z"
+    }
+  },
+  {
+    "id": "evt-universe-2026",
+    "name": "GitHub Universe 2026",
+    "start": "2026-10-28",
+    "end": "2026-10-29",
+    "kind": "conference",
+    "role": "host",
+    "url": "https://githubuniverse.com/",
+    "location": "San Francisco, CA",
+    "evidence": {
+      "quote": "GitHub Universe 2026 october 28",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-19T15:50:06.221Z"
     }
   },
   {
@@ -200,7 +216,7 @@
       "quote": "Game Off 2026: The theme is SHIFT GitHub's annual month-long game jam is back for its 14th year! This November, make a game inspired by the theme SHIFT. Change gears, swap perspectives, bend reality, or just press a certain key. Lee Reilly · @leereilly November 1, 2026",
       "status": 200,
       "via": "html",
-      "checkedAt": "2026-11-05T23:43:02.731Z"
+      "checkedAt": "2026-11-19T15:50:06.831Z"
     }
   },
   {
