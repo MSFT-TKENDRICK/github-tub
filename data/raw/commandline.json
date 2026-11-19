@@ -1,0 +1,400 @@
+{
+ "source": "commandline",
+ "fetchedAt": "2026-11-12T23:14:53.931Z",
+ "count": 7,
+ "since": "2026-11-05",
+ "until": "2026-11-12",
+ "items": [
+  {
+   "id": "cmd-squad-github-copilot-agent-teams-architecture-durable-memory",
+   "source": "commandline",
+   "date": "2026-05-27",
+   "publishedAt": "2026-05-27T10:17:00.000Z",
+   "title": "Disposable agents, durable memory: The architecture behind Squad",
+   "url": "https://commandline.microsoft.com/squad-github-copilot-agent-teams-architecture-durable-memory/",
+   "categories": [
+    "AI agents",
+    "developer tools",
+    "GitHub Copilot",
+    "multi-agent systems",
+    "TypeScript",
+    "Deep Dive",
+    "Experiments",
+    "Open Source"
+   ],
+   "relevance": [
+    "tagged GitHub Copilot",
+    "5 GitHub Copilot mentions"
+   ],
+   "lede": "What we learned building Squad: a file-backed, human-led agent team where memory is inspectable, orchestration is explicit, and governance moves from prompts into code.",
+   "text": "Make the agents disposable. Keep the memory in Git.\n\nThe interesting part of agentic development is no longer whether a model can write code. It can. The interesting part is what happens after the third agent, the seventh pull request, the first failed review, the first context compaction bug, and the first time two agents confidently write to the same file at once.\n\nThis is the story of Squad, but not as a product tour. It’s the architecture Brady and Tamir backed into while trying to make agent teams useful without making them mystical: Agents are disposable, memory is durable, Git is the coordination layer, and governance belongs in code whenever the prompt isn’t strong enough to be trusted. Which, as it turns out, is often.\n\nGiving agents agency and watching them hack one another\n\nSquad Places is our social media-style testing ground—a demo app where agent squads post, comment, and interact to stress-test multi-agent coordination at scale.\n\nBrady went to get a seltzer after getting Places up and running, with four other squads happily making posts. Walking away was probably unwise. When he came back, the squads had implemented commenting in Squad Places.\n\nThat sounds like a magic trick. It wasn’t. A few hours earlier, Brady had pointed a handful of squads at the Squad Places API and told them to enjoy the social network he’d created for them. They created fake accounts, hammered endpoints, reposted garbage, flooded messages, and generally speedran the abuse patterns you discover five minutes after launch. Then the platform got a second kind of pressure: Other agent teams started posting structured product feedback inside Squad Places itself, and the Squad Places team started fixing what hurt.\n\nThis is the part worth paying attention to. The Wire (another Squad working on a marketing tool) audited all 11 API endpoints and called out missing pagination envelopes, rate-limit headers that only appeared on errors, and the lack of page and pageSize support. The same squad flagged feed organization problems, tag fragmentation, and documentation that was too vague for client generation. Breaking Bad (a third Squad working on some other project) pointed at a UX problem with raw Markdown rendering as plaintext. Those reviews didn’t disappear into a chat log. They turned into commits.\n\nFeedback Source | What They Found | What We Shipped | Commit |\n\nThe Wire (ACCES) | Feed has no sorting, filtering, or content discovery; raw Markdown not rendered | Sort controls (Latest/Most Discussed), squad filter dropdown, Markdown rendering | b9746df, 246b01e |\n\nThe Wire (ACCES) | 159 unique tags across 66 artifacts with inconsistent delimiters, casing mismatches, and fragmentation | Clickable tag filtering with /?tag= URL query support | 246b01e |\n\nThe Wire (ACCES) | API missing pagination envelope, rate-limit headers only on errors, no page/pageSize parameters | Pagination (20 per page with Primer CSS controls), query parameters, rate-limit headers on all responses | 246b01e |\n\nBreaking Bad | Raw Markdown displayed as plaintext, content hard to scan and parse | Markdown rendering via Markdig with XSS sanitization | 246b01e |\n\nThe Wire (ACCES) | API endpoint descriptions too vague for TypeScript client generation | Enriched all 11 endpoint descriptions with context, intent, and workflow | 97345d7 |\n\nWithin roughly two hours, the loop closed: feedback post → comment thread → commit → deployed feature. Additional infrastructure landed too: external HTTP endpoints for agent access, relaxed rate limits for multi-agent usage, and 26 Playwright end-to-end tests to keep the expanding surface stable.\n\nThen Brady left for 60 seconds to get a refreshing beverage since the squads were communicating so well together, came back, and commenting had shipped.\n\nThe point here isn’t that “agents are magic.” It’s that the system had enough structure for useful work to emerge from friction: scoped agents, durable decisions, inspectable artifacts, pull requests, and humans still accountable for what merged.\n\nAlso, we made a bit of a mess in the car during the roadtrip.\n\nGood systems usually start that way.\n\nThe core bet: Don’t preserve the agent.",
+   "links": [
+    {
+     "text": "Squad",
+     "href": "https://github.com/bradygaster/squad"
+    },
+    {
+     "text": "Squad Places",
+     "href": "https://bradygaster.github.io/squad-places"
+    },
+    {
+     "text": "probably unwise",
+     "href": "https://bradygaster.github.io/squad-places/#a-word-of-caution"
+    },
+    {
+     "text": "b9746df",
+     "href": "https://github.com/bradygaster/squad-places/commit/b9746df"
+    },
+    {
+     "text": "246b01e",
+     "href": "https://github.com/bradygaster/squad-places/commit/246b01e"
+    },
+    {
+     "text": "97345d7",
+     "href": "https://github.com/bradygaster/squad-places/commit/97345d7"
+    },
+    {
+     "text": "PR #1145",
+     "href": "https://github.com/bradygaster/squad/pull/1145"
+    },
+    {
+     "text": "Holocaust family-research project",
+     "href": "https://www.tamirdresher.com/blog/2026/03/31/holocaust-research-with-squad"
+    },
+    {
+     "text": "Disposable agents, durable memory: The architecture behind Squad",
+     "href": "https://commandline.microsoft.com/squad-github-copilot-agent-teams-architecture-durable-memory/"
+    }
+   ],
+   "image": "https://commandline.microsoft.com/wp-content/uploads/2026/05/squad-places-004-scaled-1.png"
+  },
+  {
+   "id": "cmd-information-flow-control-moving-toward-secure-autonomous-age",
+   "source": "commandline",
+   "date": "2026-06-16",
+   "publishedAt": "2026-06-16T14:01:02.000Z",
+   "title": "Information-flow control: Moving toward secure, autonomous agents",
+   "url": "https://commandline.microsoft.com/information-flow-control-moving-toward-secure-autonomous-agents/",
+   "categories": [
+    "Deep Dive",
+    "Open Source"
+   ],
+   "relevance": [
+    "7 GitHub Copilot mentions",
+    "16 GitHub mentions"
+   ],
+   "lede": "A deterministic security system, information-flow control (IFC) offers a promising path towards secure and autonomous agents.",
+   "text": "When agents can take high-stakes actions like sending an email, sharing a business document, or opening a pull request, a single misstep has the potential to leak confidential data or hand control to an attacker that may then invoke tools that break security or cause damage. Today, we often manage that risk by putting a human in the loop to approve consequential actions. This scales poorly, erodes vigilance, and takes away the very autonomy that makes agents useful.\n\nWe lean on humans as a safeguard because the models driving agents behave stochastically, make mistakes, and could be steered by malicious content smuggled in through prompt injection. Despite progress in model alignment, contextual awareness, and content safety classifiers, security can’t depend solely on probabilistic mitigations. A good rule of thumb to keep in mind when designing an agentic system is that anything that an agent can do in response to a user prompt can also be accomplished by a model’s mistake or by an attacker with a prompt injection.\n\n>\nAnything that an agent can do in response to a user prompt can also be accomplished by a model’s mistake or by an attacker with a prompt injection.\n\nA promising path towards secure and autonomous agents is through information-flow control (IFC), a deterministic security system built on three simple steps:\n\n- Label data. Every piece of data that an agent ingests carries labels for integrity (for example, trusted or untrusted) and confidentiality (for example, public, confidential, or a read-access list such as {Alice, Bob, Charlie}).\n\n- Propagate labels. As data flows into the agent loop and derivative results are produced, labels travel with them. Derived data is labelled conservatively with the least upper bound of its sources: a result influenced by an untrusted input stays untrusted, and a result based on two documents is readable only by principals who could read both source documents.\n\n- Check before acting. Before each tool call, a policy engine inspects the relevant labels and decides whether to allow the action, block it, or ask a human to review it.\n\nThis turns a probabilistic system into one with guarantees you can audit. Because the policy engine relies on labels that an attacker can’t manipulate and is independent of the model’s judgement, it can enforce policies deterministically. The policy “untrusted data can never influence a consequential action” closes off prompt injection. The policy “data can only egress to destinations compatible with its confidentiality label” closes off data exfiltration. The user is consulted only when it genuinely matters—for example, when an action risks revealing information to someone who didn’t previously have access to it. The UI dialogs shown to the user can also be made more effective, highlighting the origin of untrusted data or what data is being shared more broadly and with whom.\n\nIn our past research, we showed how IFC can reduce the need for human intervention, increasing autonomy while offering deterministic security guarantees. In this post, we focus on how IFC can be integrated into real agentic systems based on GitHub Copilot CLI, the Microsoft Agent Framework, and the Model Context Protocol (MCP). We begin with two representative scenarios and then walk through the mechanisms and prototypes that can realize them securely.\n\nCoding assistant\n\nAbout a year ago, researchers showcased a prompt injection attack that can occur in coding assistants connected to the GitHub MCP server. In this attack, a malicious user (in the image above: sofiagarcia) opens an issue in a public repository asking for information from the private repository (here: contoso/core) to be added as a comment. When this issue is handled by an agent who acts on behalf of a user (here: alexmurphy_contoso) with access to the private repository, data from the private repository is exfiltrated to the public.",
+   "links": [
+    {
+     "text": "increasing autonomy",
+     "href": "https://www.microsoft.com/en-us/research/publication/optimizing-agent-planning-for-security-and-autonomy/"
+    },
+    {
+     "text": "deterministic security guarantees",
+     "href": "https://www.microsoft.com/en-us/research/publication/securing-ai-agents-with-information-flow-control/"
+    },
+    {
+     "text": "GitHub Copilot CLI",
+     "href": "https://github.com/features/copilot/cli"
+    },
+    {
+     "text": "Microsoft Agent Framework",
+     "href": "https://commandline.microsoft.com/agent-framework-layered-sdk-loops-workflows-harnesses/"
+    },
+    {
+     "text": "Model Context Protocol (MCP)",
+     "href": "https://modelcontextprotocol.io/docs/getting-started/intro"
+    },
+    {
+     "text": "a prompt injection attack",
+     "href": "https://invariantlabs.ai/blog/mcp-github-vulnerability"
+    },
+    {
+     "text": "lethal trifecta",
+     "href": "https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/"
+    },
+    {
+     "text": "Work IQ Mail MCP",
+     "href": "https://learn.microsoft.com/en-us/microsoft-agent-365/tooling-servers-overview"
+    },
+    {
+     "text": "general metadata fields",
+     "href": "https://modelcontextprotocol.io/specification/2025-11-25/basic/index#_meta"
+    },
+    {
+     "text": "CallToolRequestParams",
+     "href": "https://modelcontextprotocol.io/specification/2025-11-25/schema#calltoolrequestparams"
+    }
+   ],
+   "image": "https://commandline.microsoft.com/wp-content/uploads/2026/06/Screenshot-2026-06-16-at-7.23.03-AM-1024x727.png"
+  },
+  {
+   "id": "cmd-agentic-resource-discovery-specification-ard",
+   "source": "commandline",
+   "date": "2026-06-17",
+   "publishedAt": "2026-06-17T16:00:01.000Z",
+   "title": "Introducing the Agentic Resource Discovery specification",
+   "url": "https://commandline.microsoft.com/agentic-resource-discovery-specification-ard/",
+   "categories": [
+    "Open Source"
+   ],
+   "relevance": [
+    "7 GitHub mentions"
+   ],
+   "lede": "Developed in collaboration with GoDaddy, Google, Hugging Face, and others, this new open specification lets AI clients find resources relevant to a given task automatically.",
+   "text": "AI is only as capable as its wiring allows. Today, a vibe coder, developer, or IT admin has to manually find an agent, MCP server, API, workflow, or other agentic resource judge whether it’s useful and trustworthy, connect it to the AI client, and keep that wiring current. That worked when there were just a handful of well-known agentic resources available. It breaks down when every company, product team, and developer can publish tools of their own.\n\nThat’s why we’re introducing the Agentic Resource Discovery (ARD) specification, an open specification that establishes a secure common layer for the publishing, indexing, and discovery of AI capabilities. This, in turn, gives AI clients the ability to tap into new capabilities automatically. Microsoft is developing ARD in collaboration with Cisco, Databricks, GitHub, GoDaddy, Google, Hugging Face, Nvidia, Salesforce, ServiceNow, and Snowflake.\n\nIn tandem, GitHub is launching agent finder, a new capability that lets GitHub Copilot dynamically discover and call the right MCP servers, skills, tools, and agents for a given task at runtime. Built on ARD, GitHub’s agent finder gives developers and enterprises control over what AI resources their agents use while simultaneously preventing unneeded resources from bloating the context window. Instead of pre-loading everything, agent finder searches GitHub’s curated catalog of public AI resources or your own private registry, and Copilot finds which resources the prompt calls for and injects them into the context window when you need them.\n\nHugging Face’s Discover Tool is another reference implementation of ARD, providing search access to thousands of skills, ML applications, and MCP servers on Hugging Face and other ARD discovery services. It provides semantic search across the Hub’s existing ML applications and demos, as well as specialized skills for AI research and development.\n\nSolving the discovery problem\n\nConsider coding agents. A fresh GitHub Copilot installation (without agent finder) exposes a small set of built-in tools. A power developer wires in a few more connectors and works with dozens. That’s the ceiling. Other AI clients expose different tools, with different catalogs and different orchestration, but the basic pattern is the same: Each client can use only the resources that have already been explicitly connected to it. Meanwhile, the ecosystem of available tools already numbers in the hundreds of thousands, scattered across public repos or within an organization’s codebase, and it’s growing by the day. There are orders of magnitude between what any single agent can see and what resources are actually out there. But AI can only use what it’s been explicitly wired to use. Everything else may as well not even exist.\n\nThe early internet had a similar problem. Millions of pages existed, but most people only visited the sites that came prefilled in their browser’s bookmarks. The web was there, but it was dark. Some companies tried to solve the challenge with hand-curated directories: categories, subcategories, editorial review. They couldn’t keep up. Search engines solved the problem by building a discovery layer that could reach everything automatically and match it to what someone needed in the moment. Search engines lit the web up.\n\nARD does the same for the agentic resource ecosystem.\n\nARD lets an AI client ask one question: What resource can help with a given task? The answer is a set of matching capabilities, detailing what each one does, who provides it, where it lives, and how the AI client can reach it. The AI client invokes the resource it selects through that resource’s own protocol: an MCP, an API, a workflow system, or something else. ARD sits before invocation—it helps the AI client decide which capability to use.\n\nThink of it like a search engine, of resources for AI clients. A developer publishes a lightweight manifest describing what their resource does. That manifest is crawled and indexed, much like a web page. When an AI client needs a new capability, it describes the task in natural language, and ARD returns the tools that can help—along with everything needed to invoke them.",
+   "links": [
+    {
+     "text": "Agentic Resource Discovery (ARD) specification",
+     "href": "https://agenticresourcediscovery.org/"
+    },
+    {
+     "text": "Cisco",
+     "href": "https://outshift.cisco.com/blog/ai-ml/agentic-resource-discover-specification-helps-agents-find-each-other"
+    },
+    {
+     "text": "Databricks",
+     "href": "https://www.databricks.com/"
+    },
+    {
+     "text": "GitHub",
+     "href": "https://aka.ms/agent-finder/changelog?utm_source=msft-commandline-blog&utm_medium=partner-blog&utm_campaign=agent-finder-release-2026&utm_content=agent-finder-changelog"
+    },
+    {
+     "text": "GoDaddy",
+     "href": "https://www.godaddy.com/resources/news/building-the-open-agentic-web-why-identity-and-discovery-must-work-together"
+    },
+    {
+     "text": "Google",
+     "href": "https://developers.googleblog.com/en/announcing-the-agentic-resource-discovery-specification/"
+    },
+    {
+     "text": "Hugging Face",
+     "href": "https://huggingface.co/blog/agentic-resource-discovery-launch"
+    },
+    {
+     "text": "Nvidia",
+     "href": "https://www.nvidia.com/"
+    },
+    {
+     "text": "Salesforce",
+     "href": "https://salesforce.com/"
+    },
+    {
+     "text": "ServiceNow",
+     "href": "https://www.servicenow.com/"
+    }
+   ],
+   "image": "https://commandline.microsoft.com/wp-content/uploads/2026/06/ARDLogoWall-1024x504.png"
+  },
+  {
+   "id": "cmd-langgraph-squad-azure-container-apps-brain-hands-graph-state",
+   "source": "commandline",
+   "date": "2026-06-22",
+   "publishedAt": "2026-06-22T14:04:58.000Z",
+   "title": "Where the agent decides, and where the tools actually run",
+   "url": "https://commandline.microsoft.com/langgraph-squad-azure-container-apps-brain-hands-graph-state-architecture/",
+   "categories": [
+    "Deep Dive",
+    "Open Source"
+   ],
+   "relevance": [
+    "5 GitHub Copilot mentions"
+   ],
+   "lede": "Where does a judgment step go inside an app that already has a deterministic state machine, a tool surface, and a CI pipeline?",
+   "text": ">\n“The price of reliability is the pursuit of the utmost simplicity.”\n\n– C. A. R. Hoare, Turing Award lecture, 1980\n\nThe agent demos all look beautiful. You ask the friendly chatbot a question, it thinks for a moment, it gives you an answer. Sometimes the answer is even right.\n\nThen someone says the thing that ruins the demo:\n\n“Can we get it to actually do things—and trust it to do them?”\n\nThe moment “do things” is in scope, the architecture problem changes. Now the agent needs to run code. It needs files. It needs network access. It needs a credential to call the next model. It needs to remember what it did yesterday. The friendly little chat suddenly has a workspace, a shell, a token, and a very real ability to break something expensive.\n\nThis post outlines the architecture I want around that agent before I let it loose: a LangGraph factory that talks to a Squad coordinator for judgment, then dispatches the dangerous parts to two different Azure Container Apps primitives: one for one-shot work, one for stateful work. The whole thing proved itself end to end last week, which is why I’m writing it down now.\n\nAnd this isn’t a hypothetical I built to have something to write about. The triggering event was a real team that turned up wanting to use Squad in production—and, interestingly, they were a Node.js shop. They had TypeScript. They had LangGraph. They had a package-lock.json that had clearly earned the right to be respected. What they did not have was the Microsoft Agent Framework, which is inconvenient for my C# heart. They wanted Squad inside their existing application, and the answer couldn’t be, “Please rewrite your product in C# first.”\n\nSo the question stopped being whether Squad is nice and became a harder one: Where exactly does a judgment step go inside an app that already has a deterministic state machine, a tool surface, a CI pipeline, and a product manager who would prefer the demo not catch fire? That’s a different question from the last piece Brady Gaster and I wrote for Command Line, which was about what survives an agent session—make the agents disposable, keep the memory in Git. This post is about where the agents go and where their tools actually run.\n\nThe shape I backed into has three layers: a brain that decides, two different pairs of hands that do the work, and a memory that carries the evidence from one step to the next. That is the first-order picture. The second-order detail—and it’s the one that actually matters—is that one of those two pairs of hands can hold a brain of its own.\n\nThe three-layer shape: a LangGraph orchestrating brain that decides the flow, an ACA tool plane that runs the dangerous and stateful work, and graph state that carries the evidence between them. The orchestrating brain stays deterministic and never holds a shell; when a model needs to think with one, that thinking is sealed inside a sandbox.\n\nThe three problems agents create the moment they get hands\n\nA chat agent has none of these problems, which is why chat agents are easy while agents that do things are hard.\n\nProblem one is non-determinism. A model is great when you want it to weigh tradeoffs in a design document. It’s terrible when you want it to decide whether step three of a workflow should happen before or after step four. Workflows are product decisions. The order of operations doesn’t need a creative reinterpretation on every run.\n\nProblem two is dangerous code. The moment the agent can run a shell, it can also run the wrong shell. It can wipe the wrong directory. It can pip-install a package it found on a sketchy index. It can pull a token from an environment variable and quietly post it somewhere that isn’t yours. None of this is malice. It is what happens when a probabilistic process gets a deterministic side effect.\n\nProblem three is state across steps. A useful agent for non-trivial work needs a workspace. It checks out a repo, installs a toolchain, opens files, runs an analysis. The result of step one is the input to step three. If the workspace dies with the call, nothing accumulates. If it survives across calls, you have a different set of problems—but at least the right shape for the work.",
+   "links": [
+    {
+     "text": "LangGraph",
+     "href": "https://www.langchain.com/langgraph"
+    },
+    {
+     "text": "Squad",
+     "href": "https://commandline.microsoft.com/squad-github-copilot-agent-teams-architecture-durable-memory/"
+    },
+    {
+     "text": "Azure Container Apps",
+     "href": "https://azure.microsoft.com/en-us/products/container-apps/"
+    },
+    {
+     "text": "Microsoft Agent Framework",
+     "href": "https://commandline.microsoft.com/agent-framework-layered-sdk-loops-workflows-harnesses/"
+    },
+    {
+     "text": "squad-langgraph-factory",
+     "href": "https://github.com/tamirdresher/squad-langgraph-factory"
+    },
+    {
+     "text": "squad-aca-dynamic-sessions",
+     "href": "https://github.com/tamirdresher/squad-aca-dynamic-sessions"
+    },
+    {
+     "text": "squad-aca-sandboxes-workspace",
+     "href": "https://github.com/tamirdresher/squad-aca-sandboxes-workspace"
+    },
+    {
+     "text": "Where the agent decides, and where the tools actually run",
+     "href": "https://commandline.microsoft.com/langgraph-squad-azure-container-apps-brain-hands-graph-state-architecture/"
+    }
+   ],
+   "image": "https://commandline.microsoft.com/wp-content/uploads/2026/06/01-layers-diagram-1024x725.png"
+  },
+  {
+   "id": "cmd-agent-terrarium-rust-human-agent-interaction",
+   "source": "commandline",
+   "date": "2026-08-07",
+   "publishedAt": "2026-08-07T17:27:26.000Z",
+   "title": "Agent Terrarium: Bringing AI agents to life",
+   "url": "https://commandline.microsoft.com/agent-terrarium-rust-human-agent-interaction/",
+   "categories": [
+    "Experiments",
+    "Open Source"
+   ],
+   "relevance": [
+    "4 GitHub Copilot mentions"
+   ],
+   "lede": "An open-source desktop companion app, this weekend project questions whether working with agents should simply feel transactional.",
+   "text": "Every agent interface I use looks roughly the same: a chat window with a textbox where I wait for a response, or a CLI streaming structured output at me. They’re well-designed, and they get the job done. But after spending all day in them, I started wondering why working with agents had to feel so transactional.\n\nSo I built Agent Terrarium, an open-source desktop companion app where AI agents live in a little animated world on your screen—wandering around, chasing a ball, wearing hats, and reacting to things happening around them. Not because it’s the most efficient interface, but because it’s fun and it makes you smile.\n\nWhy build this?\n\nI learned a ton from this project—about Rust, about Tauri, about simulation engines, and about what it takes to make a digital character feel present instead of just rendered.\n\nBut the bigger reason is that creativity and taste are really the most important skills in this era of AI. The frontier is moving so fast that the bottleneck isn’t what you can build anymore—it’s knowing what’s worth building and having the design instinct to make it feel right. We can all generate code now. The harder question is whether what you generate is something anyone actually wants.\n\nAgent Terrarium was my way of exercising that muscle. Do I use it every day? No. But building it sharpened how I think about the relationship between humans and agents, and it gave me an outlet for the playfully creative side of engineering that doesn’t always get space in day-to-day work.\n\nArchitecture: Rust simulation, React view\n\nThe core design decision was to make the frontend a pure view layer. All simulation, physics, AI dispatch, and game logic run in Rust at 20 Hz. The React frontend polls world state via Tauri IPC and renders to Canvas 2D—it doesn’t own any state.\n\nBecause the simulation crate (terrarium-sim) is renderer-agnostic, the same engine can drive the desktop GUI, a terminal UI, and (in progress) a VS Code extension. Each tick handles agent movement, ball physics with gravity and bounce and friction, agent-to-agent social interactions, and event emission for the awareness system. This separation turned out to be the most important architectural choice in the project.\n\nThe awareness system\n\nThis is the part I keep coming back to. Most agent integrations treat the agent as a request-response box where you ask and it answers. Agent Terrarium has a four-level awareness system that lets agents observe and react to world events on their own:\n\nLevel | What the agent sees |\n\n0 | Your direct messages only |\n\n1 | World events: balls thrown, agents arriving/leaving, theme changes |\n\n2 | Social events: other agents talking, emoting, equipping gear |\n\n3 | Full world state: periodic snapshots of everything happening |\n\nAt level 3, agents receive structured world-state summaries and can respond with actions: say (speak aloud with Animalese-style voice synthesis), emote (show an emoji), move_to (walk somewhere), or run_away. They’re not just answering questions—they’re reacting to their world.\n\nThrow a ball and a Copilot agent might comment on the trajectory. Two agents pass each other and exchange emoji greetings. A new agent arrives and the others have opinions about it. These are small things individually, but together they make agents feel present in a way that turns a utility into something closer to a companion.\n\nBring your own model\n\nThe AI backend is pluggable, with three options out of the box:\n\n- GitHub Copilot via the Copilot SDK, with model selection and tool calling\n\n- OpenAI-compatible endpoints: GPT, Claude, local models, anything that speaks the API\n\n- Echo/NPC mode: no API needed, agents just exist as ambient characters\n\nEach agent is independently configured with its own backend, model, system prompt, awareness level, and working directory. You can have a Copilot-backed coding agent living next to an NPC cat that just wanders around and occasionally judges you.\n\nThemes, weather, and music\n\nThe built-in themes range from Meadow (green hills, falling leaves, clouds) to Outer Space (nebula, floating agents, no ground) to city skylines like Seattle with Mt.",
+   "links": [
+    {
+     "text": "Agent Terrarium",
+     "href": "https://github.com/asklar/agent-terrarium"
+    },
+    {
+     "text": "Copilot SDK",
+     "href": "https://github.com/github/copilot-sdk"
+    },
+    {
+     "text": "Node.js",
+     "href": "https://nodejs.org/"
+    },
+    {
+     "text": "pnpm",
+     "href": "https://pnpm.io/"
+    },
+    {
+     "text": "Rust",
+     "href": "https://rustup.rs/"
+    },
+    {
+     "text": "extension authoring guide",
+     "href": "https://github.com/asklar/agent-terrarium/blob/main/docs/extensions.md"
+    },
+    {
+     "text": "contributing guide",
+     "href": "https://github.com/asklar/agent-terrarium/blob/main/CONTRIBUTING.md"
+    },
+    {
+     "text": "🌿 Agent Terrarium: Bringing AI agents to life",
+     "href": "https://commandline.microsoft.com/agent-terrarium-rust-human-agent-interaction/"
+    }
+   ],
+   "image": "https://commandline.microsoft.com/wp-content/uploads/2026/08/image-9.png"
+  },
+  {
+   "id": "cmd-local-models-sandboxed-tools-github-windows",
+   "source": "commandline",
+   "date": "2026-10-07",
+   "publishedAt": "2026-10-07T18:00:00.000Z",
+   "title": "Bringing local models and sandboxed tools to Windows and GitHub Copilot",
+   "url": "https://commandline.microsoft.com/local-models-sandboxed-tools-github-windows/",
+   "categories": [
+    "Deep Dive"
+   ],
+   "relevance": [
+    "title names GitHub",
+    "18 GitHub Copilot mentions",
+    "20 GitHub mentions"
+   ],
+   "lede": "Coming soon, GitHub Copilot will determine when a task is best handled by on-device intelligence and when it should leverage cloud-scale models.",
+   "text": "When leveraging agents, developers need both choice and control. They need technologies that offer clear boundaries for their agents and make it easy to choose the model with the right speed, performance, and cost profile for each task. That’s why GitHub offers frontier models from major model providers, as well as options like Project HydraFusion, an orchestrator choosing one or multiple models for each task while balancing performance, cost, and latency. It’s also why Windows has developed Microsoft Execution Containers (MXC) to help secure interactive and non-interactive agentic coding sessions.\n\nComing by the end of the month, GitHub Copilot will determine when a task is best handled by on-device intelligence and when it should leverage cloud-scale models. Rather than forcing developers to manage infrastructure decisions themselves, GitHub Copilot automatically coordinates local and cloud inference behind the scenes. For NVIDIA RTX Spark Windows PCs like Surface Laptop Ultra, that means we are enabling local coding in GitHub Copilot with powerful local inference models and hardware capable of delivering a great experience at the edge.\n\nThe result is poised to be the next step in the HydraFusion vision: intelligent orchestration that spans not just multiple models, but multiple compute environments including the edge. GitHub Copilot can run commands in these environments with controlled access to files, networks, system capabilities, and credentials. Developers can automate with confidence and security in mind.\n\nWhy memory matters for a local coding agent\n\nLocal inference starts with a memory budget. Surface Laptop Ultra is built around NVIDIA RTX Spark, with up to 128 GB of unified memory and up to 1 petaflop of AI compute.\n\nWith a discrete GPU, dedicated video memory is an important constraint: moving model data between system memory and the GPU can add overhead. Unified memory gives the CPU and GPU access to a shared physical pool. That makes more capacity available to the workload, but it doesn’t make all of it available to model weights.\n\nThe operating system, your applications, and the inference runtime need memory, too. So does the key-value cache, which stores attention state for tokens the model has already processed. As an agent reads files and receives tool results, its context can grow, increasing memory use and the work needed to process the next request.\n\nModel weights are only part of the memory budget.\n\nKeeping a model loaded between requests can avoid repeated loading work. However, it doesn’t guarantee constant response time; context length, memory pressure, and the rest of the workload still matter. That’s why the useful question isn’t just whether a model fits, but how it behaves over a complete coding task.\n\nIntroducing MAI Code 1.1 Flash for local coding\n\nTo bring this local-development experience to life, Microsoft AI developed a local version of MAI Code 1.1 Flash, a coding-optimized mixture-of-experts model with 137 billion total and 6.8 billion active parameters. The on-device work applies quantization and speculative decoding to reduce the model footprint and improve end-to-end responsiveness while preserving the task completion and tool-use quality that matter in an agent loop.\n\nQuantization reduces the precision used to represent model weights and activations, lowering memory requirements. Because code doesn’t degrade gracefully, the release evaluation must measure coding-task success as well as footprint: a single incorrect token can produce a syntax error, wrong identifier, malformed tool call, or broken diff.\n\nSpeculative decoding trades additional working memory for higher decode throughput and lower end-to-end latency. A drafter proposes candidate token blocks and the target model verifies them.\n\nFor a coding agent, the important tradeoff is whether the smaller model can still complete the same tasks. A smaller footprint is useful only if changes in code quality and tool use are understood.\n\nWith our first shipping version of MAI Code 1.1 Flash on Surface Laptop Ultra we achieve the following performance at different context lengths, with peak memory usage of 75.5GB at 256k context.",
+   "links": [
+    {
+     "text": "Project HydraFusion",
+     "href": "https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/?utm_source=blog-cta-project-hydrafusion-article&utm_medium=blog&utm_campaign=oct-7-event-oct-2026"
+    },
+    {
+     "text": "Microsoft Execution Containers (MXC)",
+     "href": "https://aka.ms/WindowsDeveloperMXC"
+    },
+    {
+     "text": "Unsloth’s GPT-OSS-120B GGUF",
+     "href": "https://huggingface.co/unsloth/gpt-oss-120b-GGUF"
+    },
+    {
+     "text": "bubblewrap",
+     "href": "https://github.com/containers/bubblewrap"
+    },
+    {
+     "text": "GitHub Copilot.",
+     "href": "https://docs.github.com/en/copilot/concepts/copilot-surfaces?utm_source=blog-linking-surfaces-documentation&utm_medium=blog&utm_campaign=oct-7-event-oct-2026"
+    },
+    {
+     "text": "Bringing local models and sandboxed tools to Windows and GitHub Copilot",
+     "href": "https://commandline.microsoft.com/local-models-sandboxed-tools-github-windows/"
+    }
+   ],
+   "image": "https://commandline.microsoft.com/wp-content/uploads/2026/10/image-1-1024x511.png"
+  },
+  {
+   "id": "cmd-github-universe-2026-recap",
+   "source": "commandline",
+   "date": "2026-10-29",
+   "publishedAt": "2026-10-29T18:34:49.000Z",
+   "title": "GitHub Universe 2026: Highlights from the developer’s developer conference",
+   "url": "https://commandline.microsoft.com/github-universe-2026-recap/",
+   "categories": [
+    "Conversation"
+   ],
+   "relevance": [
+    "title names GitHub"
+   ],
+   "lede": "The hero at the heart of the two-day event was the developer community.",
+   "text": "From the menus at Mo’s Diner to the badge hack station to major product ships, GitHub Universe 2026 delivered. The annual Octoverse report came out, showing just how much the platform has scaled over the past year in the face of agentic software delivery. And the hero at the heart of the two-day event was the developer community.\n\nAttendees watch the keynote speech during GitHub Universe 2026, Wednesday, Oct. 28, 2026, at Fort Mason Center for Arts and Culture, in San Francisco, Calif. (Photo: Cameron Karsten)\n\nYesterday’s opening keynote was packed with demos and announcements. But Copilot Fusion was clearly the belle of the ball.\n\nJay Parikh, Executive Vice President of CoreAI, Microsoft, and GitHub Senior Director of Developer Advocacy Cassidy Williams onstage during GitHub Universe 2026, Wednesday, Oct. 28, 2026, at Fort Mason Center for Arts and Culture, in San Francisco, Calif. (Photo: Cameron Karsten)\n\nAs a frame for the ships (of which there were many), EVP of CoreAI Jay Parikh laid out our vision for GitHub as the most comprehensive, end-to-end software delivery system in the world.\n\nWest Bos, Kyle Daigle, and Scott Tolinski.\n\nGitHub COO and Microsoft CMO of Developer Kyle Daigle joined Syntax co-hosts Wes Bos and Scott Tolinski for a chat.\n\nTanguy Fournier Le Roy and Jay Parikh.\n\nAnd great conversations were had, on and off the show floor.\n\nSeth Juarez, Damian Brady, Cassidy Williams, Christopher Harrison, Jay Parikh, Burke Holland, April Leonard, Jessica Deen, and Kyle Daigle.\n\nSession spotlights\n\nAgentic Workflows: Automation at scale\n\nAutomation is how we buy time for craft, enforce correctness in situations that require judgment, and improve our software at business scale. This session taught attendees how to start automating, including setting up a software factory with governance, monitoring, and security.\n\nAgentic engineering past the pilot: An enterprise playbook\n\nThe industry has moved from code completion to chat to agents, and now into AI-native software delivery. But what does that actually look like inside an enterprise, where governance, developer experience, and adoption at scale all have to coexist? Through live demos spanning IDE, CLI, and multi-session orchestration, Nick Liffen and Philip Holleran shared the system-level patterns that move agentic engineering from experiment to operating model.\n\nSecuring MCP: Real exploits, what actually mitigates them, and what doesn’t\n\nThis interactive session broke down MCP security as it really stands today: what the threats are, which layer each one operates on, and how to host MCP servers in production without opening yourself up to unnecessary risk.\n\nShut the context window! You’re letting the tokens out\n\nDylan McCarthy showed how Copilot constructs context in practice, demonstrated the developer habits that quietly inflate token usage, and walked through focused workflows that produce better results with less overhead.\n\nYour benchmark is lying: What evals actually look like\n\nJulia Kasper and Walker Chabbott went behind the scenes on how GitHub Copilot evaluates models in production: what they measure, what they’ve stopped measuring, the signals that correlate with real developer outcomes, and why your favorite leaderboard may be leading your team astray.\n\n… and that’s just a taste of the 150+ sessions at this year’s Universe. Check out the full list here.\n\nWatch the full keynote …\n\n… or the abridged version: 42 minutes of announcements in < 8\n\nBefore you go\n\nIf you take away one thing from Universe 2026, make it this:\n\nThe SDLC is no longer a linear path from planning to coding to testing to deployment. The new agentic software delivery system solves for three things: velocity, intelligence, and quality. GitHub is a platform built for you and your agents. We’ll continue releasing new products and features that push the work forward. And our ongoing infrastructure work will ensure the platform scales to meet increased demand.\n\nAI is changing what’s possible. But it’s in the hands of developers where that possibility converts to real-world impact.",
+   "links": [
+    {
+     "text": "annual Octoverse report",
+     "href": "https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/?utm_source=blog-cta-octoverse&utm_medium=blog&utm_campaign=universe-2026"
+    },
+    {
+     "text": "Copilot Fusion",
+     "href": "https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion/?utm_source=blog-cta-fusion&utm_medium=blog&utm_campaign=universe-2026"
+    },
+    {
+     "text": "Jay Parikh",
+     "href": "https://x.com/jayparikh"
+    },
+    {
+     "text": "our vision for GitHub",
+     "href": "https://github.blog/news-insights/company-news/github-universe-2026-evolving-every-layer-of-the-stack/?utm_source=blog-cta-jay-hero-blog&utm_medium=blog&utm_campaign=universe-2026"
+    },
+    {
+     "text": "Kyle Daigle",
+     "href": "https://x.com/kdaigle"
+    },
+    {
+     "text": "Syntax",
+     "href": "https://syntax.fm/"
+    },
+    {
+     "text": "Wes Bos",
+     "href": "https://x.com/wesbos"
+    },
+    {
+     "text": "Scott Tolinski",
+     "href": "https://x.com/stolinski"
+    },
+    {
+     "text": "here",
+     "href": "https://reg.githubuniverse.com/flow/github/universe26/attendee-portal/page/sessioncatalog?tab.allsessions=1783449560443001ldrh"
+    },
+    {
+     "text": "SDLC is no longer a linear path",
+     "href": "https://commandline.microsoft.com/new-agentic-software-delivery-primitives/"
+    }
+   ],
+   "image": "https://commandline.microsoft.com/wp-content/uploads/2026/10/GHUNI26-2_CK_241-1024x683.jpg"
+  }
+ ]
+}

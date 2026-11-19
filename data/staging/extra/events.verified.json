@@ -1,0 +1,382 @@
+[
+  {
+    "id": "evt-copilot-dev-days-2026",
+    "name": "GitHub Copilot Dev Days 2026 (March 15–May 15)",
+    "start": "2026-03-15",
+    "end": "2026-05-15",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/github/GitHub-Copilot-Dev-Days",
+    "location": "Global (local user-group events)",
+    "evidence": {
+      "quote": "GitHub Copilot Dev Days 2026 – Community Event Kit ✨ A global, community-led event series for developers to explore hands-on, AI-assisted coding with GitHub Copilot. GitHub Copilot Dev Days is a global, in-person user group initiative taking place from March 15th to May 15th 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:42:57.458Z"
+    }
+  },
+  {
+    "id": "evt-kubecon-eu-2026",
+    "name": "KubeCon + CloudNativeCon Europe 2026",
+    "start": "2026-03-23",
+    "end": "2026-03-26",
+    "kind": "conference",
+    "role": "sponsor",
+    "url": "https://events.linuxfoundation.org/archive/2026/kubecon-cloudnativecon-europe",
+    "location": "Amsterdam, Netherlands",
+    "evidence": {
+      "quote": "technologists from leading open source and cloud native communities in Amsterdam, Netherlands from 23-26 March, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:42:58.466Z"
+    }
+  },
+  {
+    "id": "evt-rsac-2026",
+    "name": "GitHub at RSAC 2026",
+    "start": "2026-03-24",
+    "end": "2026-03-24",
+    "kind": "conference",
+    "role": "speaker",
+    "url": "https://github.com/resources/events/github-rsac2026",
+    "location": "San Francisco, CA",
+    "evidence": {
+      "quote": "CVE Collapse (session code VLG-T02) Speaker: Madison Oliver, Staff Manager, Security Research, GitHub March 24, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:42:58.675Z"
+    }
+  },
+  {
+    "id": "evt-vulncon-2026",
+    "name": "VulnCon 2026",
+    "start": "2026-04-16",
+    "end": "2026-04-16",
+    "kind": "conference",
+    "role": "speaker",
+    "url": "https://securitylab.github.com/events/vulncon2026",
+    "location": "Scottsdale, AZ",
+    "evidence": {
+      "quote": "VulnCon 2026 April 16, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:42:59.260Z"
+    }
+  },
+  {
+    "id": "evt-devoxx-france-2026",
+    "name": "Devoxx France 2026",
+    "start": "2026-04-22",
+    "end": "2026-04-24",
+    "kind": "conference",
+    "role": "speaker",
+    "url": "https://securitylab.github.com/events/2026-04-22-devoxx-france",
+    "location": "Paris, France",
+    "evidence": {
+      "quote": "Devoxx France 2026 April 22-24, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:42:59.466Z"
+    }
+  },
+  {
+    "id": "evt-pycon-us-2026",
+    "name": "PyCon US 2026",
+    "start": "2026-05-16",
+    "end": "2026-05-16",
+    "kind": "conference",
+    "role": "speaker",
+    "url": "https://securitylab.github.com/events/pyconus2026",
+    "location": "Long Beach",
+    "evidence": {
+      "quote": "PyCon US 2026 May 16, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:42:59.599Z"
+    }
+  },
+  {
+    "id": "evt-microsoft-build-2026",
+    "name": "GitHub Social Club at Microsoft Build 2026",
+    "start": "2026-06-01",
+    "end": "2026-06-01",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/resources/events/github-microsoft-build26",
+    "evidence": {
+      "quote": "Social Club Monday, June 1",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:42:59.871Z"
+    }
+  },
+  {
+    "id": "evt-openclaw-after-hours-2026",
+    "name": "OpenClaw: After Hours at GitHub",
+    "start": "2026-06-03",
+    "end": "2026-06-03",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.blog/open-source/register-now-for-openclaw-after-hours-github",
+    "location": "GitHub HQ, San Francisco, CA",
+    "evidence": {
+      "quote": "June 3, 2026, we are hosting OpenClaw: After Hours",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:00.946Z"
+    }
+  },
+  {
+    "id": "evt-beyond-build-ai-developer-day-2026",
+    "name": "Beyond Build: AI Developer Day",
+    "start": "2026-06-04",
+    "end": "2026-06-04",
+    "kind": "other",
+    "role": "host",
+    "url": "https://github.com/resources/events/github-microsoft-build26",
+    "evidence": {
+      "quote": "Beyond Build: AI Developer Day Thursday, June 4",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:00.990Z"
+    }
+  },
+  {
+    "id": "evt-ai-engineer-worlds-fair-2026",
+    "name": "GitHub Next at AI Engineer World’s Fair 2026",
+    "start": "2026-07-02",
+    "end": "2026-07-02",
+    "kind": "conference",
+    "role": "speaker",
+    "url": "https://githubnext.com/talks/realtime-multiplayer-automation-and-you",
+    "evidence": {
+      "quote": "Next's shared workspace for people and coding agents. Idan Gazit Jul 2, 2026 Presented at AI Engineer World's Fair",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:01.482Z"
+    }
+  },
+  {
+    "id": "evt-dev-days-2026",
+    "name": "Dev Days 2026 (September 1–October 31)",
+    "start": "2026-09-01",
+    "end": "2026-10-31",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/github/dev-days",
+    "location": "Global (local user-group events)",
+    "evidence": {
+      "quote": "Dev Days is a global, in-person user group initiative taking place from September 1st to October 31st 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:01.957Z"
+    }
+  },
+  {
+    "id": "evt-github-connect-tour-2026",
+    "name": "GitHub Connect Tour: APAC",
+    "start": "2026-09-03",
+    "end": "2026-12-03",
+    "kind": "conference",
+    "role": "host",
+    "url": "https://github.com/resources/events/github-connect-tour",
+    "location": "Melbourne, Auckland, Wellington, Singapore, Bangkok, Shanghai",
+    "evidence": {
+      "quote": "Connect with local tech leaders and GitHub experts to accelerate your team's developer velocity. Ready to build with us? Select your city below to check out the agenda and join the tour. APAC Melbourne | Sept 3, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:02.223Z"
+    }
+  },
+  {
+    "id": "evt-game-off-2026",
+    "name": "GitHub Game Off 2026",
+    "start": "2026-11-01",
+    "end": "2026-12-01",
+    "kind": "other",
+    "role": "host",
+    "url": "https://github.blog/open-source/gaming/game-off-2026-the-theme-is-shift",
+    "evidence": {
+      "quote": "Game Off 2026: The theme is SHIFT GitHub's annual month-long game jam is back for its 14th year! This November, make a game inspired by the theme SHIFT. Change gears, swap perspectives, bend reality, or just press a certain key. Lee Reilly · @leereilly November 1, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:02.731Z"
+    }
+  },
+  {
+    "id": "evt-agentic-day-nyc-2026",
+    "name": "Agentic Day: NYC",
+    "start": "2026-11-09",
+    "end": "2026-11-09",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "New York, NY",
+    "evidence": {
+      "quote": "Agentic Day: NYC Explore GitHub Universe updates with hands-on Copilot demos and agentic workflows. New York, NY November 9, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.358Z"
+    }
+  },
+  {
+    "id": "evt-agentic-day-chicago-2026",
+    "name": "GitHub Agentic Day: Chicago",
+    "start": "2026-11-16",
+    "end": "2026-11-16",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Chicago, IL",
+    "evidence": {
+      "quote": "GitHub Agentic Day: Chicago Explore GitHub Universe updates with hands-on Copilot demos and agentic workflows. Chicago, IL November 16, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.415Z"
+    }
+  },
+  {
+    "id": "evt-github-social-club-ignite-2026",
+    "name": "GitHub Social Club at Microsoft Ignite",
+    "start": "2026-11-17",
+    "end": "2026-11-17",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "San Francisco, CA",
+    "evidence": {
+      "quote": "Social Club Join Microsoft Ignite attendees for hands-on building, bites, sips, and networking. San Francisco, CA November 17",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.162Z"
+    }
+  },
+  {
+    "id": "evt-microsoft-ignite-2026",
+    "name": "Microsoft Ignite 2026",
+    "start": "2026-11-17",
+    "end": "2026-11-20",
+    "kind": "conference",
+    "role": "attendee",
+    "url": "https://github.com/resources/events",
+    "location": "San Francisco, CA",
+    "evidence": {
+      "quote": "Microsoft Ignite 2026 See the AI and cloud roadmap first, get hands-on with what's shipping, and connect with experts. San Francisco, CA November 17–20, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.212Z"
+    }
+  },
+  {
+    "id": "evt-universe-road-sydney-2026",
+    "name": "GitHub Universe on the Road: Sydney",
+    "start": "2026-11-17",
+    "end": "2026-11-17",
+    "kind": "conference",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Sydney, Australia",
+    "evidence": {
+      "quote": "GitHub Universe on the Road: Sydney Experience the best of GitHub Universe with product insights, customer stories, and networking. Sydney, Australia November 17, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.474Z"
+    }
+  },
+  {
+    "id": "evt-universe-road-toronto-2026",
+    "name": "GitHub Universe on the Road: Toronto",
+    "start": "2026-11-18",
+    "end": "2026-11-18",
+    "kind": "conference",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Toronto, Canada",
+    "evidence": {
+      "quote": "GitHub Universe on the Road: Toronto Experience the best of GitHub Universe with product insights, customer stories, and networking. Toronto, Canada November 18, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.537Z"
+    }
+  },
+  {
+    "id": "evt-agentic-day-boston-2026",
+    "name": "Agentic Day: Boston",
+    "start": "2026-11-19",
+    "end": "2026-11-19",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Burlington, MA",
+    "evidence": {
+      "quote": "Agentic Day: Boston Explore GitHub Universe updates with hands-on Copilot demos and agentic workflows. Burlington, MA November 19, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.652Z"
+    }
+  },
+  {
+    "id": "evt-agentic-day-montreal-2026",
+    "name": "Agentic Day: Montréal",
+    "start": "2026-11-19",
+    "end": "2026-11-19",
+    "kind": "meetup",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Montréal, QC",
+    "evidence": {
+      "quote": "Agentic Day: Montréal Explore GitHub Universe updates with hands-on Copilot demos and agentic workflows. Montréal, QC November 19, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.599Z"
+    }
+  },
+  {
+    "id": "evt-webinar-measuring-what-matters-2026",
+    "name": "Webinar: Measuring What Matters: Proving the ROI of AI-Powered Engineering",
+    "start": "2026-11-19",
+    "end": "2026-11-19",
+    "kind": "webinar",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Online",
+    "evidence": {
+      "quote": "Measuring What Matters: Proving the ROI of AI-Powered Engineering Measure the impact of GitHub Copilot and agentic workflows with real outcomes, not anecdotes. Online November 19",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.257Z"
+    }
+  },
+  {
+    "id": "evt-webinar-code-hygiene-2026",
+    "name": "Webinar: AI Code Hygiene: Deslopification",
+    "start": "2026-11-21",
+    "end": "2026-11-21",
+    "kind": "webinar",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Online",
+    "evidence": {
+      "quote": "AI Code Hygiene: Deslopification Catch it early, fix it automatically, and merge with confidence. Online November 21, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.702Z"
+    }
+  },
+  {
+    "id": "evt-universe-road-paris-2026",
+    "name": "GitHub Universe on the Road: Paris",
+    "start": "2026-11-30",
+    "end": "2026-11-30",
+    "kind": "conference",
+    "role": "host",
+    "url": "https://github.com/resources/events",
+    "location": "Paris, France",
+    "evidence": {
+      "quote": "GitHub Universe on the Road: Paris Experience the best of GitHub Universe with product insights, customer stories, and networking. Paris, France November 30, 2026",
+      "status": 200,
+      "via": "html",
+      "checkedAt": "2026-11-05T23:43:03.761Z"
+    }
+  }
+]

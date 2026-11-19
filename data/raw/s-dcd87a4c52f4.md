@@ -1,0 +1,336 @@
+Visual Studio Code 1.137 
+Skip to content 
+Features
+AI development 
+Agents 
+Models 
+Customizations 
+Continuity 
+Editor 
+Write code 
+Enterprise 
+Extensibility 
+Release notes 
+Blog 
+Resources
+Help 
+Documentation 
+Learn 
+API 
+FAQ 
+Extensibility 
+Extension Marketplace 
+(opens in new tab) 
+MCP registry 
+(opens in new tab) 
+Connect 
+Events 
+(opens in new tab) 
+GitHub repository 
+(opens in new tab) 
+Download 
+Search 
+⌘ ⇧ P 
+Download 
+VS Code Insiders 
+Other platforms 
+Command line interface 
+CLI for Apple silicon 
+CLI for Intel 
+Command line interface 
+CLI for x64 
+CLI for Arm64 
+Command line interface 
+CLI for x64 
+CLI for Arm64 
+CLI for Arm32 
+By using VS Code, you agree to its
+license 
+and
+privacy statement .
+By using VS Code, you agree to
+License 
+&
+Privacy .
+GitHub Universe, on demand. Watch the VS Code session recordings. 
+A year of VS Code, wrapped. Explore the highlights. 
+Dismiss this update 
+Updates
+Insiders 
+1.145 
+1.144 
+1.143 
+1.142 
+1.141 
+1.140 
+1.139 
+1.138 
+1.137 
+1.136 
+1.135 
+1.134 
+1.133 
+1.132 
+1.131 
+View All Releases 
+Updates 
+Insiders 
+1.145 
+1.144 
+1.143 
+1.142 
+1.141 
+1.140 
+1.139 
+1.138 
+1.137 
+1.136 
+1.135 
+1.134 
+1.133 
+1.132 
+1.131 
+View All Releases 
+Visual Studio Code 1.137
+Follow us on LinkedIn , X , Bluesky , Instagram 
+Release date: September 9, 2026 
+Downloads for 1.137.0
+Windows x64 Arm64 
+macOS Universal Intel Apple silicon 
+Linux .deb .rpm .tar.gz Arm instructions Snap 
+Welcome to the 1.137 release of Visual Studio Code. This release helps you automate recurring work, continue quick chats in a workspace, talk with agents by voice, and work with GitHub issues and pull requests without leaving the Agents window.
+The Story of VS Code : Watch the VS Code documentary and discover how the editor and its community evolved.
+Automations (Preview) : Schedule recurring agent tasks to run hourly, daily, or weekly, or run them on demand.
+Voice Mode (Experimental) : Talk with an agent and interrupt or redirect it while it works on your code.
+Continue quick chats in a workspace : Attach a project to an existing quick chat without losing the conversation history or current request.
+GitHub issues and pull requests (Experimental) : Review issue and pull request details directly in the Agents window, even when the repository is not open.
+Contest: Name the VS Code pet : Meet the VS Code pet and enter the contest to choose its name.
+Don't forget to join the GitHub Copilot Day live on September 10, 2026. Learn the most effective ways to use Copilot, from agents and model choice to working across GitHub, Copilot app, Copilot CLI, and Visual Studio Code.
+Happy Coding!
+VS Code is rolling out gradually to all users. Use Check for Updates in VS Code to get the latest version immediately.
+To try new features as soon as possible, download the nightly Insiders build , which includes the latest updates as soon as they are available.
+In this update
+The Story of VS Code 
+Agents 
+Chat 
+Code Editing 
+Languages 
+Contributions to extensions 
+Deprecated features and settings 
+Thank you 
+Navigation End -->
+The Story of VS Code
+Discover the story behind VS Code, from its early beginnings to the platform millions of developers use today, and the community that helped shape it along the way.
+Agents
+Automations (Preview)
+Setting : 
+chat.automations.enabled
+Open in VS Code 
+Open in VS Code Insiders 
+Automations run recurring agent tasks on a schedule, so routine work does not have to be started manually. Start with a template for catching up on changes, triaging issues, or finding bugs, or define your own prompt and schedule.
+To try automations, enable 
+chat.automations.enabled
+Open in VS Code 
+Open in VS Code Insiders 
+, open the Agents window, and select Automations in the sidebar. You can run an automation on demand or schedule it to run hourly, daily, or weekly. Learn more about automations in the documentation.
+Automations is in Preview and is rolling out gradually to all users.
+Open GitHub issues and PR details (Experimental)
+Setting : 
+extensions.experimental.enableAgentsWindowCapability
+Open in VS Code 
+Open in VS Code Insiders 
+When a chat conversation references work on GitHub, the Agents window can provide direct integration with the GitHub Pull Requests extension. Select a github.com issue or pull request link to open its details directly in the Agents window, without switching to a browser. This also works when you don't have a workspace for that repository open.
+To try this initial integration, install the GitHub Pull Requests extension in your default VS Code profile and enable 
+extensions.experimental.enableAgentsWindowCapability
+Open in VS Code 
+Open in VS Code Insiders 
+.
+Attach GitHub issues and pull requests in any chat
+Add a GitHub issue or pull request as context from the Add Context... menu in any chat input, including the Chat view, Chat editor, and Agents window. This makes the issue description, comments, or pull request changes available to the agent without copying them into your prompt.
+You can also paste a GitHub issue or pull request URL into the new-session input. The URL remains in your prompt and a context attachment is added automatically.
+Help name the VS Code pet (Experimental)
+The experimental VS Code pet is an interactive companion that reacts as you work with agents. Enter /vscode-pet in chat to meet it, then help choose its name.
+From September 10 through September 17, 2026, submit a name for the VS Code pet . Review the contest terms and conditions .
+Continue quick chats in a workspace
+You can start a quick chat in the Agents window without associating it with a workspace, for example, to discuss general questions or ideas. If the conversation later becomes project-specific, ask the Copilot agent to attach a local folder and continue the same chat.
+After you confirm the workspace and choose whether to use the folder directly or create an isolated worktree, the chat becomes a workspace session. The session retains its title, conversation history, and current request, and the agent automatically continues with access to the project files when workspace setup finishes.
+Alternatively, you can start the project work in a new workspace session.
+Note : Continuing a chat conversation in a workspace session is currently available only in the Copilot harness.
+Agent-queued messages
+Keep agents working in parallel without interrupting a chat that is already processing a request. When an agent uses the send_message session-management tool to contact a busy chat, VS Code queues the message and starts it after the active turn completes successfully.
+An agent can queue multiple messages for chats in the same session or another session. VS Code processes queued messages in the order they were sent, making multi-chat workflows more predictable.
+Agent host
+The agent host lets you connect to the same agent session from multiple VS Code windows. It runs agent harnesses in a dedicated process based on the Agent Host Protocol (AHP). The agent host's Copilot agent is powered by the Copilot SDK , which aligns the agent's behavior and functionality with the Copilot CLI, the standalone GitHub Copilot app, and other Copilot products.
+We're actively developing the agent host. Learn more in the agent host documentation and our agent host blog post , where we share why we built the agent host, what it enables in VS Code, how the architecture and open protocol work, and workflows you can try yourself.
+If you have any feedback or requests, please let us know by filing an issue .
+Chat
+Voice Mode (Experimental)
+Settings : 
+agents.voice.enabled
+Open in VS Code 
+Open in VS Code Insiders 
+, 
+agents.voice.showTranscript
+Open in VS Code 
+Open in VS Code Insiders 
+, 
+agents.voice.voice
+Open in VS Code 
+Open in VS Code Insiders 
+Voice Mode enables you to have a natural, spoken conversation with an agent while it works on your code.
+Note : Voice Mode is rolling out gradually and might not be available to every eligible account immediately. It requires an eligible individual GitHub Copilot plan and is not available with GitHub Copilot Business or GitHub Copilot Enterprise. Organizations can also turn off Copilot preview features by policy.
+To try it, enable 
+agents.voice.enabled
+Open in VS Code 
+Open in VS Code Insiders 
+and select the Voice Mode button in the chat input.
+While the agent is speaking, start speaking or use the push-to-talk shortcut to interrupt the response and continue the conversation.
+Voice Mode is aware of your active session and can answer questions about running sessions, the selected model, and attached files. You can also ask Voice Mode to start a new session. When a request is routed, Voice Mode announces whether it is sending the request to an existing session or starting a new one.
+You can customize Voice Mode in the following ways:
+Enable 
+agents.voice.showTranscript
+Open in VS Code 
+Open in VS Code Insiders 
+to show the conversation transcript in the chat input while Voice Mode is active. Use the Voice Mode controls to show or hide the transcript and mute or unmute your microphone without ending the voice session.
+Run Chat: Dictate: Select Microphone from the Command Palette to choose the input device used by both dictation and Voice Mode.
+Use 
+agents.voice.voice
+Open in VS Code 
+Open in VS Code Insiders 
+to select the voice that reads responses aloud.
+Run Voice Mode: Show Introduction from the Command Palette to reopen the introduction, where you can select a microphone and preview the available voices.
+You can also right-click the Voice Mode button in the chat input to quickly access its configuration, instructions, introduction, microphone selection, and transcript controls. Learn more about using Voice Mode .
+Code Editing
+Smart diff editor layout
+Choose a diff layout in the same way across regular diffs, multi-file diffs, and the Agents window Changes editor. Open More Actions ( ... ) > Diff View , and then select Inline , Side by Side , or Automatic .
+The Automatic option shows which layout is active and adapts as the editor width changes. If you deliberately widen an inline diff by dragging a sash, the diff remains inline while you resize so the content doesn't shift unexpectedly.
+Binary files in multi-file diffs
+Changed binary files, such as images, remain visible in multi-file diffs instead of being omitted. The diff shows a Binary file changed placeholder in the file's original position. Select Open Diff to review the file in the standard diff experience, such as an image diff or applicable custom editor.
+Multi-file diffs in editor windows also use the same visual design as multi-file diffs in the Agents window.
+Languages
+GitHub links in the Markdown editor (Experimental)
+Settings : 
+markdown.experimental.richLinks.enabled
+Open in VS Code 
+Open in VS Code Insiders 
+, 
+chat.experimental.richLinks.enabled
+Open in VS Code 
+Open in VS Code Insiders 
+GitHub issue and pull request links in the Markdown editor show the current title and state, so you can understand each reference without opening it first. The link updates when its issue or pull request state changes, including CI updates.
+To use the same link rendering in chat, set 
+chat.experimental.richLinks.enabled
+Open in VS Code 
+Open in VS Code Insiders 
+to true .
+Contributions to extensions
+GitHub Pull Requests
+There has been more progress on the GitHub Pull Requests extension, which enables you to work on, create, and manage pull requests and issues. New features include:
+Faster opening of the pull request webview
+All github.com links in VS Code will be opened with the extension (can be disabled with githubPullRequests.openPullLinks )
+Review the changelog for the 0.166.0 release of the extension to learn about everything in the release.
+Deprecated features and settings
+None
+Thank you
+Contributions to vscode :
+@accnops (Arthur Cnops) : Use dedicated MAI transcription for dictation PR #334042 
+@arpankanwer (Birarpanjot Singh Kanwer) : fix(copilot): don't auto-retry expired vision attachments, show actionable error PR #334129 
+@bstee615 (Benjamin Steenhoek) 
+Recognize eagerness option in PatchBased02Unified PR #333606 
+Add PatchBased02UnifiedEagerness prompt strategy PR #333302 
+@hadley (Hadley Wickham) : Fix webview view badge not clearing when set to undefined PR #331019 
+@jmymay (Jeremy Majewski) : Add isChromeOS to platforms.ts and context. PR #309097 
+@joshspicer 
+agentHost: managed permission fixes for shell paths and read prompts PR #333249 
+Managed settings: reuse cached policy more often PR #333697 
+Improve mock policy server troubleshooting PR #333930 
+Ensure managed settings stability with regression tests PR #334056 
+Polish mock policy server UI PR #334122 
+remove old tool-rename-deprecation skill PR #334279 
+remove example from mock-policy-server PR #334361 
+@kondv : mcp: Avoid stopping servers for equivalent URI definitions PR #333443 
+@leep-frog : add args to editor.action.formatDocument.multiple PR #245743 
+@mcumming (Michael Cummings (MSFT)) 
+Enable Microsoft Entra ID sign-in for Private Marketplace access PR #325331 
+Make extensions.gallery.authProvider policy-controlled PR #333837 
+@mst-mkt (keito) : Fix surrounding a selection with brackets after arrow functions (#_225916) PR #321210 
+@piyushmadan (Piyush Madan) : Show remaining turns to execution subagents PR #332704 
+@RajeshKumar11 : Fix extensions.allowed schema flagging valid version arrays as invalid PR #329744 
+@rohit489 (Rohit Agrawal - MSFT) : Record CAPI X-Copilot-Service-Request-Id on chat telemetry events PR #334638 
+@RyanEwen (Ryan Ewen) : Report a browser tool failure with an empty message as a failure PR #334311 
+@SimonSiefke (Simon Siefke) 
+fix: memory leak in git branch protection provider PR #333381 
+fix: memory leak in extension host pseudoterminals PR #333397 
+fix: memory leak in accessible view toolbar PR #333183 
+fix: memory leak in test results PR #333244 
+fix: memory leak in extension host comments PR #334095 
+fix: memory leak in mainThreadNotebook PR #334189 
+fix: memory leak in terminal profile service PR #334100 
+@vscodebot-pr (VS Code PR Bot) 
+fix: clamp inverted visible range in ListView to prevent RangeError (fixes #333230) PR #333236 
+fix: cancel pending single-pane docked-tab reconciles on dispose (fixes #333537) PR #333541 
+fix: guard null diagnostic code in copilotcli diagnostics push (fixes #333772) PR #333781 
+fix: skip real AudioContext in Voice Mode onboarding preview under tests (build fix for vscode-engineering#3742) PR #333858 
+@wibaek (Wibaek Park) : fix: avoid refocusing find input during IME composition PR #320898 
+@YOSHII-Hiroto (吉井　啓人（YOSHII, Hiroto）) : Support opening MHTML files in integrated browser PR #333307 
+Contributions to vscode-pull-request-github :
+@jameswilmiller (James Miller) : Always show commit SHA in tree PR #8840 
+@tamird (Tamir Duberstein) 
+Require variables for legacy GraphQL queries PR #8889 
+Retry review comments with smaller pages PR #8890 
+Issue tracking
+Contributions to our issue tracking:
+@gjsjohnmurray (John Murray) 
+@RedCMD (RedCMD) 
+@IllusionMH (Andrii Dieiev) 
+@albertosantini (Alberto Santini) 
+We really appreciate people trying our new features as soon as they are ready, so check back here often and learn what's new.
+If you'd like to read release notes for previous VS Code versions, go to Updates on code.visualstudio.com .
+On this page there are 8 sections On this page 
+The Story of VS Code 
+Agents 
+Chat 
+Code Editing 
+Languages 
+Contributions to extensions 
+Deprecated features and settings 
+Thank you 
+Microsoft 
+Community
+GitHub 
+Reddit 
+X 
+Bluesky 
+LinkedIn 
+Watch & listen
+YouTube 
+Podcast 
+TikTok 
+Instagram 
+Legal
+Privacy 
+Terms of Use 
+Help
+Support 
+License 
+Community 
+GitHub 
+Reddit 
+X 
+Bluesky 
+LinkedIn 
+Watch & listen 
+YouTube 
+Podcast 
+TikTok 
+Instagram 
+Legal 
+Privacy 
+Terms of Use 
+Help 
+Support 
+License 
+Consumer Health Privacy 
+Manage Cookies 
+By using VS Code, you agree to its license and privacy statement .
+Your Privacy Choices

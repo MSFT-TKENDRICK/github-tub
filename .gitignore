@@ -1,0 +1,17 @@
+# Derived staging output, page caches for anchor building, and agent scratch files stay local.
+# Tracked pipeline inputs: data/raw (feed indexes + cached source text used for provenance checks),
+# data/staging/extra (events/research registries) and data/staging/curation.
+data/*
+!data/raw/
+data/raw/vscode-pages/
+!data/staging/
+data/staging/*
+!data/staging/extra/
+!data/staging/curation/
+scratch/
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+
+__pycache__/

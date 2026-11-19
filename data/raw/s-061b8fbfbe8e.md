@@ -1,0 +1,133 @@
+Enterprises can default to auto model selection - GitHub Changelog 
+Skip to content 
+Skip to sidebar 
+/ 
+Blog 
+Changelog 
+Docs 
+Customer stories 
+Try GitHub Copilot app 
+See what's new 
+Search 
+Changelog 
+Docs 
+Customer stories 
+See what's new 
+Try GitHub Copilot app 
+Back to changelog 
+Improvement 
+July 1, 2026 •
+1 minute read 
+Enterprises can default to auto model selection
+Enterprise administrators can now set model to auto in the enterprise managed-settings.json to make Copilot auto model selection the default for new conversations.
+Add auto to .github-private/.github/copilot/managed-settings.json in your source organization for enterprise governance so new conversations start with Copilot auto model selection by default. Users can still switch to a different model on a per-conversation basis. GitHub Copilot automatically pulls and applies these settings for users licensed through your enterprise account with Copilot Business or Copilot Enterprise.
+Backward compatability 
+The model permission is available in VS Code 1.126+
+The supported path for AI standards is copilot/managed-settings.json , with backward compatibility for .github/copilot/settings.json .
+If you’ve already configured a source organization for custom agents, this setting uses that same .github-private repository. You can confirm that your configuration is active on the Agents page under AI controls in your enterprise settings.
+To learn more, see managed-settings.json permissions .
+Join the discussion within GitHub Community .
+client apps 
+copilot 
+enterprise management tools 
+Share 
+Copied 
+Shared 
+Back to changelog 
+Related Posts
+Nov.04 Release 
+GitHub Copilot is now available in Xcode’s coding assistant 
+copilot 
+Nov.03 Improvement 
+BYOK and enterprise custom models in the Copilot usage API 
+account management 
+copilot 
+enterprise management tools 
+... 
++2 
+Nov.03 Release 
+Look up a resource’s cost center with the GitHub REST API 
+account management 
+enterprise management tools 
+... 
++1 
+Nov.03 Release 
+GitHub Copilot is now available in JetBrains Air 
+copilot 
+Nov.02 Improvement 
+GitHub Desktop adds short-lived authentication tokens 
+account management 
+application security 
+client apps 
+... 
++2 
+Oct.28 Release 
+Route and orchestrate models with GitHub Copilot Fusion 
+copilot 
+enterprise management tools 
+universe26 
+... 
++2 
+Oct.28 Release 
+GitHub Copilot app, Universe releases 
+copilot 
+universe26 
+... 
++1 
+Oct.28 Release 
+GitHub Enterprise now includes access to GitHub Copilot 
+copilot 
+universe26 
+... 
++1 
+Oct.28 Release 
+Security extension for the GitHub Copilot app 
+application security 
+copilot 
+universe26 
+... 
++2 
+Subscribe to our developer newsletter
+Discover tips, technical guides, and best practices in our biweekly newsletter just for devs. 
+Enter your email * 
+Subscribe 
+By submitting, I agree to let GitHub and its affiliates use my information for personalized communications, targeted advertising, and campaign effectiveness. See the GitHub Privacy Statement for more details. 
+Back to top 
+Site-wide Links
+Product
+Features 
+Security 
+Enterprise 
+Customer Stories 
+Pricing 
+Resources 
+Platform
+Developer API 
+Partners 
+Atom 
+Electron 
+GitHub Desktop 
+Support
+Docs 
+Community Forum 
+Training 
+Status 
+Contact 
+Company
+About 
+Blog 
+Careers 
+Press 
+Shop 
+© 2026 GitHub, Inc.
+Terms 
+Privacy 
+Manage Cookies 
+Do not share my personal information 
+GitHub on LinkedIn 
+GitHub on Instagram 
+GitHub on YouTube 
+GitHub on X 
+GitHub on TikTok 
+GitHub on Twitch 
+GitHub’s organization on GitHub

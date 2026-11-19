@@ -1,0 +1,121 @@
+GitHub Enterprise Server 3.20 release candidate is available - GitHub Changelog 
+Skip to content 
+Skip to sidebar 
+/ 
+Blog 
+Changelog 
+Docs 
+Customer stories 
+Try GitHub Copilot app 
+See what's new 
+Search 
+Changelog 
+Docs 
+Customer stories 
+See what's new 
+Try GitHub Copilot app 
+Back to changelog 
+Release 
+February 24, 2026 •
+2 minute read 
+GitHub Enterprise Server 3.20 release candidate is available
+GitHub Enterprise Server (GHES) 3.20 enhances deployment efficiency, monitoring capabilities, code security, and policy management. Here are a few highlights in the 3.20 release:
+The improved merge experience on the pull request page is now generally available. This is designed to help you better understand the state of your pull request and get it merged faster. Status checks are grouped by status—with failing checks listed first—and ordered using natural sorting. When commit metadata rules fail, merge-time errors explain what to fix. For improved accessibility, the merge experience also has consistent keyboard navigation, focus, and landmarks. Please see improved pull request merge experience for a detailed update including screenshots.
+GitHub releases now support immutability, locking release assets from being added, modified, or deleted after publication and protecting the release tag from being moved or deleted. This helps protect distributed artifacts from supply chain attacks. For more information, see our changelog about immutable releases . Release attestations are not yet supported on GHES and are only available on GitHub.com.
+Secret scanning includes several improvements to help teams prevent and address credential leaks at scale. Validity checks indicate if secrets are still active; enterprise admins can make the feature available to repository admins from the Management Console. Push protection delegated bypass controls can now be managed at the enterprise level. Secret scanning also supports alert assignment for collaboration. Secret scanning push protection expands default coverage to block additional secrets, reducing the risk of credential leaks during pushes. Finally, secret scanning adds new detectors and improves detectors for existing secret types.
+Enterprise owners can create and manage enterprise teams to simplify governance across their enterprise. Using the API or enterprise settings UI, owners can assign enterprise teams to organizations, create and assign custom enterprise roles, and assign roles to both teams and users. Organization and repository owners can assign roles to enterprise teams within their scope, and enterprise teams can be added to ruleset bypass lists. There are product limitations to this experience. For more information, see teams in an enterprise . This feature is in public preview and subject to change.
+For GitHub Advanced Security, including code scanning and secret scanning features, the Enterprise Security Manager role is available for simplified security policy and alert management across an enterprise. The role is supported only for enterprises with up to 15,000 organizations. This feature is in public preview.
+The backup service, previously in public preview, is now generally available in GHES 3.20. The managed, built-in service provides an alternative to GHES backup utilities and does not require a separate host for backup software. For more information, see Backup service . Please note that backup-utils will be retired starting in version 3.22.
+Release candidates are a way for you to try the latest features early. They also help us gather feedback to help ensure the release works in your environment. Read more about the release candidate process . To learn more about GHES 3.20, check out the release notes , or download the 3.20 release candidate now.
+If you have any feedback or questions about the release candidate, please contact our support team .
+collaboration tools 
+Share 
+Copied 
+Shared 
+Back to changelog 
+Related Posts
+Nov.05 Release 
+New pull request overview page in public preview 
+collaboration tools 
+Oct.28 Release 
+Introducing Replica, an open-source AI prototyping tool 
+collaboration tools 
+community engagement 
+universe26 
+... 
++2 
+Oct.28 Release 
+Pull request limits: Exempt contributors by age or history 
+collaboration tools 
+universe26 
+... 
++1 
+Oct.28 Release 
+Moderate role for GitHub Issues generally available 
+collaboration tools 
+community engagement 
+universe26 
+... 
++2 
+Oct.22 Improvement 
+Pull requests: Saved whitespace preferences and improved split view 
+collaboration tools 
+Oct.15 Improvement 
+Multi-repository support and other improvements for GitHub in Slack and Teams 
+collaboration tools 
+copilot 
+... 
++1 
+Oct.08 Improvement 
+Triage role users or higher can now archive pull requests 
+collaboration tools 
+Oct.08 Improvement 
+Draft pull requests count toward pull request limits 
+collaboration tools 
+Oct.06 Release 
+Stacked pull requests generally available 
+collaboration tools 
+Subscribe to our developer newsletter
+Discover tips, technical guides, and best practices in our biweekly newsletter just for devs. 
+Enter your email * 
+Subscribe 
+By submitting, I agree to let GitHub and its affiliates use my information for personalized communications, targeted advertising, and campaign effectiveness. See the GitHub Privacy Statement for more details. 
+Back to top 
+Site-wide Links
+Product
+Features 
+Security 
+Enterprise 
+Customer Stories 
+Pricing 
+Resources 
+Platform
+Developer API 
+Partners 
+Atom 
+Electron 
+GitHub Desktop 
+Support
+Docs 
+Community Forum 
+Training 
+Status 
+Contact 
+Company
+About 
+Blog 
+Careers 
+Press 
+Shop 
+© 2026 GitHub, Inc.
+Terms 
+Privacy 
+Manage Cookies 
+Do not share my personal information 
+GitHub on LinkedIn 
+GitHub on Instagram 
+GitHub on YouTube 
+GitHub on X 
+GitHub on TikTok 
+GitHub on Twitch 
+GitHub’s organization on GitHub

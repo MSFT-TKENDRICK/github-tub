@@ -1,0 +1,411 @@
+{
+  "month": "2026-02",
+  "items": [
+    {
+      "id": "cl-93569",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "title": "Claude and Codex coding agents enter public preview for Copilot Pro+ and Enterprise",
+      "summary": "GitHub Copilot Pro+ and Copilot Enterprise subscribers can use Claude by Anthropic and OpenAI Codex as coding agents in public preview. Sessions start from github.com, GitHub Mobile and VS Code, and an issue can be assigned to Claude, Codex, Copilot or all three, with each agent submitting a draft pull request. No additional subscription is required, and each session consumes one premium request during the public preview.",
+      "why": "Teams can assign issues and pull requests to Claude, Codex or Copilot from the same workflow under their existing Copilot subscription.",
+      "stage": "preview",
+      "plans": ["Pro+", "Enterprise"],
+      "ides": ["web", "mobile", "vscode"],
+      "admin": "Pro+ users enable Claude and Codex in Copilot coding agent settings. Enterprise admins enable Partner Agents in Enterprise AI Controls (Agents tab) and again at organization level (Settings, Copilot, Coding agent).",
+      "links": [
+        { "label": "Blog post", "url": "https://github.blog/news-insights/company-news/pick-your-agent-use-claude-and-codex-on-agent-hq/" },
+        { "label": "Documentation", "url": "https://docs.github.com/copilot/concepts/agents/about-third-party-agents" }
+      ]
+    },
+    {
+      "id": "cl-94074",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "cli",
+      "tag": "Release",
+      "summary": "GitHub Copilot CLI, the terminal-native coding agent, is generally available for all Copilot subscribers after launching in public preview in September 2025. It offers plan and autopilot modes, built-in specialized agents that can run in parallel, background delegation to the Copilot coding agent, plugins, Agent Skills, custom agents, hooks and a built-in GitHub MCP server. Models from Anthropic, OpenAI and Google include Claude Opus 4.6, GPT-5.3-Codex and Gemini 3 Pro.",
+      "why": "Terminal-native agentic development leaves preview for all Copilot subscribers, with plan and autopilot modes and models from Anthropic, OpenAI and Google.",
+      "stage": "ga",
+      "ides": ["cli"],
+      "links": [
+        { "label": "Getting started guide", "url": "https://docs.github.com/copilot/how-tos/copilot-cli/cli-getting-started" },
+        { "label": "Best practices guide", "url": "https://docs.github.com/copilot/how-tos/copilot-cli/cli-best-practices" }
+      ]
+    },
+    {
+      "id": "cl-94154",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Release",
+      "summary": "Enterprise AI Controls and the agent control plane are generally available for GitHub Enterprise administrators. The release adds agent activity search that includes third-party agents, cloud agent session activity beyond the initial 1,000-record limit, and API support for enterprise-wide custom agent definitions. The AI Controls tab becomes the permanent home for AI policies, while enterprise-wide MCP allowlists remain in public preview.",
+      "why": "Admins get a generally available control point for AI policy, agent audit logging and custom agent standards across the enterprise.",
+      "stage": "ga",
+      "admin": "Delegate AI administration through an enterprise custom role with fine-grained permissions to view audit logs and agent session activity and manage AI Controls. The previous Copilot policies page and its redirect are fully removed.",
+      "links": [
+        { "label": "Documentation", "url": "https://docs.github.com/copilot/concepts/agents/enterprise-management" },
+        { "label": "AI managers guide", "url": "https://docs.github.com/copilot/tutorials/roll-out-at-scale/establish-ai-managers" }
+      ]
+    },
+    {
+      "id": "cl-93798",
+      "tier": "headline",
+      "section": "platform",
+      "area": "actions",
+      "tag": "Release",
+      "summary": "GitHub Agentic Workflows let teams automate repository tasks with AI agents that run within GitHub Actions. Goals are written as Markdown files in .github/workflows, and the gh aw CLI converts them into standard Actions workflows that run with GitHub Copilot CLI by default or with other coding agents. Workflows run with read-only permissions by default and write through preapproved safe outputs, and the technical preview is open source under the MIT license.",
+      "why": "Teams can describe repository automation in plain Markdown and run it with AI coding agents inside GitHub Actions, with read-only defaults and safe outputs for write operations.",
+      "ides": ["cli"],
+      "links": [
+        { "label": "Blog post", "url": "https://github.blog/ai-and-ml/automate-repository-tasks-with-github-agentic-workflows/" },
+        { "label": "Documentation", "url": "https://github.github.com/gh-aw/" },
+        { "label": "Repository", "url": "https://github.com/github/gh-aw" }
+      ]
+    },
+    {
+      "id": "cl-94176",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Release",
+      "summary": "GitHub Copilot usage metrics are generally available, giving a single place to see how teams adopt and use Copilot through a Copilot usage dashboard, a Code generation dashboard and APIs at enterprise, organization and user level. Since the public preview at Universe 2025, they have added organization-level visibility, fine-grained access controls and data residency support.",
+      "why": "Enterprise and organization administrators get dashboards and APIs to see how teams adopt and use Copilot, now with organization-level visibility and fine-grained access control.",
+      "stage": "ga",
+      "admin": "Open the enterprise account, then AI Controls, Copilot, Metrics. Access needs an Enterprise Administrator, a Billing Manager or fine-grained permissions such as the custom role View enterprise Copilot metrics.",
+      "links": [
+        { "label": "Documentation", "url": "https://docs.github.com/copilot/concepts/copilot-usage-metrics" },
+        { "label": "API documentation", "url": "https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics?apiVersion=2022-11-28" }
+      ]
+    },
+    {
+      "id": "cl-94151",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "Claude and Codex coding agents are available in public preview for GitHub Copilot Business and Copilot Pro, after Copilot Enterprise and Copilot Pro+ received access earlier in February. They run in github.com, GitHub Mobile and VS Code under the existing Copilot subscription, and each session consumes one premium request during the public preview. VS Code 1.109 or later is required.",
+      "stage": "preview",
+      "plans": ["Business", "Pro"],
+      "ides": ["web", "mobile", "vscode"],
+      "admin": "Business admins must enable agents at both enterprise level (Enterprise AI Controls, Agents, Partner Agents) and organization level (Settings, Copilot, Coding agent). Pro users enable them in Copilot coding agent settings."
+    },
+    {
+      "id": "cl-93677",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "summary": "Claude Opus 4.6, Anthropic's latest model, is rolling out gradually in GitHub Copilot. It is selectable in the model picker in VS Code, Visual Studio, github.com, GitHub Mobile on iOS and Android, and GitHub CLI, and it is available in the Copilot coding agent for Pro and Pro+ accounts only.",
+      "stage": "ga",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "ides": ["vscode", "visualstudio", "web", "mobile", "cli"],
+      "admin": "Copilot Enterprise and Copilot Business administrators must enable the Claude Opus 4.6 policy in Copilot settings."
+    },
+    {
+      "id": "cl-93722",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "summary": "OpenAI's latest agentic coding model, GPT-5.3-Codex, is rolling out in GitHub Copilot. In early testing it is up to 25% faster than GPT-5.2-Codex on agentic coding tasks. It is available in VS Code, GitHub Mobile on iOS and Android, GitHub Copilot CLI and the Copilot coding agent.",
+      "stage": "ga",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "ides": ["vscode", "mobile", "cli"],
+      "admin": "Copilot Business and Copilot Enterprise administrators must enable the GPT-5.3-Codex policy in Copilot settings."
+    },
+    {
+      "id": "cl-93896",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "summary": "Anthropic's latest agentic coding model, Claude Sonnet 4.6, is rolling out in GitHub Copilot across VS Code, Visual Studio, github.com, GitHub Mobile, GitHub Copilot CLI and the Copilot coding agent. It launches with a 1x premium request multiplier, and pricing is tentative and subject to change.",
+      "stage": "ga",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "ides": ["vscode", "visualstudio", "web", "mobile", "cli"],
+      "admin": "Copilot Business and Copilot Enterprise administrators must enable the Claude Sonnet 4.6 policy in Copilot settings."
+    },
+    {
+      "id": "cl-93710",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "summary": "Fast mode for Claude Opus 4.6 is a research preview in GitHub Copilot with output token speeds up to 2.5x faster at the same intelligence as Opus 4.6, in an early and experimental release. It is available in the VS Code model picker in all modes and in Copilot CLI. A promotional period ends at the end of day on Monday, February 16 (Pacific Time), after which a 30x premium request multiplier applies.",
+      "stage": "preview",
+      "plans": ["Pro+", "Enterprise"],
+      "ides": ["vscode", "cli"],
+      "admin": "Copilot Enterprise plan administrators must enable the Fast mode for Claude Opus 4.6 policy in Copilot settings."
+    },
+    {
+      "id": "cl-94008",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Deprecation",
+      "title": "Claude Opus 4.1, GPT-5 and GPT-5-Codex are deprecated in GitHub Copilot",
+      "summary": "Claude Opus 4.1, GPT-5 and GPT-5-Codex are deprecated across all GitHub Copilot experiences, including Chat, inline edits, ask and agent modes and code completions, as of February 17, 2026. The suggested alternatives are Claude Opus 4.6, GPT-5.2 and GPT-5.2-Codex. No action is required to remove the deprecated models.",
+      "effective": "2026-02-17",
+      "admin": "Copilot Enterprise administrators may need to enable access to the alternative models through their model policies in Copilot settings."
+    },
+    {
+      "id": "cl-93820",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Deprecation",
+      "summary": "From 00:00 UTC on February 27, 2026, Copilot coding agent switches to subscription-based network routing instead of api.githubcopilot.com. The new hosts are api.business.githubcopilot.com for Business, api.enterprise.githubcopilot.com for Enterprise and api.individual.githubcopilot.com for Pro and Pro+. Agents on self-hosted runners or larger runners with Azure private networking may fail if the new hosts are unreachable.",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "effective": "2026-02-27",
+      "admin": "Check runs-on in .github/workflows/copilot-setup-steps.yml; no file means not affected. Allow the new hosts for each plan in use. Users who ran a session on such runners in the past 60 days receive an email listing affected repositories."
+    },
+    {
+      "id": "cl-94107",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Release",
+      "summary": "Organization and enterprise administrators can programmatically manage GitHub Copilot content exclusion rules with the new JSON Content Exclusion REST API. It supports GET and SET operations at both organization and enterprise levels and is in public preview, for easier automation and governance at scale.",
+      "stage": "preview",
+      "links": [
+        { "label": "API documentation", "url": "https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-content-exclusion-management?apiVersion=2022-11-28" }
+      ]
+    },
+    {
+      "id": "cl-94084",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Improvement",
+      "summary": "The download URLs returned by the GitHub Copilot usage metrics API now come from a new endpoint. The report data, the API contract and the response schema do not change, and downloads through the dashboard UI links need no action.",
+      "admin": "If firewall rules allowlist specific CDN domains, add copilot-reports-production-*.b01.azurefd.net alongside the existing copilot-reports-*.b01.azurefd.net pattern.",
+      "links": [
+        { "label": "GitHub Copilot allowlist reference", "url": "https://docs.github.com/copilot/reference/copilot-allowlist-reference" }
+      ]
+    },
+    {
+      "id": "vscb-multi-agent-development",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Announcement",
+      "title": "VS Code 1.109 runs Claude and Codex agents alongside GitHub Copilot",
+      "summary": "The January 2026 release (1.109) runs Claude and Codex agents alongside GitHub Copilot, locally or in the cloud, under the same Copilot subscription. Claude uses Anthropic's official Claude Agent harness, and Codex has been a local agent for a few months. The Agent Sessions view manages local, background and cloud sessions, and VS Code can now run multiple subagents in parallel.",
+      "plans": ["Pro+", "Enterprise"],
+      "ides": ["vscode"],
+      "admin": "Enable or disable Claude agent sessions with the github.copilot.chat.claudeAgent.enabled setting. The Codex local agent needs a Copilot Pro+ subscription and the OpenAI Codex extension."
+    },
+    {
+      "id": "vsc-1.109-24",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "extensibility",
+      "tag": "Release",
+      "summary": "Agent Skills are generally available in VS Code and enabled by default. VS Code looks for skills in the .github/skills and .claude/skills folders of the workspace, or the ~/.copilot/skills or ~/.claude/skills folders in the user home. The chat.agentSkillsLocations setting adds custom paths, and the Chat: Configure Skills and Chat: New Skill File commands manage skills.",
+      "stage": "ga",
+      "ides": ["vscode"]
+    },
+    {
+      "id": "vsc-1.109-21",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "extensibility",
+      "tag": "Release",
+      "summary": "Agent hooks run custom shell commands at key lifecycle points during agent sessions and are enabled with the chat.hooks.enabled setting. They run deterministically, unlike instructions or prompts, and there are eight hook events including PreToolUse, PostToolUse, SessionStart, Stop, SubagentStart and SubagentStop. The format is the same as in Claude Code and Copilot CLI, and the /hooks slash command in chat configures a new hook.",
+      "stage": "preview",
+      "ides": ["vscode"]
+    },
+    {
+      "id": "vsc-1.109-41",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "A new memory tool lets chat store and recall information across sessions in Copilot Memory. The agent retrieves relevant context and saves new learnings, and the feature is enabled with the github.copilot.chat.copilotMemory.enabled setting. Memories are viewed and managed in GitHub's Copilot settings.",
+      "stage": "preview",
+      "ides": ["vscode"]
+    },
+    {
+      "id": "vsc-1.109-46",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "Experimental terminal sandboxing helps mitigate risks from terminal commands executed by agents, which have the same permissions as the user account. It restricts file system access to the workspace folder and can restrict network access to trusted domains, is enabled with the chat.tools.terminal.sandbox.enabled setting, and is supported on macOS and Linux only, with no effect on Windows.",
+      "stage": "experimental",
+      "ides": ["vscode"]
+    },
+    {
+      "id": "vsc-1.109-62",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "other",
+      "tag": "Release",
+      "summary": "A new integrated browser in VS Code desktop overcomes the limits of the iframe-based Simple Browser, which could not authenticate with websites or open common sites such as Google, GitHub and Stack Overflow. It adds persistent data storage with configurable scope, an Add element to chat action, DevTools, keyboard shortcuts and find in page, and opens with the Browser: Open Integrated Browser command.",
+      "stage": "preview",
+      "ides": ["vscode"]
+    },
+    {
+      "id": "cl-93887",
+      "tier": "notable",
+      "section": "visualstudio",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "Visual Studio adds a Send to Copilot Coding Agent button next to Send in Copilot Chat. After confirmation, Copilot opens a pull request and works in the background in the cloud, then requests review. It requires Visual Studio 2026 (at least the December Update 18.1.0) with the Enable Copilot Coding agent (preview) setting turned on.",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "ides": ["visualstudio"],
+      "admin": "Copilot Business and Copilot Enterprise administrators must enable the Copilot coding agent from the Policies page."
+    },
+    {
+      "id": "vs-255658",
+      "tier": "notable",
+      "section": "visualstudio",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "Visual Studio ships built-in Debugger, Profiler, Test and Modernize preset agents, reached from the agent picker in the chat panel or with @ in chat. Modernize is for .NET and C++ only, and Test applies when a solution is loaded. Custom agents (preview) are .agent.md files in the repository's .github/agents folder that can connect to external knowledge sources through MCP, and the file format may change.",
+      "ides": ["visualstudio"]
+    },
+    {
+      "id": "vs-255690",
+      "tier": "notable",
+      "section": "visualstudio",
+      "area": "chat-ide",
+      "tag": "Release",
+      "title": "Visual Studio February update adds WinForms Expert agent, Copilot test generation and C++ modernization",
+      "summary": "The Visual Studio 2026 February feature update (18.3, Stable Channel) adds a WinForms Expert agent, @Test test generation in GitHub Copilot Chat for xUnit, NUnit and MSTest, and slash commands for custom prompts including /generateInstructions and /savePrompt. GitHub Copilot app modernization for C++ is in Public Preview. Debugging gains DataTips in the IEnumerable Visualizer and Analyze Call Stack with Copilot.",
+      "ides": ["visualstudio"]
+    },
+    {
+      "id": "cl-93827",
+      "tier": "notable",
+      "section": "jetbrains-others",
+      "area": "agents",
+      "tag": "Improvement",
+      "title": "GitHub Copilot in JetBrains IDEs adds Agent Skills in Agent mode (public preview)",
+      "summary": "GitHub Copilot in JetBrains IDEs adds Agent Skills support in Agent mode in public preview, enabled under Settings, GitHub Copilot, Chat, Agent. The release also brings inline chat improvements, individual toggles for Agent mode, Coding Agent and Custom Agent, enhanced safety checks in file-handling tools and increased stability for next edit suggestions.",
+      "stage": "preview",
+      "ides": ["jetbrains"],
+      "admin": "Copilot Business and Copilot Enterprise administrators must enable the Editor preview features policy."
+    },
+    {
+      "id": "cl-94011",
+      "tier": "notable",
+      "section": "jetbrains-others",
+      "area": "other",
+      "tag": "Release",
+      "summary": "GitHub officially supports using a GitHub Copilot subscription with the Zed editor through a formal partnership. Users authenticate in Zed Settings under the GitHub Copilot Chat section and click Sign in, and no additional AI license is needed.",
+      "stage": "ga",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"]
+    },
+    {
+      "id": "cl-93671",
+      "tier": "notable",
+      "section": "platform",
+      "area": "actions",
+      "tag": "Deprecation",
+      "summary": "The deadline for blocking configuration and registration of self-hosted runners older than v2.329.0 (released October 15, 2025) is extended by one week to March 16, 2026. The minimum applies at configuration and registration time, before running ./config.sh, and brownouts with scheduled configuration blocks run from February 23 to March 16. The change affects GitHub.com only, and GitHub Enterprise Server is not impacted.",
+      "effective": "2026-03-16",
+      "admin": "Update runners, images and installation scripts to v2.329.0 or later before registration, and recreate runners built from images with older versions. ARC users should check their runner container images."
+    },
+    {
+      "id": "cl-93890",
+      "tier": "notable",
+      "section": "platform",
+      "area": "repos",
+      "tag": "Release",
+      "summary": "The required reviewer rule for repository rulesets requires a number of approvals from designated teams for branches and files across an organization or enterprise, with files and folders targeted by pattern. Negation patterns have been added since the public preview. The rule augments CODEOWNERS and does not replace it.",
+      "stage": "ga"
+    },
+    {
+      "id": "cl-94046",
+      "tier": "notable",
+      "section": "platform",
+      "area": "admin",
+      "tag": "Release",
+      "summary": "Enterprise administrators can create custom organization roles that are available across all organizations in the enterprise, and up to 20 can exist at once. The roles are editable only by an authorized enterprise administrator, and an organization administrator assigns them in organization settings or through the organization role assignment API.",
+      "stage": "ga"
+    },
+    {
+      "id": "cl-94037",
+      "tier": "notable",
+      "section": "platform",
+      "area": "admin",
+      "tag": "Improvement",
+      "summary": "GitHub Enterprise Cloud enterprises with Enterprise Managed Users can extend the native IP allow list to cover enterprise-managed user namespaces. Web UI, git protocol and API access are filtered, and all credentials are covered, including personal access tokens, app tokens and SSH keys.",
+      "stage": "preview"
+    },
+    {
+      "id": "cl-93933",
+      "tier": "notable",
+      "section": "platform",
+      "area": "apis",
+      "tag": "Release",
+      "summary": "Enterprise administrators can request and download billing usage reports in .csv format through a new REST API. These are the same billing reports available in the UI, now created programmatically.",
+      "stage": "preview"
+    },
+    {
+      "id": "cl-93564",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Improvement",
+      "summary": "Dependabot supports OIDC authentication with private registries, so update jobs obtain short-lived credentials from the cloud identity provider instead of long-lived credentials stored as repository secrets. Supported registries are AWS CodeArtifact, Azure DevOps Artifacts and JFrog Artifactory.",
+      "admin": "Update the dependabot.yml configuration to use the new OIDC authentication type for each supported private registry."
+    },
+    {
+      "id": "cl-93922",
+      "tier": "notable",
+      "section": "security",
+      "area": "admin",
+      "tag": "Release",
+      "summary": "Enterprise owners get new credential management actions for security incidents in GitHub Enterprise Cloud enterprises with enterprise managed users or SSO enabled. They can review counts of SSO-authorized credentials, temporarily block SSO for everyone except enterprise owners, revoke SSO authorizations for tokens and SSH keys, and delete tokens and SSH keys for EMU accounts.",
+      "admin": "Use these actions only during major incidents, because they can break automations. The new fine-grained permission Manage enterprise credentials lets owners delegate credential management to trusted administrators."
+    },
+    {
+      "id": "cl-93950",
+      "tier": "notable",
+      "section": "security",
+      "area": "secrets",
+      "tag": "Improvement",
+      "summary": "Extended metadata checks can be enabled or disabled at organization and enterprise level through security configurations. Alerts show details such as the secret's owner, creation and expiry dates, and project or organization context when the provider supplies them, and repositories with validity checks enabled get the checks automatically.",
+      "admin": "Available to Enterprise Cloud customers with secret scanning and validity checks. Enablement can be tracked in the audit log."
+    },
+    {
+      "id": "cl-93937",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Release",
+      "summary": "npm CLI v11.10.0 and later adds bulk configuration for OIDC trusted publishing, so maintainers can add or update trusted publishing configurations across multiple packages in one operation with the npm trust command. A new --allow-git flag for npm install controls git dependencies, which can include .npmrc files that override the git executable path and run arbitrary code during install even with --ignore-scripts.",
+      "stage": "ga",
+      "ides": ["cli"],
+      "admin": "Using --allow-git=none is encouraged now, re-enabling git dependencies only when necessary. The flag defaults to all, and none is expected to become the default in npm CLI v12."
+    },
+    {
+      "id": "next-posts-dsyme-repo-assist-repository-assistant",
+      "tier": "notable",
+      "section": "research",
+      "area": "research",
+      "tag": "Research",
+      "summary": "Repo Assist, from GitHub Next, uses GitHub Agentic Workflows to label issues, answer questions, propose fixes and make engineering improvements, with the maintainer in control through pull request review. The post explores whether automated repository assistants can help maintainers re-engage with stale repositories weighed down by years of technical debt."
+    }
+  ],
+  "overrides": {
+    "bl-93566": { "drop": true, "dropReason": "Duplicate of cl-93569 (Claude and Codex in public preview); the blog post is linked from that item" },
+    "bl-93730": { "drop": true, "dropReason": "Duplicate of cl-93798 (GitHub Agentic Workflows technical preview); the blog post is linked from that item" },
+    "next-posts-dsyme-automate-repository-tasks-agentic-workflows": { "drop": true, "dropReason": "Stub that only points to the GitHub blog post on Agentic Workflows already covered by cl-93798" },
+    "vsc-1.109-01": { "section": "events", "area": "events", "tag": "Announcement", "title": "VS Code Agent Sessions Day on February 19" },
+    "vsc-1.109-02": { "drop": true, "dropReason": "Section-intro blurb in the VS Code 1.109 release notes; duplicates the feature records beneath it" },
+    "vsc-1.109-14": { "drop": true, "dropReason": "Section-intro blurb in the VS Code 1.109 release notes; duplicates the feature records beneath it" },
+    "vsc-1.109-20": { "drop": true, "dropReason": "Section-intro blurb in the VS Code 1.109 release notes; duplicates the feature records beneath it" },
+    "vsc-1.109-33": { "drop": true, "dropReason": "Section-intro blurb in the VS Code 1.109 release notes; duplicates the feature records beneath it" },
+    "vsc-1.109-40": { "drop": true, "dropReason": "Section-intro blurb in the VS Code 1.109 release notes; duplicates the feature records beneath it" },
+    "vsc-1.109-45": { "drop": true, "dropReason": "Section-intro blurb in the VS Code 1.109 release notes; duplicates the feature records beneath it" },
+    "vsc-1.109-49": { "drop": true, "dropReason": "Section-intro blurb in the VS Code 1.109 release notes; duplicates the feature records beneath it" },
+    "vsc-1.109-54": { "drop": true, "dropReason": "Section-intro blurb in the VS Code 1.109 release notes; duplicates the feature records beneath it" },
+    "vsc-1.109-61": { "drop": true, "dropReason": "Section-intro blurb in the VS Code 1.109 release notes; duplicates the feature records beneath it" },
+    "vsc-1.109-79": { "drop": true, "dropReason": "Section-intro blurb in the VS Code 1.109 release notes; duplicates the feature records beneath it" }
+  }
+}

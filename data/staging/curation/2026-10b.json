@@ -1,0 +1,481 @@
+{
+  "month": "2026-10",
+  "from": "2026-10-21",
+  "to": "2026-10-31",
+  "items": [
+    {
+      "id": "cl-99793",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "summary": "GitHub Copilot Fusion is generally available. Choosing Fusion in the model picker lets Copilot decide which models to use for each prompt and how they work together, at Standard, High or Max effort. It is available on all Copilot plans in VS Code, the GitHub Copilot app, Copilot CLI and JetBrains IDEs, and paid plans receive a limited-time 30% discount on model costs.",
+      "why": "Developers stop choosing a model for each task, admins keep control of which models Fusion can use, and billing stays at each model's standard rate.",
+      "stage": "ga",
+      "ides": ["vscode", "jetbrains", "cli"],
+      "admin": "Fusion only uses models enabled in enterprise and organization policies. Enterprise admins can disable models for Fusion without disabling them for everyone, and can make Fusion the default at any effort level through enterprise managed settings.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "GitHub Copilot Fusion documentation", "url": "https://docs.github.com/copilot/concepts/models/copilot-fusion" },
+        { "label": "Project HydraFusion on the GitHub blog", "url": "https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/" },
+        { "label": "Enterprise managed settings for Fusion", "url": "https://docs.github.com/copilot/reference/enterprise-administrators/enterprise-managed-settings#fusiontier" }
+      ]
+    },
+    {
+      "id": "cl-99869",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Release",
+      "summary": "GitHub Copilot is now included with GitHub Enterprise for every licensed user, for enterprises working with a GitHub or Microsoft account team. Access has the same features and models as Copilot Enterprise but no monthly AI credits per seat, so usage is metered from the first request against the enterprise budget. It is available now for GitHub Enterprise Cloud, with self-serve availability coming in stages.",
+      "why": "Copilot comes with every licensed GitHub Enterprise user, so AI usage against the enterprise budget becomes the main thing to manage.",
+      "admin": "Users without a GitHub Enterprise license get the same access through Copilot Standalone at $10 per user per month. Code completion and next edit suggestions work with no budget; Chat, code review and Copilot in the cloud need available budget.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "Copilot access with GitHub Enterprise", "url": "https://docs.github.com/copilot/get-started/whats-changing-with-github-enterprise-and-copilot" },
+        { "label": "Copilot billing for enterprises", "url": "https://docs.github.com/copilot/concepts/billing-and-usage/organizations-and-enterprises/billing" }
+      ]
+    },
+    {
+      "id": "cl-99755",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "Developers can start a GitHub Copilot cloud task from github.com, GitHub Mobile, Copilot CLI, the GitHub Copilot app, VS Code, Slack or Microsoft Teams, and every surface shows the same session list. By default every session runs in a cloud sandbox on GitHub-managed infrastructure with no one-hour limit on running time, and a saved snapshot lets it resume from any surface. The new experience and cloud sandboxes are generally available on paid Copilot plans.",
+      "why": "One agent session follows developers from phone to web to terminal, and the sandbox compute draws on the included Actions entitlement.",
+      "stage": "ga",
+      "ides": ["web", "mobile", "vscode", "cli"],
+      "admin": "Sandbox compute comes from the included Actions entitlement, now one shared dollar-based pool instead of a fixed number of standard runner minutes, with each product keeping its own published rate.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "Copilot cloud experience documentation", "url": "https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-on-github" },
+        { "label": "Manage Copilot in the cloud for an enterprise", "url": "https://docs.github.com/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/manage-copilot-in-the-cloud" },
+        { "label": "Product usage included with each plan", "url": "https://docs.github.com/billing/reference/product-usage-included" }
+      ]
+    },
+    {
+      "id": "cl-99751",
+      "tier": "headline",
+      "section": "platform",
+      "area": "actions",
+      "tag": "Release",
+      "summary": "GitHub Agentic Workflows, an open source project from GitHub Next, is generally available on github.com. Workflows are written in natural language Markdown and compile to standard GitHub Actions YAML, so coding agents handle tasks such as issue triage, CI failure analysis and documentation updates within existing runner groups and policy constraints. Agents run read-only by default in a sandboxed container behind the Agent Workflow Firewall.",
+      "why": "Reasoning-based chores such as triage and CI failure analysis run in Actions with a coding agent, under the same runner groups and policies as other workflows.",
+      "stage": "ga",
+      "admin": "Available for GitHub Free, Team and Enterprise. The default GitHub Copilot CLI engine requires a Copilot license.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "GitHub Agentic Workflows", "url": "https://github.github.com/gh-aw/" },
+        { "label": "Quickstart guide", "url": "https://github.github.com/gh-aw/setup/quick-start/" },
+        { "label": "Prebuilt workflows in the agentics repository", "url": "https://github.com/githubnext/agentics" }
+      ]
+    },
+    {
+      "id": "cl-99816",
+      "tier": "headline",
+      "section": "security",
+      "area": "secrets",
+      "tag": "Release",
+      "summary": "GitHub public monitoring is generally available to enterprises with GitHub Secret Protection at no additional cost. It scans public content on github.com, including git content, pull request comments and user-created gists, for exposed secrets and attributes each one to the enterprise in real time through GitHub's identity layer and verified domains. It never scans private repositories.",
+      "why": "Secrets leaked in personal forks, open source projects or public issues are attributed to the enterprise as they happen, so security teams can revoke them before they are abused.",
+      "stage": "ga",
+      "admin": "Works with no setup or configuration. Attribution uses enterprise membership and verified domain matching; for enterprises on GitHub Enterprise Cloud with data residency, only verified domain matching applies.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "About secret scanning", "url": "https://docs.github.com/code-security/secret-scanning/introduction/about-secret-scanning" },
+        { "label": "Verifying domains for your enterprise", "url": "https://docs.github.com/enterprise-cloud@latest/admin/configuration/configuring-your-enterprise/verifying-or-approving-a-domain-for-your-enterprise" }
+      ]
+    },
+    {
+      "id": "cl-99830",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "title": "GitHub Copilot app adds Projects, computer use and image generation",
+      "summary": "Projects in the GitHub Copilot app, now in public preview, give work that spans several repositories or no repository at all one home, with its context, agents and results together. Computer use, in public preview on macOS and Windows, lets Copilot read app content, click controls and enter text across apps, including those without an API. Chat can also generate and edit images from natural language.",
+      "admin": "Copilot asks for approval before controlling an app, and organizations can disable computer use through managed settings. On macOS, users grant Accessibility and Screen Recording permissions.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "Working with Projects in the Copilot app", "url": "https://docs.github.com/copilot/how-tos/github-copilot-app/working-with-projects" },
+        { "label": "Computer use in the Copilot app", "url": "https://docs.github.com/copilot/how-tos/github-copilot-app/computer-use" }
+      ]
+    },
+    {
+      "id": "cl-99834",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "title": "GitHub intelligence: Copilot Memory generally available, dreaming in public preview",
+      "summary": "GitHub Copilot Memory is generally available on paid Copilot plans, and Copilot dreaming is in public preview as an opt-in feature. Dreaming reflects on past work to add, update and remove memories and to propose changes to skills and custom instructions in pull requests for team review. GitHub code search also lets Copilot find code across related projects and dependencies without a local clone.",
+      "ides": ["vscode", "cli", "mobile"],
+      "admin": "Administrators enable dreaming through Copilot policies, and enterprise administrators can delegate that choice to organization administrators. Users must also turn on personal dreaming, and dream runs consume AI credits.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "About Copilot Memory", "url": "https://docs.github.com/copilot/concepts/prompting-and-context/copilot-memory" },
+        { "label": "About Copilot dreaming", "url": "https://docs.github.com/copilot/concepts/prompting-and-context/copilot-dreaming" },
+        { "label": "Enable dreaming as an administrator", "url": "https://docs.github.com/copilot/how-tos/use-copilot-agents/copilot-memory/manage-as-administrator#enabling-copilot-dreaming" }
+      ]
+    },
+    {
+      "id": "cl-99838",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Improvement",
+      "summary": "Shared Copilot Automations let a team build and maintain AI-powered workflows together, where automations were previously personal. Everyone with read access to the repository can see a shared automation and anyone with write access can edit it; AI credits are billed to the repository owner and actions are attributed to Copilot. They are rolling out to Copilot Pro, Pro+, Max, Business and Enterprise users.",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "ides": ["web", "vscode"],
+      "admin": "An administrator must enable the Allow use of Copilot cloud agent billed to the organization policy for shared automations to run in organization-owned repositories.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "Personal and shared automations", "url": "https://docs.github.com/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/about-automations#personal-and-shared-automations" }
+      ]
+    },
+    {
+      "id": "cl-99840",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Improvement",
+      "summary": "Copilot Automations can now start from the GitHub REST API and from 24 more GitHub events, and one automation can trigger another to chain multi-step workflows. Automations also gain 20 new GitHub tools, tools from custom MCP servers, and optional AI credit limits per run, day, week or month. They are available with Copilot Pro, Pro+, Max, Business and Enterprise plans.",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "admin": "Credit limits are optional, and automations without limits keep running. After a daily, weekly or monthly limit is reached, new runs do not start until the period resets. MCP tools need the server added in the repository settings.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "Trigger an automation REST API", "url": "https://docs.github.com/rest/agent-automations/agent-automations?apiVersion=2026-03-10" },
+        { "label": "Set AI credit limits for automations", "url": "https://docs.github.com/copilot/how-tos/use-copilot-agents/cloud-agent/create-automations#setting-ai-credits-limits" },
+        { "label": "Configure MCP servers for Copilot", "url": "https://docs.github.com/copilot/how-tos/copilot-on-github/customize-copilot/configure-mcp-servers" }
+      ]
+    },
+    {
+      "id": "cl-99854",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "Agent Merge is now integrated into pull requests on GitHub, after being available in the GitHub Copilot app and VS Code. Selecting Watch and fix in the merge box has Copilot fix failing Actions workflows, resolve merge conflicts, or both in a cloud development environment, and it can be combined with auto-merge. Agent Merge in the cloud is available to users with a paid Copilot plan.",
+      "admin": "Availability is subject to applicable organization and enterprise policies. Users can enable Agent Merge by default for all their pull requests from Copilot settings.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "Get pull requests ready to merge", "url": "https://docs.github.com/copilot/how-tos/copilot-on-github/use-copilot-agents/get-pull-requests-ready-to-merge" },
+        { "label": "Automatically merging a pull request", "url": "https://docs.github.com/pull-requests/how-tos/merge-and-close-pull-requests/automatically-merging-a-pull-request" }
+      ]
+    },
+    {
+      "id": "cl-99863",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "code-review",
+      "tag": "Release",
+      "title": "Copilot code review adds Max effort in public preview and generally available approvals",
+      "summary": "The new Max review effort level, in public preview, runs several independent review agents across models from different providers and reconciles their findings into a single review. Max takes longer and uses more AI credits than Lite or Balanced. Copilot approvals, previously in public preview, are now generally available and count toward required approvals; both are available on Copilot Pro, Pro+, Max, Business and Enterprise.",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "admin": "Approvals are off by default; admins enable them at enterprise, organization or repository level, and repository admins choose which file paths Copilot may approve. Admins can also set a maximum review effort level.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "Configuring code review by GitHub Copilot", "url": "https://docs.github.com/copilot/how-tos/copilot-on-github/set-up-copilot/configure-code-review" }
+      ]
+    },
+    {
+      "id": "cl-99832",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "extensibility",
+      "tag": "Release",
+      "title": "GitHub-verified MCP servers, or connectors, in public preview for Copilot",
+      "summary": "GitHub-verified MCP servers, called connectors, are rolling out in public preview on all Copilot plans. A service connected once, such as Slack, Figma or Sentry, works across the GitHub Copilot app, Copilot CLI, VS Code, Copilot in the cloud and GitHub Mobile, with no server to install and no credentials to manage. At launch, 26 services can be connected.",
+      "stage": "preview",
+      "ides": ["vscode", "cli", "web", "mobile"],
+      "admin": "On Copilot Business and Enterprise, an admin must enable the Editor preview features policy. If the enterprise uses an MCP allowlist in managed settings, add the GitHub-verified MCP servers to it; some services also need admin enablement on their side.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "About Copilot connectors", "url": "https://docs.github.com/copilot/concepts/customizations/copilot-connectors" },
+        { "label": "Allow Copilot connectors in an enterprise allowlist", "url": "https://docs.github.com/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-mcp-usage/configure-enterprise-allowlist#allowing-copilot-connectors" }
+      ]
+    },
+    {
+      "id": "cl-99668",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Improvement",
+      "summary": "Enforcement of the global default policy for generally available features and supported client capabilities rolls out gradually through October 26 on Copilot Business and Copilot Enterprise. Eligible features left unconfigured are set once to the selected global default of Enabled, Disabled or Let organizations decide, while explicit choices are preserved. Preview features remain opt-in.",
+      "plans": ["Business", "Enterprise"],
+      "admin": "Review the setting under AI Controls, Copilot, Default policy for new features. It covers eligible feature, client and MCP server settings. The change is one-time, and later changes to the default do not alter policies that are already set.",
+      "links": [
+        { "label": "Default availability of Copilot features", "url": "https://docs.github.com/copilot/concepts/enterprise/default-availability" }
+      ]
+    },
+    {
+      "id": "cl-99679",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "summary": "GPT-6.1 Terra, OpenAI's newest model, is generally available in GitHub Copilot. It is designed for everyday agentic coding and terminal work at a lower cost than GPT-6.1 Sol, and is billed at provider list pricing under usage-based billing. It is rolling out gradually to Copilot Pro, Pro+, Max, Business and Enterprise users.",
+      "stage": "ga",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "ides": ["vscode", "visualstudio", "cli", "web", "mobile", "jetbrains", "xcode", "eclipse"],
+      "admin": "Business and Enterprise administrators manage access through the model policy in Copilot settings. Under default model enablement, new models are enabled automatically unless the global default is turned off or the model is explicitly disabled.",
+      "links": [
+        { "label": "Models and pricing for GitHub Copilot", "url": "https://docs.github.com/copilot/reference/copilot-billing/models-and-pricing" },
+        { "label": "Supported AI models in Copilot", "url": "https://docs.github.com/copilot/reference/ai-models/supported-models" }
+      ]
+    },
+    {
+      "id": "cl-99737",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "Assisted permissions are generally available in Copilot CLI, the GitHub Copilot app and VS Code. When Copilot asks to run a command, access a file system path or open a URL, a large language model evaluates the request, so clearly safe requests proceed automatically and others still need approval.",
+      "stage": "ga",
+      "ides": ["cli", "vscode"],
+      "admin": "Enterprise-managed settings can block Allow All while keeping Assisted available, disable Assisted, and set the default permission mode. If the default is prohibited by policy, the session starts with manual approval.",
+      "links": [
+        { "label": "Allowing safe commands without manual approval", "url": "https://docs.github.com/copilot/concepts/customizations/allowing-safe-commands" },
+        { "label": "Enterprise managed settings: permissions", "url": "https://docs.github.com/enterprise-cloud@latest/copilot/reference/enterprise-administrators/enterprise-managed-settings#permissions" }
+      ]
+    },
+    {
+      "id": "cl-99915",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "extensibility",
+      "tag": "Release",
+      "summary": "Repository plugin defaults and enterprise-managed plugin controls are generally available in VS Code, Copilot CLI and the GitHub Copilot app. Trusted repositories can install and enable default plugins for contributors, and enterprises can require plugins, block plugins and restrict installation to approved marketplaces.",
+      "stage": "ga",
+      "ides": ["vscode", "cli"],
+      "admin": "Repository defaults are available to individual Copilot users and to Business and Enterprise. Managed controls need GitHub Enterprise Cloud with Copilot Business or Enterprise licenses, and managed settings take precedence.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "Plugins for GitHub Copilot", "url": "https://docs.github.com/copilot/concepts/customizations/plugins" }
+      ]
+    },
+    {
+      "id": "cl-99764",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Release",
+      "title": "VS Code adds cloud agent session continuity, Agent Host and computer use",
+      "summary": "Cloud agent sessions started from the Agents window run on GitHub infrastructure and can be continued in VS Code, the GitHub Copilot app, GitHub Mobile, github.com or Copilot CLI. Agent Host keeps sessions running in the background, isolated from VS Code windows, and the Copilot harness is now the default for new sessions. Computer use is experimental, and Compare model results is in preview.",
+      "ides": ["vscode", "web", "mobile", "cli"],
+      "admin": "Organizations can disable computer use through policy, and Copilot asks for approval per application.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "Agent Host in VS Code", "url": "https://code.visualstudio.com/docs/agents/concepts/agent-host" },
+        { "label": "VS Code release notes", "url": "https://code.visualstudio.com/updates/v1_144" }
+      ]
+    },
+    {
+      "id": "vscb-configurable-eagerness",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "chat-ide",
+      "tag": "Release",
+      "title": "Tune GitHub Copilot inline suggestions with configurable eagerness",
+      "summary": "Configurable eagerness lets developers tune how proactively GitHub Copilot offers inline suggestions in VS Code. Low gives fewer, smaller and more conservative edits, medium keeps the current default, and high offers suggestions more proactively, including larger edits, all from one model. It is available to paid Copilot subscribers through the Eagerness setting in the Copilot settings menu, with Next Edit Suggestions enabled.",
+      "links": [
+        { "label": "Next Edit Suggestions in VS Code", "url": "https://code.visualstudio.com/docs/editing/ai-powered-suggestions#_next-edit-suggestions" },
+        { "label": "Building the inline suggestions model, part one", "url": "https://code.visualstudio.com/blogs/2026/09/16/building-the-github-copilot-inline-suggestions-model-part-one" },
+        { "label": "Building the inline suggestions model, part two", "url": "https://code.visualstudio.com/blogs/2026/09/23/building-the-github-copilot-inline-suggestions-model-part-two" }
+      ]
+    },
+    {
+      "id": "cl-99676",
+      "tier": "notable",
+      "section": "visualstudio",
+      "area": "chat-ide",
+      "tag": "Release",
+      "title": "GitHub Copilot in Visual Studio September update: pull request exploration and BYOM changes",
+      "summary": "In Visual Studio, the Git agent can explore a pull request and link to its comments and files, using the connected GitHub or Azure DevOps MCP servers. Bring Your Own Model is in preview and is a breaking change: it now requires the new Agent (Preview), the previous Ask and Agent modes no longer support it, and Ollama models must be re-added. NuGet Audit warnings also gain a fixer action that asks Copilot to fix vulnerable packages.",
+      "plans": ["Free", "Pro", "Pro+", "Business", "Enterprise"],
+      "ides": ["visualstudio"],
+      "admin": "Bring Your Own Model is on by default across the Community, Professional and Enterprise editions of Visual Studio.",
+      "links": [
+        { "label": "Visual Studio blog: September update", "url": "https://devblogs.microsoft.com/visualstudio/visual-studio-september-update-power-your-workflow-with-your-model" },
+        { "label": "Visual Studio 2026 release notes", "url": "https://learn.microsoft.com/visualstudio/releases/2026/release-notes" }
+      ]
+    },
+    {
+      "id": "cl-99728",
+      "tier": "notable",
+      "section": "jetbrains-others",
+      "area": "chat-ide",
+      "tag": "Release",
+      "title": "GitHub Copilot in JetBrains: Fusion, plus local sandboxes and next edit suggestions generally available",
+      "summary": "Fusion is available to GitHub Copilot users in JetBrains IDEs, replacing the current Auto model option, and is rolling out gradually to all Copilot users with a 30% discount for the first 30 days. Local sandboxes and next edit suggestions are generally available, and the Microsoft Copilot agent harness is the default when available. A session sidebar and a default session permission mode are also new.",
+      "stage": "ga",
+      "ides": ["jetbrains"],
+      "admin": "Local sandboxes restrict filesystem, network and credentials according to policies defined by the developer or their organization.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "GitHub Copilot plugin for JetBrains IDEs", "url": "https://plugins.jetbrains.com/plugin/17718-github-copilot--your-ai-pair-programmer/versions" }
+      ]
+    },
+    {
+      "id": "cl-99626",
+      "tier": "notable",
+      "section": "platform",
+      "area": "apis",
+      "tag": "Release",
+      "summary": "Installing GitHub Apps on an enterprise is generally available, so apps can replace classic personal access tokens in more enterprise and organization automation. New permissions cover governance (repository policies, rulesets, delegated bypass requests), security (two-factor requirements, verified domains, IP allowlists) and administration (enterprise profile, member privileges, repository access settings). These updates will be available in GHES 3.24.",
+      "stage": "ga",
+      "admin": "Choose the permissions each workflow needs in the GitHub App settings when migrating it from a classic token.",
+      "links": [
+        { "label": "GraphQL enterprise-admin reference", "url": "https://docs.github.com/enterprise-cloud@latest/graphql/reference/enterprise-admin#object-enterpriseownerinfo" }
+      ]
+    },
+    {
+      "id": "cl-99823",
+      "tier": "notable",
+      "section": "platform",
+      "area": "actions",
+      "tag": "Improvement",
+      "summary": "Eligible Linux jobs on standard 2-core and 4-core runners, and on compatible 2-core and 4-core larger runners without specialized configurations, may now run on AWS in addition to Azure. Windows runners and runners with private networking or other specialized configurations are excluded. GitHub Free, Pro and Team use it automatically, while GitHub Enterprise Cloud customers opt in.",
+      "admin": "Enterprises opt in under Policies, Actions, General, Hosted compute cloud providers by enabling AWS compute. Keep IP allowlists in sync with the meta API actions array; Azure-only rules such as Microsoft Entra Conditional Access can block these runners.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "GitHub-hosted runner IP addresses", "url": "https://docs.github.com/actions/reference/runners/github-hosted-runners#ip-addresses" }
+      ]
+    },
+    {
+      "id": "cl-99686",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Release",
+      "summary": "Dependabot alerts gain reachability analysis in public preview for JavaScript and TypeScript. CodeQL builds a call graph in a managed Actions workflow and labels each alert Reachable, Potentially reachable, Unreachable or Reachability unavailable; it never closes or dismisses alerts. It is free during the preview and does not need a GitHub Advanced Security license.",
+      "stage": "preview",
+      "admin": "Off by default; enable it through a custom security configuration or the repository's Dependabot settings, with Dependabot alerts on. Scans rerun daily, and results may show Reachability unavailable if analysis runs longer than three hours.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "About reachability analysis for Dependabot alerts", "url": "https://docs.github.com/code-security/concepts/supply-chain-security/about-reachability-analysis-for-dependabot-alerts" },
+        { "label": "Create a custom security configuration", "url": "https://docs.github.com/enterprise-cloud@latest/code-security/how-tos/secure-at-scale/configure-organization-security/establish-complete-coverage/create-custom-configuration" }
+      ]
+    },
+    {
+      "id": "cl-99803",
+      "tier": "notable",
+      "section": "security",
+      "area": "code-security",
+      "tag": "Release",
+      "summary": "AI Scan is an agentic scanner that explores a whole repository, including languages CodeQL does not support, and reports findings in the code scanning alert list. Users with write access to code scanning start a scan from the Code scanning page, and each scan covers the latest default-branch commit within a fixed time budget. It is in public preview on github.com and GitHub Enterprise Cloud with data residency, with no Copilot license needed.",
+      "stage": "preview",
+      "admin": "The enterprise AI Scan policy must be enabled first. Scans consume Code Security AI credits, which can have SKU-level budgets. Private and internal organization repositories need GitHub Code Security or GitHub Advanced Security.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "About AI Scan for repositories", "url": "https://docs.github.com/code-security/concepts/code-scanning/ai-scan-for-repositories" },
+        { "label": "Billing for GitHub Advanced Security AI features", "url": "https://docs.github.com/billing/concepts/product-billing/github-advanced-security#how-ai-feature-usage-is-billed" }
+      ]
+    },
+    {
+      "id": "cl-99808",
+      "tier": "notable",
+      "section": "security",
+      "area": "code-security",
+      "tag": "Release",
+      "summary": "Code scanning for AI applications detects AI-specific risks such as indirect prompt injection (XPIA), sensitive information disclosure and excessive agency. It scans pull requests automatically alongside CodeQL and gives mitigation guidance in the pull request. It is in public preview on github.com.",
+      "stage": "preview",
+      "admin": "Requires a GitHub Advanced Security license and is not available on GitHub Enterprise Server.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "AI applications code scanning on pull requests", "url": "https://docs.github.com/code-security/concepts/code-scanning/ai-applications-scanning-for-pull-requests" }
+      ]
+    },
+    {
+      "id": "cl-99812",
+      "tier": "notable",
+      "section": "security",
+      "area": "secrets",
+      "tag": "Release",
+      "summary": "A classifier developed with Microsoft Applied Sciences evaluates how potential secrets are used in the surrounding code and runs alongside pattern-based detectors for new pushes, commits in the GitHub UI and file uploads. It is off by default and requires push protection and AI-detected secrets to be enabled already. The public preview is available to organizations with GitHub Secret Protection or GitHub Advanced Security on github.com.",
+      "stage": "preview",
+      "admin": "AI detection in push protection consumes AI credits, and billing begins when an organization opts in to the preview and enables the feature.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "About push protection", "url": "https://docs.github.com/enterprise-cloud@latest/code-security/concepts/secret-security/push-protection" },
+        { "label": "About secret scanning", "url": "https://docs.github.com/code-security/secret-scanning/introduction/about-secret-scanning" }
+      ]
+    },
+    {
+      "id": "cl-99870",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Release",
+      "summary": "GitHub Actions workflow lockfiles are generally available on GitHub Enterprise Cloud, including data residency, and on Team and Free. The gh actions-lock extension for the GitHub CLI generates .github/workflows/actions.lock, workflows onboard individually, and Dependabot regenerates the matching lockfile entry in the same pull request. A stale-lockfile check is available, including in CI.",
+      "stage": "ga",
+      "ides": ["cli"],
+      "admin": "Enterprise, organization and repository admins can use the Require lockfile policy to enforce adoption. Lockfiles do not determine whether a dependency is safe.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "Workflow dependency lockfiles", "url": "https://docs.github.com/actions/concepts/security/workflow-dependency-lockfiles" },
+        { "label": "gh-actions-lock repository", "url": "https://github.com/github/gh-actions-lock" }
+      ]
+    },
+    {
+      "id": "bl-99788",
+      "tier": "notable",
+      "section": "events",
+      "area": "events",
+      "tag": "Announcement",
+      "summary": "At GitHub Universe 2026, GitHub laid out its vision of an end-to-end software delivery system that solves for three things: velocity, intelligence and quality. Demos covered the GitHub Copilot app, Copilot Fusion, Copilot projects, cross-surface session continuity and Copilot automations that learn from their outcomes. GitHub reports Fusion Max scored within two points of Opus 5.5 Max on the Artificial Analysis Coding Agent Index at half the cost and 40% less time per task.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "GitHub Universe 2026 recap", "url": "https://github.com/events/universe/recap" },
+        { "label": "GitHub Copilot app", "url": "https://github.com/features/ai/github-app" },
+        { "label": "GitHub Copilot Fusion documentation", "url": "https://docs.github.com/copilot/concepts/models/copilot-fusion" }
+      ]
+    },
+    {
+      "id": "bl-99742",
+      "tier": "notable",
+      "section": "research",
+      "area": "research",
+      "tag": "Research",
+      "title": "Octoverse 2026: commits and pushes reach new highs as developers build with agents",
+      "summary": "The 2026 Octoverse report finds developers pushed code to GitHub 17.9 billion times in the past 12 months, more than in 2024 and 2025 combined. Over two years, commits across all repo types more than tripled to 34.3 billion and merged pull requests more than tripled to 1.3 billion. As of September, developers start more than 40% of pull requests with an agent, up from 17% in March, and 61% of GitHub Copilot users used more than one model that month."
+    },
+    {
+      "id": "cl-99694",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Deprecation",
+      "title": "New GitHub app in Teams brings notifications and Copilot together; legacy app retires November 16",
+      "summary": "The new GitHub app in Microsoft Teams, previously called GitHub notifications, brings notifications and Copilot together: users mention GitHub, and it investigates the issue, fixes the bug and creates a pull request. The legacy GitHub app will be renamed GitHub (deprecated) and retired on November 16. Users of the legacy app must install the consolidated GitHub app to keep using Copilot in Teams.",
+      "effective": "2026-11-16",
+      "admin": "Existing GitHub notifications installs should update to the latest version, and their notification capabilities continue to work. In the consolidated app, mention GitHub and follow the prompts to connect a GitHub account and select a repository.",
+      "links": [
+        { "label": "GitHub app in Microsoft Teams", "url": "https://teams.microsoft.com/l/app/ca9e26b7-dce5-44a0-b2b7-a70a3d65ce25" }
+      ]
+    }
+  ],
+  "overrides": {
+    "vsc-1.143-01": { "drop": true, "dropReason": "VS Code release highlights boilerplate" },
+    "vsc-1.144-01": { "drop": true, "dropReason": "VS Code release recap boilerplate" },
+    "vsc-1.144-02": { "drop": true, "dropReason": "VS Code release highlights boilerplate" },
+    "vsc-1.144-03": { "drop": true, "dropReason": "Same announcement as headline cl-99755 and notable cl-99764 (cloud agent sessions)" },
+    "vsc-1.144-05": { "drop": true, "dropReason": "Duplicate of changelog entry cl-99848 (cloud Automations in VS Code)" },
+    "vsc-1.144-07": { "drop": true, "dropReason": "Duplicate of headline cl-99793 (Copilot Fusion)" },
+    "vsc-1.144-09": { "drop": true, "dropReason": "Duplicate of changelog entry cl-99733 (image generation in Copilot)" },
+    "vsc-1.144-12": { "drop": true, "dropReason": "Duplicate of notable cl-99737 (assisted permissions generally available)" },
+    "vsc-1.144-14": { "drop": true, "dropReason": "Repeat of vsc-1.143-02 (Copilot harness as the default); also covered in cl-99764" },
+    "vsc-1.144-19": { "drop": true, "dropReason": "Duplicate of notable cl-99832 (Copilot connectors)" },
+    "vs-257519": { "drop": true, "dropReason": "Promotional post about an existing Visual Studio subscription benefit, no product change" },
+    "vs-257573": { "drop": true, "dropReason": "Promotional post about an existing Visual Studio subscription benefit, no product change" },
+    "cl-99796": { "section": "security", "area": "code-security" },
+    "cl-99820": { "section": "platform", "area": "collaboration" },
+    "cl-99662": { "area": "secrets" },
+    "cl-99684": { "area": "secrets" },
+    "cl-99844": { "area": "agents" },
+    "cl-99848": { "area": "agents" },
+    "cl-99802": { "area": "extensibility" },
+    "cl-99874": { "title": "Moderate role for GitHub Issues, available in the coming weeks" }
+  }
+}

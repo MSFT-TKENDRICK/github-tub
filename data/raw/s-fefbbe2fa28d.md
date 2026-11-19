@@ -1,0 +1,467 @@
+Visual Studio Code 1.140 
+Skip to content 
+Features
+AI development 
+Agents 
+Models 
+Customizations 
+Continuity 
+Editor 
+Write code 
+Enterprise 
+Extensibility 
+Release notes 
+Blog 
+Resources
+Help 
+Documentation 
+Learn 
+API 
+FAQ 
+Extensibility 
+Extension Marketplace 
+(opens in new tab) 
+MCP registry 
+(opens in new tab) 
+Connect 
+Events 
+(opens in new tab) 
+GitHub repository 
+(opens in new tab) 
+Download 
+Search 
+⌘ ⇧ P 
+Download 
+VS Code Insiders 
+Other platforms 
+Command line interface 
+CLI for Apple silicon 
+CLI for Intel 
+Command line interface 
+CLI for x64 
+CLI for Arm64 
+Command line interface 
+CLI for x64 
+CLI for Arm64 
+CLI for Arm32 
+By using VS Code, you agree to its
+license 
+and
+privacy statement .
+By using VS Code, you agree to
+License 
+&
+Privacy .
+GitHub Universe, on demand. Watch the VS Code session recordings. 
+A year of VS Code, wrapped. Explore the highlights. 
+Dismiss this update 
+Updates
+Insiders 
+1.145 
+1.144 
+1.143 
+1.142 
+1.141 
+1.140 
+1.139 
+1.138 
+1.137 
+1.136 
+1.135 
+1.134 
+1.133 
+1.132 
+1.131 
+View All Releases 
+Updates 
+Insiders 
+1.145 
+1.144 
+1.143 
+1.142 
+1.141 
+1.140 
+1.139 
+1.138 
+1.137 
+1.136 
+1.135 
+1.134 
+1.133 
+1.132 
+1.131 
+View All Releases 
+Visual Studio Code 1.140
+Released September 30, 2026 Stable 
+Downloads for 1.140.0
+Windows x64 Arm64 
+macOS Universal Intel Apple silicon 
+Linux .deb .rpm .tar.gz Arm instructions Snap 
+Already installed? Use Check for Updates in VS Code. For upcoming features, use the Insiders build .
+Release highlights
+This release expands agent workflows, improves worktree reuse, and adds enterprise AI controls.
+Copilot harness : Use the Copilot harness and get consistent agent behavior across Copilot products.
+Multi-folder sessions (Experimental) : Work on tasks across multiple folders within a single agent session.
+Remote delegation (Experimental) : Delegate tasks to connected remote agent hosts.
+HydraFusion (Research Preview) : Let multiple models draft, critique, and revise coding tasks without coordinating them yourself.
+Shared worktree folders (Experimental) : Avoid repeated dependency installs and duplicated artifacts by reusing ignored folders across worktrees.
+Enterprise controls : Ensure everyone in your org follows AI version requirements and defaults.
+In this update
+Release highlights 
+Agents 
+Chat 
+MCP 
+Accessibility 
+Source Control 
+Code Editing 
+Terminal 
+Enterprise 
+Social media 
+Proposed APIs 
+Deprecated features and settings 
+Thank you 
+Navigation End -->
+Agents
+Copilot harness
+The Copilot harness adds exciting new agent functionality to VS Code while keeping the way you work familiar. It's powered by the Copilot SDK, so its behavior and capabilities are consistent with other Copilot products, including the standalone GitHub Copilot app and the Copilot CLI.
+To start using the Copilot harness, select it from the harness picker in the chat input. In this release, it might already be the default selection for you. You can continue working as you normally do.
+The harness runs in a dedicated agent host process based on the Agent Host Protocol (AHP), so you can connect to the same agent session from multiple VS Code windows.
+Learn how to work with the Copilot harness , or explore the architecture and workflows in the agent host blog post . If you have feedback or requests, please file an issue .
+HydraFusion model orchestration (Research Preview)
+HydraFusion is an adaptive model orchestration system that chooses the models and workflow for each coding task. It can solve a task with one model, escalate to a stronger model, or have another model critique and revise the result. This approach aims to improve result quality while balancing speed and cost, without requiring you to coordinate models yourself.
+Eligible users with preview features enabled can select HydraFusion in the model picker.
+Multi-folder sessions (Experimental)
+Multi-folder sessions let you coordinate related work across repositories or isolated worktrees in one session. Previously, every chat in a multi-chat session shared the same folder and checkout. In this release, each chat can use its own folder or worktree without changes leaking between chats.
+Each chat uses its folder for its terminal, tasks, changes, pull request, and Agent merge state. Chats that use the same folder share that state. In the sessions list, hover over a session to see a summary across all its folders, or hover over a nested chat to see details for only its folder.
+Example use cases include:
+Implement a feature across repositories : Ask the main chat to work in one repository and create a peer chat for a second repository.
+Compare approaches in separate worktrees : Ask the main chat to create peer chats that each use a fresh worktree of the same repository. Each approach gets its own branch, changes, and pull request.
+Multi-folder sessions are experimental and disabled by default. The settings are not shown in the Settings editor. In your user-scoped settings.json file, set the setting for your harness to true , and then create a session:
+Copilot: 
+chat.agentHost.copilotAgent.multiRootEnabled
+Open in VS Code 
+Open in VS Code Insiders 
+Claude: 
+chat.agentHost.claudeAgent.multiRootEnabled
+Open in VS Code 
+Open in VS Code Insiders 
+Codex: 
+chat.agentHost.codexAgent.multiRootEnabled
+Open in VS Code 
+Open in VS Code Insiders 
+New sessions pick up setting changes without restarting the Agent Host. There is no UI for adding a folder or choosing the folder of a peer chat, so ask the main chat to create the peer chat and describe the repository or worktree it should use.
+Archive chats in a session
+Keep the rest of a session active when one chat finishes its work. Because sessions can contain multiple chats, select Mark as Done to archive only the finished peer chat, not the entire session. To restore it with its title and transcript intact, select the Done filter in the sessions list.
+Automatic Dev Container cleanup
+Settings : 
+chat.agentHost.devContainer.enabled
+Open in VS Code 
+Open in VS Code Insiders 
+, 
+chat.agentHost.devContainer.idleTimeout
+Open in VS Code 
+Open in VS Code Insiders 
+(Agents window only)
+When all sessions that use a Dev Container are inactive for five minutes, VS Code stops the container. It restarts automatically when you continue working. Marking as done or deleting the last session removes the container.
+Faster Dev Container startup
+Setting : 
+chat.agentHost.devContainer.enabled
+Open in VS Code 
+Open in VS Code Insiders 
+(Agents window only)
+Dev Container sessions let agents use your project's tools and dependencies in an isolated environment. Fresh containers can reuse cached VS Code Server and CLI downloads, which reduces setup time and repeated downloads across projects.
+Choose the session relationship and workspace for delegated work
+Make two separate decisions when you ask an agent to delegate work. First, decide whether the task belongs to the current session's plan or deliverable. Then specify a workspace only if the task needs repository files, and request a worktree only if file changes need isolation. Related work can still use a different workspace.
+Create a peer chat for related work : Ask the agent to create a peer chat in the current session. To reuse the current workspace and checkout, say so in your prompt. Because the peer chat shares the checkout, use this option for research, planning, or related work that doesn't need isolated file changes.
+Create a peer chat in this session that reuses the current workspace and checkout to review the authentication flow. Do not modify files. 
+Create an independent session for unrelated work : Ask the agent to create an independent session with no workspace when a separate deliverable doesn't need repository files. The new session doesn't inherit the source folder. If the work does need a repository, name the project or folder and explicitly request a worktree when its changes need isolation.
+Create an independent session with no workspace to research licensing options for a separate project. 
+Learn more about orchestrating chats and sessions .
+Create workspace-less chats on remote agent hosts
+Setting : 
+sessions.chat.unifiedWorkspacePicker.enabled
+Open in VS Code 
+Open in VS Code Insiders 
+(Agents window only)
+Agent Host lets you run and track agent sessions on a remote host. This release adds support for running workspace-less chats on a remote host.
+Select a connected host from the unified workspace picker without choosing a workspace. The Chat entry identifies the selected host, so you can confirm where the session runs before you start.
+Remote folders also appear alongside local folders in the main picker. This makes frequently used remote workspaces easier to select without opening the Remote submenu.
+Delegate tasks to remote agent hosts (Experimental)
+Settings : 
+chat.remoteAgentHostsEnabled
+Open in VS Code 
+Open in VS Code Insiders 
+, 
+chat.remoteSessions.tools.enabled
+Open in VS Code 
+Open in VS Code Insiders 
+(Agents window only)
+Your agent can delegate work to connected remote agent hosts from the Agents window, without you selecting a host in a picker for each task.
+The new built-in tools let your agent:
+Discover hosts, models, resource capacities, and session load with list_agent_hosts .
+Start a session with create_remote_session . Specify a host, or let automatic placement match an operating system (Windows, Linux, or macOS), minimum memory capacity, logical CPU count, and optional model. Among matching hosts, placement favors the host with the fewest running sessions and pending creations.
+Check a remote session's status and latest response with get_remote_session .
+Send follow-up work or report results and questions back to the originating chat with send_remote_message .
+The tools are off by default. Enable this setting along with 
+chat.remoteAgentHostsEnabled
+Open in VS Code 
+Open in VS Code Insiders 
+and connect the hosts you want to use. From a chat running on an agent host, ask:
+Start a remote session on a connected Linux host with at least 16 GiB of memory and eight logical CPUs. Check the installed Node.js and Python versions and report back to this chat. 
+Sessions have no workspace unless you specify one. For repository work, use an existing trusted folder on the target host, either directly or in a new Git worktree. The tools do not clone or copy the originating workspace, and normal approvals still apply.
+Keep the coordinating Agents window open and connected for messages to flow. Remote agents report back through send_remote_message ; their final answers are not automatically forwarded.
+Personalize new-session welcome phrases (Experimental)
+Settings : 
+sessions.chat.experimental.welcomePhrases
+Open in VS Code 
+Open in VS Code Insiders 
+, 
+sessions.chat.experimental.welcomeName
+Open in VS Code 
+Open in VS Code Insiders 
+, 
+accessibility.verbosity.newSessionWelcome
+Open in VS Code 
+Open in VS Code Insiders 
+(Agents window only)
+Add some personality to the Agents window with an optional welcome heading when you create a new session in the Agents window. The heading shows one of five phrases, such as What are we building? or Let's ship something , and can append your first name from your GitHub profile.
+Welcome phrases are off by default. When enabled, you can use Set Welcome Name from the heading, its context menu, or the Command Palette to choose a different name. The name syncs across devices. Clear it to use your GitHub first name when available, or a generic phrase when your profile has no name.
+When screen reader optimized mode is active, VS Code announces the heading once when the composer appears. Disable 
+accessibility.verbosity.newSessionWelcome
+Open in VS Code 
+Open in VS Code Insiders 
+if you prefer not to hear the announcement.
+Improved session composer controls (Experimental)
+Settings : 
+sessions.chat.experimental.newSessionComposerLayout
+Open in VS Code 
+Open in VS Code Insiders 
+, 
+sessions.chat.unifiedWorkspacePicker.enabled
+Open in VS Code 
+Open in VS Code Insiders 
+(Agents window only)
+The experimental session composer layout reduces the need to move between separate parts of the Agents window. In a new session, the workspace, branch, worktree, and harness controls are grouped above the chat input.
+Enable both settings to use the layout.
+The unified workspace picker also has commands for moving directly to its controls. Use ⌘K ⌘F (Windows, Linux Ctrl+K Ctrl+F ) to focus the workspace picker or ⌘K ⌘H (Windows, Linux Ctrl+K Ctrl+H ) to focus the harness picker. Hovers show your configured keybindings, and each picker's context menu provides a Configure Keybinding action. These keyboard improvements require only the unified workspace picker, not the experimental composer layout.
+Starting with this milestone, when you create a new worktree session, the branch picker defaults to the upstream branch of your current branch, such as origin/main . Before creating the worktree, VS Code automatically attempts to fetch the selected remote branch so the session starts from the latest available remote state.
+The picker also loads branches once per workspace and filters them locally, which significantly reduces search latency, especially in large repositories.
+See recently completed sessions first
+The Done section in the Agents window now sorts sessions by when you marked them as done, with the most recently completed session listed first. This order stays the same when you switch between Created and Updated sorting and after you reload VS Code.
+More reliable agent orchestration (Experimental)
+Setting : 
+chat.agentHost.agentOrchestrationLimits
+Open in VS Code 
+Open in VS Code Insiders 
+Coordination-heavy agent workflows are less likely to stop before the work is complete. This release raises the process-wide limits for agent-created sessions, chats, inter-session messages, and recursive session creation.
+For example, an agent can classify CI failures, delegate each fix to a separate session, and coordinate those sessions without exhausting the message limit before the work is complete. Reaching a limit blocks new orchestration actions but does not interrupt work that is already running.
+The setting defaults to on , and changes apply without restarting the Agent Host. Set it to off to remove the orchestration limits. Confirmation requirements and input validation continue to apply.
+Open a new session in the Agents window from a URL
+Open the Agents window from another tool or webpage with a workspace and an editable prompt ready for review. Use a URL with the agents/new path and the optional prompt and workspace query parameters.
+For example, this URL opens a new session with no workspace and the prompt already entered:
+vscode://agents/new?prompt=Explain%20how%20this%20project%20runs%20its%20tests.%20Do%20not%20run%20anything%20yet. 
+VS Code places the decoded prompt in the New Session composer without sending it. To select a workspace, add the workspace parameter with a URL-encoded folder URI. If the URL omits workspace , the draft uses No Workspace . An existing occupied composer remains unchanged, so opening a link does not overwrite work in progress.
+Learn more about opening VS Code with URLs .
+Note: Use vscode-insiders:// instead of vscode:// for VS Code Insiders.
+Chat
+Persistent progress for agent responses (Experimental)
+Settings : 
+chat.experimental.persistentProgress
+Open in VS Code 
+Open in VS Code Insiders 
+, 
+chat.experimental.persistentProgressVerbosity
+Open in VS Code 
+Open in VS Code Insiders 
+Long-running agent responses are easier to follow with persistent progress. When enabled, chat keeps a progress indicator visible at the bottom until the response finishes.
+Enabling persistent progress also improves the rendering and visibility of in-progress responses. Reasoning appears in separate collapsible previews, and tool calls remain visible while they run. With Compact verbosity, completed tool groups collapse into expandable summaries when response text resumes or the response finishes. Select Verbose to keep the full tool-call details visible.
+Use 
+chat.experimental.persistentProgress
+Open in VS Code 
+Open in VS Code Insiders 
+to turn the indicator off or choose a colored or monochrome Draw animation. The setting defaults to Draw in VS Code Insiders and is rolling out gradually to Stable.
+Terminal output reflow
+Setting : 
+chat.tools.terminal.outputReflow
+Open in VS Code 
+Open in VS Code Insiders 
+Since VS Code 1.132 , terminal output in chat reflows to fit the width of the output preview.
+The new 
+chat.tools.terminal.outputReflow
+Open in VS Code 
+Open in VS Code Insiders 
+setting lets you control this behavior. If you prefer output to keep a fixed width instead, disable the setting and scroll horizontally to read long lines. Reflow remains enabled by default.
+Use multiple chats in the editor window
+A session can contain multiple chats. Until now, the main chat with its nested peer chats appeared only in the Agents window. The editor window also shows them: the Sessions view lists the main chat with its peer chats nested underneath, next to the Chat view. Select any row to open that chat in the Chat view.
+MCP
+Add MCP servers to portable configuration files
+You can add MCP servers to portable configuration files from the MCP: Add Server flow, so you can use the same server configuration across compatible Copilot tools without editing JSON manually.
+For global servers, choose Copilot Global to save the server to $COPILOT_HOME/mcp-config.json , or ~/.copilot/mcp-config.json when COPILOT_HOME is not set.
+For workspace servers, choose .mcp.json to save the server at the workspace root.
+Accessibility
+Hear when confetti appears
+Setting : 
+accessibility.signals.confetti
+Open in VS Code 
+Open in VS Code Insiders 
+The new Confetti accessibility signal provides the same celebratory feedback when you cannot see the animation. The joyful sound plays when chat thumbs-up confetti appears and when you successfully mark a session as done in the Agents window.
+Source Control
+Reuse ignored folders across worktrees (Experimental)
+Setting : 
+git.worktreeSymlinkFolders
+Open in VS Code 
+Open in VS Code Insiders 
+Avoid reinstalling dependencies or duplicating large build artifacts in each Git worktree . Configure 
+git.worktreeSymlinkFolders
+Open in VS Code 
+Open in VS Code Insiders 
+with .gitignore -style patterns for ignored folders, such as node_modules . When VS Code creates a new worktree, including for an agent session, it creates symlinks to matching folders in the current checkout.
+Code Editing
+New option to control selection text matching case sensitivity
+Setting : 
+editor.selectedTextMatchMode
+Open in VS Code 
+Open in VS Code Insiders 
+We have added a new setting 
+editor.selectedTextMatchMode
+Open in VS Code 
+Open in VS Code Insiders 
+to control the case sensitivity of selection matching.
+The default value, findOptions , means selection matching sensitivity is tied to the Find widget, as was previously the case. There are two other values caseSensitive and caseInsensitive , which match case-sensitive and case-insensitive selections respectively.
+Terminal
+Sharper terminal text on macOS (Experimental)
+Setting : 
+terminal.integrated.fontRendering
+Open in VS Code 
+Open in VS Code Insiders 
+On macOS high-DPI displays, terminal text can look softer than the same font in other terminals. Set 
+terminal.integrated.fontRendering
+Open in VS Code 
+Open in VS Code Insiders 
+to grayscale to make terminal text look sharper.
+Enterprise
+Explain minimum version requirements
+Administrators can require developers to update VS Code before using AI features, for example, to adopt newer sandboxing protections. Instead of an Update Required dialog, VS Code now explains the requirement wherever AI features are unavailable:
+Chat : shows the required and installed versions, with an update action.
+Editor window : shows a banner even when Chat is closed. Other editor features stay available.
+Agents window : shows a blocking overlay, with an Open Editor Window action.
+When an update is available, VS Code offers the matching Check for Updates , Download Update , Install Update , or Restart to Update action. If your organization disables built-in updates by policy, VS Code instead asks you to contact your administrator. The notices clear once the requirement is met. How VS Code enforces the requirement is unchanged.
+Set a default Auto tier
+The Auto model in VS Code can operate in different tiers, optimizing for efficiency, balance, or intelligence. Administrators can align the Auto model's default behavior with organizational priorities without preventing developers from choosing another tier.
+Administrators can set the default tier for the Auto model with the autoTier managed setting. Accepted values are efficiency , balance , and intelligence .
+The tier applies to new chats in the Local harness and the Copilot agent host on the same machine. The managed tier appears as Default in the model picker.
+The managed tier is a starting point, not a restriction. Developers can still choose a different tier. VS Code keeps explicit and restored choices when the managed tier changes or is removed.
+Capture user identity in OpenTelemetry
+Setting : 
+github.copilot.chat.otel.captureIdentity
+Open in VS Code 
+Open in VS Code Insiders 
+Organizations can attribute Copilot OpenTelemetry data to individual developers. When identity capture is enabled, Local chat sessions add the following attributes:
+user.name on agent invocation spans, including subagents and inline chat.
+process.user.name and host.name as resource attributes.
+Identity capture is off by default and independent of content capture. Administrators control identity capture with the telemetry.capture.identity managed setting ( CopilotOtelCaptureIdentity policy). A managed value takes precedence over COPILOT_OTEL_CAPTURE_IDENTITY and user settings. When a policy denies capture, VS Code removes identity from later exports without a reload, including identity attributes that are set explicitly as resource attributes.
+This release also changes how managed telemetry settings are resolved:
+VS Code applies the telemetry block from only the highest-priority delivery channel: native MDM, then server, then file. Fields that the selected block omits are no longer filled in from lower-priority channels.
+Managed telemetry.resourceAttributes now take precedence over OTEL_RESOURCE_ATTRIBUTES .
+Note : Identity capture currently applies only to the Local harness. Support for the agent host is tracked in #337413 .
+Social media
+VS Code is now on Instagram! Follow @vscode for VS Code updates, new features, tips, and more.
+-->
+Proposed APIs
+Authorization server on authentication sessions
+The authIssuers proposal lets an extension name the OAuth authorization server it wants to authenticate against, which VS Code introduced for MCP in the 1.101 release notes . This release adds the opposite direction, so a session can tell you which authorization server issued it.
+export interface AuthenticationSession { 
+/** 
+* The authorization server that issued this session, when provided by the authentication provider. 
+* This identifies the OAuth server, not a REST API endpoint or resource audience. 
+*/ 
+readonly authorizationServer ?: Uri ; 
+} 
+If your extension talks to more than one deployment of a service, such as public GitHub and a GitHub Enterprise host, you can pair each credential with the destination it was issued for instead of reading a separate setting that the user can change independently. This prevents a valid token from being sent to the wrong host.
+Keep in mind two things. The value identifies an OAuth issuer rather than an API endpoint, so map it to your own endpoints. The built-in GitHub provider populates it for public GitHub sessions as well as enterprise ones, so its presence alone does not make a session an enterprise session.
+Try it out and let us know what you think in the API proposal issue . To learn how to build against a proposal, see using proposed APIs .
+Deprecated features and settings
+None
+Thank you
+Contributions to vscode :
+Contributions to vscode :
+@denizguney (Deniz Güney Yıldırım) : Optimize package.json loading for AmdModuleImportCheck PR #334811 
+@Dev-next-gen (Leo Camus) : Fix safeStringify treating shared references as circular PR #335589 
+@FMorschel (Felipe Morschel) : Fix opening file: links with a drive letter in the Debug Console PR #336167 
+@Kidsunbo (Kie) : cli: Kill the serve-web process tree on idle timeout PR #333719 
+@KKKayleX : fix: use model reasoning definitions and defaults when Copilot is used via OpenRouter PR #335276 
+@maruthang (Maruthan G) : fix(editor): defer native EditContext refresh to render time to fix large case-conversion freeze (#_262473) PR #310901 
+@Megafia : Make the empty Explorer view movable PR #335999 
+@monil-patel : Skip content exclusion checks for apply_patch Add File PR #337324 
+@na2co3-ftw (na2co3) 
+Modern UI: Keep connected editor tab widths stable at the right edge PR #336885 
+Modern UI: Fix background glitch at connected tab overflow edge PR #336873 
+@rfeltis (Ralph Feltis) 
+[Experiment] Show a pip and popup when a Copilot sale is ongoing and the chat is closed PR #331588 
+Close the promo hover when Try is clicked PR #337839 
+@RyanEwen (Ryan Ewen) : Fix Codex steering acknowledgement with attached context PR #335547 
+@SimonSiefke (Simon Siefke) : fix: memory leak in debug visualization session items PR #336031 
+@spurwaha (Shivi Purwaha) : Attribute chat edits to resolved Auto tiers PR #336757 
+@thesilican (Bryan Chen) : Update window.title setting autocomplete PR #337655 
+@vscodebot-pr (VS Code PR Bot) : fix: await connector record persistence before asserting in WebKit test (build fix for vscode-engineering#3992) PR #338170 
+Issue tracking
+Contributions to our issue tracking:
+@gjsjohnmurray (John Murray) 
+@RedCMD (RedCMD) 
+@IllusionMH (Andrii Dieiev) 
+@albertosantini (Alberto Santini) 
+We really appreciate people trying our new features as soon as they are ready, so check back here often and learn what's new.
+If you'd like to read release notes for previous VS Code versions, go to Updates on code.visualstudio.com .
+On this page there are 13 sections On this page 
+Release highlights 
+Agents 
+Chat 
+MCP 
+Accessibility 
+Source Control 
+Code Editing 
+Terminal 
+Enterprise 
+Social media 
+Proposed APIs 
+Deprecated features and settings 
+Thank you 
+Microsoft 
+Community
+GitHub 
+Reddit 
+X 
+Bluesky 
+LinkedIn 
+Watch & listen
+YouTube 
+Podcast 
+TikTok 
+Instagram 
+Legal
+Privacy 
+Terms of Use 
+Help
+Support 
+License 
+Community 
+GitHub 
+Reddit 
+X 
+Bluesky 
+LinkedIn 
+Watch & listen 
+YouTube 
+Podcast 
+TikTok 
+Instagram 
+Legal 
+Privacy 
+Terms of Use 
+Help 
+Support 
+License 
+Consumer Health Privacy 
+Manage Cookies 
+By using VS Code, you agree to its license and privacy statement .
+Your Privacy Choices

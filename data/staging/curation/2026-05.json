@@ -1,0 +1,463 @@
+{
+  "month": "2026-05",
+  "items": [
+    {
+      "id": "bl-95975",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Announcement",
+      "summary": "GitHub Copilot's individual lineup becomes Free, Pro, Pro+ and a new Max plan, all with usage-based billing from June 1, 2026. Paid plans include base credits matched 1:1 to the subscription price plus a variable flex allotment, for total included usage of $15 on Pro ($10 + $5), $70 on Pro+ ($39 + $31) and $200 on Max ($100 + $100). Code completions and next edit suggestions remain unlimited on paid plans and consume no credits.",
+      "why": "Sets how much usage each individual plan includes, and adds a higher-capacity Max tier, ahead of the June 1 move to usage-based billing.",
+      "plans": ["Free", "Pro", "Pro+"],
+      "admin": "Monthly Pro and Pro+ subscribers need to do nothing: the additional flex usage lands automatically on June 1 when they migrate to usage-based billing.",
+      "effective": "2026-06-01",
+      "links": [
+        { "label": "Docs", "url": "https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals" }
+      ]
+    },
+    {
+      "id": "cl-96070",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "The GitHub Copilot app, a GitHub-native desktop experience for agentic development, is now in technical preview. Each session starts from an issue, pull request, prompt or previous session and has its own branch, files, conversation and task state. Users review the plan and diff, validate in the integrated terminal and browser, and open a pull request, and Agent Merge can address review comments, fix failing checks and merge once conditions are met.",
+      "why": "Brings agent sessions, review and merge into one GitHub-native desktop app; Pro and Pro+ subscribers can sign up for early access, and Business and Enterprise availability is rolling out.",
+      "stage": "preview",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "admin": "Business and Enterprise availability rolls out through the week, and the organization or enterprise admin must have previews and Copilot CLI enabled in policy settings.",
+      "links": [
+        { "label": "Copilot app documentation", "url": "https://gh.io/github-copilot-app-docs-main?utm_source=docs-github-copilot-app&utm_medium=docs&utm_campaign=github-copilot-app-tech-preview-2026" },
+        { "label": "Copilot app repository", "url": "https://gh.io/github-copilot-app-repo?utm_source=changelog-github-copilot-app&utm_medium=changelog&utm_campaign=github-copilot-app-tech-preview-2026" }
+      ]
+    },
+    {
+      "id": "bl-96242",
+      "tier": "headline",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Announcement",
+      "summary": "GitHub detected and contained a May 18 compromise of an employee device through a poisoned third-party VS Code extension. The ongoing investigation currently indicates only GitHub-internal repositories were exfiltrated, with no evidence of impact to customer information stored outside them. Rotated keys include the GitHub Enterprise Server signing key: GHES administrators must rotate their GPG public keys or future upgrades fail verification; Enterprise Cloud needs no action.",
+      "why": "GHES administrators must act to keep installing updates, and some internal repositories contain customer information such as excerpts of support interactions.",
+      "admin": "GHES admins rotate the GPG public keys on each instance using GitHub's script (single-node and HA/cluster steps are in the post); GitHub recommends preparing to take GHES security updates at an increased rate over the coming months.",
+      "links": [
+        { "label": "Advisory: poisoned VS Code extension", "url": "https://github.com/nrwl/nx-console/security/advisories/GHSA-c9j4-9m59-847w" }
+      ]
+    },
+    {
+      "id": "cl-96135",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "summary": "GPT-5.3-Codex becomes the base model for all Copilot Business and Enterprise organizations on May 17, 2026, replacing GPT-4.1 when an organization has not yet approved other models. It is also GitHub's first long-term support (LTS) model, guaranteed available for 12 months, from February 5, 2026 through February 4, 2027, at a 1x premium request multiplier. GPT-4.1 stays force-enabled at 0x until its deprecation on June 1, 2026.",
+      "why": "Gives enterprises a base model with a guaranteed 12-month availability window for internal security and safety reviews.",
+      "plans": ["Business", "Enterprise"],
+      "admin": "Applies to Copilot Business and Enterprise plans only, not Pro, Pro+ or Free. Organizations with questions or needing more time should contact their account team.",
+      "effective": "2026-05-17",
+      "image": "https://github.com/user-attachments/assets/9228921c-f47c-4b5c-acf5-7a39df060e7e",
+      "links": [
+        { "label": "Supported models", "url": "https://docs.github.com/copilot/reference/ai-models/supported-models" }
+      ]
+    },
+    {
+      "id": "cl-95724",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "cli",
+      "tag": "Release",
+      "title": "Remote control for Copilot CLI sessions is generally available on GitHub Mobile and github.com",
+      "summary": "Remote control for Copilot CLI sessions is generally available on GitHub Mobile and github.com and now supports non-GitHub repositories and directories without a repository. Remote control is also introduced in VS Code and JetBrains. Sessions started in the terminal, VS Code or JetBrains can be monitored or steered from the GitHub Mobile app or github.com, including queuing messages, reviewing plans, stopping sessions and approving or denying permission requests.",
+      "why": "Lets developers track, steer and approve Copilot CLI sessions from a phone or browser while away from their desk.",
+      "stage": "ga",
+      "ides": ["cli", "vscode", "jetbrains", "web", "mobile"],
+      "admin": "Copilot Business and Enterprise administrators must enable remote control and CLI policies before users can use it.",
+      "links": [
+        { "label": "Blog post", "url": "https://github.blog/news-insights/product-news/take-your-local-github-sessions-anywhere/" },
+        { "label": "Docs: steer Copilot CLI remotely", "url": "https://docs.github.com/en/copilot/how-tos/copilot-cli/steer-remotely" }
+      ]
+    },
+    {
+      "id": "cl-96016",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Improvement",
+      "summary": "Copilot Business and Enterprise admins can download an April usage report for their enterprise, and Pro and Pro+ users can download personal usage, to see how April activity translates into AI credits before the new billing unit goes live on June 1. The report is a directional estimate, not a recalculated bill: it omits 0x model usage from April 1 to 24 (roughly 2% of activity), may show duplicates for April 24 to 30 and lacks credit estimates for some code review entries.",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "admin": "Admins download the report for their enterprise; teams that rely primarily on 0x models should look at data from April 24 onwards for their estimates.",
+      "links": [
+        { "label": "Docs", "url": "https://docs.github.com/copilot/how-tos/manage-and-track-spending/prepare-for-usage-based-billing" }
+      ]
+    },
+    {
+      "id": "cl-95682",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Deprecation",
+      "summary": "GPT-5.2 and GPT-5.2-Codex are deprecated across all GitHub Copilot experiences, including Copilot Chat, inline edits, ask and agent modes and code completions, on June 5, 2026, except that GPT-5.2 remains available in Copilot code review. The suggested alternatives are GPT-5.5 for GPT-5.2 and GPT-5.3-Codex for GPT-5.2-Codex. An editor's note moved the date from June 1 to June 5.",
+      "admin": "Copilot Enterprise administrators may need to enable access to alternative models through their model policies in Copilot settings; no action is required to remove the deprecated models.",
+      "effective": "2026-06-05"
+    },
+    {
+      "id": "cl-95824",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Deprecation",
+      "summary": "GPT-4.1 is deprecated across all GitHub Copilot experiences, including Copilot Chat, inline edits, ask and agent modes and code completions, on June 1, 2026. The suggested alternative is GPT-5.5.",
+      "admin": "Copilot Enterprise administrators may need to enable access to the alternative model through their model policies in Copilot settings; no action is required to remove the deprecated model.",
+      "effective": "2026-06-01"
+    },
+    {
+      "id": "cl-96203",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "summary": "Gemini 3.5 Flash, Google's latest Flash-tier model, is rolling out in GitHub Copilot. It launches with a 14X premium request multiplier, though pricing is tentative and subject to change. The model is selectable in Visual Studio Code 1.115.0 or later, Visual Studio 17.14.22 or 18.1.0 and later, JetBrains, Xcode and Eclipse, and rollout is gradual.",
+      "stage": "ga",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "ides": ["vscode", "visualstudio", "jetbrains", "xcode", "eclipse"],
+      "admin": "Business and Enterprise administrators must enable the Gemini 3.5 Flash policy in Copilot settings."
+    },
+    {
+      "id": "cl-96352",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "summary": "Claude Opus 4.8, Anthropic's latest Opus model, is available in GitHub Copilot with a 15X premium request multiplier until usage-based billing launches on June 1, 2026. It can be selected in the model picker in Visual Studio Code (all modes), Visual Studio, Copilot CLI, GitHub Copilot cloud agent, the GitHub Copilot app, github.com, GitHub Mobile on iOS and Android, JetBrains, Xcode and Eclipse. Rollout is gradual.",
+      "stage": "ga",
+      "plans": ["Pro+", "Business", "Enterprise"],
+      "ides": ["vscode", "visualstudio", "cli", "web", "mobile", "jetbrains", "xcode", "eclipse"],
+      "admin": "Business and Enterprise administrators must enable the Claude Opus 4.8 policy in Copilot settings."
+    },
+    {
+      "id": "cl-96325",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Release",
+      "summary": "Enterprise owners can allow specific Copilot models for specific organizations through targeted model rules, now in public preview, instead of relying on a single enterprise-wide setting. The default model availability page is also refreshed: each model can be set to Enabled, automatically on for all organizations, or Optional, where organizations decide whether to enable it.",
+      "stage": "preview",
+      "plans": ["Business", "Enterprise"],
+      "image": "https://github.com/user-attachments/assets/c705547e-dc06-46a6-9ed5-413edbd23858",
+      "links": [
+        { "label": "Docs: manage default model availability", "url": "https://docs.github.com/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-availability-of-default-models" }
+      ]
+    },
+    {
+      "id": "cl-95770",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Release",
+      "summary": "Enterprise administrators can define plugin marketplaces in a settings.json file at .github-private/.github/copilot/settings.json, and Copilot CLI automatically applies them for users licensed through the enterprise with Copilot Business or Copilot Enterprise. Plugins can be installed automatically when users authenticate, and hooks and MCP configurations can be defined to be always enabled across the enterprise. The feature is in public preview.",
+      "stage": "preview",
+      "plans": ["Business", "Enterprise"],
+      "ides": ["cli"],
+      "admin": "If a source organization is already configured for custom agents, plugin settings use the same .github-private repository. Confirm the configuration is active on the Agents page under AI controls in enterprise settings.",
+      "image": "https://github.com/user-attachments/assets/732c765d-ffb6-4b2e-8b9e-65c3e2a977d4",
+      "links": [
+        { "label": "Docs", "url": "https://docs.github.com/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/configure-enterprise-plugin-standards" }
+      ]
+    },
+    {
+      "id": "cl-95783",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "Copilot Business and Copilot Enterprise users can start Copilot cloud agent tasks programmatically with the new Agent tasks REST API, in public preview, and track progress through the API. It supports authentication with personal access tokens (classic and fine-grained) and OAuth tokens. Support for GitHub App installation access tokens, plus access for Copilot Pro and Pro+ users, is coming soon.",
+      "stage": "preview",
+      "plans": ["Business", "Enterprise"],
+      "links": [
+        { "label": "REST API docs", "url": "https://docs.github.com/rest/agent-tasks/agent-tasks?apiVersion=2026-03-10#start-a-task" }
+      ]
+    },
+    {
+      "id": "cl-96020",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "code-review",
+      "tag": "Improvement",
+      "summary": "Copilot code review comments now include High, Medium or Low severity labels in the top-right corner, and the feature groups like comments so that a repeated suggestion, such as a better variable name for all of its occurrences, is raised only once. An updated suggested changeset UI is also included. These improvements are available to all users opted into the new pull requests experience.",
+      "image": "https://github.com/user-attachments/assets/f38af888-25b1-4f1f-a5af-0086df9dfe2f"
+    },
+    {
+      "id": "cl-95746",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "VS Code moved to weekly stable releases, and this roll-up covers versions 1.116 through 1.119. Semantic indexing now works in all workspaces, a new githubTextSearch tool runs grep-style searches across GitHub repositories and orgs, and an experimental /chronicle feature queries local chat history. Agents gain inline diffs in chat, browser tab sharing and read/write access to open terminals, and Copilot Business and Enterprise users can bring their own model keys.",
+      "ides": ["vscode"],
+      "admin": "Admins control bring-your-own-key access with the Bring Your Own Language Model Key policy on GitHub.com, and new group policies control which domains agents can reach.",
+      "links": [
+        { "label": "VS Code release notes", "url": "https://aka.ms/VSCode/Release" }
+      ]
+    },
+    {
+      "id": "vsc-1.120-01",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "The Agents window, a companion to the editor purpose-built for agent-driven development, is now available as a preview in VS Code Stable after shipping in VS Code Insiders in recent releases. It provides a dedicated space to explore, iterate on and review tasks across multiple projects, lets users pick their agent harness and run agents on remote machines, and keeps the configured environment such as themes, keybindings and extensions.",
+      "stage": "preview",
+      "ides": ["vscode"]
+    },
+    {
+      "id": "vsc-1.121-02",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Release",
+      "title": "Remote agents in the VS Code Agents window",
+      "summary": "The Agents window has experimental support for running agent sessions on a remote machine that the user owns and can connect to over SSH or dev tunnels. The window starts a lightweight, long-lived agent host process on the remote, which hosts a new agent loop built on the Copilot SDK. The approach is similar to, but not the same as, the VS Code remote development extensions.",
+      "stage": "experimental",
+      "ides": ["vscode"]
+    },
+    {
+      "id": "vsc-1.119-11",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "chat-ide",
+      "tag": "Deprecation",
+      "title": "Edit Mode to be fully removed beginning with VS Code 1.126",
+      "summary": "Edit Mode has been officially deprecated since VS Code version 1.110. It can be temporarily re-enabled with the chat.editMode.hidden setting, which remains supported through version 1.126. Beginning with version 1.126, Edit Mode is fully removed and can no longer be enabled through settings.",
+      "ides": ["vscode"]
+    },
+    {
+      "id": "vs-256198",
+      "tier": "notable",
+      "section": "visualstudio",
+      "area": "agents",
+      "tag": "Release",
+      "title": "Visual Studio May update adds a Plan agent, skills panel and context window usage indicator",
+      "summary": "The May update for the Visual Studio 2026 Stable Channel adds a Plan agent that drafts an implementation plan, saved as a markdown file under .copilot/plans without changing the codebase, then hands it to Agent mode through Implement plan. It also adds a skills panel for Agent Skills, a context window usage indicator in Copilot Chat, and a multi-file summary diff for Copilot changes, commits and pull requests.",
+      "ides": ["visualstudio"],
+      "image": "https://devblogs.microsoft.com/visualstudio/wp-content/uploads/sites/4/2026/05/plan-selected-in-agent-picker.webp"
+    },
+    {
+      "id": "cl-96083",
+      "tier": "notable",
+      "section": "jetbrains-others",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "GitHub Copilot for JetBrains IDEs can delegate tasks to a locally running Copilot CLI agent, in public preview, with Worktree or Workspace isolation, and adds a unified sessions view showing live status of running and queued sessions. The release also adds an Ask question tool in agent mode, sign-in support for GitHub Enterprise Server and global .agent.md support in ~/.copilot/agents, and removes Edit mode support.",
+      "stage": "preview",
+      "ides": ["jetbrains"],
+      "admin": "Business and Enterprise users need an administrator to enable the Editor preview features policy.",
+      "image": "https://github.com/user-attachments/assets/23de24f9-6146-4b3b-85cd-8131f26867ea"
+    },
+    {
+      "id": "cl-96215",
+      "tier": "notable",
+      "section": "jetbrains-others",
+      "area": "community",
+      "tag": "Announcement",
+      "summary": "GitHub Copilot for Eclipse is now open source under the MIT license in the microsoft/copilot-for-eclipse repository. The code covers code completion, Next Edit Suggestions, chat, agent mode, skills and prompt files, bring-your-own-key and MCP integration, and the project accepts issues and pull requests.",
+      "ides": ["eclipse"],
+      "links": [
+        { "label": "Repository", "url": "https://github.com/microsoft/copilot-for-eclipse" }
+      ]
+    },
+    {
+      "id": "cl-96103",
+      "tier": "notable",
+      "section": "platform",
+      "area": "actions",
+      "tag": "Improvement",
+      "summary": "GitHub now owns and maintains the Arm64 runner images for hosted runners, with no action required. windows-latest and windows-2025 migrate to Visual Studio 2026 over a week beginning June 8, 2026, and macos-latest moves from macOS 15 to macOS 26 over 30 days starting June 15. Workflows can remain on Visual Studio 2022 with windows-2022 or on macOS 15 with macos-15, and windows-2025-vs2026 is a test-only label for the new Windows image.",
+      "effective": "2026-06-08",
+      "links": [
+        { "label": "actions/runner-images", "url": "https://github.com/actions/runner-images" }
+      ]
+    },
+    {
+      "id": "cl-96132",
+      "tier": "notable",
+      "section": "platform",
+      "area": "apis",
+      "tag": "Improvement",
+      "summary": "GitHub is rolling out a new stateless, JWT-format token (ghs_ prefix, about 520 characters) for GitHub App installation tokens. A temporary X-GitHub-Stateless-S2S-Token request header on POST /app/installations/:installation_id/access_tokens forces the new format (enabled) or the classic opaque format (disabled) for a single request, and it will stop being respected at a future deprecation point to be announced separately.",
+      "admin": "Applies to GitHub Enterprise Cloud and data residency; GitHub Enterprise Server is not impacted. Remove hardcoded token-length assumptions, update token regexes and allow at least 520 characters in storage.",
+      "links": [
+        { "label": "REST API: create installation access token", "url": "https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app" }
+      ]
+    },
+    {
+      "id": "cl-96037",
+      "tier": "notable",
+      "section": "platform",
+      "area": "admin",
+      "tag": "Release",
+      "summary": "GitHub Enterprise Server 3.21 release candidate makes organization custom properties and the Projects hierarchy view generally available. REST API version 2026-03-10 is available with breaking changes, while 2022-11-28 stays supported for at least 24 months from the 3.21 release date. Actions workflow pages render workflows with more than 300 jobs, and secret scanning gains alert-level and enterprise-level permission improvements.",
+      "links": [
+        { "label": "Release notes", "url": "https://docs.github.com/enterprise-server@3.21/admin/release-notes" },
+        { "label": "Download the release candidate", "url": "https://enterprise.github.com/releases/3.21.0/download" }
+      ]
+    },
+    {
+      "id": "cl-96258",
+      "tier": "notable",
+      "section": "platform",
+      "area": "collaboration",
+      "tag": "Release",
+      "summary": "Issue fields, typed metadata such as Priority or Effort defined at the organization level, are in public preview for all organizations on github.com and GitHub Enterprise Cloud with data residency. More than 1,000 organizations have adopted them since the March preview, and updates add visibility controls for nonmembers, REST API parity and a Copilot skill that migrates values from labels or project fields.",
+      "stage": "preview",
+      "links": [
+        { "label": "Issue fields documentation", "url": "https://docs.github.com/issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization" }
+      ]
+    },
+    {
+      "id": "cl-96315",
+      "tier": "notable",
+      "section": "platform",
+      "area": "community",
+      "tag": "Deprecation",
+      "summary": "New GitHub Classroom sign-ups are closed as GitHub Classroom transitions to partner solutions. Existing accounts and classrooms continue as usual until August 28, 2026, after which users can no longer sign in to manage classrooms and the website is decommissioned. GitHub accounts, repositories and organizations are unaffected.",
+      "effective": "2026-08-28",
+      "links": [
+        { "label": "Educator Community discussion", "url": "https://gh.io/classroom-sunset" }
+      ]
+    },
+    {
+      "id": "cl-95791",
+      "tier": "notable",
+      "section": "platform",
+      "area": "admin",
+      "tag": "Release",
+      "summary": "Enterprise Live Migrations (ELM) migrates repositories from GitHub Enterprise Server to GitHub Enterprise Cloud with data residency without extended code freezes, in public preview. It continuously syncs source to target so developers keep working, and the cutover only drains in-flight changes. It complements GitHub Enterprise Importer, and both can run concurrently.",
+      "stage": "preview",
+      "admin": "ELM runs as a service on the GHES appliance and is driven by the elm CLI, delivered in GHES 3.17.14+, 3.18.8+, 3.19.5+ and 3.20.2+.",
+      "links": [
+        { "label": "Live Migrations documentation", "url": "https://docs.github.com/migrations/elm/about-live-migrations" }
+      ]
+    },
+    {
+      "id": "cl-95734",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Release",
+      "summary": "Code-to-cloud risk visibility with Microsoft Defender for Cloud is generally available. Defender maps container images deployed in cloud environments back to the GitHub repositories that built them, using signals such as artifact attestations, and adds runtime context through the Deployment Record API, such as internet exposure. GitHub Advanced Security offers has:deployment and runtime-risk: filters for code scanning, Dependabot and security campaigns.",
+      "stage": "ga",
+      "links": [
+        { "label": "Defender for Cloud docs", "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/github-advanced-security-deploy" },
+        { "label": "Deployment Record API", "url": "https://docs.github.com/rest/orgs/artifact-metadata?apiVersion=2026-03-10#create-an-artifact-deployment-record" }
+      ]
+    },
+    {
+      "id": "cl-95753",
+      "tier": "notable",
+      "section": "security",
+      "area": "secrets",
+      "tag": "Release",
+      "summary": "Secret scanning in the GitHub MCP Server is generally available, so MCP-compatible agents and IDEs such as Copilot CLI and VS Code can scan code for exposed secrets before a commit or pull request. It has been in public preview since March 2026 and works for repositories with GitHub Secret Protection enabled. The scanning tools now honor existing push protection customization, so detections and bypass behavior stay consistent.",
+      "stage": "ga",
+      "ides": ["cli", "vscode"],
+      "links": [
+        { "label": "Setup options and configurations", "url": "https://docs.github.com/code-security/how-tos/use-ghas-with-ai-coding-agents/scan-for-secrets-with-github-mcp-server" }
+      ]
+    },
+    {
+      "id": "cl-96295",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Release",
+      "summary": "Staged publishing is generally available on npm: a package version is uploaded to a stage queue and becomes installable only after a maintainer approves it with a 2FA challenge, including for CI/CD and trusted publishing workflows. New --allow-file, --allow-remote and --allow-directory flags join --allow-git to restrict nonregistry install sources. Both are available in npm CLI 11.15.0 or newer, and --allow-git defaults to none in the next major version (v12).",
+      "stage": "ga",
+      "links": [
+        { "label": "Staged publishing docs", "url": "https://docs.npmjs.com/staged-publishing" }
+      ]
+    },
+    {
+      "id": "cl-96375",
+      "tier": "notable",
+      "section": "security",
+      "area": "admin",
+      "tag": "Release",
+      "summary": "Enterprise administrators and billing managers can set hard budget limits, expressed as a license count, for GitHub Advanced Security SKUs. Once the threshold is reached, additional license usage is blocked and GitHub Advanced Security is not enabled on new repositories until the budget is raised or licenses are freed. Email alerts at 75%, 90% and 100% remain active, and the budget floor defaults to at least the current billable license count.",
+      "admin": "Configure hard budgets in enterprise billing settings under Budgets & alerts; existing soft budgets can be migrated to the new license-based format through in-product flows.",
+      "links": [
+        { "label": "Preventing overspending", "url": "https://docs.github.com/billing/using-the-new-billing-platform/preventing-overspending" }
+      ]
+    },
+    {
+      "id": "cl-95799",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Deprecation",
+      "summary": "The synchronous dependency graph SBOM REST endpoint, /{owner}/{repo}/dependency-graph/sbom, is deprecated and slated for removal on November 13, 2026. The replacement is the asynchronous /{owner}/{repo}/dependency-graph/sbom/generate-report endpoint, which returns a URL to poll for completion, after which the computed SBOM is cached and available for download.",
+      "effective": "2026-11-13",
+      "links": [
+        { "label": "API documentation", "url": "https://docs.github.com/rest/dependency-graph/sboms" }
+      ]
+    },
+    {
+      "id": "cl-96247",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Deprecation",
+      "summary": "Dependabot stops supporting Python 3.9, which has reached end of life, on June 23, 2026. Projects that stay on Python 3.9 risk Dependabot not creating pull requests to update their dependencies. As of May 2026, the newest supported Python version is 3.14, so affected projects should move to a supported release.",
+      "effective": "2026-06-23"
+    },
+    {
+      "id": "bl-95662",
+      "tier": "notable",
+      "section": "events",
+      "area": "events",
+      "tag": "Announcement",
+      "summary": "GitHub hosts OpenClaw: After Hours at GitHub HQ in San Francisco on June 3, 2026, from 5:30 p.m. to 9 p.m., during Microsoft Build 2026. The evening includes a fireside conversation with OpenClaw creator Peter Steinberger, a panel with maintainers and ecosystem builders, lightning talks and a happy hour, with a livestream on twitch.tv/github. Spots are limited and registration does not guarantee attendance.",
+      "effective": "2026-06-03",
+      "links": [
+        { "label": "Registration page", "url": "https://luma.com/OpenClaw-GitHub?tk=vQX2NH" }
+      ]
+    },
+    {
+      "id": "next-posts-dsyme-impact-automated-repo-maintenance",
+      "tier": "notable",
+      "section": "research",
+      "area": "research",
+      "tag": "Research",
+      "title": "The impact of automated repository maintenance assistance",
+      "summary": "GitHub Next measured what happens when a proactive AI repository agent runs across 13 open source repositories: 578 issues closed, a median 8x increase in issue closure velocity and 10x in pull request merge velocity, turning largely dormant projects into actively maintained ones. GitHub Next identifies the rate at which human maintainers decide to act as the single most important factor.",
+      "links": [
+        { "label": "GitHub Next report", "url": "https://github.com/githubnext/repo-assist-impact/blob/main/report.md" }
+      ]
+    },
+    {
+      "id": "next-posts-integrity-filtering",
+      "tier": "notable",
+      "section": "research",
+      "area": "research",
+      "tag": "Research",
+      "summary": "GitHub Agentic Workflows add integrity filtering, which controls which objects an agent sees based on their authors' relationship to the repository and whether a maintainer has endorsed them. Content is ranked merged, approved, unapproved, none or blocked, and the min-integrity front matter setting sets the floor. It is enforced for the GitHub MCP server and GitHub CLI, and can only narrow access to GitHub data, never expand it."
+    }
+  ],
+  "overrides": {
+    "bl-95877": { "drop": true, "dropReason": "Duplicate of cl-95724 (same remote-control announcement); the blog post is linked from that item." },
+    "cl-95883": { "drop": true, "dropReason": "Early notice of the Grok Code Fast 1 deprecation, superseded by the completion record cl-96128." },
+    "cl-95725": { "drop": true, "dropReason": "Early notice of the rate_limit field removal, superseded by the completion record cl-96190." },
+    "vsc-1.119-06": { "drop": true, "dropReason": "Internal UI preparations for usage-based billing that are not yet visible to users; the billing change itself is covered by bl-95975." },
+    "vsc-1.120-03": { "drop": true, "dropReason": "Generic bring-your-own-key explainer that describes no specific new change." },
+    "vsc-1.121-05": { "drop": true, "dropReason": "Generic note about unspecified language model configuration improvements with no concrete change." },
+    "bl-96339": { "drop": true, "dropReason": "GitHub Shop merchandise post with no product or developer-practice content." },
+    "bl-95893": { "drop": true, "dropReason": "Listicle of roguelike open source games with no GitHub product or developer-practice content." },
+    "bl-96169": { "drop": true, "dropReason": "Listicle of open source game-development projects with no GitHub product or developer-practice content." },
+    "bl-95797": { "section": "research", "area": "research", "tag": "Research" },
+    "cl-96308": { "section": "platform", "area": "collaboration", "tag": "Release" },
+    "cl-96327": { "section": "platform", "area": "apis", "tag": "Release" },
+    "vs-256267": { "section": "events", "area": "events", "tag": "Announcement" },
+    "cl-96145": { "area": "extensibility" },
+    "cl-96160": { "area": "chat-ide" }
+  }
+}

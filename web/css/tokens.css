@@ -1,0 +1,175 @@
+/* GitHub Technical Update Briefing · design tokens
+   Brand basis: GitHub 2026 identity — Mona Sans, neutral-first palette (about 80% black/white, 10% neutral), GitHub Green as the
+   primary accent, Copilot purple and security blue as secondary accents. No letter-spacing anywhere (brand rule). */
+
+@font-face {
+  font-family: "Mona Sans";
+  src: url("../fonts/MonaSansVF.woff2") format("woff2");
+  font-weight: 200 900;
+  /* Axes: wght 200-900, opsz 0-100 (20 = text cut, 72 = Display cut). There is no width axis. */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mona Sans Mono";
+  src: url("../fonts/MonaSansMonoVF.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-sans: "Mona Sans", ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Mona Sans Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  /* GitHub 2026 brand ramps */
+  --gh-green: #0FBF3E;
+  --gh-green-bright: #5FED83;
+  --gh-green-mint: #8CF2A6;
+  --gh-green-pale: #BFFFD1;
+  --gh-green-ink: #08872B;
+  --gh-green-deep: #0E6836;
+  --gh-green-night: #0A241B;
+  --gh-purple-pale: #C898FD;
+  --gh-purple-light: #B870FF;
+  --gh-purple: #8534F3;
+  --gh-purple-deep: #43179E;
+  --gh-purple-night: #26115F;
+  --gh-purple-ink: #160048;
+  --gh-blue-pale: #9EECFF;
+  --gh-blue-light: #3094FF;
+  --gh-blue: #1A61FE;
+  --gh-blue-deep: #0527FC;
+  --gh-blue-night: #001C4D;
+  --gh-orange-pale: #F4A876;
+  --gh-orange: #F08A3A;
+  --gh-orange-red: #FE4C25;
+  --gh-orange-ink: #C53211;
+  --gh-orange-night: #801E0F;
+  --gh-black: #101411;
+  --gh-ink-2: #232925;
+  --gh-gray: #909692;
+  --gh-gray-light: #B6BFB8;
+  --gh-gray-rule: #E4EBE6;
+  --gh-gray-paper: #F2F5F3;
+
+  /* Layout */
+  --max: 1280px;
+  --pad: 24px;
+  --rail: 320px;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Light theme (default). `.theme-light` / `.theme-dark` force a palette on a subtree: slides use them so a deck looks the same
+   in either app theme. */
+:root,
+.theme-light {
+  --bg: #FFFFFF;
+  --surface: #FFFFFF;
+  --panel: var(--gh-gray-paper);
+  --panel-strong: var(--gh-gray-rule);
+  --border: var(--gh-gray-rule);
+  --border-strong: var(--gh-gray-light);
+  --fg: var(--gh-black);
+  --fg-muted: #4D5550;
+  --fg-subtle: #646C67;
+  --accent: var(--gh-green);
+  --accent-hover: var(--gh-green-bright);
+  --accent-fg: var(--gh-black);
+  --accent-ink: var(--gh-green-deep);
+  --accent-soft: var(--gh-green-pale);
+  --focus: var(--gh-blue);
+  --shadow: 0 1px 2px rgba(16, 20, 17, 0.06), 0 8px 24px rgba(16, 20, 17, 0.08);
+  --scrim: rgba(16, 20, 17, 0.5);
+
+  --sec-copilot: #8534F3;
+  --sec-vscode: #3094FF;
+  --sec-visualstudio: #43179E;
+  --sec-jetbrains-others: #F08A3A;
+  --sec-platform: #0FBF3E;
+  --sec-security: #0527FC;
+  --sec-events: #909692;
+  --sec-research: #08872B;
+  --sec-copilot-ink: #8534F3;
+  --sec-vscode-ink: #1A61FE;
+  --sec-visualstudio-ink: #43179E;
+  --sec-jetbrains-others-ink: #C53211;
+  --sec-platform-ink: #0E6836;
+  --sec-security-ink: #0527FC;
+  --sec-events-ink: #4D5550;
+  --sec-research-ink: #0E6836;
+
+  --tag-release-bg: #BFFFD1;
+  --tag-release-fg: #0A241B;
+  --tag-improvement-bg: #E4EBE6;
+  --tag-improvement-fg: #232925;
+  --tag-deprecation-bg: #FBE3D2;
+  --tag-deprecation-fg: #801E0F;
+  --tag-announcement-bg: #D7F5FF;
+  --tag-announcement-fg: #001C4D;
+  --tag-research-bg: #EBDCFF;
+  --tag-research-fg: #26115F;
+
+  --hero-bg: var(--gh-gray-paper);
+  --hero-grad: radial-gradient(900px 260px at 12% -40%, rgba(15, 191, 62, 0.16), transparent 70%), radial-gradient(700px 260px at 100% 0%, rgba(133, 52, 243, 0.10), transparent 70%);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"],
+.theme-dark {
+  --bg: var(--gh-black);
+  --surface: #161B18;
+  --panel: #1B211E;
+  --panel-strong: #232925;
+  --border: #2A312D;
+  --border-strong: #4A524D;
+  --fg: var(--gh-gray-paper);
+  --fg-muted: var(--gh-gray-light);
+  --fg-subtle: #A0A8A2;
+  --accent: var(--gh-green);
+  --accent-hover: var(--gh-green-bright);
+  --accent-fg: var(--gh-black);
+  --accent-ink: var(--gh-green-bright);
+  --accent-soft: var(--gh-green-night);
+  --focus: var(--gh-blue-pale);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.45);
+  --scrim: rgba(0, 0, 0, 0.65);
+
+  --sec-copilot: #B870FF;
+  --sec-vscode: #3094FF;
+  --sec-visualstudio: #8534F3;
+  --sec-jetbrains-others: #F08A3A;
+  --sec-platform: #0FBF3E;
+  --sec-security: #9EECFF;
+  --sec-events: #909692;
+  --sec-research: #8CF2A6;
+  --sec-copilot-ink: #C898FD;
+  --sec-vscode-ink: #6FB1FF;
+  --sec-visualstudio-ink: #C898FD;
+  --sec-jetbrains-others-ink: #F4A876;
+  --sec-platform-ink: #5FED83;
+  --sec-security-ink: #9EECFF;
+  --sec-events-ink: #B6BFB8;
+  --sec-research-ink: #8CF2A6;
+
+  --tag-release-bg: #0A241B;
+  --tag-release-fg: #8CF2A6;
+  --tag-improvement-bg: #232925;
+  --tag-improvement-fg: #E4EBE6;
+  --tag-deprecation-bg: #3A1710;
+  --tag-deprecation-fg: #F4A876;
+  --tag-announcement-bg: #0B2547;
+  --tag-announcement-fg: #9EECFF;
+  --tag-research-bg: #26115F;
+  --tag-research-fg: #C898FD;
+
+  --hero-bg: #141916;
+  --hero-grad: radial-gradient(900px 260px at 12% -40%, rgba(15, 191, 62, 0.22), transparent 70%), radial-gradient(700px 260px at 100% 0%, rgba(133, 52, 243, 0.22), transparent 70%);
+  color-scheme: dark;
+}

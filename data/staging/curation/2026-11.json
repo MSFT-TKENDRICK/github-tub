@@ -1,0 +1,195 @@
+{
+  "month": "2026-11",
+  "items": [
+    {
+      "id": "cl-99939",
+      "tier": "headline",
+      "section": "platform",
+      "area": "actions",
+      "tag": "Deprecation",
+      "title": "GitHub Actions blocks pull_request_target by default in public repositories from December 2",
+      "summary": "Starting December 2, 2026, GitHub Actions will block pull_request_target events by default in all public repositories unless an applicable Actions event policy explicitly allows them; enforcement was previously scheduled for November 2, 2026. Two brownouts on November 9 and November 16, 2026, from 16:00 to 18:00 UTC, temporarily enforce the rule, so blocked workflows fail with an error annotation instead of running. Private and internal repositories are not affected.",
+      "why": "The default rule helps reduce the risk of untrusted fork code running with access to base-repository secrets, and workflows that depend on the trigger need an explicit policy to keep running.",
+      "effective": "2026-12-02",
+      "admin": "Applies to public repositories on GitHub Free, GitHub Team and GitHub Enterprise Cloud, not GitHub Enterprise Server. Before November 9, use Insights to see which runs would be blocked; keep the block or allow pull_request_target in an Actions event policy.",
+      "links": [
+        { "label": "Governing execution of GitHub Actions workflows", "url": "https://docs.github.com/actions/how-tos/administer/control-workflow-execution" }
+      ]
+    },
+    {
+      "id": "cl-99973",
+      "tier": "headline",
+      "section": "jetbrains-others",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "JetBrains Air adds GitHub Copilot as a selectable agent for delegating coding tasks, guiding execution and reviewing changes alongside code, using an existing Copilot subscription. The integration uses the Agent Client Protocol (ACP) and supports tasks in a JetBrains IDE or in isolated cloud environments through Air Teams, where tasks use the Copilot plan rather than JetBrains AI credits. Copilot in Air can be used alongside the GitHub Copilot plugin.",
+      "why": "Teams that use JetBrains Air can run Copilot agent tasks on their existing Copilot subscription, and cloud tasks do not draw on JetBrains AI credits.",
+      "ides": ["jetbrains"],
+      "admin": "Cloud tasks require an Air Teams-enabled business organization, a JetBrains account, a Copilot subscription and Copilot enabled by an Air administrator, who can disable it by policy but cannot set Copilot spending limits in Air.",
+      "links": [
+        { "label": "GitHub Copilot in JetBrains Air: Plugin vs. Agent", "url": "https://aka.ms/ghcp/jetbrains/air" },
+        { "label": "How Cloud-Based Agent Sandboxing Works in Air", "url": "https://blog.jetbrains.com/air/2026/10/cloud-agent-sandboxing/" }
+      ],
+      "image": "https://github.com/user-attachments/assets/6e90fb87-b9d3-451c-bccc-63357929db71"
+    },
+    {
+      "id": "cl-99941",
+      "tier": "notable",
+      "section": "security",
+      "area": "code-security",
+      "tag": "Improvement",
+      "summary": "The GitHub code security risk assessment and secret risk assessment now show whether findings are in protected or unprotected repositories, which helps identify where to extend security coverage. The improvement is available in GitHub Enterprise Cloud and GitHub Team, and it will be available for the secret risk assessment in GitHub Enterprise Server 3.24.",
+      "admin": "Organization admins and security managers start an assessment from Assessments under the organization's Security tab.",
+      "links": [
+        { "label": "Code security risk assessment", "url": "https://docs.github.com/code-security/concepts/code-scanning/risk-assessment" },
+        { "label": "Secret security with GitHub (secret risk assessment)", "url": "https://docs.github.com/code-security/concepts/secret-security/secret-security-with-github" }
+      ]
+    },
+    {
+      "id": "cl-99964",
+      "tier": "notable",
+      "section": "security",
+      "area": "secrets",
+      "tag": "Improvement",
+      "summary": "GitHub Desktop 3.6.10 or later lets eligible accounts use short-lived, automatically refreshing authentication tokens when they sign in. Short-lived tokens reduce how long a leaked token can be used, and Desktop refreshes them automatically for GitHub API requests and Git operations. The rollout is gradual on github.com, including GitHub Enterprise Cloud, so it is not yet available to everyone.",
+      "ides": ["desktop"],
+      "admin": "GitHub Enterprise Server is not included in this token rollout. Existing sessions stay signed in and existing tokens are not migrated automatically; short-lived tokens are issued at sign-in as the rollout reaches an installation.",
+      "links": [
+        { "label": "Authenticating to GitHub in GitHub Desktop", "url": "https://docs.github.com/desktop/installing-and-authenticating-to-github-desktop/authenticating-to-github-in-github-desktop" }
+      ]
+    },
+    {
+      "id": "cl-99975",
+      "tier": "notable",
+      "section": "platform",
+      "area": "admin",
+      "tag": "Release",
+      "summary": "A new GitHub REST API endpoint returns the cost center that a user, organization, repository or enterprise team belongs to, which previously required listing every cost center and scanning its resources. The request takes the resource type and name, and the response includes the cost center ID and name; the memberships array is empty if the resource does not belong to a cost center.",
+      "admin": "Enterprise owners, billing managers and GitHub Apps with read access to enterprise billing can look up any enterprise resource. Organization owners and users with custom roles that include that access see only resources and cost centers they can already see.",
+      "links": [
+        { "label": "REST API: get cost center membership for a resource", "url": "https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#get-cost-center-membership-for-a-resource" }
+      ]
+    },
+    {
+      "id": "cl-99979",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Improvement",
+      "stage": "ga",
+      "summary": "Dependabot version updates now support Agent Package Manager (APM), so AI agent skills, prompts and instructions can be kept up to date. Dependabot opens pull requests to update supported git dependencies declared in apm.yml and regenerates apm.lock.yaml when it is present. APM support covers version updates, not security updates, and is generally available on github.com for all GitHub plans.",
+      "admin": "Add an apm entry to .github/dependabot.yml, specify the directory that contains apm.yml and choose an update schedule. APM support will be available in GitHub Enterprise Server 3.24.",
+      "links": [
+        { "label": "Configuring Dependabot version updates", "url": "https://docs.github.com/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/configure-version-updates" },
+        { "label": "Supported APM dependencies and update behavior", "url": "https://docs.github.com/code-security/reference/supply-chain-security/supported-ecosystems-and-repositories#apm" }
+      ]
+    },
+    {
+      "id": "cl-99985",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Improvement",
+      "summary": "The Copilot usage metrics API now reports bring your own key (BYOK) usage separately from Copilot-hosted model usage. Reports cover local BYOK, which developers configure in their client, and enterprise custom models, which admins configure in GitHub settings, at the user and aggregate level in enterprise and organization reports. Existing totals are unchanged, and local BYOK fields undercount when telemetry is disabled.",
+      "admin": "Available to enterprise owners, enterprise billing managers, organization owners and anyone with a custom role that grants the View Copilot Metrics permission. The Copilot usage metrics policy must be enabled.",
+      "links": [
+        { "label": "REST API endpoints for Copilot usage metrics", "url": "https://docs.github.com/rest/copilot/copilot-usage-metrics" }
+      ]
+    },
+    {
+      "id": "cl-99988",
+      "tier": "notable",
+      "section": "jetbrains-others",
+      "area": "chat-ide",
+      "tag": "Release",
+      "stage": "preview",
+      "summary": "GitHub Copilot is now available in Xcode's built-in coding assistant, bringing Copilot into the native Xcode workflow. The integration is in public preview, starting with Xcode 27.3 beta, and the existing GitHub Copilot for Xcode extension remains a separate option. All Copilot plans are supported.",
+      "ides": ["xcode"],
+      "admin": "Requires Xcode 27.3 beta and a Mac running macOS Tahoe 26.6 or later; set up Copilot under Xcode > Settings > Intelligence.",
+      "links": [
+        { "label": "Setting up coding intelligence (Apple)", "url": "https://developer.apple.com/documentation/xcode/setting-up-coding-intelligence" },
+        { "label": "Xcode 27.3 beta release notes (Apple)", "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_3-release-notes" }
+      ]
+    },
+    {
+      "id": "vsc-1.145-04",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Release",
+      "stage": "preview",
+      "summary": "Nested sessions in VS Code can now use a different agent harness than their parent session, so related chats stay grouped in one main session. For example, Claude can review a plan written by a Copilot chat, or Codex can take the same task, side by side. Each chat keeps its own model, agent and permission levels, based on its harness.",
+      "ides": ["vscode"],
+      "admin": "Enable the chat.agentHost.multipleChatProviders.enabled setting to get started.",
+      "links": [
+        { "label": "Manage agent sessions: run multiple chats in a session", "url": "https://code.visualstudio.com/docs/agents/run/sessions/manage-sessions#_run-multiple-chats-in-a-session" }
+      ]
+    },
+    {
+      "id": "vsc-1.145-05",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Improvement",
+      "summary": "Local automations in VS Code, which schedule and run agent tasks automatically, can now use five-field cron expressions when the preset schedules are not precise enough. They can also use a custom agent from the selected workspace, and disabled automations collapse into their own section so run history and active automations stay visible. Cron schedules are not available for cloud automations.",
+      "ides": ["vscode"],
+      "links": [
+        { "label": "Create and manage agent automations", "url": "https://code.visualstudio.com/docs/agents/run/automations" }
+      ]
+    },
+    {
+      "id": "vsc-1.145-07",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Improvement",
+      "title": "Copilot harness stays the default in VS Code, with a Local-to-Copilot transition guide",
+      "summary": "The Copilot harness, built on the Copilot SDK, continues to be the default for new sessions in VS Code. Its sessions can keep running in the background and can be opened from both the editor window and the Agents window, and they run through the Agent Host. A new Local-to-Copilot harness transition guide covers customization compatibility, session continuity, and organization rollout and verification.",
+      "ides": ["vscode"],
+      "links": [
+        { "label": "Move from the Local to the Copilot harness", "url": "https://code.visualstudio.com/docs/agents/run/move-to-copilot" },
+        { "label": "Choose an agent harness", "url": "https://code.visualstudio.com/docs/agents/run/agent-harnesses" }
+      ]
+    },
+    {
+      "id": "vsc-1.145-19",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "admin",
+      "tag": "Improvement",
+      "summary": "The enterprise-managed allowedMcpServers list in VS Code now takes precedence over registry-only MCP access, so an organization can approve servers without publishing them to its registry. A server that matches the list can run even if it is not in the registry, and a registry server that does not match is blocked. The change applies to MCP servers that VS Code starts, not to servers managed by the Agent Host.",
+      "ides": ["vscode"],
+      "admin": "An empty list blocks all servers, and an absent list keeps the registry restriction. User and workspace allowlists cannot add servers to the enterprise list, and deniedMcpServers and turning off MCP still take precedence.",
+      "links": [
+        { "label": "Getting started with enterprise-managed settings", "url": "https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/use-managed-settings/get-started" }
+      ]
+    },
+    {
+      "id": "vsc-1.145-21",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Deprecation",
+      "title": "VS Code removes the Install Extension and Run VS Code Command tools from Local agent sessions",
+      "summary": "The Install Extension (#installExtension) and Run VS Code Command (#runCommand) agent tools are no longer available in Local agent sessions. When a workspace is created from chat, the agent now adds the extensions the project needs to .vscode/extensions.json for review and installation from the Extensions view, and built-in workflows that relied on the Run VS Code Command tool work without it.",
+      "ides": ["vscode"],
+      "admin": "If custom agents or prompt files reference #installExtension, remove that reference."
+    },
+    {
+      "id": "next-posts-enclaves",
+      "tier": "notable",
+      "section": "research",
+      "area": "research",
+      "tag": "Research",
+      "stage": "experimental",
+      "summary": "Enclaves are an experimental security primitive for cross-repository GitHub Agentic Workflows, aimed at preventing private-to-public leaks like GitLost. A primary agent launches a single-use sandbox for work in another repository, and a trusted broker returns only schema-validated answers within a per-repository, per-run information budget measured in bits. The guarantee is a bound on communication, not a judgment that every possible question or answer is safe."
+    }
+  ],
+  "overrides": {
+    "vsc-1.145-01": { "drop": true, "dropReason": "VS Code release-note boilerplate (release highlights); the individual items are covered separately" },
+    "vsc-1.145-15": { "drop": true, "dropReason": "duplicate of vsc-1.145-19, the full Enterprise-section entry on managed MCP allowlist precedence" },
+    "vsc-1.145-20": { "drop": true, "dropReason": "Fun! section (Blobby jump game), no customer-relevant product change" },
+    "bl-99918": { "drop": true, "dropReason": "annual community game-jam announcement with no product or developer-practice content" },
+    "vs-257627": { "drop": true, "dropReason": "promotional post about a third-party conference discount for Visual Studio subscribers; no product change" }
+  }
+}

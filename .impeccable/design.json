@@ -1,0 +1,516 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-05T23:48:00.083Z",
+  "title": "Design System: GitHub Technical Update Briefing",
+  "extensions": {
+    "colorMeta": {
+      "brand-black": {
+        "role": "neutral",
+        "displayName": "Brand Black",
+        "canonical": "#101411",
+        "tonalRamp": [
+          "#101411",
+          "#161B18",
+          "#1B211E",
+          "#232925",
+          "#2A312D",
+          "#4A524D",
+          "#909692",
+          "#B6BFB8"
+        ]
+      },
+      "carbon-panel": {
+        "role": "neutral",
+        "displayName": "Carbon Panel",
+        "canonical": "#232925",
+        "tonalRamp": [
+          "oklch(15.0% 0.011 156.4)",
+          "oklch(26.0% 0.011 156.4)",
+          "oklch(37.0% 0.011 156.4)",
+          "oklch(48.0% 0.011 156.4)",
+          "oklch(59.0% 0.011 156.4)",
+          "oklch(70.0% 0.011 156.4)",
+          "oklch(82.0% 0.011 156.4)",
+          "oklch(95.0% 0.011 156.4)"
+        ]
+      },
+      "dark-surface": {
+        "role": "neutral",
+        "displayName": "Dark Surface",
+        "canonical": "#161B18",
+        "tonalRamp": [
+          "oklch(15.0% 0.010 159.2)",
+          "oklch(26.0% 0.010 159.2)",
+          "oklch(37.0% 0.010 159.2)",
+          "oklch(48.0% 0.010 159.2)",
+          "oklch(59.0% 0.010 159.2)",
+          "oklch(70.0% 0.010 159.2)",
+          "oklch(82.0% 0.010 159.2)",
+          "oklch(95.0% 0.010 159.2)"
+        ]
+      },
+      "dark-border": {
+        "role": "neutral",
+        "displayName": "Dark Border",
+        "canonical": "#2A312D",
+        "tonalRamp": [
+          "oklch(15.0% 0.012 160.6)",
+          "oklch(26.0% 0.012 160.6)",
+          "oklch(37.0% 0.012 160.6)",
+          "oklch(48.0% 0.012 160.6)",
+          "oklch(59.0% 0.012 160.6)",
+          "oklch(70.0% 0.012 160.6)",
+          "oklch(82.0% 0.012 160.6)",
+          "oklch(95.0% 0.012 160.6)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#F2F5F3",
+        "tonalRamp": [
+          "#4D5550",
+          "#646C67",
+          "#909692",
+          "#B6BFB8",
+          "#D0D7D2",
+          "#E4EBE6",
+          "#F2F5F3",
+          "#FFFFFF"
+        ]
+      },
+      "rule-gray": {
+        "role": "neutral",
+        "displayName": "Rule Gray",
+        "canonical": "#E4EBE6",
+        "tonalRamp": [
+          "oklch(15.0% 0.010 155.1)",
+          "oklch(26.0% 0.010 155.1)",
+          "oklch(37.0% 0.010 155.1)",
+          "oklch(48.0% 0.010 155.1)",
+          "oklch(59.0% 0.010 155.1)",
+          "oklch(70.0% 0.010 155.1)",
+          "oklch(82.0% 0.010 155.1)",
+          "oklch(95.0% 0.010 155.1)"
+        ]
+      },
+      "steel-gray": {
+        "role": "neutral",
+        "displayName": "Steel Gray",
+        "canonical": "#B6BFB8",
+        "tonalRamp": [
+          "oklch(15.0% 0.014 152.5)",
+          "oklch(26.0% 0.014 152.5)",
+          "oklch(37.0% 0.014 152.5)",
+          "oklch(48.0% 0.014 152.5)",
+          "oklch(59.0% 0.014 152.5)",
+          "oklch(70.0% 0.014 152.5)",
+          "oklch(82.0% 0.014 152.5)",
+          "oklch(95.0% 0.014 152.5)"
+        ]
+      },
+      "mid-gray": {
+        "role": "neutral",
+        "displayName": "Mid Gray",
+        "canonical": "#909692",
+        "tonalRamp": [
+          "oklch(15.0% 0.009 157.0)",
+          "oklch(26.0% 0.009 157.0)",
+          "oklch(37.0% 0.009 157.0)",
+          "oklch(48.0% 0.009 157.0)",
+          "oklch(59.0% 0.009 157.0)",
+          "oklch(70.0% 0.009 157.0)",
+          "oklch(82.0% 0.009 157.0)",
+          "oklch(95.0% 0.009 157.0)"
+        ]
+      },
+      "muted-ink": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#4D5550",
+        "tonalRamp": [
+          "oklch(15.0% 0.013 158.4)",
+          "oklch(26.0% 0.013 158.4)",
+          "oklch(37.0% 0.013 158.4)",
+          "oklch(48.0% 0.013 158.4)",
+          "oklch(59.0% 0.013 158.4)",
+          "oklch(70.0% 0.013 158.4)",
+          "oklch(82.0% 0.013 158.4)",
+          "oklch(95.0% 0.013 158.4)"
+        ]
+      },
+      "github-green": {
+        "role": "primary",
+        "displayName": "GitHub Green",
+        "canonical": "#0FBF3E",
+        "tonalRamp": [
+          "#0A241B",
+          "#0E6836",
+          "#08872B",
+          "#0FBF3E",
+          "#5FED83",
+          "#8CF2A6",
+          "#BFFFD1",
+          "#E9FFEF"
+        ]
+      },
+      "signal-green": {
+        "role": "primary",
+        "displayName": "Signal Green",
+        "canonical": "#5FED83",
+        "tonalRamp": [
+          "oklch(15.0% 0.113 148.9)",
+          "oklch(26.0% 0.140 148.9)",
+          "oklch(37.0% 0.166 148.9)",
+          "oklch(48.0% 0.191 148.9)",
+          "oklch(59.0% 0.191 148.9)",
+          "oklch(70.0% 0.191 148.9)",
+          "oklch(82.0% 0.168 148.9)",
+          "oklch(95.0% 0.137 148.9)"
+        ]
+      },
+      "mint": {
+        "role": "primary",
+        "displayName": "Mint",
+        "canonical": "#8CF2A6",
+        "tonalRamp": [
+          "oklch(15.0% 0.092 150.8)",
+          "oklch(26.0% 0.112 150.8)",
+          "oklch(37.0% 0.132 150.8)",
+          "oklch(48.0% 0.143 150.8)",
+          "oklch(59.0% 0.143 150.8)",
+          "oklch(70.0% 0.143 150.8)",
+          "oklch(82.0% 0.133 150.8)",
+          "oklch(95.0% 0.110 150.8)"
+        ]
+      },
+      "forest-ink": {
+        "role": "primary",
+        "displayName": "Forest Ink",
+        "canonical": "#0E6836",
+        "tonalRamp": [
+          "oklch(15.0% 0.079 152.4)",
+          "oklch(26.0% 0.095 152.4)",
+          "oklch(37.0% 0.110 152.4)",
+          "oklch(48.0% 0.113 152.4)",
+          "oklch(59.0% 0.113 152.4)",
+          "oklch(70.0% 0.113 152.4)",
+          "oklch(82.0% 0.112 152.4)",
+          "oklch(95.0% 0.093 152.4)"
+        ]
+      },
+      "copilot-violet": {
+        "role": "secondary",
+        "displayName": "Copilot Violet",
+        "canonical": "#8534F3",
+        "tonalRamp": [
+          "#160048",
+          "#26115F",
+          "#43179E",
+          "#8534F3",
+          "#B870FF",
+          "#C898FD",
+          "#E3CCFF",
+          "#F4ECFF"
+        ]
+      },
+      "copilot-lilac": {
+        "role": "secondary",
+        "displayName": "Copilot Lilac",
+        "canonical": "#B870FF",
+        "tonalRamp": [
+          "oklch(15.0% 0.121 304.7)",
+          "oklch(26.0% 0.150 304.7)",
+          "oklch(37.0% 0.178 304.7)",
+          "oklch(48.0% 0.207 304.7)",
+          "oklch(59.0% 0.208 304.7)",
+          "oklch(70.0% 0.208 304.7)",
+          "oklch(82.0% 0.181 304.7)",
+          "oklch(95.0% 0.147 304.7)"
+        ]
+      },
+      "code-blue": {
+        "role": "secondary",
+        "displayName": "Code Blue",
+        "canonical": "#3094FF",
+        "tonalRamp": [
+          "#001C4D",
+          "#0527FC",
+          "#1A61FE",
+          "#3094FF",
+          "#6FB1FF",
+          "#9EECFF",
+          "#CFF5FF",
+          "#EEFBFF"
+        ]
+      },
+      "security-cyan": {
+        "role": "secondary",
+        "displayName": "Security Cyan",
+        "canonical": "#9EECFF",
+        "tonalRamp": [
+          "oklch(15.0% 0.065 214.7)",
+          "oklch(26.0% 0.076 214.7)",
+          "oklch(37.0% 0.081 214.7)",
+          "oklch(48.0% 0.081 214.7)",
+          "oklch(59.0% 0.081 214.7)",
+          "oklch(70.0% 0.081 214.7)",
+          "oklch(82.0% 0.081 214.7)",
+          "oklch(95.0% 0.075 214.7)"
+        ]
+      },
+      "security-cobalt": {
+        "role": "secondary",
+        "displayName": "Security Cobalt",
+        "canonical": "#0527FC",
+        "tonalRamp": [
+          "oklch(15.0% 0.159 264.5)",
+          "oklch(26.0% 0.200 264.5)",
+          "oklch(37.0% 0.241 264.5)",
+          "oklch(48.0% 0.281 264.5)",
+          "oklch(59.0% 0.296 264.5)",
+          "oklch(70.0% 0.289 264.5)",
+          "oklch(82.0% 0.244 264.5)",
+          "oklch(95.0% 0.196 264.5)"
+        ]
+      },
+      "ember-orange": {
+        "role": "secondary",
+        "displayName": "Ember Orange",
+        "canonical": "#F08A3A",
+        "tonalRamp": [
+          "#801E0F",
+          "#C53211",
+          "#FE4C25",
+          "#F08A3A",
+          "#F4A876",
+          "#F8C7A4",
+          "#FBE3D2",
+          "#FFF4EC"
+        ]
+      },
+      "focus-blue": {
+        "role": "secondary",
+        "displayName": "Focus Blue",
+        "canonical": "#1A61FE",
+        "tonalRamp": [
+          "oklch(15.0% 0.136 262.9)",
+          "oklch(26.0% 0.170 262.9)",
+          "oklch(37.0% 0.203 262.9)",
+          "oklch(48.0% 0.236 262.9)",
+          "oklch(59.0% 0.243 262.9)",
+          "oklch(70.0% 0.242 262.9)",
+          "oklch(82.0% 0.206 262.9)",
+          "oklch(95.0% 0.167 262.9)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Cover title only (slide pixels)."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Slide titles and chapter dividers, Display optical size."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Highlight card and update headlines."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Page prose and captions; slides use 18–21px."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, pills, tags, chips and nav items."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Counts, dates, KPIs and slide numbers with tabular figures."
+      }
+    },
+    "shadows": [
+      {
+        "name": "popover-dark",
+        "value": "0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.45)",
+        "purpose": "Edition picker, period picker and export menu on dark."
+      },
+      {
+        "name": "popover-light",
+        "value": "0 1px 2px rgba(16,20,17,0.06), 0 8px 24px rgba(16,20,17,0.08)",
+        "purpose": "The same popovers on light."
+      },
+      {
+        "name": "section-rule",
+        "value": "inset 0 4px 0 var(--c)",
+        "purpose": "Section-colored top edge of highlight cards."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Every entrance, build and indicator move."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Elements already on screen that move to a new place."
+      },
+      {
+        "name": "press",
+        "value": "160ms",
+        "purpose": "Button :active scale(0.97)."
+      },
+      {
+        "name": "indicator",
+        "value": "240ms",
+        "purpose": "Nav indicator and segmented thumb slides."
+      },
+      {
+        "name": "build",
+        "value": "480ms, 70–90ms stagger",
+        "purpose": "Slide content builds: title, body, detail."
+      },
+      {
+        "name": "slide-enter",
+        "value": "420ms, 24px directional offset",
+        "purpose": "Present-mode slide change."
+      },
+      {
+        "name": "slide-exit",
+        "value": "200ms",
+        "purpose": "Outgoing slide in Present mode."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "drawer",
+        "value": "900px"
+      },
+      {
+        "name": "compact-header",
+        "value": "760px"
+      },
+      {
+        "name": "max",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one filled action per view, used for Present.",
+      "html": "<button class=\"ds-btn-primary\">Present</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border:1px solid #0FBF3E;border-radius:6px;background:#0FBF3E;color:#101411;font:600 14px/1 \"Mona Sans\",system-ui,sans-serif;cursor:pointer;transition:background .15s cubic-bezier(.23,1,.32,1),transform .16s cubic-bezier(.23,1,.32,1)}@media (hover:hover) and (pointer:fine){.ds-btn-primary:hover{background:#5FED83;border-color:#5FED83}}.ds-btn-primary:active{transform:scale(.97)}.ds-btn-primary:focus-visible{outline:2px solid #9EECFF;outline-offset:2px}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Toolbar actions such as Export and the period stepper.",
+      "html": "<button class=\"ds-btn\">Export</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border:1px solid #4A524D;border-radius:6px;background:#161B18;color:#F2F5F3;font:600 14px/1 \"Mona Sans\",system-ui,sans-serif;cursor:pointer;transition:background .15s cubic-bezier(.23,1,.32,1),transform .16s cubic-bezier(.23,1,.32,1)}@media (hover:hover) and (pointer:fine){.ds-btn:hover{background:#1B211E;border-color:#A0A8A2}}.ds-btn:active{transform:scale(.97)}.ds-btn:focus-visible{outline:2px solid #9EECFF;outline-offset:2px}"
+    },
+    {
+      "name": "View Switcher",
+      "kind": "custom",
+      "refersTo": "segmented-selected",
+      "description": "Week, Month and Year zoom levels; the green thumb slides to the chosen scale.",
+      "html": "<div class=\"ds-seg\" role=\"tablist\"><button role=\"tab\" aria-selected=\"true\">Week</button><button role=\"tab\">Month</button><button role=\"tab\">Year</button></div>",
+      "css": ".ds-seg{display:inline-flex;gap:2px;padding:3px;border:1px solid #4A524D;border-radius:6px;background:#1B211E;font:600 14px/1 \"Mona Sans\",system-ui,sans-serif}.ds-seg button{height:28px;padding:0 14px;border:0;border-radius:4px;background:transparent;color:#B6BFB8;font:inherit;cursor:pointer}.ds-seg button:hover{color:#F2F5F3}.ds-seg button[aria-selected=\"true\"]{background:#0FBF3E;color:#101411}.ds-seg button:focus-visible{outline:2px solid #9EECFF;outline-offset:2px}"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Section filters with a colored dot and a count.",
+      "html": "<button class=\"ds-chip\" aria-pressed=\"false\"><span class=\"ds-chip__dot\"></span>GitHub Copilot <span class=\"ds-chip__n\">42</span></button>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px;border:1px solid #4A524D;border-radius:999px;background:#161B18;color:#F2F5F3;font:600 13px/1 \"Mona Sans\",system-ui,sans-serif;cursor:pointer;transition:background .15s cubic-bezier(.23,1,.32,1)}.ds-chip:hover{background:#1B211E}.ds-chip[aria-pressed=\"true\"]{background:#F2F5F3;color:#101411;border-color:#F2F5F3}.ds-chip__dot{width:10px;height:10px;border-radius:50%;background:#B870FF}.ds-chip__n{color:#B6BFB8;font-weight:500;font-variant-numeric:tabular-nums}.ds-chip:focus-visible{outline:2px solid #9EECFF;outline-offset:2px}"
+    },
+    {
+      "name": "Release Tag",
+      "kind": "chip",
+      "refersTo": "tag-release",
+      "description": "Change-type label on update slides; a label, not a control.",
+      "html": "<span class=\"ds-tag\">Release</span>",
+      "css": ".ds-tag{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;background:#0A241B;color:#8CF2A6;font:600 14px/1 \"Mona Sans\",system-ui,sans-serif}"
+    },
+    {
+      "name": "Highlight Card",
+      "kind": "card",
+      "refersTo": "slide-card",
+      "description": "Square slide card with a 4px section rule and a cited body.",
+      "html": "<article class=\"ds-card\"><h3>Copilot coding agent is generally available</h3><p>Assign an issue and review the pull request it opens.<sup><a href=\"#\">1</a></sup></p><small>github.blog · Oct 28</small></article>",
+      "css": ".ds-card{max-width:360px;padding:26px 28px 18px;background:#232925;border:1px solid #2A312D;border-radius:0;box-shadow:inset 0 4px 0 #B870FF;color:#F2F5F3;font-family:\"Mona Sans\",system-ui,sans-serif}.ds-card h3{margin:0 0 10px;font:600 20px/1.2 inherit}.ds-card p{margin:0 0 12px;font:400 15px/1.45 inherit;color:#E4EBE6}.ds-card sup a{color:#5FED83;font:600 10px/0 \"Mona Sans Mono\",monospace;text-decoration:none}.ds-card small{color:#B6BFB8;font-size:12px}"
+    },
+    {
+      "name": "Chapter Navigator",
+      "kind": "nav",
+      "refersTo": "nav-item-active",
+      "description": "Left-hand chapter list with a sliding active indicator and slide counts.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Chapters\"><a href=\"#\" aria-current=\"true\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z\"/></svg><span>Overview</span><b>4</b></a><a href=\"#\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M7.998 15.035c-4.562 0-7.873-2.914-7.998-3.749V9.338c.085-.628.677-1.686 1.588-2.065.013-.07.024-.143.036-.218.029-.183.06-.384.126-.612-.201-.508-.254-1.084-.254-1.656 0-.87.128-1.769.693-2.484.579-.733 1.494-1.124 2.724-1.261 1.206-.134 2.262.034 2.944.765.05.053.096.108.139.165.044-.057.094-.112.143-.165.682-.731 1.738-.899 2.944-.765 1.23.137 2.145.528 2.724 1.261.566.715.693 1.614.693 2.484 0 .572-.053 1.148-.254 1.656.066.228.098.429.126.612.012.076.024.148.037.218.924.385 1.522 1.471 1.591 2.095v1.872c0 .766-3.351 3.795-8.002 3.795Z\"/></svg><span>GitHub Copilot</span><b>12</b></a><a href=\"#\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z\"/></svg><span>GitHub platform</span><b>6</b></a></nav>",
+      "css": ".ds-nav{display:grid;gap:2px;width:232px;padding:8px;background:#101411;font:500 13.5px/1.2 \"Mona Sans\",system-ui,sans-serif}.ds-nav a{display:grid;grid-template-columns:16px 1fr auto;align-items:center;gap:10px;height:32px;padding:0 10px;border-radius:6px;color:#B6BFB8;text-decoration:none;transition:background .2s cubic-bezier(.23,1,.32,1),color .2s}.ds-nav a:hover{color:#F2F5F3}.ds-nav a[aria-current=\"true\"]{background:#232925;color:#F2F5F3}.ds-nav a:first-child svg{color:#5FED83}.ds-nav a:nth-child(2) svg{color:#B870FF}.ds-nav b{font:500 12px/1 \"Mona Sans Mono\",monospace;color:#909692}.ds-nav a:focus-visible{outline:2px solid #9EECFF;outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Briefing Room",
+    "overview": "This is a formal briefing a GitHub account team can put in front of a customer without editing. Every surface borrows from the GitHub Copilot Technical Update Briefing deck and the 2026 GitHub presentation template: near-black brand slides, a single GitHub Green accent, Mona Sans set large and without tracking, square cards, hairline rules, and the white Invertocat in a boxed footer. The web chrome around the deck is a quiet frame. It should never outshine the slides.\n\nDensity follows a presenter's needs. Slides are fixed 1280×720 canvases scaled to fit, so composition is deliberate and identical on screen, in PDF and in PowerPoint. Chapters group slides the way a presenter would talk through them: overview, then one chapter per product area, then events and close. Motion is a presenter's tool: content builds in the order a speaker would reveal it, then holds still.\n\nTrust is the product. Every sentence on a slide carries a superscript citation that links to the page it came from, and nothing is stated without a working source. Visual decisions that would weaken that, such as decorative imagery, unsourced numbers or invented charts, are out.",
+    "keyCharacteristics": [
+      "Dark brand slides (`#101411`), one green accent, and neutral surfaces for about 90% of every screen.",
+      "Mona Sans with the Display optical size (`opsz` 72) for headlines and no letter-spacing anywhere.",
+      "Square slide geometry, hairline borders and no drop shadows inside slides.",
+      "Section color is used only as a signal: icons, a 4px inset top rule or a pill outline, never as a fill behind text.",
+      "Superscript, linked citations on every claim."
+    ],
+    "rules": [
+      {
+        "name": "The One Voice Rule",
+        "body": "GitHub Green is the only accent that fills a control. Section colors may outline, rule or tint an icon, but never fill a button or sit behind body text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Brand Slide Rule",
+        "body": "Brand slides (cover, agenda, overview, highlights, dividers and closing) are always dark, whatever the app theme. The app theme changes only the frame around them.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Tracking Rule",
+        "body": "`letter-spacing` is never set, in keeping with the GitHub brand. Hierarchy comes from size, weight and optical size.",
+        "section": "typography"
+      },
+      {
+        "name": "The Numerals Rule",
+        "body": "Counts, dates, KPIs and slide numbers use Mona Sans Mono or `tabular-nums` so columns and counters don't jitter while they animate.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Slide Rule",
+        "body": "Nothing on a slide floats. If an element needs emphasis, give it size, weight or the green accent, never a shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep brand slides on Brand Black (#101411) with Paper text, in both app themes.",
+      "Do cite every sentence with a superscript link to the page it came from.",
+      "Do use the Display optical size (`\"opsz\" 72`) for slide titles of 56px and larger.",
+      "Do use Mona Sans Mono or `tabular-nums` for counts, dates and slide numbers.",
+      "Do animate only `transform` and `opacity`, with ease-out curves, and fall back to an opacity-only change under `prefers-reduced-motion`.",
+      "Do group slides into chapters that match the deck sections: Overview, product areas, Events, Close."
+    ],
+    "donts": [
+      "Don't set `letter-spacing` on any text.",
+      "Don't fill buttons, backgrounds or text blocks with section colors. Use them for icons, a 4px top rule or an outline.",
+      "Don't round slide cards or add drop shadows inside slides.",
+      "Don't use colored `border-left` stripes wider than 1px as a status marker.",
+      "Don't animate from `scale(0)` or use ease-in for entrances. Start at 0.96 or higher, or rise 8–16px.",
+      "Don't recolor or outline the Invertocat. It appears only in white on dark or black on light.",
+      "Don't show a statement, number or chart that has no working source link."
+    ]
+  }
+}

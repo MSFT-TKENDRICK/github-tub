@@ -1,0 +1,781 @@
+{
+ "source": "vscode-blog",
+ "fetchedAt": "2026-11-12T23:14:52.427Z",
+ "count": 19,
+ "since": "2026-11-05",
+ "until": "2026-11-12",
+ "items": [
+  {
+   "id": "vscb-docfind",
+   "source": "vscode-blog",
+   "date": "2026-01-15",
+   "title": "Building docfind: Fast Client-Side Search with Rust and WebAssembly",
+   "url": "https://code.visualstudio.com/blogs/2026/01/15/docfind",
+   "lede": "If you've visited the VS Code website recently, you might have noticed something new: a fast, responsive search experience that feels almost instant.",
+   "text": "On this page\n\nIf you've visited the VS Code website recently, you might have noticed something new: a fast, responsive search experience that feels almost instant.\n\nBehind that experience is docfind, a search engine we built that runs entirely in your browser using WebAssembly. In this post, I want to share the story of how docfind came to be: a journey that took me from a decade-old blog post about automata theory to patching WebAssembly binaries.\n\nThe problem\n\nI'm currently a Software Engineering Manager on the VS Code team, so these days I don't get much time to write code. When I do, it's rarely in unfamiliar territory. But some problems just nag at you until you do something about them.\n\nUntil recently, our website still had that basic search experience: you'd type a query, and it would redirect you to search results powered by a traditional search engine. Not quite what developers are used to today. I wanted those search results to appear instantly as you type, similar to many other websites out there. It should be something as snappy as VS Code's Quick Open (Ctrl+P).\n\nTogether with my colleague Nick Trogh, we researched the alternatives. The landscape looked something like this:\n\n- Algolia: State of the art search-as-a-service. But I wanted a pure client-side solution.\n\n- TypeSense: Powerful open-source search, but requires server-side code, just like Algolia. Plus, it'd be another service to maintain and monitor.\n\n- Lunr.js: Client-side search in JavaScript, which sounded promising. We tried it with our docs (~3 MB of markdown), but it produced index files around 10 MB. Too large.\n\n- Stork Search: WebAssembly-powered client-side search with a nice demo. But when we tested it, the indexes were still quite large, and the project appeared to be unmaintained.\n\nNone of these options hit the sweet spot: fast, client-side, compact, and easy to host and operate. I started to wonder if we could build something ourselves.\n\nThe inspiration\n\nThinking about client-side search reminded me of a blog post I'd read years ago. It was written by Andrew Gallant (burntsushi), the creator of ripgrep, and it's titled Index 1,600,000,000 Keys with Automata and Rust. Published nearly a decade ago, it explains how to use Finite State Transducers (FSTs) to index massive amounts of string data in a compact binary format that supports fast lookups, including regex and fuzzy matching.\n\nThe key insight is that FSTs can store sorted string keys in a state machine that's both memory-efficient and fast to query. Better yet, Andrew had published a Rust library called fst that implements exactly this.\n\nWhat if we could use FSTs to index keywords extracted from our documentation? The user types a query, we match it against keywords using the FST, and we get back a list of relevant documents, all in the browser, with no server round-trip.\n\nBut how could we get these document keywords? And wouldn't this just create a very large index file, given all the strings would need to be in memory? Could we use compression to create the smallest possible index? This led me to two more pieces of the puzzle:\n\n- RAKE (Rapid Automatic Keyword Extraction): An algorithm for extracting meaningful keywords and phrases from text. Feed it a document, and it returns keywords ranked by importance.\n\n- FSST (Fast Static Symbol Table): A compression algorithm optimized for short strings. Since we'd need to store document titles, categories, and snippets in memory, compression would help keep the index small.\n\nWith FST for fast keyword lookup, RAKE for keyword extraction, and FSST for string compression, I had the technical foundations. Now I just needed to build it in Rust, a language I'm not particularly experienced with, during the limited time I could carve out from my day job.\n\nThe solution\n\nI ended up creating a single CLI tool, docfind, meant to create an index file from our website documents whenever we build the website itself. Users of this CLI tool shouldn't need any external dependencies other than docfind itself in order to create index files. That index file ended up being a single WebAssembly module, easily served to visitors via HTTP.",
+   "links": [
+    {
+     "text": "VS Code website",
+     "href": "https://code.visualstudio.com/"
+    },
+    {
+     "text": "docfind",
+     "href": "https://github.com/microsoft/docfind"
+    },
+    {
+     "text": "WebAssembly",
+     "href": "https://en.wikipedia.org/wiki/WebAssembly"
+    },
+    {
+     "text": "Nick Trogh",
+     "href": "https://github.com/nicktrog"
+    },
+    {
+     "text": "Algolia",
+     "href": "https://www.algolia.com/"
+    },
+    {
+     "text": "TypeSense",
+     "href": "https://typesense.org/"
+    },
+    {
+     "text": "Lunr.js",
+     "href": "https://lunrjs.com/"
+    },
+    {
+     "text": "Stork Search",
+     "href": "https://stork-search.net/"
+    },
+    {
+     "text": "Andrew Gallant",
+     "href": "https://github.com/BurntSushi"
+    },
+    {
+     "text": "Index 1,600,000,000 Keys with Automata and Rust",
+     "href": "https://burntsushi.net/transducers/"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/01/15/docfind-social.webp"
+  },
+  {
+   "id": "vscb-mcp-apps-support",
+   "source": "vscode-blog",
+   "date": "2026-01-26",
+   "title": "Giving Agents a Visual Voice: MCP Apps Support in VS Code",
+   "url": "https://code.visualstudio.com/blogs/2026/01/26/mcp-apps-support",
+   "lede": "AI coding agents have become remarkably capable. Out of the box, they search your codebase, edit files, run terminal commands, and respond to compile errors. Add MCP servers, and they can query databases, browse the web with Playwright, summarize GitHub issues, and connect to your cloud platforms.",
+   "text": "On this page\n\nAI coding agents have become remarkably capable. Out of the box, they search your codebase, edit files, run terminal commands, and respond to compile errors. Add MCP servers, and they can query databases, browse the web with Playwright, summarize GitHub issues, and connect to your cloud platforms. Models can even process images—you can paste a screenshot to debug a layout issue, or have Playwright capture browser state for verification.\n\nAgents format tables, structure data, and render ASCII diagrams. But none of this is interactive. When you need to reorder a list, confirm a destructive action with specifics, or explore a visualization, you're back to describing things in sentences.\n\nToday, the MCP community is announcing MCP Apps, the first official MCP extension. Tool calls can now return interactive UI components that render directly in the conversation: dashboards, forms, visualizations, multi-step workflows. This creates opportunities for a richer and more effective human-agent collaboration.\n\nVS Code is the first major AI code editor with full MCP Apps support. Available now in VS Code Insiders—our daily build where new features land first. Install Insiders to try MCP Apps today, and expect this to roll out to VS Code Stable in next week's release.\n\nDemos: Where Interaction Beats Text\n\nWe've built a few demos to show where agents benefit from richer collaboration with developers. Since MCP Apps is new, we look forward to seeing more adoption across the ecosystem.\n\nInteractive List Reordering\n\nToday: Agent proposes a sorted order based on its analysis. You read the text output, request adjustments, and go back and forth until the order matches your preferences.\n\nWith MCP Apps: Agent displays a drag-and-drop interface alongside its suggested order. You reorder items visually, or select \"Ask AI to Sort\" to let the agent apply its reasoning.\n\nPerformance Profiler Visualization\n\nToday: Agent analyzes CPU profile data and summarizes bottlenecks in text. You see the summary but have no way to validate the hypotheses or explore areas the agent might have overlooked.\n\nWith MCP Apps: Agent renders an interactive flame graph. You drill into call stacks, hover for timing details, and confirm or reject the agent's analysis with your own domain knowledge.\n\nFeature Flag Selector\n\nToday: Agent fetches flag configuration and lists what exists. You cross-reference mentally with your deployment context and ask the agent to generate integration code in a separate step.\n\nWith MCP Apps: Agent displays a searchable flag picker with live environment status. You select flags, switch between prod/staging/dev views, and generate SDK code—all in one interaction.\n\nPartner Spotlight: Storybook\n\nStorybook has added MCP Apps support to their open source MCP server. Simply ask an agent to \"build a login form using our design system\" instead of describing the desired result in extensive detail, and the agent renders an interactive component preview directly in VS Code.\n\n\"We've been working with the VS Code team on MCP Apps and we're excited about the results. Users can now preview Storybook stories directly in the agent chat, eliminating the need to navigate between the chat and their Storybook to review changes.\" – Jeppe Reinhold (Storybook core contributor, Chromatic)\n\nA Natural Fit for VS Code\n\nVS Code has always been more than a text editor. Extensions bring UI and interaction into the editor through webview panels, custom editors, and sidebar views. Jupyter notebooks showed that mixing code with rich output transforms workflows. GitHub Copilot agents gave AI the ability to work autonomously in your workspace.\n\nMCP Apps is the next layer: giving agents a visual voice to communicate back. You see what's happening, make choices with confidence, and stay in control.\n\nGet Started\n\nIf you're building MCP servers, add MCP Apps to make them more interactive. VS Code is where you can develop and debug them with full MCP support. Join today's VS Code livestream with Den Delimarsky, MCP core maintainer, for live demos and Q&A.",
+   "links": [
+    {
+     "text": "MCP servers",
+     "href": "https://code.visualstudio.com/docs/agent-customization/mcp-servers"
+    },
+    {
+     "text": "MCP Apps",
+     "href": "https://modelcontextprotocol.github.io/ext-apps/api/"
+    },
+    {
+     "text": "VS Code Insiders",
+     "href": "https://code.visualstudio.com/insiders/"
+    },
+    {
+     "text": "demos",
+     "href": "https://github.com/digitarald/mcp-apps-playground"
+    },
+    {
+     "text": "Storybook",
+     "href": "https://storybook.js.org/"
+    },
+    {
+     "text": "added MCP Apps support",
+     "href": "https://github.com/storybookjs/mcp/pull/134"
+    },
+    {
+     "text": "",
+     "href": "https://www.youtube.com/watch?v=fbNH6_jdwQU"
+    },
+    {
+     "text": "GitHub Copilot agents",
+     "href": "https://code.visualstudio.com/docs/agents/overview"
+    },
+    {
+     "text": "VS Code livestream with Den Delimarsky",
+     "href": "https://youtube.com/live/HWmC3T5Wwqw"
+    },
+    {
+     "text": "MCP Apps SDK and examples",
+     "href": "https://github.com/modelcontextprotocol/ext-apps/"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/01/26/mcp-apps-list-sort.webp"
+  },
+  {
+   "id": "vscb-multi-agent-development",
+   "source": "vscode-blog",
+   "date": "2026-02-05",
+   "title": "Your Home for Multi-Agent Development",
+   "url": "https://code.visualstudio.com/blogs/2026/02/05/multi-agent-development",
+   "lede": "Agents are everywhere. We've been working to make VS Code the home for multi-agent development. One place to run your agents, manage your sessions, and pick the right tool for each task, without switching editors or juggling subscriptions.",
+   "text": "On this page\n\nAgents are everywhere. We've been working to make VS Code the home for multi-agent development. One place to run your agents, manage your sessions, and pick the right tool for each task, without switching editors or juggling subscriptions.\n\nWith the January 2026 release (1.109), we're taking the biggest step forward since we laid out that vision at GitHub Universe last year. You can now run Claude and Codex agents directly alongside GitHub Copilot. Start them as local agents when you need fast, interactive help, or delegate async to a cloud agent for longer-running tasks. We've also made updates to the Agent Sessions view, your single place to manage your agents.\n\nManage all your agents\n\nThe agent landscape keeps moving fast. We're all still figuring out how to work with agents. Fire-and-forget when the task is clear, hands-on when you want control, or somewhere in between; it depends on the task, and it changes. Either way, more agents mean more sessions to keep track of.\n\nThe Agent Sessions view gives you one place to see all your agent sessions—local, background, cloud—and move between them as you work.\n\nKick off a cloud agent for a well-defined refactor, then jump into a local session for something more exploratory. Monitor a background task or let it run as you work on something else.\n\nThe above demo illustrates how developers are constantly tackling multiple things at once: planning improvements, building features, reviewing results, debugging errors. For each moment, you need to pick the right tool: local when needing to steer, background or cloud when wanting isolated changes, parallel subagents when needing multiple processes.\n\nHere’s a quick overview to help you decide when to use local, background, or cloud agents:\n\nCriteria |\nLocal |\nBackground |\nCloud |\n\nWhere it runs |\nYour machine |\nYour machine (CLI) |\nRemote infrastructure |\n\nInteraction style |\nInteractive |\nUnattended (async) |\nUnattended (async), Autonomous |\n\nTeam visibility |\nNo |\nNo |\nYes (PRs/issues) |\n\nIsolation |\nNo (direct workspace) |\nYes (worktrees) |\nYes (remote) |\n\nNow that you can run multiple agent types, the next question is which agents to use.\n\nYour agent, your choice\n\nWith 1.109, you can run Claude and Codex agents: locally, or in the cloud, all under your same GitHub Copilot subscription.\n\nCodex has been available as a local agent for a few months. Claude is new. It uses the official Claude Agent harness by Anthropic, so you get the same prompts, tools, and overall architecture as other Claude implementations.\n\nGitHub also just announced Claude and Codex agent support. Copilot Pro+ and Enterprise subscribers can use them in VS Code as cloud agents today.\n\nNote\nEnable or disable support for Claude agent sessions with the\n\ngithub.copilot.chat.claudeAgent.enabled\n\nOpen in VS Code\nOpen in VS Code Insiders\n\nsetting.\n\nPrerequisites for the Codex local agent: a Copilot Pro+ subscription and the OpenAI Codex extension.\n\nThe beauty of this unified approach is that all these agents show up in the same Agent Sessions view. You can delegate tasks between them, compare their outputs, and pick the right tool for each job.\n\nOrchestrate with subagents\n\nRunning multiple agents is one thing. Getting them to work together is another.\n\nLet's say you're adding a new feature and your agent needs to research authentication patterns, check how similar features are structured in your codebase, AND scan the relevant docs. Doing this sequentially eats up time and adds a lot of context that makes it hard for the agent to focus on what's important.\n\nSubagents solve this. They're context-isolated agents that run independently from your main session—your main agent delegates work and only the final result flows back. The intermediate exploration stays contained, keeping your primary context clean.\n\nWhat's new this release: VS Code can now run multiple subagents in parallel. Fire off multiple tasks at once, get results faster, and save premium requests in the process.\n\nWe've also added better visibility into what subagents are doing.",
+   "links": [
+    {
+     "text": "January 2026 release (1.109)",
+     "href": "https://aka.ms/VSCode/109"
+    },
+    {
+     "text": "",
+     "href": "https://www.youtube.com/watch?v=BsAHunfVwNs"
+    },
+    {
+     "text": "for a few months",
+     "href": "https://code.visualstudio.com/blogs/2025/11/03/unified-agent-experience"
+    },
+    {
+     "text": "just announced Claude and Codex agent support",
+     "href": "https://github.blog/changelog/2026-02-04-claude-and-codex-are-now-available-in-public-preview-on-github/"
+    },
+    {
+     "text": "OpenAI Codex extension",
+     "href": "https://marketplace.visualstudio.com/items?itemName=openai.chatgpt"
+    },
+    {
+     "text": "Subagents",
+     "href": "https://code.visualstudio.com/docs/agents/run/subagents"
+    },
+    {
+     "text": "custom agents",
+     "href": "https://code.visualstudio.com/docs/agent-customization/custom-agents"
+    },
+    {
+     "text": "handoffs",
+     "href": "https://code.visualstudio.com/docs/agent-customization/custom-agents#_handoffs"
+    },
+    {
+     "text": "MCP Apps",
+     "href": "https://code.visualstudio.com/blogs/2026/01/26/mcp-apps-support"
+    },
+    {
+     "text": "Agent Skills",
+     "href": "https://code.visualstudio.com/docs/agent-customization/agent-skills"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/02/05/your-agent-ux.webp"
+  },
+  {
+   "id": "vscb-long-distance-nes",
+   "source": "vscode-blog",
+   "date": "2026-02-26",
+   "title": "Building Long-Distance Next Edit Suggestions",
+   "url": "https://code.visualstudio.com/blogs/2026/02/26/long-distance-nes",
+   "lede": "Last February, we released next edit suggestions (NES) in GitHub Copilot. NES extends ghost text by not just inserting code at your cursor, but suggesting edits nearby, anticipating what you'd change next. This was a powerful step forward, but it only worked within a small window around your cursor.",
+   "text": "On this page\n\nLast February, we released next edit suggestions (NES) in GitHub Copilot. NES extends ghost text by not just inserting code at your cursor, but suggesting edits nearby, anticipating what you'd change next. This was a powerful step forward, but it only worked within a small window around your cursor. In real editing workflows, the next change you need to make is often several screens away.\n\nThat's what we set out to solve with long-distance next edit suggestions: extending NES to predict and suggest edits anywhere in your file, not just near your current cursor position.\n\nFrom nearby edits to anywhere in the file\n\nThink about a typical refactoring session. You rename a function and all function invocations elsewhere in the file also need updating. Or you change a parameter type, which now makes the validation logic 200 lines down incorrect. These are exactly the moments where you would expect NES to help you, but unfortunately, the next meaningful edit is far outside its effective window.\n\nThis creates a hard modeling problem. The search space explodes from a handful of nearby lines to every line in the file. And the cost of getting it wrong isn't evenly split: a correct jump saves you real effort, but an unnecessary one interrupts your flow and makes you less likely to trust the next suggestion. The system must learn not only where to move, but also when not to move.\n\nRather than modifying the existing edit-generation model, we decided to use a multi-model approach. We trained a dedicated location model whose sole responsibility is to predict where the next edit should happen. Once a valid location is selected, the original NES model then generates the edit suggestion.\n\nThis separation has two benefits. First, each model can specialize on one task: one model learns spatial intent (where to jump), the other model produces high-quality edits within a local window. In addition, it enables us to iterate independently on location prediction without disrupting ongoing improvements to the core NES model.\n\nMeasuring success via an evaluation framework\n\nBefore training the location model, we needed a way to measure whether it was actually working for real-world editing scenarios.\n\nWe designed a structured three-step evaluation process:\n\n- Identify common multi-edit workflows\n\n- Construct representative cursor-jump examples\n\n- Measure both jump and no-jump accuracy\n\nWe started by analyzing how developers chain together edits in real-world scenarios - renaming, signature changes, documentation updates - rather than treating each edit as an isolated event. The common thread: edits ripple across multiple, non-adjacent locations in a file.\n\nFrom these workflows, we built an evaluation dataset where each example includes the ground-truth next line to jump to, recent edit history, and cursor context.\n\nCrucially, we measured both jump and no-jump accuracy. While many examples required predicting a new location, a meaningful subset required staying on the current line. A model that jumps too often can be just as disruptive as one that misses important transitions. Imagine getting a jump suggestion every time you're halfway through typing a variable name.\n\nBy grounding evaluation in realistic workflows and measuring both jump and no-jump cases, we ensured that offline metrics reflected how developers actually edit rather than artificial scenarios.\n\nBuilding the training dataset\n\nWith evaluation in place, we turned to training data. While the evaluation dataset was small enough to construct by hand, training required data at a much larger scale. We started with the same dataset we curated for training the core NES model, which contains trajectories of how developers move through and edit a file.\n\nBy replaying these trajectories, we transformed every cursor movement into a training sample. After applying filters, such as ensuring the jump location appeared in the prompt, we had our training dataset.\n\nTraining with supervised finetuning\n\nTo train the location model, we used Supervised Finetuning (SFT) with targeted hyperparameter search.",
+   "links": [
+    {
+     "text": "next edit suggestions (NES)",
+     "href": "https://code.visualstudio.com/docs/editing/ai-powered-suggestions#_next-edit-suggestions"
+    },
+    {
+     "text": "training the core NES model",
+     "href": "https://github.blog/ai-and-ml/github-copilot/evolving-github-copilots-next-edit-suggestions-through-custom-model-training/"
+    },
+    {
+     "text": "VS Code",
+     "href": "https://code.visualstudio.com/"
+    },
+    {
+     "text": "GitHub Copilot",
+     "href": "https://github.com/features/copilot"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/02/26/long-distance-nes-hero.webp"
+  },
+  {
+   "id": "vscb-making-agents-practical-for-real-world-development",
+   "source": "vscode-blog",
+   "date": "2026-03-05",
+   "title": "Making agents practical for real-world development",
+   "url": "https://code.visualstudio.com/blogs/2026/03/05/making-agents-practical-for-real-world-development",
+   "lede": "Agents are taking on more complex and longer-running development tasks.",
+   "text": "On this page\n\nAgents are taking on more complex and longer-running development tasks.\n\nWith the February 2026 release (1.110), we're making those workflows more practical inside Visual Studio Code by giving you greater control over how agents behave, integrate into your tools, and retain project context across sessions.\n\nFrom enforcing policies with hooks to guiding agents mid-response, validating UI features with integrated browser tools, and bringing structured skills directly into the editor, this release focuses on making agents reliable collaborators for real development work.\n\nGive agents the right context\n\nCodebases often have a complex architecture and project structure, and can consist of thousands of files. Agents might struggle to stay focused and find the right pieces of information, especially as sessions get longer.\n\nIn this release, we're improving how agents handle large outputs efficiently, how they remember the most important parts of the task at hand, and giving you control over what information can be discarded.\n\nHandle large outputs\n\nLarge diffs, generated files, or extensive logs can overwhelm a session if treated as an inline context.\n\nAgents and LLMs are great at working with files. VS Code now manages large outputs by streaming them to temporary files and prioritizing the most relevant information for the model. This keeps agents focused on the right details while optimizing context usage without additional work.\n\nFrom a UI perspective, large tool outputs in a chat conversation can make it difficult to follow the overall flow of what's happening in a session. VS Code now puts terminal output in collapsible sections, giving you the details if you want them, while keeping the session uncluttered.\n\nShare agent memory\n\nAgents in Visual Studio Code use memory to retain relevant context. Agent memory now spans coding agents, CLI workflows, and code review interactions.\n\nRather than starting from scratch each session, agents recall your preferences, apply lessons from previous tasks, and build up knowledge about your codebase over time.\n\nArchitectural decisions, naming conventions, and prior refactors remain part of the conversation, so you spend less time restating intent and more time continuing the work.\n\nCompact long sessions\n\nAs conversations expand, VS Code automatically compacts older history. Earlier discussions are summarized, key decisions are preserved, and space is freed up for ongoing work.\n\nPreviously, you had no control over when context compaction was happening and what information was retained after compacting. Maybe you discussed several implementation variants, and only one specific one is important to remember and build upon.\n\nNow you can manually run context compaction for a session by typing /compact. And in doing so, you can give the agent additional instructions on what information to keep or discard.\n\nEspecially when working with long-running sessions and dealing with lots of context, controlling compaction keeps the agent focused on the key information.\n\nAgent controls\n\nAs agents take on more responsibility, the way you interact with them matters just as much as what they generate. These updates make it easier to control the conversation and guide outcomes during active work.\n\nGuide the agent while it works\n\nAgents sometimes head down the wrong path and it's immediately obvious, even before it has finished the request.\n\nPreviously, you had to wait for a response to complete before you could steer it in a different direction. Now, you can intervene while the agent is generating a response, guiding the direction of the work without restarting or losing context.\n\nAnd if you think of some extra tasks the agent should perform, you can now queue follow-on requests for the agent to perform once it has finished its current task. If you queue up multiple requests, you can easily change the order in which they need to be performed.\n\nFor example, you might clarify:\n\n- Only modify this component\n\n- Reuse existing utilities\n\n- Avoid changes to backend APIs\n\nFewer wasted edits, shorter feedback loops, and a conversation that stays on track.",
+   "links": [
+    {
+     "text": "without restarting the session",
+     "href": "https://code.visualstudio.com/docs/chat/chat-overview#_send-messages-while-a-request-is-running"
+    },
+    {
+     "text": "/fork",
+     "href": "https://code.visualstudio.com/docs/agents/run/sessions/manage-sessions#_fork-a-chat-session"
+    },
+    {
+     "text": "Hooks",
+     "href": "https://code.visualstudio.com/docs/agent-customization/hooks"
+    },
+    {
+     "text": "Skills",
+     "href": "https://code.visualstudio.com/docs/agent-customization/agent-skills"
+    },
+    {
+     "text": "VS Code repo",
+     "href": "https://github.com/microsoft/vscode/issues"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/03/05/release-graphic.webp"
+  },
+  {
+   "id": "vscb-how-vs-code-builds-with-ai",
+   "source": "vscode-blog",
+   "date": "2026-03-13",
+   "title": "How VS Code Builds with AI",
+   "url": "https://code.visualstudio.com/blogs/2026/03/13/how-VS-Code-Builds-with-AI",
+   "lede": "We use AI every day to ship VS Code. It's made us so much faster that, after ten years of monthly releases, we just went weekly. Agents were the key that unlocked this, not just for writing code, but across every part of how the team works.",
+   "text": "On this page\n\nWe use AI every day to ship VS Code. It's made us so much faster that, after ten years of monthly releases, we just went weekly. Agents were the key that unlocked this, not just for writing code, but across every part of how the team works.\n\nTo kick off Agent Sessions Day, I sat down with Peng Lyu, Engineering Manager on the VS Code team, to walk through how the VS Code team actually uses AI for our day-to-day work. Not only for implementing features (that part's self-evident), but for everything around building features: triage, code review, release notes, validation, staying productive in a meeting-heavy schedule.\n\nIn that session, we probably only covered 5% of what the team does with agents on any given day. But it's representative of how a product that's used by millions of developers is built. So, we wanted to share more about these big recent changes to our workflow, and where we think we're going next.\n\nAfter Ten Years of Monthly Releases, We Went Weekly\n\nWe shipped VS Code monthly for ten years. Every single month we went through our well-oiled cycle of plan, build, test, endgame, ship. With each member of the team rotating through the different roles, it was a rhythm that became part of the team's culture.\n\nRecently, we decided to start shipping VS Code on a weekly cadence. And we wanted to keep the bar for rigor and quality just as high. A monthly cycle gives you breathing room with time to plan, time to run a full endgame week where the team cross-tests each other's features, and time to write thorough release notes. Moving to a weekly cadence means all of that has to get faster or get automated. This is a huge change and a year ago, we couldn't have done it. This shift was only possible because of the way agents have transformed how we work.\n\nThe weekly cadence isn't about shipping faster for its own sake. It's about getting improvements to developers sooner. A bug fix that used to wait three weeks for the next stable release now ships in days. A feature that's merged on Monday can be in developers' editors that same week. That feedback loop of ship > learn > iterate just gets so much faster.\n\nWhat We Learned From This Shift\n\nOur workflows and processes continue to evolve daily, as we learn and adapt. But there are some key learnings that continue to hold true:\n\n- Parallelize yourself. Build the habit of kicking off multiple agent sessions before context-switching. Worktrees, cloud agents, multiple VS Code sessions… use them all.\n\n- Skip the intermediate artifacts. What used to be meeting notes → issues → specs → code, is now actually becoming meeting → agent sessions → code → PR.\n\n- Automate the overhead that scales with velocity. We built agent-powered pipelines for issue triage, commit summarization, release notes, code review, all of it using Copilot CLI, the Copilot SDK, and GitHub Actions. Engineers are still on the other end of these workflows, but agents help surface the right things to the right people, faster.\n\n- Invest in harnesses before speed. Tests, golden scenarios, and code review gates prevent agent-driven velocity from becoming agent-driven regression.\n\n- Ownership is evolving. When PMs, engineers from other areas, community contributors, and agents can contribute to any component, traditional ownership models need to adapt. Accountability for outcomes still rests with engineers.\n\n- Keep humans in the loop for taste. Agents check correctness. Humans evaluate delight.\n\nLet's look into more detail on how each of these plays out in our team.\n\nWorking in Parallel\n\nThere's a famous Paul Graham essay about how maker schedules and manager schedules are fundamentally incompatible. That was mostly true until recently. But agents are changing that.\n\nHere's what a typical day might look like:\n\n- Before entering a meeting, kick off 3-4 agent sessions for fixing bugs, prototyping features, or triaging issues.\n\n- During the meeting, agents run in parallel across multiple VS Code sessions, worktrees, or in the cloud.\n\n- After the meeting, review the agent output, verify locally, merge or re-prompt, and kick off again.",
+   "links": [
+    {
+     "text": "Agent Sessions Day",
+     "href": "https://youtube.com/live/tAezuMSJuFs"
+    },
+    {
+     "text": "",
+     "href": "https://www.youtube.com/watch?v=ee-obY-4rqk"
+    },
+    {
+     "text": "Paul Graham",
+     "href": "https://paulgraham.com/makersschedule.html"
+    },
+    {
+     "text": "VS Code Insiders",
+     "href": "https://code.visualstudio.com/insiders"
+    },
+    {
+     "text": "Work IQ",
+     "href": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/workiq-overview"
+    },
+    {
+     "text": "VS Code repo",
+     "href": "https://github.com/microsoft/vscode/issues"
+    },
+    {
+     "text": "X",
+     "href": "https://x.com/code"
+    },
+    {
+     "text": "Agent Sessions Day",
+     "href": "https://aka.ms/VSCode/Feb19"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/03/13/weekly-releases-x.webp"
+  },
+  {
+   "id": "vscb-agent-harnesses-github-copilot-vscode",
+   "source": "vscode-blog",
+   "date": "2026-05-15",
+   "title": "The Coding Harness Behind GitHub Copilot in VS Code",
+   "url": "https://code.visualstudio.com/blogs/2026/05/15/agent-harnesses-github-copilot-vscode",
+   "lede": "With each new model release, the same conversation is reignited. Which model is the smartest? Which one is fastest? Which one should we use? Those are useful questions, but for a product like Visual Studio Code the model is only one part of the agentic coding experience.",
+   "text": "On this page\n\nWith each new model release, the same conversation is reignited. Which model is the smartest? Which one is fastest? Which one should we use? Those are useful questions, but for a product like Visual Studio Code the model is only one part of the agentic coding experience. What developers actually interact with is the coding harness: the layer that assembles context, exposes tools, runs the agent loop, interprets tool calls, and turns a model's output into something useful inside the editor. In this post, we'll look at what that harness does, why it matters, and how we evaluate it as models and developer workflows evolve.\n\nWhat is the coding harness?\n\nLanguage models do not edit files, execute commands, or run tests by themselves. They can only produce text. The coding harness is the system that acts as a bridge between the code editor and the language model. It turns that text into action and feeds the results back so the model can decide what to do next.\n\nIn VS Code, the coding harness has three main responsibilities:\n\n-\nContext assembly: Before any request reaches the model, the harness builds a prompt. That prompt includes a system message with behavioral instructions, the user's query, workspace structure (languages, frameworks, open editors), conversation history from prior turns, tool results, custom instructions, and memory from earlier sessions. The harness decides what the model sees, and those decisions directly affect quality.\n\n-\nTool exposure: The harness declares the tools the model is allowed to call: reading files (read_file), editing code (replace_string_in_file or apply_patch), running terminal commands (run_in_terminal), searching the codebase (semantic_search), and many more. Each tool has a JSON schema the model must follow and a description the model uses to decide when to invoke it. The set of available tools can change per request. Some tools are only enabled for certain models, some require user confirmation before execution, users can toggle tools on and off in the tool picker, MCP servers and extensions can contribute entirely new tools that slot into the same loop, and custom agents (.agent.md) can restrict their tool set to a specific subset.\n\n-\nTool execution: When the model requests a tool to be run (using JSON like {\"name\": \"run_in_terminal\", \"arguments\": {\"command\": \"npm test\"}}), the harness is the one that validates the arguments, runs the tool, handles errors, formats the result, and feeds it back in the next iteration. For example, if the model asks to edit a file, the harness writes the diff. If the model asks to run a shell command, the harness is what spawns the process, captures output, and relays it.\n\nNone of these tasks can be directly achieved by the language model. However, this input determines the behavior and outcome of the model and what you experience in the code editor.\n\nThe logic that orchestrates these tasks, deciding when to continue or stop iterating and how to keep the conversation coherent across many rounds, is the agent loop.\n\nThe agent loop\n\nAt its core, when you use an agent in VS Code, a tool-calling loop happens: a \"think → act → observe → think again\" cycle. On each iteration, the agent harness builds the prompt (system instructions + context + history + all tool results so far), sends it to the model, and checks the response. If the response includes tool calls, the harness executes those tools, captures their results, and loops back. If there are no tool calls, the loop can finish and the assistant’s text becomes the final response.\n\nA turn is the user-visible chat exchange: you send one message, and the agent eventually produces a response. During that turn, the agent loop may perform many rounds. A round is one pass through the loop: build the prompt, call the model, receive text and/or tool calls, execute any tools, record the results, and decide whether to continue. The full execution of all those rounds is the loop’s run. A single user turn might trigger many rounds as the model searches files, reads code, edits files, runs tests, reads the output, and iterates on failures.\n\nThe tool-calling loop is bounded by loop-control checks.",
+   "links": [
+    {
+     "text": "explore the VS Code source code",
+     "href": "https://github.com/microsoft/vscode"
+    },
+    {
+     "text": "Chat Debug View",
+     "href": "https://code.visualstudio.com/docs/chat/chat-debug-view"
+    },
+    {
+     "text": "stopped reporting SWE-bench Verified results",
+     "href": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/"
+    },
+    {
+     "text": "SWE-bench",
+     "href": "https://www.swebench.com/"
+    },
+    {
+     "text": "Terminal-Bench",
+     "href": "https://www.tbench.ai/"
+    },
+    {
+     "text": "those PRs",
+     "href": "https://github.com/microsoft/vscode/pull/312854"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/05/15/evaluations.webp"
+  },
+  {
+   "id": "vscb-improving-token-efficiency-in-github-copilot",
+   "source": "vscode-blog",
+   "date": "2026-06-17",
+   "title": "Improving token efficiency for GitHub Copilot in VS Code",
+   "url": "https://code.visualstudio.com/blogs/2026/06/17/improving-token-efficiency-in-github-copilot",
+   "lede": "With the recent move to usage-based billing for GitHub Copilot, every token in an agentic session matters. They affect your credits, latency, and the context window an agent has left to finish the task. Each new model generation tends to consume more tokens per task than the last, as we've witnessed in our own data.",
+   "text": "On this page\n\nWith the recent move to usage-based billing for GitHub Copilot, every token in an agentic session matters. They affect your credits, latency, and the context window an agent has left to finish the task. Each new model generation tends to consume more tokens per task than the last, as we've witnessed in our own data. This means that harness-level efficiencies are increasingly important to counter this trend. As agents take on longer, more autonomous work, an inefficient harness adds up fast.\n\nMaking the GitHub Copilot agentic harness in VS Code more token-efficient is continuous work, and it's the best way to counter this trend. For most changes, we run A/B experiments in production and offline evaluations against task suites, confirming that task success rate holds or improves while token usage drops. It's rarely one big win, usually a steady stream of small ones. Below, we walk through recent gains, first for OpenAI models and then for Anthropic models.\n\nHow agentic requests spend tokens\n\nTwo costs sit at the heart of every agentic request, and two ideas help us reduce them. Both apply across OpenAI and Anthropic models, even though each provider exposes them differently.\n\nGraphical overview of the prompt signature highlighting the different parts of the prompt.\n\nThe prompt prefix and caching. In an agentic coding session, a large share of every request repeats across turns: system instructions, tool definitions, repository context, and conversation history. This repeated beginning is the prompt prefix. When requests share the exact same prefix, the inference provider can reuse cached model state instead of recomputing it from scratch on each request. Despite the name, the cached artifact is not a human-readable copy of the prompt. It is the model state computed while processing that prefix, represented internally as key/value tensors. Reusing the prefix cuts both cost (cached tokens can be up to 10 times cheaper) and latency, which is why we work to keep the prompt cache hit-rate high.\n\nTool-definition overhead. Agents can pull in a large number of tools: those exposed by MCP servers, built-in tools, or extension-provided tools. Each tool is sent to the model with a full definition (a name, a description, and a complete JSON parameter schema), and historically every one was loaded into context on every request. Even when that data is cached, the context window overhead is fixed on each turn and grows as the toolset does.\n\nTool search. Tool search reduces that overhead by letting the model load tool definitions on demand instead of all at once. Upfront, the model sees only lightweight metadata, the name and description of each deferred tool, and the heavier parameter schemas stay out of context until the model searches for a tool and loads it. Because deferred tools are added at the end of the context window rather than the prefix, the cached prompt prefix stays reusable and the caching gains keep working across turns. The payoff is a leaner context window: the model spends fewer tokens on tools it never uses, leaving more room and budget for the actual task.\n\nEfficiency wins for OpenAI models\n\nFor OpenAI models, our recent work focused on reducing usage costs and latency for Copilot users through improved token efficiency. We pursued that through three changes: retaining cached model state for longer, reducing tool-definition overhead, and replacing repeated HTTP requests with persistent WebSocket connections.\n\nExtended prompt caching\n\nOpenAI models cache the prompt prefix automatically: the provider infers the reusable prefix and reuses its model state across requests. That reuse has a direct cost benefit. For most OpenAI models that support cached input pricing, uncached input tokens cost 10 times as much as cached input tokens.\n\nCaching the prefix happens on its own, but how long that cache survives is something we can configure. After careful evaluation, we enabled extended prompt caching for supported models through the prompt_cache_retention body parameter.",
+   "links": [
+    {
+     "text": "A/B experiments in production and offline evaluations",
+     "href": "https://code.visualstudio.com/blogs/2026/05/15/agent-harnesses-github-copilot-vscode"
+    },
+    {
+     "text": "OpenAI's native tool search",
+     "href": "https://developers.openai.com/api/docs/guides/tools-tool-search"
+    },
+    {
+     "text": "Responses API WebSocket mode",
+     "href": "https://developers.openai.com/api/docs/guides/websocket-mode"
+    },
+    {
+     "text": "our internal Copilot embedding model",
+     "href": "https://github.blog/news-insights/product-news/copilot-new-embedding-model-vs-code/"
+    },
+    {
+     "text": "How we're making GitHub Copilot smarter with fewer tools",
+     "href": "https://github.blog/ai-and-ml/github-copilot/how-were-making-github-copilot-smarter-with-fewer-tools/"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/06/17/cache-explorer.webp"
+  },
+  {
+   "id": "vscb-byok-vscode",
+   "source": "vscode-blog",
+   "date": "2026-06-18",
+   "title": "Use your own language model key in VS Code",
+   "url": "https://code.visualstudio.com/blogs/2026/06/18/byok-vscode",
+   "lede": "At Microsoft Build this year, I had the opportunity to present in the opening keynote. One thing I showed was using local models inside VS Code on the new Surface RTX Spark Dev Box. My model was periodically analyzing my log files and giving me summaries, so I could easily diagnose issues without having to look through the logs myself.",
+   "text": "On this page\n\nAt Microsoft Build this year, I had the opportunity to present in the opening keynote. One thing I showed was using local models inside VS Code on the new Surface RTX Spark Dev Box. My model was periodically analyzing my log files and giving me summaries, so I could easily diagnose issues without having to look through the logs myself. Check out the recording at 12:18.\n\nUsing local models gives you even greater flexibility when working with agents. Sometimes you want the built-in models available through GitHub Copilot. Sometimes you want to try a new model from a provider your team already uses. Sometimes you want to experiment locally. VS Code allows you to do all of these workflows with bring your own language model key (BYOK) and bring your own local model.\n\nWith BYOK in VS Code, you can add models from providers like Azure, Anthropic, Huggingface, Gemini, OpenAI, OpenRouter, or you can run a model locally with Ollama, Foundry Local, and more, then use them directly from the Chat model picker.\n\nWhat is BYOK?\n\nBYOK lets you use a language model from a supported provider by adding your own API key or endpoint configuration in VS Code. Once configured, those models appear in the same Chat model picker you already use for Copilot. Support is built in for several providers and VS Code is extensible, so any model provider can enable support through an extension.\n\nThis gives you more choice for chat and agent workflows. For example, you can:\n\n- Try models that are not built into VS Code.\n\n- Use a provider your organization already has billing or governance set up for.\n\n- Connect to local models through providers such as Ollama or Foundry Local.\n\n- Pick different models for different tasks, such as quick Q&A, planning, or multi-step agent work.\n\nThe goal is to allow you to choose the right model and keep working.\n\nWhat BYOK works with\n\nBYOK models are available for VS Code chat experiences, including agent workflows when the selected model supports the required capabilities.\n\nThere are a few important details to keep in mind:\n\n- BYOK models work without signing into a GitHub account and without a Copilot plan. You can add and use models entirely with your own API keys, including fully offline scenarios with local models.\n\n- BYOK applies to chat and utility tasks, not standard code completions.\n\n- Some AI features, such as semantic search, inline suggestions, and features that rely on embeddings, still require a GitHub account or Copilot support.\n\n- Usage for provider-backed BYOK models is billed directly by that provider and does not count against GitHub Copilot request quotas.\n\n- For Copilot Business and Enterprise, organization administrators can control BYOK availability through Copilot policy settings.\n\nIn other words, BYOK expands model choice in VS Code Chat, but it does not replace every Copilot-powered feature in the editor.\n\nGetting started with BYOK\n\nThe easiest way to get started is through the Language Models editor.\n\nYou can open it from the Chat model picker by selecting the Manage Language Models gear icon, or you can run Chat: Manage Language Models from the Command Palette.\n\nThe Language Models editor shows the models available to you, grouped by provider. It also shows useful details like model capabilities, context size, billing information, and whether a model is visible in the picker.\n\nThis is also where you can keep the model picker focused. If you are testing several providers, you can hide models you do not use often and keep your day-to-day models easy to find.\n\nAdding models from a built-in provider\n\nIf the provider you want is built into VS Code, setup is a few clicks.\n\n- Open Chat: Manage Language Models.\n\n- Select Add Models.\n\n- Choose a provider.\n\n- Enter a group name for the models. This is the label shown in the model picker and Language Models editor.\n\n- Enter the provider details, such as an API key, endpoint, deployment name, or other required configuration.\n\n- Select the model from the Chat model picker.\n\nDepending on the provider, VS Code might open a chatLanguageModels.json file so you can finish configuring model details.",
+   "links": [
+    {
+     "text": "recording at 12:18",
+     "href": "https://build.microsoft.com/sessions/KEY01"
+    },
+    {
+     "text": "Language Model docs",
+     "href": "https://code.visualstudio.com/docs/agent-customization/language-models#_add-a-model-from-a-built-in-provider"
+    },
+    {
+     "text": "AI language models",
+     "href": "https://code.visualstudio.com/docs/agent-customization/language-models"
+    },
+    {
+     "text": "Expanding Model Choice in VS Code with Bring Your Own Key",
+     "href": "https://code.visualstudio.com/blogs/2025/10/22/bring-your-own-key"
+    },
+    {
+     "text": "BYOK availability in VS Code",
+     "href": "https://github.blog/changelog/2026-04-22-bring-your-own-language-model-key-in-vs-code-now-available/"
+    },
+    {
+     "text": "Bring Your Own AI... No Sign-In Required!",
+     "href": "https://www.youtube.com/watch?v=EB7dQv1ALCU"
+    },
+    {
+     "text": "VS Code repository",
+     "href": "https://github.com/microsoft/vscode"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/06/18/language-models-editor.webp"
+  },
+  {
+   "id": "vscb-what-50000-runs-taught-us",
+   "source": "vscode-blog",
+   "date": "2026-06-19",
+   "title": "What 50,000 Runs of a 5-Line Eval Taught Us",
+   "url": "https://code.visualstudio.com/blogs/2026/06/19/what-50000-runs-taught-us",
+   "lede": "Over the last six months, we have run the same tiny eval more than 50,000 times. It gives the VS Code agent one instruction: write a string to a file. No large codebase to understand, no test suite to debug, no architectural decision to make. It is our smoke test, a quick way to confirm that the end-to-end model interaction still works.",
+   "text": "On this page\n\nOver the last six months, we have run the same tiny eval more than 50,000 times. It gives the VS Code agent one instruction: write a string to a file. No large codebase to understand, no test suite to debug, no architectural decision to make. It is our smoke test, a quick way to confirm that the end-to-end model interaction still works.\n\nA task this simple gives us an immediate read on the health of the system: how reliably the agent finishes the work and what kinds of failures show up in practice. We didn't intend it to be more than that. But at this scale, it became a surprisingly rich source of insight into how models approach even the simplest request.\n\nIn our previous post, we introduced VSC-Bench, the offline evaluation suite we use to measure agent behavior in VS Code. In this blog post, we look at how models solve a simple task and what it tells us about efficiency, model selection, and the value of small, stable evals.\n\nThe five-line eval\n\nA simple task is valuable precisely because it removes variables. When the work is unambiguous and the correct answer is fixed, anything that changes between runs comes from the model or the system around it, not from the task itself. That makes a small eval a sensitive instrument: it reacts to harness regressions, infrastructure incidents, and differences in model behavior, without the noise of a complex problem to interpret.\n\nThe say_hello task we use for this is built around that idea. Every run starts in the same empty workspace, with the same tools and the same fixed prompt, using our VS Code agent harness. The task asks the agent to \"Add HELLO to HELLO.txt\" and checks two assertions: that the file exists and that it contains the expected content.\n\npromptSteps:\n- text: Add HELLO to HELLO.txt.\nassertions:\n- check: file_exists(\"HELLO.txt\")\n- check: file_contains(\"HELLO.txt\", \"HELLO\")\n\nBecause say_hello runs as a smoke test before every benchmark suite, it quietly accumulated 50,974 runs across 30 models over six months. That volume turned a basic sanity check into a useful dataset on how differently models handle even the simplest work.\n\nA developer doing this task would recognize that the workspace is empty, create HELLO.txt, and add the requested content. In the most direct VS Code agent path, this translates into a single create_file tool call with HELLO as the file content.\n\ntool : create_file\nargs : {\n\"filePath\": \"/path/to/workspace/HELLO.txt\",\n\"content\": \"HELLO\"\n}\n\nNote\nThe VS Code eval harness includes the workspace state in the initial prompt context. We assume that the model should not perform redundant existence checks.\n\nHow models solve say_hello\n\nAs expected, the say_hello task is easy enough that all models pass it most of the time. The interesting part is not whether they can do the work, but how they do it. Can the model recognize that this is a basic request that only requires a simple solution? Or does it still treat it like a complex problem that requires planning, exploration, and search?\n\nTo establish a baseline, we filtered for passing runs that used this one-tool-call path and looked at the lowest output-token counts in that group. Those runs averaged roughly 50 output tokens, including the tool-call structure. We then measured how often each model took that path.\n\nOne model takes the direct path every time. The broader trend is what stands out: a few models often take the direct path, most do so only occasionally, and five never do.\n\nAt the top, Model-A stands alone. It goes straight to file creation in 100% of passing runs, using a single tool call every time. For this simple request, Model-A always creates the file directly without planning or exploring first. Model-B and Model-C follow at 73% and 71%, respectively.\n\nThe large middle cluster, Model-D through Model-P, takes the direct path somewhere between 19% and 52% of the time. These models can recognize a simple task, but not consistently. More often than not, they add a small step first, such as reading internal state or doing light workspace exploration, before creating the file.",
+   "links": [
+    {
+     "text": "previous post",
+     "href": "https://code.visualstudio.com/blogs/2026/05/15/agent-harnesses-github-copilot-vscode"
+    },
+    {
+     "text": "automatic model selection",
+     "href": "https://code.visualstudio.com/docs/agents/concepts/language-models#_auto-model-selection"
+    },
+    {
+     "text": "usage-based billing",
+     "href": "https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/"
+    },
+    {
+     "text": "Chat Debug View",
+     "href": "https://code.visualstudio.com/docs/agents/agent-troubleshooting/chat-debug-view"
+    },
+    {
+     "text": "VS Code repository",
+     "href": "https://github.com/microsoft/vscode"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/06/19/5000-runs-social.webp"
+  },
+  {
+   "id": "vscb-iterating-faster-with-ts-7",
+   "source": "vscode-blog",
+   "date": "2026-06-26",
+   "title": "Iterating faster with TypeScript 7",
+   "url": "https://code.visualstudio.com/blogs/2026/06/26/iterating-faster-with-ts-7",
+   "lede": "VS Code and TypeScript practically grew up together. We made a bet early on to write VS Code in TypeScript, and we have always worked closely with the TypeScript team to provide great built-in TypeScript and JavaScript language support in VS Code.",
+   "text": "On this page\n\nVS Code and TypeScript practically grew up together. We made a bet early on to write VS Code in TypeScript, and we have always worked closely with the TypeScript team to provide great built-in TypeScript and JavaScript language support in VS Code. This post is about the next step of that journey: TypeScript 7, and how collaborating on adopting TypeScript 7 sped up our builds, improved the day-to-day editing loop for both developers and agents, and helped the TypeScript team ship a more tested release.\n\nTypeScript 7 is a complete port of the TypeScript compiler and language tooling in Go. That means it's fast, more than 10x faster in many cases. VS Code had a lot to gain from those speedups, so we were naturally eager to adopt TypeScript 7 as soon as we could.\n\nHowever, we also knew that this would take time. When we started this process in the summer of 2025, TypeScript 7 was actually already shockingly far along for a complete rewrite, but it still had type checking inconsistencies and lacked many features we needed. Even so, we wanted to start testing and providing feedback right away. Adopting TypeScript 7 while it was still being built may sound a little crazy, but it turned out to be a great decision for both VS Code and TypeScript.\n\nAn incremental migration\n\nThe VS Code team has never been afraid to take on large engineering efforts, whether that's enabling strict null checking in our codebase, adding remote development support, or addressing and preventing dangerous code patterns across thousands of files. A common theme across these efforts is that we try to take an incremental approach. This means breaking big, complex problems down into small steps. Those steps happen in the main codebase (no forks or long-lived branches), and each one usually brings a small improvement as it lands. Take enough little steps, and eventually you can look back and realize that you've quietly conquered that once seemingly insurmountable challenge.\n\nWe wanted to take the same approach to adopting TypeScript 7. For us, that meant gradually introducing TypeScript 7 into different parts of our workflows and codebases, starting with lower-impact, lower-risk areas before eventually moving on to the main areas of VS Code. There are many benefits to working incrementally, but two were especially important for this effort:\n\n-\nReduced risk. Each step of the adoption was relatively small, so if something went wrong, it was easy to identify the cause and revert.\n\n-\nEarly feedback. We wanted to start testing and providing high-quality feedback to the TS team early in TS 7's development. That meant getting as much usage of TypeScript 7 as possible, but without negatively impacting developer productivity on the VS Code team.\n\nThis testing helped us find bugs and limitations that they could then prioritize fixing. And as we adopted TS 7 in more parts of our codebase, those areas also became informal regression tests for each new TypeScript 7 nightly release.\n\nIn practice, that incremental philosophy unfolded as a series of phases over about six months. Each phase increased our use and testing of TypeScript 7 a little more, moving in step with TypeScript 7's own progress and helping shape it along the way. Here's how it played out:\n\nExploration (summer and early fall 2025)\n\nTypeScript 7 was publicly announced in March 2025. By the summer, it was ready for initial testing, although at this point it still had known bugs and limitations.\n\nType checking was farther along than emit (the process of generating JavaScript output files), so most of our early testing focused on manually running the @typescript/native-preview npm package on some of our smaller extensions with --noEmit. We reported issues as we found them, and because the native-preview package was updated daily, we could test new changes and fixes quickly.\n\nAs part of TypeScript 7, the TypeScript team was also building up the new language server that would power VS Code's in-editor TypeScript and JavaScript support.",
+   "links": [
+    {
+     "text": "complete port of the TypeScript compiler and language tooling in Go",
+     "href": "https://devblogs.microsoft.com/typescript/typescript-native-port/"
+    },
+    {
+     "text": "strict null checking in our codebase",
+     "href": "https://code.visualstudio.com/blogs/2019/05/23/strict-null"
+    },
+    {
+     "text": "remote development support",
+     "href": "https://code.visualstudio.com/blogs/2019/05/02/remote-development"
+    },
+    {
+     "text": "@typescript/native-preview npm package",
+     "href": "https://www.npmjs.com/package/@typescript/native-preview"
+    },
+    {
+     "text": "TypeScript native preview VS Code extension",
+     "href": "https://marketplace.visualstudio.com/items?itemName=TypeScriptTeam.native-preview"
+    },
+    {
+     "text": "https://devblogs.microsoft.com/typescript/announcing-typescript-6-0/",
+     "href": "https://devblogs.microsoft.com/typescript/announcing-typescript-6-0/"
+    },
+    {
+     "text": "Here's the change",
+     "href": "https://github.com/microsoft/vscode/commit/86da9175ebfa985451eb324d2f94152d867ae3af"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/06/26/ts-7.webp"
+  },
+  {
+   "id": "vscb-optimizing-vscode-coding-harness-model-providers",
+   "source": "vscode-blog",
+   "date": "2026-07-06",
+   "title": "How Prompt Tuning Improved GPT-5.5 in VS Code",
+   "url": "https://code.visualstudio.com/blogs/2026/07/06/optimizing-vscode-coding-harness-model-providers",
+   "lede": "In our previous post, we introduced the VS Code coding harness, the layer that connects the model to tools, context, instructions, and the agent loop, giving the model the ability to perform coding tasks.",
+   "text": "On this page\n\nIn our previous post, we introduced the VS Code coding harness, the layer that connects the model to tools, context, instructions, and the agent loop, giving the model the ability to perform coding tasks.\n\nEach model responds to tool calls and instructions differently, and the harness can adapt to improve results. This post walks through a two-week experiment we ran in partnership with OpenAI to tune the GPT-5.5 system prompt in VS Code. The question was simple: if we nudge the agent to explore less and validate sooner, can it get faster and cheaper without getting worse? With OpenAI's model expertise and our harness data, we tested two small prompt changes, measured them against a control on live traffic, and shipped the winner.\n\nThis matters more with usage-based billing in place. Token efficiency isn't only an infrastructure metric: every token the agent spends wandering is a token you pay for and wait on. An agent that reaches a grounded edit sooner is both a better experience and a smaller bill.\n\nThe hypothesis: explore less, validate sooner\n\nFollowing the launch of GPT-5.5, we looked at how the model spent tokens inside the VS Code agent harness, as part of the work described in Improving token efficiency in GitHub Copilot. Two patterns stood out: where the model spent tokens, and where it over-explored before acting. Agents can spend a lot of effort searching, rereading, and comparing nearby paths before making a useful edit.\n\nThat pointed to a single, testable idea: the agent should spend less effort wandering and more effort moving through a deliberate loop of evidence, action, and validation.\n\nAfter testing different hypotheses and running offline evaluations, we turned that idea into two variants of the GPT-5.5 system prompt, both were promising in offline evals, and we tested them against the current default on live traffic.\n\nInside the experiment\n\nWe ran the experiment in VS Code over a two-week window, splitting GPT-5.5 agent traffic across two treatment groups and one control group with a 25/25/25 split. Both treatments test the same hypothesis but differ in how much structure they add to the prompt.\n\nGroup |\nVariant name |\nDescription |\nTraffic allocation |\n\nControl |\nPRPT_CTRL |\nCurrent default prompt |\n25% |\n\nTreatment A |\nPRPT_SRCH |\nEconomical search and edit: single, compact reminder to limit exploration before acting |\n25% |\n\nTreatment B |\nPRPT_LRG |\nLarge prompt sections: broader restructure covering the full edit-and-validate loop |\n25% |\n\nNote: The allocations add up to 75% because the experiment scorecard compares evenly sized groups. The remaining GPT-5.5 traffic continued to use the default prompt outside this scorecard slice, so we could compare the treatments and control across the same kind of user traffic.\n\nTreatment A: economical search and edit\n\nTreatment A makes a small, focused change: a single, compact reminder that nudges the model to reduce unnecessary exploration.\n\nThe <economical_search_and_edit> section in the prompt instructs the agent to start from a concrete anchor, gather only enough local context, avoid broad exploration, act once there is a cheap discriminating check, and avoid rereading unchanged context.\n\nYou can find the complete implementation details in gpt55BasePrompt.tsx:\n\n{economicalSearchAndEditEnabled && <Tag name='economical_search_and_edit'>\n- Start from the most concrete available anchor: a file, symbol, failing behavior, failing command, or nearby implementation surface.<br />\n- Gather only enough nearby context to choose one plausible local hypothesis and one cheap check that could disconfirm it.<br />\n- Prefer one targeted search or nearby read over broad repo exploration.<br />\n- Once the cheapest discriminating check is known, act.<br />\n- Do not re-read unchanged context unless a new result makes it relevant.<br />\n</Tag>}\n\nTreatment B: large prompt sections\n\nTreatment B tested a broader version of the same idea of limiting exploration. Instead of adding a single, compact reminder about economical search, it reorganizes the agent workflow into explicit <Before_the_first_edit> and <After_the_first_edit> sections.",
+   "links": [
+    {
+     "text": "previous post",
+     "href": "https://code.visualstudio.com/blogs/2026/05/15/agent-harnesses-github-copilot-vscode"
+    },
+    {
+     "text": "Improving token efficiency in GitHub Copilot",
+     "href": "https://code.visualstudio.com/blogs/2026/06/17/improving-token-efficiency-in-github-copilot/"
+    },
+    {
+     "text": "gpt55BasePrompt.tsx",
+     "href": "https://github.com/microsoft/vscode/blob/56d74126ee02bf1104e813bf4a41f10e90b2119c/extensions/copilot/src/extension/prompts/node/agent/openai/gpt55BasePrompt.tsx#L172-L178"
+    },
+    {
+     "text": "gpt55BasePrompt.tsx",
+     "href": "https://github.com/microsoft/vscode/blob/56d74126ee02bf1104e813bf4a41f10e90b2119c/extensions/copilot/src/extension/prompts/node/agent/openai/gpt55BasePrompt.tsx#L33-L62"
+    },
+    {
+     "text": "agents in VS Code",
+     "href": "https://code.visualstudio.com/docs/agents/agents-tutorial"
+    },
+    {
+     "text": "our GitHub repo",
+     "href": "https://github.com/microsoft/vscode"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/07/06/gpt55-metrics-comparison.webp"
+  },
+  {
+   "id": "vscb-mai-code-1-flash",
+   "source": "vscode-blog",
+   "date": "2026-07-29",
+   "title": "MAI-Code-1-Flash: early results from real developer workflows",
+   "url": "https://code.visualstudio.com/blogs/2026/07/29/mai-code-1-flash",
+   "lede": "In VS Code, we’re working to help you get more done with AI-assisted coding while making every token count. That means improving the entire experience, from the models we use to the product and infrastructure behind them, so you have options that fit different workflows, performance needs, and budgets.",
+   "text": "On this page\n\nIn VS Code, we’re working to help you get more done with AI-assisted coding while making every token count. That means improving the entire experience, from the models we use to the product and infrastructure behind them, so you have options that fit different workflows, performance needs, and budgets.\nIn The Coding Harness Behind GitHub Copilot in VS Code, we explained how VS Code's coding harness connects the model, tools, and editor experience to help the model work most effectively.\n\nIn this post, we look at how specifically training models for VS Code's harness can further improve quality and efficiency. The model we focus on is MAI-Code-1-Flash, Microsoft's lightweight coding model built for the fast, iterative coding tasks developers perform every day in GitHub Copilot. Since the model's introduction at Build, it has been running in production alongside leading coding models, giving us an early look at how it performs in real developer workflows.\n\nThe results show that pairing MAI-Code-1-Flash with the VS Code coding harness delivers strong coding quality with lower token usage, helping developers get more from their usage limits.\n\nQuality and efficiency in production\n\nWhen evaluating coding models, quality and efficiency matter. A model that uses fewer tokens lowers cost, but those savings are more valuable if developers can still accomplish their tasks effectively. The goal is to strike the right balance: strong coding quality while using tokens efficiently.\n\nTo understand how MAI-Code-1-Flash performs in that tradeoff, we analyzed aggregate data from developers who selected each model in VS Code Copilot Chat. We looked at both the quality of the generated code and how efficiently developers reached a durable result. For quality, we measured whether developers accepted generated suggestions and whether that code remained after active editing and at commit. For efficiency, we measured the median number of tokens generated per conversation turn and the median number of turns needed to reach a commit.\n\nThe results suggest that MAI-Code-1-Flash strikes an effective balance between quality and efficiency. It outperforms Claude Haiku 4.5 and GPT-5.4 Mini on quality. Larger-sized GPT-5.6 Luna and Kimi K2.7 Code achieve quality advantages, but require 67% to 94% more tokens per turn as well as more turns per commit.\n\nModel |\nCode survival rate |\nCommit survival rate |\nAccept rate |\nTokens per turn |\nTurns per commit |\n\nMAI-Code-1-Flash |\nBaseline (0%) |\nBaseline (0%) |\nBaseline (0%) |\nBaseline (0%) |\nBaseline (0%) |\n\nClaude Haiku 4.5 |\n-2% |\n-8% |\n-10% |\n-10% |\n+28% |\n\nGPT 5.4 Mini |\n-3% |\n-8% |\n-7% |\n+7% |\n+17% |\n\nGPT 5.6 Luna |\n+3% |\n+3% |\n+4% |\n+67% |\n+17% |\n\nKimi K2.7 Code |\n+4% |\n+6% |\n-6% |\n+94% |\n+11% |\n\nData from users who selected each model in VS Code Copilot Chat between 6/2/26 and 7/24/26.\nMetric definitions: Code survival rate = percentage of AI-generated code retained after 10 minutes of active editing. Commit survival rate = percentage of AI-generated code retained at Git commit. Accept rate = percentage of AI-generated suggestions accepted by the user. Tokens per turn = median number of tokens generated by the model per conversation turn (a single request-response exchange). Turns per commit = median number of conversation turns a user completes before reaching a Git commit.\n\nValidating the results with Auto flights\n\nAs another way to validate the aggregated usage data, we ran A/B flights through the Auto model experience in VS Code Copilot Chat. Auto assigns models without requiring developers to select one, helping us isolate the model’s impact from differences in who chooses each model or the tasks they use it for. We then looked at engagement and repeat usage as signals of whether developers found the experience useful enough to keep using.\n\nThe results reinforced the same story. MAI-Code-1-Flash drove stronger engagement while remaining more token efficient than other lightweight models. Users were 6% more likely to return within two days than with GPT-5.4 Mini and 11% more likely than with Claude Haiku 4.5.",
+   "links": [
+    {
+     "text": "The Coding Harness Behind GitHub Copilot in VS Code",
+     "href": "https://code.visualstudio.com/blogs/2026/05/15/agent-harnesses-github-copilot-vscode"
+    },
+    {
+     "text": "MAI-Code-1-Flash",
+     "href": "https://microsoft.ai/models/mai-code-1-flash/"
+    },
+    {
+     "text": "Community Discussion",
+     "href": "https://github.com/orgs/community/discussions/197306"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/07/29/mai-code-1-flash-comparison.webp"
+  },
+  {
+   "id": "vscb-agent-host-architecture",
+   "source": "vscode-blog",
+   "date": "2026-08-26",
+   "title": "Introducing the Agent Host for persistent, portable agent sessions",
+   "url": "https://code.visualstudio.com/blogs/2026/08/26/agent-host-architecture",
+   "lede": "When you assign work to an agent, it should just continue its work, even when you're not actively watching. Whether you switch to another agent session, move between the editor and the Agents window, or connect remotely from another machine or the browser, you should be able to monitor and interact with that session.",
+   "text": "On this page\n\nWhen you assign work to an agent, it should just continue its work, even when you're not actively watching. Whether you switch to another agent session, move between the editor and the Agents window, or connect remotely from another machine or the browser, you should be able to monitor and interact with that session.\n\nWe're introducing the Agent Host, a self-contained process that owns agent sessions, and the open Agent Host Protocol (AHP) for connecting hosts and clients. Together, they enable sessions to continue after you close the folder or editor window where they started, stay synchronized across clients, run locally or remotely, and support multiple agent harnesses without losing their distinct capabilities.\n\nIn this post, we'll explain why we built the Agent Host, what it enables in VS Code (and how you can try it), how its architecture works, and how AHP opens that architecture to other clients.\n\nWhy we built the Agent Host\n\nIn late 2025, we added support for closing a local agent chat and keeping it running in the background. That made it possible to run multiple sessions in parallel or focus on another task while you were in VS Code. The next step was enabling those sessions to continue after you closed the folder where they started and to move across VS Code surfaces.\n\nAside from supporting long-running sessions, we set out to adopt the Microsoft Copilot SDK for the Copilot harness in VS Code. Using the SDK gives Copilot a more consistent harness behavior and functionality across Copilot CLI, the standalone GitHub Copilot app, and other Copilot products.\n\nBringing these efforts together gave us an opportunity to reevaluate how we run agent harnesses in VS Code. An agent harness assembles context, provides tools, runs the agent loop, and applies changes. Without the Agent Host, VS Code runs the local agent harness in each editor window's extension host, the process that VS Code uses to run extensions such as GitHub Copilot Chat. The extension host isolates extension code from the core editor, however it also ties the agent runtime to one VS Code window. Closing that window stops the runtime. As a result, each window loads its own agent infrastructure.\n\nMoving session state, harness adapters, and baseline workspace capabilities into a dedicated process changes that boundary. The extension host is no longer in the critical path for baseline agent work, and multiple windows can connect to one host instead of each loading a separate runtime. VS Code still communicates with the host, and tools contributed by a client still route back to that client, but the session itself no longer depends on the specific folder or editor window where it started.\n\nThis separation also gives VS Code a common foundation for multiple agent harnesses while preserving what makes each one distinct. Earlier this year, we introduced the Claude Agent using Anthropic's official harness. Copilot and Claude can retain their own SDKs, agent loops, tools, and provider-specific capabilities, while the Agent Host and AHP give them a consistent session experience in VS Code.\n\nWhat the Agent Host enables\n\nThe Agent Host is enabled in the latest VS Code Stable and Insiders. Because the Agent Host owns the session, you can start working with an agent in an editor window and continue with the same live session in the Agents window. Both surfaces stay synchronized, so you can monitor progress and interact with the session wherever you prefer without creating a copy.\n\nThe separation between clients and hosts also enables remote sessions. The Agent Host can run with your workspace on another machine while you connect from the desktop or web to check progress, review changes, and manage sessions. Learn more about remote agent sessions, including setup instructions for SSH, dev tunnels, and the web.\n\nTry this workflow to experience how a session continues after you close its folder and stays in sync across VS Code surfaces:\n\n-\nOpen a folder in an editor window, select Copilot from the harness picker, and start an agent session as you normally would.\n\n-\nWhile the agent is working, close the folder but keep VS Code running.",
+   "links": [
+    {
+     "text": "Agents window",
+     "href": "https://code.visualstudio.com/docs/agents/agents-window"
+    },
+    {
+     "text": "Agent Host Protocol (AHP)",
+     "href": "https://microsoft.github.io/agent-host-protocol/"
+    },
+    {
+     "text": "",
+     "href": "https://www.youtube.com/watch?v=k91ejc3G1YM"
+    },
+    {
+     "text": "closing a local agent chat and keeping it running in the background",
+     "href": "https://code.visualstudio.com/updates/v1_107#_local-agent-sessions-remain-active-when-closed"
+    },
+    {
+     "text": "Microsoft Copilot SDK",
+     "href": "https://github.com/github/copilot-sdk"
+    },
+    {
+     "text": "agent harness",
+     "href": "https://code.visualstudio.com/docs/agents/concepts/agent-harnesses"
+    },
+    {
+     "text": "Claude Agent",
+     "href": "https://code.visualstudio.com/updates/v1_109#_claude-agent-preview"
+    },
+    {
+     "text": "Insiders",
+     "href": "https://code.visualstudio.com/insiders/"
+    },
+    {
+     "text": "web",
+     "href": "https://code.visualstudio.com/docs/agents/run/remote-agent-sessions#_use-the-agents-window-in-the-browser"
+    },
+    {
+     "text": "remote agent sessions",
+     "href": "https://code.visualstudio.com/docs/agents/run/remote-agent-sessions"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/08/26/remote-agent-hosts.webp"
+  },
+  {
+   "id": "vscb-building-the-github-copilot-inline-suggestions-model-part-on",
+   "source": "vscode-blog",
+   "date": "2026-09-16",
+   "title": "Building the new GitHub Copilot Inline Suggestions Model: Part One",
+   "url": "https://code.visualstudio.com/blogs/2026/09/16/building-the-github-copilot-inline-suggestions-model-part-one",
+   "lede": "Completion-style ghost text, next edit suggestions near the cursor, and edits farther away were previously powered by separate models. We built one model for all three, and learned that the best results come from training, evaluation, and editor design evolving together.",
+   "text": "On this page\n\nCompletion-style ghost text, next edit suggestions near the cursor, and edits farther away were previously powered by separate models. We built one model for all three, and learned that the best results come from training, evaluation, and editor design evolving together.\n\nAt GitHub Copilot, our mission is to support all development workflows, from AI-assisted coding using inline suggestions to agent-first software engineering in the VS Code Agents window. Inline suggestions are used and loved by millions of developers worldwide, with over 61 billion successful model requests in the last 90 days, and we continue to push the quality bar on it and all GitHub Copilot experiences.\n\nWriting code is rarely linear. The next useful change might be a few characters at the cursor, a nearby rewrite, or a related edit elsewhere in the codebase. Inline suggestions accommodate these different workflows through completion-style ghost text, nearby next edit suggestions, and long-distance edits.\n\nPreviously, specialized model paths powered each type of suggestion. The tried-and-true completions model doesn't need much of an introduction, and in earlier posts, we shared how we trained a custom model for next edit suggestions and extended those suggestions to edits farther away. We have now unified all three models behind a single \"3-in-1\" model that can do it all.\n\nUnifying the models improves suggestion quality by allowing a single model to choose the best edit for the developer's current work end-to-end instead of using programmatic logic to choose among specialized models. For instance, let's say the developer has typed class Fa in the penguin feeding program below. Using the previous standalone models (left), the most mature and battle-tested completions model is always triggered first. Since it can only append to the prefix Fa, it does what it knows best and suggests FastingPenguin. However, in this particular case, a better NES suggestion exists, as suggested by the unified model (right): semantically rewrite Fa to Fish.\n\nBefore (standalone models) |\nAfter (unified model) |\n\n|\n\n|\n\nNot only can we tackle all existing tasks in one model, but because this model can output multiple edits in one response, we can cache these additional edits to deliver a faster experience for subsequent edits if the preceding suggestions were desirable. This creates a smoother, snappier tab-tab-tab experience across the editing flow.\n\nTo enable this better editing experience, we first reframed the modeling task—especially the prompt and output format—to generalize across code editing tasks. We then combined our learnings in data quality, model training and evaluation, and client design from the standalone models, in addition to extensive additional experimentation (over 200 offline and 20 online experiments, whose course we will chart in the remainder of these posts), to carefully optimize the model and end-to-end experience. The result is a higher quality, faster, and more cohesive typing companion that is greater than the sum of its parts.\n\nWhy unify?\n\nPrior to the unified model, the production implementation of inline suggestions in VS Code was powered by three separate models:\n\n- Completions (the familiar ghost text we all know and love),\n\n- NES (next edit suggestions, or nearby edits bounded by a few lines above and below the cursor position),\n\n- Long-distance NES (longer-range NES-style suggestions farther from the cursor).\n\nThis dedicated work on individual tasks, with a highly mature completions model alongside newer editing models, resulted in a client-orchestrated experience that triggered each where appropriate.\n\nWhile effective for these individual tasks and a necessary step to bring new editing capabilities to users, this created key shortcomings not only in terms of user flow quality (sometimes making suboptimal or piecemeal edits rather than a single clear edit that best serves the context) and latency (potentially up to 4 model calls per opportunity, as shown in the figure below), but also in terms of extensibility to future features (for example, multi-file edits).\n\nFigure 1.",
+   "links": [
+    {
+     "text": "completions model",
+     "href": "https://github.blog/ai-and-ml/github-copilot/the-road-to-better-completions-building-a-faster-smarter-github-copilot-with-a-new-custom-model/"
+    },
+    {
+     "text": "trained a custom model for next edit suggestions",
+     "href": "https://github.blog/ai-and-ml/github-copilot/evolving-github-copilots-next-edit-suggestions-through-custom-model-training/"
+    },
+    {
+     "text": "extended those suggestions to edits farther away",
+     "href": "https://code.visualstudio.com/blogs/2026/02/26/long-distance-nes"
+    },
+    {
+     "text": "next edit suggestions are enabled",
+     "href": "https://code.visualstudio.com/docs/editing/ai-powered-suggestions#_next-edit-suggestions"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/09/16/building_github_copilot_inline_suggestions.png"
+  },
+  {
+   "id": "vscb-building-the-github-copilot-inline-suggestions-model-part-tw",
+   "source": "vscode-blog",
+   "date": "2026-09-23",
+   "title": "Building the new GitHub Copilot Inline Suggestions Model: Part Two",
+   "url": "https://code.visualstudio.com/blogs/2026/09/23/building-the-github-copilot-inline-suggestions-model-part-two",
+   "lede": "Completion-style ghost text, next edit suggestions near the cursor, and edits farther away were previously powered by separate models. We built one model for all three, and learned that the best results come from training, evaluation, and editor design evolving together.",
+   "text": "On this page\n\nCompletion-style ghost text, next edit suggestions near the cursor, and edits farther away were previously powered by separate models. We built one model for all three, and learned that the best results come from training, evaluation, and editor design evolving together.\n\nPhase 2: The 3-in-1 model\n\nIn the first part of this blog post, we shared the first phase of the unified modeling effort: unifying the NES and long-distance edit behavior into a single 2-in-1 model.\n\nFigure 1. We first unified the NES and long-distance NES models to yield the 2-in-1 unified model, followed by unifying the 2-in-1 model with the completions model to yield the 3-in-1 model.\n\nThe next step was to bring completion behavior into the 2-in-1 model. Previously, an edit opportunity could involve a completion request followed by another request for a richer 2-in-1 model edit. With the fully unified 3-in-1 model, one request can consider the full range of code editing behaviors and decide the best response at any given moment, or chain many of them together in a single response.\n\nThis greatly reduces model calls and serving complexity, but the biggest benefit isn't even the efficiency. A single model can optimize for the best edit that fits the moment instead of preserving the artificial boundaries that resulted from the system architecture.\n\nCase in point, in our final 3-in-1 model candidate, we found that while the proportion of less-intrusive ghost text decreased in the 3-in-1 model compared to the 2-in-1 model setup, there were actually significant measurable improvements in user satisfaction. We will talk more about this later in this post.\n\nTraining the v4 models: adding in completions\n\nTo train the 3-in-1 model, we applied what we learned while developing the 2-in-1 model. As the goal was to add completion behavior to the 2-in-1 model, the distribution of the training data needed to change. We gathered ghost text completions data through a variety of techniques, including distilling ghost text from the original completions model and filtering them for quality using an LLM judge. We leveraged the original training recipes from the 2-in-1 model while adding this new ghost text data.\n\nWe also had to carefully rebalance the distribution of the multi-edit data inherited from the 2-in-1 model recipe. Models that showed too little ghost text or were too eager to jump away from the user's cursor often resulted in more disruptions to the user flow and thus higher dismissal rates. This naturally gave rise to a dedicated subset of multi-edit data where the first patch was a ghost text completion at the user's cursor. During RL, as mentioned earlier in part one, we also kept the grader design that encouraged the model's edit sequences to begin with the most immediate continuation of the developer's work, then move outward to related follow-up changes, which made edits least intrusive and kept more logical flow and continuity.\n\nEarly model candidates produced ghost text more often and more suggestions overall as a result. We measured these results offline with three benchmarks discussed in part one: STests, Output View Kind, and Pseudo-Online Evaluation. We also noticed that the HumanEval benchmark results improved because of having stronger completions capabilities.\n\nWhen we flighted these v4 models against the now-production setup of the 2-in-1 model and the completions model, results were quite promising: no statistically significant changes in acceptance rate, dismissal rate, shown rate, and user engagement metrics. But we did find a marginally statistically significant regression in accepted and retained characters, or the number of characters that were not reverted by the user within a certain time interval after accepting a suggestion.\n\nWe considered several potential causes of this regression, including poorer suggestion quality, but because of the lack of movement in other metrics, we ultimately pulled the thread on one hypothesis in particular: suggestion length.",
+   "links": [
+    {
+     "text": "first part of this blog post",
+     "href": "https://code.visualstudio.com/blogs/2026/09/16/building-the-github-copilot-inline-suggestions-model-part-one"
+    },
+    {
+     "text": "part one",
+     "href": "https://code.visualstudio.com/blogs/2026/09/16/building-the-github-copilot-inline-suggestions-model-part-one#_patch-ordering"
+    },
+    {
+     "text": "benchmarks",
+     "href": "https://code.visualstudio.com/blogs/2026/09/16/building-the-github-copilot-inline-suggestions-model-part-one#_offline-benchmarks"
+    },
+    {
+     "text": "Pseudo-Online Evaluation",
+     "href": "https://code.visualstudio.com/blogs/2026/09/16/building-the-github-copilot-inline-suggestions-model-part-one#_the-pseudo-online-evaluation-benchmark"
+    },
+    {
+     "text": "what we learned",
+     "href": "https://code.visualstudio.com/blogs/2026/09/16/building-the-github-copilot-inline-suggestions-model-part-one#_training-the-v3-models-tackling-issues-in-insertion-pattern-propagation"
+    },
+    {
+     "text": "next edit suggestions are enabled",
+     "href": "https://code.visualstudio.com/docs/editing/ai-powered-suggestions#_next-edit-suggestions"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/09/23/building_github_copilot_inline_suggestions.png"
+  },
+  {
+   "id": "vscb-modern-ui",
+   "source": "vscode-blog",
+   "date": "2026-10-15",
+   "title": "Modernizing the VS Code UI",
+   "url": "https://code.visualstudio.com/blogs/2026/10/15/modern-ui",
+   "lede": "VS Code has changed a lot since its first preview in 2015. Tabs, themes, and new ways to organize your work have made it more capable, but over a decade of adding and refining features has also introduced visual complexity and inconsistencies across the workbench.",
+   "text": "On this page\n\nVS Code has changed a lot since its first preview in 2015. Tabs, themes, and new ways to organize your work have made it more capable, but over a decade of adding and refining features has also introduced visual complexity and inconsistencies across the workbench.\n\nThis modernization isn't about reinventing the editor. We're refining the familiar interface to make its hierarchy clearer, reduce distractions, and give VS Code a shared design foundation that can support both editing and newer workflows such as agent sessions. The goal is a more coherent, approachable experience without giving up the density, customization, or muscle memory developers rely on.\n\nThe modernized UI is available today in preview. The work began with the 2026 color themes, expanded through the Agents window, and is now shaping the editor itself. In this post, we'll share how the modernization evolved and how your feedback continues to shape it.\n\nAn interface that's always evolving\n\nSome interface changes have been small refinements. Others have introduced new ways to organize your work. Even features that now feel like part of the original editor arrived gradually.\n\nThe timeline highlights the first preview in 2015, editor tabs in 2016, the new tree widget in 2019, the Dark Modern and Light Modern themes in 2023, and the modernized UI preview in 2026.\n\nThe previous workbench design, which we refer to as the classic UI, and the modernized UI preview.\n\nWe continued refining each feature after it was introduced, guided by feedback across different themes, layouts, and workflows. The current modernization follows the same approach.\n\nThe first step: color\n\nColor is part of how you make VS Code your own, but it also shapes how quickly you can read the interface. A balanced palette helps important content and states stand out without making every part of the workbench compete for attention.\n\nWe began the modernization journey by rethinking color with the Dark 2026 and Light 2026 themes. We looked at workbench colors and syntax highlighting as one experience, establishing a visual foundation that we later carried into the modernized UI. A tighter range of surface colors creates a clearer hierarchy and keeps code at the center. More consistent hover, focus, selection, validation, and agent states help the interface read clearly in both light and dark environments.\n\nDark 2026 and Light 2026 themes.\n\nColor gave us a starting point, but creating a more cohesive interface required shared rules for spacing, typography, surfaces, and controls. The opportunity to develop those rules came with a new kind of VS Code window.\n\nOne VS Code, different ways of working\n\nThe Agents window became available in Stable as a Preview earlier in 2026. It brings the full agent workflow into one place, from starting sessions and following progress to reviewing results. It represents a new way of working in VS Code, centered on delegating tasks and reviewing work as it progresses. Supporting that shift called for a fresh approach to the interface, so session state and next actions remain easy to scan without crowding the prompt and review areas.\n\nWe're aligning the Agents and editor windows around the same approach to typography, spacing, colors, tabs, and controls. Moving between them should feel like changing how you're working, not switching to a different product. That doesn't mean making the layouts identical or making everyone's VS Code look the same. Each window remains optimized for its purpose, and you can still choose a theme, adjust density, and arrange your workspace to suit your screen and workflow.\n\nThe existing workbench was designed around direct interaction with files and had evolved component by component. Spacing, typography, surfaces, and controls didn't always follow a shared system, which made it harder to adapt the interface to this new workflow or carry improvements across windows. The Agents window gave us a place to develop that shared design system.\n\nWe worked through those design decisions together and tested how they supported managing sessions, following progress, and reviewing changes.",
+   "links": [
+    {
+     "text": "first preview in 2015",
+     "href": "https://code.visualstudio.com/blogs/2016/04/14/vscode-1.0"
+    },
+    {
+     "text": "editor tabs in 2016",
+     "href": "https://code.visualstudio.com/updates/June_2016#_tabs"
+    },
+    {
+     "text": "new tree widget in 2019",
+     "href": "https://code.visualstudio.com/updates/v1_31#_new-tree-widget"
+    },
+    {
+     "text": "Dark Modern and Light Modern themes in 2023",
+     "href": "https://code.visualstudio.com/updates/v1_78#_new-default-color-themes"
+    },
+    {
+     "text": "Dark 2026 and Light 2026",
+     "href": "https://github.com/microsoft/vscode/pull/288417"
+    },
+    {
+     "text": "syntax highlighting",
+     "href": "https://github.com/microsoft/vscode/pull/299014"
+    },
+    {
+     "text": "Agents window",
+     "href": "https://code.visualstudio.com/docs/agents/run/agents-window"
+    },
+    {
+     "text": "workbench",
+     "href": "https://code.visualstudio.com/docs/editing/getting-started/userinterface"
+    },
+    {
+     "text": "public feedback discussion",
+     "href": "https://github.com/microsoft/vscode/issues/334285"
+    },
+    {
+     "text": "feedback about editor tabs",
+     "href": "https://github.com/microsoft/vscode/issues/336320"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/10/15/classic-to-modern.png"
+  },
+  {
+   "id": "vscb-configurable-eagerness",
+   "source": "vscode-blog",
+   "date": "2026-10-27",
+   "title": "Tune GitHub Copilot Inline Suggestions with Configurable Eagerness",
+   "url": "https://code.visualstudio.com/blogs/2026/10/27/configurable-eagerness",
+   "lede": "Choose how proactively Copilot offers inline suggestions.",
+   "text": "On this page\n\nChoose how proactively Copilot offers inline suggestions.\n\nA helpful suggestion at the wrong moment can still feel like an interruption. When you're completing a familiar pattern, you may want Copilot to anticipate several changes ahead. When working through delicate logic, you may prefer Copilot to scope its changes to the statement at hand and leave the next decision to you.\n\nCommunity feedback about inline suggestions made both preferences clear: some developers wanted fewer suggestions, while others wanted Copilot to do more. No single default could satisfy everyone. In earlier posts about training the 3-in-1 inline suggestions model covering Completions, NES, and Long-Distance NES (part one, part two), we explained how developer feedback helped us improve the default experience. This strong default is a great starting point, but developers differ in how much assistance they prefer. We wanted to let them tailor their experience to their own preferences.\n\nConfigurable eagerness gives developers more control over how proactively Copilot offers inline suggestions. We trained the inline suggestions model to support three modes: low, medium, and high eagerness. In this post, we'll explain how we defined and trained those behaviors, what our first approach taught us, and how on-policy distillation (OPD) and reinforcement learning (RL) made the feature easier to carry forward to future models.\n\nIntroducing configurable eagerness\n\nWe define eagerness along two dimensions: how often the model offers a suggestion and the size of each proposed edit.\n\nEagerness setting |\nIntended behavior |\n\nLow |\nOffer fewer suggestions and favor smaller, more conservative edits. |\n\nMedium |\nProvide the current 'default' level of assistance. |\n\nHigh |\nOffer suggestions more proactively, including larger edits when appropriate. |\n\nThese settings guide how Copilot behaves rather than imposing strict limits on suggestion timing or size. Low eagerness still offers complete, useful suggestions; it's simply more conservative. High eagerness may propose more and larger suggestions, but only when that work is relevant to the user's current task.\n\nThis demo shows a simple example: from the same starting point (class ModelManager:), each setting produces different behavior. Low eagerness proposes five small, incremental suggestions and leaves it to the developer to decide which methods to add and what validation they need. High eagerness proposes three larger suggestions that anticipate follow-on work, such as raising a KeyError when attempting to remove a model that doesn't exist.\n\nFigure 1. Low, medium, and high eagerness while building a ModelManager class.\n\nTo train these behaviors, we needed a measurable definition of eagerness. Because our model outputs suggestions in a diff-based format, we used edit distance (the number of characters changed by a suggestion) as a proxy for eagerness, capturing both edit size and frequency1.\n\nOne model, three modes\n\nWe considered training a separate model for each eagerness level, but this approach would have multiplied future deployment and upgrade complexity. Instead, we trained one model to produce all three behaviors (low, medium, and high eagerness), conditioned on a lightweight control tag:\n\nEagerness setting |\nControl tag |\n\nLow |\n<|aggression|>low<|/aggression|> |\n\nMedium |\nNo change |\n\nHigh |\n<|aggression|>high<|/aggression|> |\n\nWe trained the model to interpret this tag as an eagerness control: it produced more conservative suggestions for low eagerness and more proactive suggestions for high eagerness, while preserving its default behavior for medium.\n\nWe started with supervised fine-tuning (SFT). For every training prompt, we sampled responses from variants of the model with varying levels of eagerness, filtered to high-quality responses, and ordered the responses by edit distance to produce examples of low, medium, and high eagerness for each prompt in the dataset.\n\nFigure 2. Supervised fine-tuning for configurable eagerness.",
+   "links": [
+    {
+     "text": "Community feedback about inline suggestions",
+     "href": "https://github.com/microsoft/vscode/issues/283075"
+    },
+    {
+     "text": "part one",
+     "href": "https://code.visualstudio.com/blogs/2026/09/16/building-the-github-copilot-inline-suggestions-model-part-one"
+    },
+    {
+     "text": "part two",
+     "href": "https://code.visualstudio.com/blogs/2026/09/23/building-the-github-copilot-inline-suggestions-model-part-two"
+    },
+    {
+     "text": "edit distance",
+     "href": "https://en.wikipedia.org/wiki/Edit_distance"
+    },
+    {
+     "text": "supervised fine-tuning (SFT)",
+     "href": "https://en.wikipedia.org/wiki/Supervised_learning"
+    },
+    {
+     "text": "on-policy distillation (OPD)",
+     "href": "https://en.wikipedia.org/wiki/Knowledge_distillation"
+    },
+    {
+     "text": "Reward hacking",
+     "href": "https://en.wikipedia.org/wiki/Reward_hacking"
+    },
+    {
+     "text": "Simulation Tests (STests)",
+     "href": "https://code.visualstudio.com/blogs/2026/09/16/building-the-github-copilot-inline-suggestions-model-part-one#_offline-benchmarks"
+    },
+    {
+     "text": "minifying suggestions",
+     "href": "https://en.wikipedia.org/wiki/Minification_(programming)"
+    },
+    {
+     "text": "confirm that Next Edit Suggestions are enabled",
+     "href": "https://code.visualstudio.com/docs/editing/ai-powered-suggestions#_next-edit-suggestions"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/10/27/configurable-eagerness-social.png"
+  },
+  {
+   "id": "vscb-vscode-wrapped",
+   "source": "vscode-blog",
+   "date": "2026-10-28",
+   "title": "VS Code Wrapped: GitHub Universe 2026",
+   "url": "https://code.visualstudio.com/blogs/2026/10/28/vscode-wrapped",
+   "lede": "When we gathered at GitHub Universe in October 2025, working with agents in VS Code was still relatively new. A year later, working with agents has become the new normal. A single developer can put several agents to work on different problems, keep coding while those tasks move forward, and check back in to review the results.",
+   "text": "On this page\n\nWhen we gathered at GitHub Universe in October 2025, working with agents in VS Code was still relatively new. A year later, working with agents has become the new normal. A single developer can put several agents to work on different problems, keep coding while those tasks move forward, and check back in to review the results. Work can continue on another machine, in another app, or in the cloud after your laptop closes. The editor that helps you write code is also becoming the place where you coordinate much more of the work it takes to ship software.\n\nImagine handing off a feature to Copilot, while an agent using the Claude harness investigates a bug, then opening the running app in a browser that both you and the agent can see and control. Project instructions and tools give those agents the context to work, and the Agents window brings their progress and changes together for review.\n\nWhen you hand a task to an agent, it shouldn't matter which app you're using to launch the task. When you switch to another tool, the task should continue running. Over the last releases, we've worked to make these connected, continuous experiences across VS Code and other Copilot apps become reality.\n\nIn this blog post, we're zooming into how far VS Code has come since the last Universe, and what you can do with it today.\n\nAgents that keep working\n\nDevelopers can hand off more of the work without handing over the decisions that matter. We built on our Language Server Protocol and Debug Adapter Protocol experience to create the Agent Host Protocol (AHP), which just went 1.0.\n\nJust as a language server makes code completion and Go to Definition available to different editors, an Agent Host brings agent functionality into an independent process. It manages sessions and provides access to multiple harnesses, models, files, and terminals.\n\nAHP lets clients connect to those sessions and stay in sync. Cloud sessions run on GitHub's infrastructure, so closing your laptop doesn't stop them. You can continue the same session in VS Code, the GitHub Copilot app, GitHub Mobile, github.com, or Copilot CLI. And because the protocol is open, anyone can build a client that works with the same live sessions as VS Code.\n\nChoosing your agent\n\nThe agent harness is what coordinates the agent loop and connects the language model to context and tools.\nWe combined our Local VS Code harness with the Copilot CLI harness to create the new Copilot harness, now the default for new sessions in both the editor and Agents window. Built on the Microsoft Copilot SDK developed by GitHub, it brings more consistent agent behavior across VS Code, Copilot CLI, and the GitHub Copilot app. This also means that you can reuse your agent customizations across different Copilot experiences without modifications.\n\nYou can also use the Claude and Codex harnesses in VS Code through the Agent Host. Each runs on its provider’s own agent harness, with its own runtime and capabilities. VS Code brings their sessions together in one place, where you can manage work across agents without requiring every agent to work the same way.\n\nChoosing your model\n\nAccess to multiple models remains one of Copilot's pillars. The model picker lets you select from Copilot and bring your own key models. You can specify options like reasoning effort and context size to optimize the model configuration for the task.\n\nAs newer and more capable models become available, choosing the right model for the task is becoming more and more difficult. Maybe one model is not the best for each part of the task.\nCopilot Fusion autonomously chooses one model or orchestrates a set of models to solve the task at hand. In the Agents Window, you can also use the Compare Models feature in Preview to run different models and harnesses on the same task, review results side by side, and combine the best ideas. Together, these options help you balance speed, cost, and quality.\n\nManaging parallel work\n\nThe work we started with Agent HQ in VS Code has grown into the Agents Window, a dedicated space to manage agents across all your workspaces and environments.",
+   "links": [
+    {
+     "text": "GitHub Universe in October 2025",
+     "href": "https://code.visualstudio.com/updates/v1_106"
+    },
+    {
+     "text": "Agent Host Protocol (AHP)",
+     "href": "https://microsoft.github.io/agent-host-protocol/"
+    },
+    {
+     "text": "Agent Host",
+     "href": "https://code.visualstudio.com/blogs/2026/08/26/agent-host-architecture"
+    },
+    {
+     "text": "Microsoft Copilot SDK",
+     "href": "https://github.com/github/copilot-sdk"
+    },
+    {
+     "text": "Claude and Codex harnesses",
+     "href": "https://code.visualstudio.com/blogs/2026/02/05/multi-agent-development"
+    },
+    {
+     "text": "agent harness",
+     "href": "https://code.visualstudio.com/docs/agents/concepts/agent-harnesses"
+    },
+    {
+     "text": "model picker",
+     "href": "https://code.visualstudio.com/docs/agent-customization/language-models"
+    },
+    {
+     "text": "Copilot Fusion",
+     "href": "https://github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app/"
+    },
+    {
+     "text": "Compare Models",
+     "href": "https://code.visualstudio.com/updates/v1_143#_compare-model-results-preview"
+    },
+    {
+     "text": "Agents Window",
+     "href": "https://code.visualstudio.com/docs/agents/run/agents-window"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/10/28/social-image.png"
+  }
+ ]
+}

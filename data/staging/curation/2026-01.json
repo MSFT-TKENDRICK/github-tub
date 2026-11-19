@@ -1,0 +1,466 @@
+{
+  "month": "2026-01",
+  "items": [
+    {
+      "id": "cl-93284",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "extensibility",
+      "tag": "Release",
+      "stage": "preview",
+      "summary": "The GitHub Copilot SDK is in technical preview, with language-specific SDKs for Node.js and TypeScript, Python, Go and .NET. It provides programmatic access to Copilot CLI, including multi-turn conversations, custom tool execution and client and session lifecycle control. The accompanying blog post describes embedding the same agentic core that powers Copilot CLI in any application.",
+      "why": "Developers can embed the agentic core behind Copilot CLI in their own applications through SDKs for four languages, now in technical preview.",
+      "links": [
+        { "label": "Blog post: Build an agent into any app", "url": "https://github.blog/news-insights/company-news/build-an-agent-into-any-app-with-the-github-copilot-sdk/" },
+        { "label": "Copilot SDK repository", "url": "https://github.com/github/copilot-sdk" }
+      ]
+    },
+    {
+      "id": "cl-93334",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "stage": "preview",
+      "summary": "Copilot memory is in public preview for all paid GitHub Copilot plans. It captures repository-specific memories as users work with Copilot coding agent, Copilot code review or Copilot CLI. Memories are validated against the current codebase before use, are shared across Copilot features and expire automatically after 28 days.",
+      "why": "Repository-specific context learned in one Copilot feature can be reused by the others, with memories checked against the current code before use.",
+      "admin": "Copilot Pro and Pro+ users enable memory in personal Copilot settings. Organizations and enterprises enable it through policy settings. Repository owners can review and delete stored memories in repository settings.",
+      "links": [
+        { "label": "Engineering blog: agentic memory system", "url": "https://github.blog/ai-and-ml/github-copilot/building-an-agentic-memory-system-for-github-copilot/" },
+        { "label": "Copilot memory documentation", "url": "https://docs.github.com/copilot/concepts/agents/copilot-memory" }
+      ]
+    },
+    {
+      "id": "cl-93094",
+      "tier": "headline",
+      "section": "platform",
+      "area": "actions",
+      "tag": "Announcement",
+      "title": "Reduced GitHub-hosted runner pricing is in effect, with reductions of up to 39%",
+      "summary": "Reduced prices for GitHub-hosted runners are now in effect, with reductions of up to 39% depending on the machines used. The change was announced on December 16, 2025. Standard hosted runner usage in public repositories remains free.",
+      "why": "GitHub-hosted runner prices are reduced by up to 39%, depending on the machines used, so Actions cost estimates can be refreshed at the new rates.",
+      "admin": "Estimate costs at the adjusted rates with the runner pricing documentation and the Actions pricing calculator.",
+      "links": [
+        { "label": "Executive Insights post on pricing changes", "url": "https://resources.github.com/actions/2026-pricing-changes-for-github-actions" },
+        { "label": "Runner pricing documentation", "url": "https://docs.github.com/billing/reference/actions-runner-pricing" },
+        { "label": "Actions pricing calculator", "url": "https://github.com/pricing/calculator#actions" }
+      ]
+    },
+    {
+      "id": "cl-93362",
+      "tier": "headline",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Release",
+      "title": "Artifact metadata APIs and linked artifacts add code-to-cloud traceability",
+      "summary": "New REST API endpoints record storage locations and deployment context for build artifacts such as containers and binaries, even when they live outside GitHub. A linked artifacts view in the organization Packages tab shows attestations, storage locations and deployment history, and Dependabot and code scanning alerts can be filtered by deployment and runtime risk. Microsoft Defender for Cloud (public preview) and JFrog Artifactory are launch integrations.",
+      "why": "Security teams can link artifacts to where they run and prioritize Dependabot and code scanning alerts by deployment and runtime risk.",
+      "links": [
+        { "label": "About linked artifacts", "url": "https://docs.github.com/code-security/concepts/supply-chain-security/linked-artifacts" },
+        { "label": "Artifact metadata API reference", "url": "https://docs.github.com/rest/orgs/artifact-metadata" }
+      ]
+    },
+    {
+      "id": "cl-93516",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Deprecation",
+      "title": "Legacy Copilot metrics APIs sunset on March 2 and April 2, 2026",
+      "summary": "Three legacy Copilot metrics APIs are closing down as part of a transition to newer, more comprehensive Copilot usage metrics endpoints, which are in public preview. The User-level Feature Engagement Metrics API and the Direct Data Access API sunset on March 2, 2026, and the Copilot Metrics API sunsets on April 2, 2026. Support for the legacy APIs will be limited and no new features will be developed.",
+      "why": "Workflows built on the legacy Copilot metrics APIs should move to the new usage metrics APIs before the March and April 2026 sunsets to avoid disruption.",
+      "admin": "Move existing workflows to the Copilot usage metrics APIs, which return enterprise, organization and user-level data with expanded IDE telemetry.",
+      "effective": "2026-03-02",
+      "links": [
+        { "label": "Copilot usage metrics endpoints", "url": "https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics?apiVersion=2022-11-28" },
+        { "label": "Copilot Metrics API", "url": "https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-metrics?apiVersion=2022-11-28" }
+      ]
+    },
+    {
+      "id": "cl-92918",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Deprecation",
+      "title": "Claude Opus 4.1, GPT-5 and GPT-5-Codex to be deprecated in GitHub Copilot on February 17, 2026",
+      "summary": "Claude Opus 4.1, GPT-5 and GPT-5-Codex are deprecated across all GitHub Copilot experiences on February 17, 2026, including Copilot Chat, inline edits, ask and agent modes, and code completions. The suggested alternatives are Claude Opus 4.6, GPT-5.2 and GPT-5.2-Codex. An editor's note dated February 19, 2026 says the post was updated to remove a reference to a Google model that is no longer being retired.",
+      "admin": "Copilot Enterprise administrators may need to enable access to alternative models through model policies in Copilot settings.",
+      "effective": "2026-02-17"
+    },
+    {
+      "id": "cl-93238",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "stage": "ga",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "ides": ["vscode", "web", "mobile", "cli"],
+      "summary": "GPT-5.2-Codex is generally available to Copilot Enterprise, Business, Pro and Pro+ users, with a gradual rollout. It can be selected in the model picker in VS Code (chat, ask, edit and agent modes), Copilot Chat on github.com, GitHub Mobile for iOS and Android, Copilot CLI and, for Pro and Pro+ subscribers only, Copilot coding agent.",
+      "admin": "Enterprise and Business administrators must enable the GPT-5.2-Codex policy in Copilot settings. Pro and Pro+ users enable the model by selecting it in the model picker and confirming a one-time prompt."
+    },
+    {
+      "id": "cl-93272",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "cli",
+      "tag": "Improvement",
+      "ides": ["cli"],
+      "summary": "GitHub Copilot CLI adds built-in custom agents (Explore, Task, Plan and Code-review) that Copilot delegates to automatically and can run in parallel. It can now be installed with WinGet, Homebrew or an install script, and is included in the default GitHub Codespaces image. Context management adds auto-compaction near 95% of the token limit plus the /compact and /context commands, and new flags support scripting.",
+      "image": "https://github.com/user-attachments/assets/f83db7a4-ed8b-4d45-aa7b-e10b08f8d72a",
+      "links": [
+        { "label": "Copilot CLI repository", "url": "https://github.com/github/copilot-cli" }
+      ]
+    },
+    {
+      "id": "cl-93394",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "cli",
+      "tag": "Improvement",
+      "ides": ["cli"],
+      "title": "GitHub Copilot CLI adds plan mode, GPT-5.2-Codex and reasoning controls",
+      "summary": "GitHub Copilot CLI adds a plan mode, toggled with Shift + Tab, that asks clarifying questions through the new ask_user tool and builds a structured plan before any code is written. GPT-5.2-Codex is selectable with /model, reasoning effort is configurable, Ctrl + T shows or hides reasoning steps, and messages can be queued while Copilot works. Prefixing a prompt with & delegates it to Copilot coding agent in the cloud.",
+      "image": "https://github.com/user-attachments/assets/e196c826-d333-4622-954a-e844403daebe",
+      "links": [
+        { "label": "Copilot CLI repository", "url": "https://github.com/github/copilot-cli" }
+      ]
+    },
+    {
+      "id": "cl-93495",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "extensibility",
+      "tag": "Release",
+      "stage": "preview",
+      "ides": ["cli"],
+      "summary": "Copilot CLI implements the Agent Client Protocol (ACP), an industry-standard protocol for communication between AI agents and clients, in public preview. It lets third-party tools, IDEs and automation systems integrate with Copilot's agentic capabilities, running over stdio or a TCP port. Clients can create isolated sessions, send prompts, receive streaming updates, respond to permission requests and cancel operations.",
+      "links": [
+        { "label": "ACP documentation", "url": "https://docs.github.com/copilot/reference/acp-server" }
+      ]
+    },
+    {
+      "id": "cl-93454",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "title": "Agents tab in your repository manages Copilot coding agent sessions",
+      "summary": "A new Agents tab brings a mission control style view of Copilot coding agent sessions into the repository. Users can view all sessions, create tasks, switch between them, archive sessions, page through history and jump to the associated pull request. Redesigned session logs group similar tool calls and show inline previews, diffs and bash commands, and a Continue in Copilot CLI button resumes a session in the terminal.",
+      "admin": "The Agents tab is visible only when Copilot coding agent is enabled for the repository.",
+      "image": "https://github.com/user-attachments/assets/cbf6faf4-acab-4441-b3dd-2436b4af642b",
+      "links": [
+        { "label": "Copilot coding agent access management", "url": "https://docs.github.com/copilot/concepts/agents/coding-agent/access-management" },
+        { "label": "Installing Copilot CLI", "url": "https://docs.github.com/copilot/how-tos/set-up/install-copilot-cli" }
+      ]
+    },
+    {
+      "id": "cl-93352",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "extensibility",
+      "tag": "Announcement",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "summary": "GitHub officially supports using a Copilot Pro, Pro+, Business or Enterprise subscription with OpenCode, an open source agent for the terminal, IDE or desktop, through a formal partnership. In OpenCode, users run /connect, select GitHub Copilot and complete the GitHub device login flow. No additional AI license is needed.",
+      "links": [
+        { "label": "OpenCode Copilot provider setup", "url": "https://opencode.ai/docs/providers/#github-copilot-support" }
+      ]
+    },
+    {
+      "id": "cl-93300",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Improvement",
+      "stage": "preview",
+      "plans": ["Business", "Enterprise"],
+      "title": "GitHub Copilot BYOK adds AWS Bedrock, Google AI Studio and OpenAI-compatible providers",
+      "summary": "API keys from AWS Bedrock, Google AI Studio and any OpenAI-compatible provider can now be connected, joining Anthropic, Microsoft Foundry, OpenAI and xAI as supported BYOK providers. The update also adds support for models that use the Responses API, streaming output and an admin-defined maximum context window. These capabilities are in public preview for GitHub Enterprise and Business customers.",
+      "admin": "Administrators connect a provider API key in enterprise or organization settings and can define the maximum context window for BYOK models.",
+      "links": [
+        { "label": "BYOK documentation", "url": "https://docs.github.com/copilot/how-tos/administer-copilot/manage-for-enterprise/use-your-own-api-keys" }
+      ]
+    },
+    {
+      "id": "cl-93450",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "extensibility",
+      "tag": "Improvement",
+      "summary": "The GitHub MCP Server consolidates its Projects tools into projects_list, projects_get and projects_write, cutting token usage by around 23,000 tokens (50%). A classic personal access token now hides tools its OAuth scopes do not permit, and an opt-in Insiders mode, enabled by a header or the /insiders URL, exposes experimental features. New Copilot coding agent tools include get_copilot_job_status and a base_ref parameter.",
+      "image": "https://github.com/user-attachments/assets/1acaa644-3718-4e5f-846c-6c19eee9faa4",
+      "links": [
+        { "label": "GitHub MCP Server repository", "url": "https://github.com/github/github-mcp-server" }
+      ]
+    },
+    {
+      "id": "vsc-1.108-01",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "extensibility",
+      "tag": "Release",
+      "stage": "experimental",
+      "ides": ["vscode"],
+      "title": "VS Code adds experimental support for Agent Skills",
+      "summary": "VS Code adds experimental support for Agent Skills, enabled with the chat.useAgentSkills setting. Skills are folders of instructions, scripts and resources, with a SKILL.md file defining the behavior, that GitHub Copilot loads on demand into the chat context when relevant. VS Code detects them in the .github/skills folder of the workspace, or in .claude/skills for backwards compatibility.",
+      "links": [
+        { "label": "Agent Skills documentation", "url": "https://code.visualstudio.com/docs/agent-customization/agent-skills" }
+      ]
+    },
+    {
+      "id": "vsc-1.108-02",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Improvement",
+      "title": "VS Code improves the Agent Sessions view",
+      "summary": "The Agent Sessions view adds keyboard access for actions such as archive, read state and opening a session. Sessions are grouped by state and age when shown side by side, each session shows changed files and associated pull requests, and multiple sessions can be archived at once from the new group sections. The chat.viewSessions.orientation setting no longer offers the auto option; sideBySide is the alternative."
+    },
+    {
+      "id": "vscb-mcp-apps-support",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "extensibility",
+      "tag": "Announcement",
+      "ides": ["vscode"],
+      "title": "MCP Apps support in VS Code renders interactive UI in chat",
+      "summary": "MCP Apps, announced by the MCP community as the first official MCP extension, let tool calls return interactive UI components, such as dashboards, forms and visualizations, that render directly in the conversation. VS Code supports MCP Apps in Insiders, and the post expects it to reach Stable in the following week's release. Storybook has added MCP Apps support to its open source MCP server.",
+      "image": "https://code.visualstudio.com/assets/blogs/2026/01/26/mcp-apps-list-sort.webp",
+      "links": [
+        { "label": "MCP servers in VS Code", "url": "https://code.visualstudio.com/docs/agent-customization/mcp-servers" }
+      ]
+    },
+    {
+      "id": "vs-255205",
+      "tier": "notable",
+      "section": "visualstudio",
+      "area": "chat-ide",
+      "tag": "Announcement",
+      "ides": ["visualstudio"],
+      "title": "Copilot memories in Visual Studio",
+      "summary": "Copilot memories in Visual Studio detect coding preferences and project guidelines as users prompt, and show a confirmation nudge before saving a new memory or updating an existing one. Each memory can be saved to a user-level copilot-instructions.md file in the user profile or to the repository-level copilot-instructions.md file under .github, and Copilot merges the result into existing files or creates new ones.",
+      "image": "https://devblogs.microsoft.com/visualstudio/wp-content/uploads/sites/4/2026/01/memories.webp"
+    },
+    {
+      "id": "cl-93452",
+      "tier": "notable",
+      "section": "jetbrains-others",
+      "area": "models",
+      "tag": "Release",
+      "stage": "ga",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "ides": ["visualstudio", "jetbrains", "xcode", "eclipse", "vscode", "web", "mobile"],
+      "summary": "GPT-5.2-Codex is generally available in Visual Studio, JetBrains IDEs, Xcode and Eclipse, as well as Copilot Chat on github.com, GitHub Mobile and VS Code. It requires Visual Studio 17.14.19 or later (or 18.0.0 or later), GitHub Copilot for JetBrains 1.5.61 or later, Xcode 0.45.0 or later and Eclipse 0.13.0 or later.",
+      "admin": "Business and Enterprise administrators must opt in by enabling the GPT-5.2-Codex policy in Copilot settings."
+    },
+    {
+      "id": "cl-93212",
+      "tier": "notable",
+      "section": "platform",
+      "area": "admin",
+      "tag": "Deprecation",
+      "summary": "As of January 12, 2026, converting a personal user account directly into an organization is deprecated. The new Move work flow, found under user profile settings and SSO and organizations, selectively migrates repositories to an existing or new organization while keeping the personal account. Move work is not available on GitHub Enterprise Server, where repositories are migrated by following the repository transfer documentation.",
+      "admin": "To give the organization the current username, rename the personal account first, then create or move work to an organization with the original username.",
+      "effective": "2026-01-12",
+      "links": [
+        { "label": "Changing your username", "url": "https://docs.github.com/account-and-profile/how-tos/account-management/changing-your-username#changing-your-username" },
+        { "label": "Repository transfer documentation", "url": "https://docs.github.com/enterprise-server@3.19/repositories/creating-and-managing-repositories/transferring-a-repository" }
+      ]
+    },
+    {
+      "id": "cl-93235",
+      "tier": "notable",
+      "section": "platform",
+      "area": "admin",
+      "tag": "Release",
+      "stage": "ga",
+      "plans": ["Enterprise"],
+      "summary": "Organization custom properties are generally available to all GitHub Enterprise Cloud customers. Enterprise administrators define properties at the enterprise level, assign values to individual organizations and target organizations by property in enterprise rulesets. Supported property types are single-select, multi-select, text, true/false and URL.",
+      "image": "https://github.com/user-attachments/assets/19aee9db-45e6-43b9-b956-c85b58b0bdec"
+    },
+    {
+      "id": "cl-93358",
+      "tier": "notable",
+      "section": "platform",
+      "area": "admin",
+      "tag": "Release",
+      "stage": "preview",
+      "plans": ["Enterprise"],
+      "summary": "GitHub Enterprise customers can configure enterprise-scoped budgets that exclude cost center usage, in public preview. This allows specific portions of an enterprise to incur additional usage, granted through cost centers, while the rest stay limited. The option applies only to enterprise-scoped budgets, new or existing, and existing budgets continue to include cost center usage by default.",
+      "admin": "This option is available through the REST API, and changes to this setting are recorded in the audit log.",
+      "image": "https://github.com/user-attachments/assets/30311d80-9e91-4f32-860c-4e49e5b450e9",
+      "links": [
+        { "label": "Setting up budgets", "url": "https://docs.github.com/enterprise-cloud@latest/billing/tutorials/set-up-budgets" }
+      ]
+    },
+    {
+      "id": "cl-93304",
+      "tier": "notable",
+      "section": "platform",
+      "area": "collaboration",
+      "tag": "Release",
+      "stage": "preview",
+      "title": "Hierarchy view in GitHub Projects is in public preview",
+      "summary": "Hierarchy view for GitHub Projects is in public preview and shows the full nesting of sub-issues directly in project table views. Users can expand and collapse sub-issues up to eight levels deep, group, slice, sort and filter while preserving the hierarchy, and view and add existing sub-issues that are not yet in the project. It is enabled from the View menu by turning on Show hierarchy."
+    },
+    {
+      "id": "cl-93507",
+      "tier": "notable",
+      "section": "platform",
+      "area": "collaboration",
+      "tag": "Release",
+      "stage": "preview",
+      "summary": "Improved search for GitHub Issues is built on a new semantic index, so natural-language queries return conceptually similar results rather than only keyword matches. Results are ordered by Best match, and exact-match queries, such as those with quotation marks, use the traditional lexical engine. GitHub's prerelease testing found results 39% better with semantic search than with traditional search.",
+      "admin": "Users can opt out from the feature preview dialog during the public preview.",
+      "image": "https://github.com/user-attachments/assets/64116472-5acb-4245-ace1-c79eb91c9903",
+      "links": [
+        { "label": "Exploring early access releases with feature preview", "url": "https://docs.github.com/get-started/using-github/exploring-early-access-releases-with-feature-preview" }
+      ]
+    },
+    {
+      "id": "cl-93435",
+      "tier": "notable",
+      "section": "platform",
+      "area": "collaboration",
+      "tag": "Improvement",
+      "stage": "preview",
+      "title": "Improved pull request Files changed page is now the default",
+      "summary": "The improved pull request Files changed experience, in public preview, is rolling out as the default for all users, with an option to opt out to the classic experience. New capabilities include commenting on any line, an Overview panel with the pull request description, a resizable file tree with indicators for comments, errors and warnings, and locally saved draft comments. An experimental virtualized mode targets large pull requests.",
+      "image": "https://github.com/user-attachments/assets/bc8b6426-8f0c-4644-a80d-2c7729a6f9e3"
+    },
+    {
+      "id": "cl-92837",
+      "tier": "notable",
+      "section": "platform",
+      "area": "actions",
+      "tag": "Release",
+      "stage": "ga",
+      "summary": "The 1 vCPU Linux runner in GitHub Actions is generally available to all customers using the ubuntu-slim runner type. It has one vCPU and 5 GB of RAM and runs jobs in a container rather than a dedicated VM, with a 15-minute limit after which jobs are terminated. It is optimized for automation tasks, issue operations and short-running jobs.",
+      "links": [
+        { "label": "Single-CPU runners reference", "url": "https://docs.github.com/actions/reference/runners/github-hosted-runners#single-cpu-runners" }
+      ]
+    },
+    {
+      "id": "cl-93533",
+      "tier": "notable",
+      "section": "platform",
+      "area": "repos",
+      "tag": "Release",
+      "stage": "preview",
+      "plans": ["Enterprise"],
+      "summary": "GitHub Codespaces is in public preview for GitHub Enterprise Cloud with data residency, with full feature parity with Codespaces on the general GitHub platform. It is available in the Australia, EU and United States data residency regions, and Japan is coming during the preview before general availability. Enterprise- or organization-owned codespaces are required, and user-owned codespaces are not supported.",
+      "links": [
+        { "label": "Codespace ownership documentation", "url": "https://docs.github.com/codespaces/managing-codespaces-for-your-organization/choosing-who-owns-and-pays-for-codespaces-in-your-organization" },
+        { "label": "GitHub Enterprise Cloud with data residency", "url": "https://docs.github.com/enterprise-cloud@latest/admin/data-residency/about-github-enterprise-cloud-with-data-residency" }
+      ]
+    },
+    {
+      "id": "cl-93540",
+      "tier": "notable",
+      "section": "platform",
+      "area": "actions",
+      "tag": "Improvement",
+      "title": "Hosted runners update to Docker Engine v29.1 and Docker Compose v2.40 on February 9",
+      "summary": "On February 9, 2026, Docker Engine v29.1 and Docker Compose v2.40, or a higher v2 minor version if one is released first, are updated on all Windows and Ubuntu hosted runner images except ubuntu-slim. Workflows that rely on Docker functionality slated for removal in v29 may need updates.",
+      "effective": "2026-02-09",
+      "links": [
+        { "label": "Docker Engine deprecated features", "url": "https://docs.docker.com/engine/deprecated/" },
+        { "label": "Runner images announcements", "url": "https://github.com/actions/runner-images/labels/Announcement" }
+      ]
+    },
+    {
+      "id": "cl-93225",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Release",
+      "stage": "ga",
+      "summary": "The new fine-grained artifact_metadata permission is generally available and replaces the broader contents:read and contents:write permissions for the artifact metadata APIs. It gives more precise control over API access to artifact-related metadata. Workflows that use the contents permission for these APIs should move to artifact_metadata before February 3, 2026, when support for the old permission is deprecated.",
+      "admin": "Transition workflows that use the contents permission for the artifact metadata APIs to artifact_metadata before February 3, 2026.",
+      "effective": "2026-02-03",
+      "links": [
+        { "label": "Artifact metadata APIs documentation", "url": "https://docs.github.com/rest/orgs/artifact-metadata" },
+        { "label": "Repository permissions for artifact metadata", "url": "https://docs.github.com/rest/authentication/permissions-required-for-fine-grained-personal-access-tokens#repository-permissions-for-artifact-metadata" }
+      ]
+    },
+    {
+      "id": "cl-93337",
+      "tier": "notable",
+      "section": "security",
+      "area": "secrets",
+      "tag": "Improvement",
+      "plans": ["Enterprise"],
+      "summary": "Secret scanning adds extended metadata checks, a feature nested under validity checks, to security configurations starting February 18, 2026. Alerts display the secret owner, creation and expiry dates, and project or organization context when the secret provider supplies it. Repositories that already have validity checks enabled through security configurations get extended metadata checks automatically.",
+      "admin": "Organization and enterprise owners can enable or disable the feature in security configurations starting February 18, 2026. It currently requires secret scanning with validity checks on GitHub Enterprise Cloud.",
+      "effective": "2026-02-18"
+    },
+    {
+      "id": "cl-93500",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Deprecation",
+      "title": "Several Dependabot pull request comment commands are deprecated",
+      "summary": "The Dependabot comment commands @dependabot merge, cancel merge, squash and merge, close and reopen are no longer supported, as announced in October 2025. GitHub recommends its native pull request features instead: the built-in UI, the GitHub CLI and the REST API endpoints for pull requests.",
+      "links": [
+        { "label": "GitHub CLI pull request commands", "url": "https://cli.github.com/manual/gh_pr" },
+        { "label": "REST API endpoints for pull requests", "url": "https://docs.github.com/rest/pulls?apiVersion=2022-11-28" }
+      ]
+    },
+    {
+      "id": "cl-93531",
+      "tier": "notable",
+      "section": "security",
+      "area": "code-security",
+      "tag": "Improvement",
+      "summary": "CodeQL 2.24.0 adds support for Swift 6.2.2 and 6.2.3, .NET 10 and C# 14, Next.js 16 use cache directives and the Axum framework for Rust. JavaScript files with an average line length over 200 are now treated as minified and skipped unless CODEQL_EXTRACTOR_JAVASCRIPT_ALLOW_MINIFIED_FILES is set to true. The release is deployed automatically to code scanning on github.com and included in a future GitHub Enterprise Server release.",
+      "links": [
+        { "label": "CodeQL 2.24.0 changelog", "url": "https://codeql.github.com/docs/codeql-overview/codeql-changelog/codeql-cli-2.24.0/" }
+      ]
+    },
+    {
+      "id": "cl-93369",
+      "tier": "notable",
+      "section": "security",
+      "area": "code-security",
+      "tag": "Deprecation",
+      "title": "CodeQL 2.23.9 deprecates Kotlin 1.6 and 1.7 support",
+      "summary": "CodeQL 2.23.9 has no user-facing CLI changes and no query changes. Support for Kotlin versions 1.6 and 1.7 is deprecated and will be removed in CodeQL 2.24.1, planned for release in February 2026. Starting with that version, Kotlin 1.8 or later is required to extract Kotlin databases.",
+      "links": [
+        { "label": "CodeQL 2.23.9 changelog", "url": "https://codeql.github.com/docs/codeql-overview/codeql-changelog/codeql-cli-2.23.9/" }
+      ]
+    },
+    {
+      "id": "bl-93243",
+      "tier": "notable",
+      "section": "research",
+      "area": "research",
+      "tag": "Research",
+      "stage": "experimental",
+      "summary": "GitHub Security Lab shares its Taskflow Agent (seclab-taskflow-agent), an open source agentic framework that encodes security knowledge in natural language and builds on tools like CodeQL through MCP interfaces. The team has used it internally and shared it with participants of the GitHub Secure Open Source Fund. The post calls it experimental but ready to use, with a variant analysis demo that runs in a codespace using the GitHub Models API.",
+      "links": [
+        { "label": "seclab-taskflow-agent repository", "url": "https://github.com/GitHubSecurityLab/seclab-taskflow-agent" }
+      ]
+    },
+    {
+      "id": "bl-93282",
+      "tier": "notable",
+      "section": "research",
+      "area": "research",
+      "tag": "Research",
+      "summary": "GitHub Security Lab uses LLM taskflows, run with its Taskflow Agent, to triage repetitive CodeQL code scanning alerts. The taskflows helped find many (about 30) real-world vulnerabilities since August, many already fixed and published. The LLMs were given only basic file fetching and searching tools, and the seclab-taskflow-agent and seclab-taskflows repositories are open source.",
+      "links": [
+        { "label": "Alert triage taskflows", "url": "https://github.com/GitHubSecurityLab/seclab-taskflows/tree/main/src/seclab_taskflows/taskflows/alert_triage_examples" }
+      ]
+    }
+  ],
+  "overrides": {
+    "bl-92924": { "drop": true, "dropReason": "Duplicate of cl-93334; the engineering blog is linked there" },
+    "bl-93399": { "drop": true, "dropReason": "Duplicate of cl-93284; the blog post is linked there" },
+    "bl-93139": { "drop": true, "dropReason": "Game Off 2025 winners; off-topic, no product or developer-practice content" },
+    "bl-93489": { "section": "research", "area": "research", "tag": "Research" },
+    "bl-93457": { "section": "platform", "area": "community", "tag": "Announcement" },
+    "vs-255343": { "section": "events", "area": "events", "tag": "Announcement" },
+    "cl-93350": { "tag": "Announcement" }
+  }
+}

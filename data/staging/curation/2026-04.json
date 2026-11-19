@@ -1,0 +1,492 @@
+{
+  "month": "2026-04",
+  "items": [
+    {
+      "id": "bl-95572",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Announcement",
+      "summary": "All GitHub Copilot plans move to usage-based billing on June 1, 2026, with premium request units replaced by GitHub AI Credits that are consumed by token usage (input, output and cached tokens) at the published API rates for each model. Base plan pricing is unchanged, and code completions and Next Edit suggestions stay included without consuming credits. Annual Pro and Pro+ plans keep premium request-based pricing until they expire.",
+      "why": "It replaces premium request units with token-based AI Credits across Copilot plans, changing how usage is measured, budgeted and billed.",
+      "plans": ["Free", "Pro", "Pro+", "Business", "Enterprise"],
+      "admin": "A preview bill experience launches in early May on the Billing Overview page, showing projected costs before June 1. Usage is governed by available credits and admin budget controls, and fallback to lower-cost models ends.",
+      "effective": "2026-06-01",
+      "links": [
+        { "label": "Billing for individuals", "url": "https://docs.github.com/copilot/concepts/billing/usage-based-billing-for-individuals" },
+        { "label": "Billing for organizations and enterprises", "url": "https://docs.github.com/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises" },
+        { "label": "FAQ and community discussion", "url": "https://github.com/orgs/community/discussions/192948" }
+      ]
+    },
+    {
+      "id": "cl-94930",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "Copilot cloud agent (formerly Copilot coding agent) is no longer limited to pull-request workflows. It can work on a branch without opening a pull request, produce an implementation plan for review before writing code, and run deep research sessions on a codebase, including from a Copilot chat conversation. These capabilities are available from all agent entry points, such as the Agents tab in a repository, on all paid Copilot plans.",
+      "why": "Cloud agent work is no longer tied to opening a pull request, and plan review and codebase research give teams more control before code is written.",
+      "admin": "Copilot Business and Copilot Enterprise administrators must enable Copilot cloud agent before users can use it.",
+      "links": [
+        { "label": "Enable Copilot cloud agent (admins)", "url": "https://docs.github.com/enterprise-cloud@latest/copilot/concepts/agents/coding-agent/coding-agent-for-business-and-enterprise" },
+        { "label": "Community discussion", "url": "https://github.com/orgs/community/discussions/190573" }
+      ]
+    },
+    {
+      "id": "cl-95260",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Release",
+      "summary": "GitHub Copilot supports data residency for United States and European Union regions, keeping all inference processing and associated data within the designated geography. For United States government customers, the underlying model hosts and infrastructure are FedRAMP Moderate authorized, and Copilot itself will become FedRAMP authorized as part of the authorization path for GitHub Enterprise Cloud with data residency.",
+      "why": "Organizations with regional data residency or United States government compliance requirements can restrict Copilot to data-resident or FedRAMP-compliant models.",
+      "admin": "Admins enable the data residency and FedRAMP policies in Copilot settings (off by default) to restrict usage to compliant models. Data-resident and FedRAMP requests carry a 10% higher model multiplier, so 1 premium request becomes 1.1.",
+      "links": [
+        { "label": "Copilot with data residency", "url": "https://docs.github.com/enterprise-cloud@latest/admin/data-residency/github-copilot-with-data-residency" },
+        { "label": "FedRAMP models", "url": "https://docs.github.com/copilot/concepts/fedramp-models" }
+      ]
+    },
+    {
+      "id": "cl-95002",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "extensibility",
+      "tag": "Release",
+      "stage": "preview",
+      "summary": "The GitHub Copilot SDK is in public preview. It exposes the same agent runtime that powers Copilot cloud agent and Copilot CLI, including tool invocation, streaming, file operations and multi-turn sessions, for Node.js/TypeScript, Python, Go, .NET and Java. It supports custom tools and agents, system prompt customization, OpenTelemetry, a permission framework and BYOK with OpenAI, Microsoft Foundry or Anthropic.",
+      "why": "Teams can embed Copilot's agentic capabilities in their own applications, workflows and platform services, in five languages.",
+      "admin": "Each prompt counts toward the premium request quota for Copilot subscribers.",
+      "links": [
+        { "label": "GitHub Copilot SDK repository", "url": "https://github.com/github/copilot-sdk" }
+      ]
+    },
+    {
+      "id": "bl-95594",
+      "tier": "headline",
+      "section": "security",
+      "area": "code-security",
+      "tag": "Announcement",
+      "summary": "On March 4, 2026, Wiz researchers reported a critical remote code execution vulnerability through the GitHub Bug Bounty program, letting any user with push access run commands on the GitHub server handling their git push. In less than two hours GitHub validated the finding, deployed a fix to github.com and began a forensic investigation that found no exploitation. GitHub Enterprise Server patches were published under CVE-2026-3854.",
+      "why": "github.com and GitHub Enterprise Cloud were already patched and need no action, while GitHub Enterprise Server customers must upgrade to a patched release.",
+      "admin": "Upgrade GitHub Enterprise Server to 3.14.25, 3.15.20, 3.16.16, 3.17.13, 3.18.7, 3.19.4, 3.20.0 or later, and review the audit log for push operations with a semicolon in the push options. github.com and GitHub Enterprise Cloud need no action.",
+      "links": [
+        { "label": "GHES release notes", "url": "https://docs.github.com/en/enterprise-server/admin/release-notes" }
+      ]
+    },
+    {
+      "id": "cl-95441",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Announcement",
+      "summary": "New signups for GitHub Copilot Pro, Pro+ and Student are paused to prioritize service quality for existing paying customers, while Copilot Free stays open and existing users can still upgrade between plans. Pro+ offers more than 5X the limits of Pro. Opus models are removed from Pro, Opus 4.7 remains on Pro+, and Opus 4.5 and 4.6 will also be removed from Pro+.",
+      "plans": ["Free", "Pro", "Pro+"],
+      "admin": "Pro and Pro+ users can cancel and receive a refund for the time remaining on their subscription until May 20. Warning notifications appear in VS Code and Copilot CLI as users approach their usage limit.",
+      "links": [
+        { "label": "Blog post", "url": "https://github.blog/news-insights/company-news/changes-to-github-copilot-individual-plans/" },
+        { "label": "Rate limits", "url": "https://docs.github.com/en/copilot/concepts/rate-limits" }
+      ]
+    },
+    {
+      "id": "cl-95589",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "code-review",
+      "tag": "Announcement",
+      "summary": "Starting June 1, 2026, each GitHub Copilot code review is billed as AI Credits under usage-based billing and also consumes GitHub Actions minutes from the plan entitlement for reviews on private repositories. Usage beyond the included minutes is billed at standard Actions rates, while public repositories are unchanged and Actions minutes remain free there. This applies to Copilot Pro, Pro+, Business and Enterprise.",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "admin": "Admins can use budgets to manage GitHub Actions spending. Until June 1, code review draws only from the premium request unit allowance.",
+      "effective": "2026-06-01",
+      "links": [
+        { "label": "Code review billing reference", "url": "https://docs.github.com/copilot/reference/copilot-billing/models-and-pricing#github-actions-minutes-for-code-review" },
+        { "label": "Set up budgets", "url": "https://docs.github.com/billing/how-tos/set-up-budgets" }
+      ]
+    },
+    {
+      "id": "cl-95505",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Announcement",
+      "summary": "New self-serve signups for GitHub Copilot Business are paused for organizations on the GitHub Free and GitHub Team plans. Existing Copilot Business customers are not affected and can continue adding seats and using the service. GitHub will share an update when self-serve signups are available again.",
+      "plans": ["Business"]
+    },
+    {
+      "id": "cl-95352",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "stage": "ga",
+      "summary": "Claude Opus 4.7, Anthropic's latest Opus model, is rolling out in GitHub Copilot to Copilot Pro+, Business and Enterprise users, and over the coming weeks it replaces Opus 4.5 and 4.6 in the Pro+ model picker. It launched with a 7.5× premium request multiplier as promotional pricing until April 30, and an editor's note dated May 1 says promotional pricing ended and the multiplier was updated to 15x. Rollout is gradual.",
+      "plans": ["Pro+", "Business", "Enterprise"],
+      "ides": ["vscode", "visualstudio", "cli", "web", "mobile", "jetbrains", "xcode", "eclipse"],
+      "admin": "Copilot Business and Enterprise administrators must enable the Claude Opus 4.7 policy in Copilot settings.",
+      "links": [
+        { "label": "Supported models", "url": "https://docs.github.com/copilot/reference/ai-models/supported-models" }
+      ]
+    },
+    {
+      "id": "cl-95556",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "stage": "ga",
+      "summary": "GPT-5.5, OpenAI's latest GPT model, is rolling out in GitHub Copilot to Copilot Pro+, Business and Enterprise users. It launches with a 7.5× premium request multiplier as promotional pricing. Rollout is gradual, and the model is selectable in the model picker across the supported surfaces.",
+      "plans": ["Pro+", "Business", "Enterprise"],
+      "ides": ["vscode", "visualstudio", "cli", "web", "mobile", "jetbrains", "xcode", "eclipse"],
+      "admin": "Copilot Business and Enterprise administrators must enable the GPT-5.5 policy in Copilot settings.",
+      "links": [
+        { "label": "Supported models", "url": "https://docs.github.com/copilot/reference/ai-models/supported-models" }
+      ]
+    },
+    {
+      "id": "cl-95042",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Deprecation",
+      "title": "GPT-5.1, GPT-5.1-Codex, GPT-5.1-Codex-Max, and GPT-5.1-Codex-Mini deprecated",
+      "summary": "GPT-5.1, GPT-5.1-Codex, GPT-5.1-Codex-Max and GPT-5.1-Codex-Mini are deprecated across all GitHub Copilot experiences, including Copilot Chat, inline edits, ask and agent modes, and code completions. The Codex models were deprecated on April 1, 2026 and GPT-5.1 on April 15, 2026, and GPT-5.3-Codex is the suggested alternative for each.",
+      "admin": "Copilot Enterprise administrators may need to enable access to alternative models through their model policies in Copilot settings. No action is required to remove the deprecated models.",
+      "effective": "2026-04-15",
+      "links": [
+        { "label": "Supported models", "url": "https://docs.github.com/copilot/reference/ai-models/supported-models" }
+      ]
+    },
+    {
+      "id": "cl-94984",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Release",
+      "stage": "ga",
+      "summary": "Organization custom instructions for GitHub Copilot, first introduced in April 2025, are generally available. Copilot Business and Enterprise organization admins can set default instructions across all repositories, and they apply to Copilot Chat on github.com, Copilot code review and Copilot cloud agent.",
+      "plans": ["Business", "Enterprise"],
+      "admin": "Admins configure them under organization settings, then Copilot, then Custom instructions.",
+      "links": [
+        { "label": "Adding organization custom instructions", "url": "https://docs.github.com/copilot/how-tos/configure-custom-instructions/add-organization-instructions" }
+      ]
+    },
+    {
+      "id": "cl-95104",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "cli",
+      "tag": "Release",
+      "summary": "GitHub Copilot CLI can use your own model provider (Azure OpenAI, Anthropic or any OpenAI-compatible endpoint) or local models such as Ollama, vLLM and Foundry Local, set up through environment variables. Setting COPILOT_OFFLINE=true stops contact with GitHub's servers and disables telemetry for air-gapped use, and GitHub authentication is optional with your own provider. Models must support tool calling and streaming, with at least a 128k-token context window recommended.",
+      "ides": ["cli"],
+      "links": [
+        { "label": "Use your own models in Copilot CLI", "url": "https://docs.github.com/copilot/how-tos/copilot-cli/customize-copilot/use-byok-models" }
+      ]
+    },
+    {
+      "id": "cl-95153",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "cli",
+      "tag": "Release",
+      "stage": "preview",
+      "summary": "Public preview lets users monitor and steer a running GitHub Copilot CLI session from GitHub on the web or GitHub Mobile through a link or QR code shown by the CLI. Remote sessions are private to the user who started them and support steering messages, plan review, mode switching and approving or denying permission requests. The working directory must be a GitHub repository.",
+      "ides": ["cli", "web", "mobile"],
+      "admin": "Copilot Business and Enterprise administrators must enable the remote control and CLI policies.",
+      "links": [
+        { "label": "Steer CLI sessions remotely", "url": "https://docs.github.com/copilot/how-tos/copilot-cli/steer-remotely" }
+      ]
+    },
+    {
+      "id": "cl-95373",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "extensibility",
+      "tag": "Release",
+      "stage": "preview",
+      "summary": "Enterprise and organization administrators can add the URL of an internally managed MCP registry to their Copilot policies and enforce MCP allowlists in GitHub Copilot CLI. MCP servers that are not defined in the registry cannot be used at runtime. The feature is in public preview for Copilot Business and Enterprise.",
+      "plans": ["Business", "Enterprise"],
+      "ides": ["cli"],
+      "links": [
+        { "label": "MCP management", "url": "https://docs.github.com/copilot/concepts/mcp-management" }
+      ]
+    },
+    {
+      "id": "cl-95493",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Deprecation",
+      "summary": "Starting May 20, 2026, download links for reports returned by the Copilot usage metrics API use copilot-reports.github.com (copilot-reports.*.ghe.com for ghe.com customers) instead of the copilot-reports-*.b01.azurefd.net pattern. The legacy pattern keeps working during a transition period but will eventually be deprecated.",
+      "admin": "Add the new domain to firewall and proxy allowlists before May 20, 2026. Also allow *.blob.core.windows.net if downloads must continue during Azure Front Door outages.",
+      "effective": "2026-05-20",
+      "links": [
+        { "label": "Copilot usage metrics API", "url": "https://docs.github.com/rest/copilot/copilot-usage-metrics" },
+        { "label": "Copilot allowlist reference", "url": "https://docs.github.com/copilot/reference/copilot-allowlist-reference" }
+      ]
+    },
+    {
+      "id": "cl-95119",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "chat-ide",
+      "tag": "Release",
+      "title": "GitHub Copilot in Visual Studio Code, March releases",
+      "summary": "VS Code moved to weekly stable releases, and this changelog covers GitHub Copilot updates in versions 1.111 through 1.115 from March and early April 2026. Highlights include Autopilot (preview), per-session agent permission levels, configurable thinking effort, integrated browser debugging, nested subagents and a chat customizations editor (preview).",
+      "ides": ["vscode"],
+      "links": [
+        { "label": "VS Code release notes", "url": "https://code.visualstudio.com/updates/v1_115" }
+      ]
+    },
+    {
+      "id": "vsc-1.115-01",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Release",
+      "stage": "preview",
+      "title": "Visual Studio Code Agents (preview)",
+      "summary": "A preview companion app that ships alongside VS Code Insiders for agent-native development. It runs agent sessions across repositories in parallel, each isolated in its own worktree, with inline diffs, feedback and pull request creation. Existing customizations such as instructions, prompt files, custom agents, MCP servers, hooks and plugins carry over.",
+      "ides": ["vscode"]
+    },
+    {
+      "id": "cl-95475",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "models",
+      "tag": "Release",
+      "summary": "GitHub Copilot Business and Enterprise users can bring their own language model key in VS Code, using providers such as Anthropic, Gemini, OpenAI, OpenRouter and Azure, or local models through Ollama and Foundry Local. It works anywhere in VS Code Chat, including the built-in plan agent and custom agents, but not for code completions. Usage is billed by the model provider and does not count against Copilot request quotas.",
+      "plans": ["Business", "Enterprise"],
+      "ides": ["vscode"],
+      "admin": "The policy is enabled by default. Administrators can disable it with the Bring Your Own Language Model Key in VS Code policy in Copilot policy settings on github.com.",
+      "links": [
+        { "label": "VS Code language models documentation", "url": "https://code.visualstudio.com/docs/copilot/customization/language-models#_bring-your-own-language-model-key" },
+        { "label": "VS Code 1.117 release notes", "url": "https://code.visualstudio.com/updates/v1_117" }
+      ]
+    },
+    {
+      "id": "vsc-1.114-08",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "chat-ide",
+      "tag": "Deprecation",
+      "title": "Edit Mode in VS Code to be removed beginning with version 1.126",
+      "summary": "Edit Mode in VS Code is officially deprecated as of version 1.110. It can be temporarily re-enabled with the chat.editMode.hidden setting, and beginning with version 1.126 it will be fully removed and can no longer be enabled through settings.",
+      "ides": ["vscode"]
+    },
+    {
+      "id": "vsc-1.116-14",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "admin",
+      "tag": "Improvement",
+      "summary": "Administrators can use group policies to restrict which network domains agent tools such as the fetch tool and the integrated browser can access. The allowed list supports wildcards, and denied domains take precedence. With the filter enabled and both lists empty, all domains are blocked, and the rules also apply to the terminal sandbox when it is enabled.",
+      "admin": "Policy keys: ChatAgentNetworkFilter, ChatAgentAllowedNetworkDomains and ChatAgentDeniedNetworkDomains.",
+      "links": [
+        { "label": "VS Code enterprise policies", "url": "https://code.visualstudio.com/docs/enterprise/policies" }
+      ]
+    },
+    {
+      "id": "cl-94981",
+      "tier": "notable",
+      "section": "visualstudio",
+      "area": "chat-ide",
+      "tag": "Release",
+      "summary": "The March update for GitHub Copilot in Visual Studio 2026 adds custom agents defined as .agent.md files, agent skills, and MCP governance that respects allowlist policies set through GitHub. Agent mode gains a find_symbol tool, and debugging and testing gain profiling-based PerfTips, Smart Watch suggestions and Profile with Copilot in Test Explorer.",
+      "ides": ["visualstudio"],
+      "links": [
+        { "label": "Visual Studio blog", "url": "https://devblogs.microsoft.com/visualstudio/visual-studio-march-update-build-your-own-custom-agents/" },
+        { "label": "Release notes", "url": "https://learn.microsoft.com/visualstudio/releases/2026/release-notes" }
+      ]
+    },
+    {
+      "id": "cl-95641",
+      "tier": "notable",
+      "section": "visualstudio",
+      "area": "chat-ide",
+      "tag": "Release",
+      "summary": "The April update for GitHub Copilot in Visual Studio adds cloud agent sessions started from the agent picker, user-level custom agents, and agent skills discovered from additional folders such as .claude/skills/ and .agents/skills/. A new debugger agent workflow validates bugs against real runtime behavior, and C++ code editing tools for agent mode are generally available by default.",
+      "ides": ["visualstudio"],
+      "links": [
+        { "label": "Visual Studio blog", "url": "https://devblogs.microsoft.com/visualstudio/visual-studio-april-update-cloud-agent-integration" },
+        { "label": "Release notes", "url": "https://learn.microsoft.com/visualstudio/releases/2026/release-notes" }
+      ]
+    },
+    {
+      "id": "vs-256073",
+      "tier": "notable",
+      "section": "visualstudio",
+      "area": "agents",
+      "tag": "Release",
+      "title": "Stop hunting bugs: Meet the new Visual Studio Debugger Agent workflow",
+      "summary": "A guided Debugger Agent workflow in Visual Studio, started from Debugger mode in Copilot Chat with a GitHub or Azure DevOps URL or a short problem description, takes a bug from hypothesis to verified fix. The agent proposes a root cause, sets breakpoints, checks runtime state during reproduction and applies a fix once approved. The 18.5 GA releases deliver the foundational experience for exceptions, logic inconsistencies and state corruption.",
+      "ides": ["visualstudio"],
+      "image": "https://devblogs.microsoft.com/visualstudio/wp-content/uploads/sites/4/2026/04/debugger-agent-.webp"
+    },
+    {
+      "id": "cl-95546",
+      "tier": "notable",
+      "section": "jetbrains-others",
+      "area": "chat-ide",
+      "tag": "Release",
+      "stage": "preview",
+      "summary": "Inline agent mode, now in public preview, brings agent mode into the existing inline chat experience without switching to the chat panel. Next Edit Suggestions gain inline edit previews and a gutter direction indicator for far-away edits. A global auto-approve setting, which approves all tool calls including potentially destructive ones, and two granular auto-approve controls are also new.",
+      "ides": ["jetbrains"],
+      "admin": "Copilot Business and Enterprise administrators must enable the Editor preview features policy before users can use inline agent mode or Next Edit Suggestions.",
+      "links": [
+        { "label": "GitHub Copilot plugin for JetBrains IDEs", "url": "https://plugins.jetbrains.com/plugin/17718-github-copilot--your-ai-pair-programmer/versions" }
+      ]
+    },
+    {
+      "id": "cl-94959",
+      "tier": "notable",
+      "section": "platform",
+      "area": "other",
+      "tag": "Release",
+      "stage": "ga",
+      "summary": "GitHub Codespaces is generally available for GitHub Enterprise Cloud with data residency, with full feature parity with Codespaces on the general GitHub platform. It is available in all data residency regions: Australia, the European Union, Japan and the United States. Enterprise-owned or organization-owned codespaces are required, since user-owned codespaces are not supported.",
+      "admin": "Enterprise and organization policies must be set so that codespaces have the proper ownership.",
+      "links": [
+        { "label": "Codespaces documentation", "url": "https://docs.github.com/codespaces" },
+        { "label": "Codespace ownership", "url": "https://docs.github.com/codespaces/managing-codespaces-for-your-organization/choosing-who-owns-and-pays-for-codespaces-in-your-organization" }
+      ]
+    },
+    {
+      "id": "cl-95524",
+      "tier": "notable",
+      "section": "platform",
+      "area": "actions",
+      "tag": "Improvement",
+      "summary": "GitHub Actions OIDC tokens now include immutable owner and repository IDs in the default subject claim for new repositories, tying each claim permanently to the original repository. The format applies automatically to repositories created, renamed or transferred after July 15, 2026, and existing repositories can opt in now through a repository or organization toggle. GitHub Enterprise Server is not affected.",
+      "admin": "Update cloud provider trust policies for the new claim format; a preview endpoint shows the resulting claim prefix. A June 10, 2026 editor's note sets the delimiter between name and ID to @, for example repo:octo-org@123/octo-repo@456.",
+      "effective": "2026-07-15",
+      "links": [
+        { "label": "OIDC documentation", "url": "https://docs.github.com/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect" }
+      ]
+    },
+    {
+      "id": "cl-95566",
+      "tier": "notable",
+      "section": "platform",
+      "area": "apis",
+      "tag": "Deprecation",
+      "summary": "GitHub App installation tokens (ghs_) move to a new stateless format, ghs_APPID_JWT, of about 520 characters that varies in length. A staged rollout starts April 27, 2026 with the Actions GITHUB_TOKEN and first-party integrations, and runs from mid-May to late June 2026 for all installation tokens, with a brownout planned. Existing tokens keep working until they expire, and GitHub Enterprise Server is not affected.",
+      "admin": "Treat tokens as opaque strings. Do not assume a 40-character length, remove hardcoded regexes such as ghs_[A-Za-z0-9]{36}, and make database columns hold at least 520 characters.",
+      "effective": "2026-04-27",
+      "links": [
+        { "label": "GitHub token formats", "url": "https://docs.github.com/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#githubs-token-formats" },
+        { "label": "Installation access tokens", "url": "https://docs.github.com/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app" }
+      ]
+    },
+    {
+      "id": "cl-95433",
+      "tier": "notable",
+      "section": "platform",
+      "area": "other",
+      "tag": "Deprecation",
+      "summary": "GitHub is removing SHA-1 from HTTPS on github.com, including GitHub Enterprise Cloud and Enterprise Cloud with data residency, and on its CDNs, which affects browsers, API clients and Git clients connecting over HTTPS. GitHub Enterprise Server is not affected. A brownout on July 14, 2026 (00:00 to 18:00 UTC, CDNs not affected) temporarily disables SHA-1, and it is completely disabled on September 15, 2026.",
+      "admin": "Browsers, API libraries and Git clients must support TLS algorithms newer than SHA-1. github.dev already has SHA-1 disabled, so loading it tests a browser.",
+      "effective": "2026-09-15"
+    },
+    {
+      "id": "bl-95627",
+      "tier": "notable",
+      "section": "platform",
+      "area": "other",
+      "tag": "Announcement",
+      "summary": "GitHub's CTO outlines capacity work begun in October 2025 to scale 10X and expanded to 30X by February 2026, with availability prioritized ahead of capacity and new features. An April 23 merge queue regression created incorrect merge commits for some squash merges, affecting 658 repositories and 2,092 pull requests with no data loss. An April 27 Elasticsearch overload left search-backed parts of the UI without results."
+    },
+    {
+      "id": "cl-95550",
+      "tier": "notable",
+      "section": "security",
+      "area": "code-security",
+      "tag": "Deprecation",
+      "summary": "Seven security-related fields are deprecated on the get an organization and update an organization REST API endpoints: six fields ending in _enabled_for_new_repositories and secret_scanning_validity_checks_enabled. GitHub Code Security configurations replace them for managing security product enablement across an organization, and the fields are no longer available.",
+      "admin": "Migrate scripts and integrations to Code Security configurations, and set a default configuration for new repositories to replicate the old behavior.",
+      "links": [
+        { "label": "Code Security configurations REST API", "url": "https://docs.github.com/rest/code-security/configurations" }
+      ]
+    },
+    {
+      "id": "cl-95058",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Release",
+      "stage": "ga",
+      "summary": "Dependabot alerts can be assigned to AI coding agents, including GitHub Copilot, Claude and Codex, which analyze the alert and open a draft pull request with a proposed fix. Multiple agents can be assigned to one alert, each opening its own draft pull request. The feature is generally available on github.com.",
+      "ides": ["web"],
+      "admin": "Requires GitHub Code Security and a Copilot plan that includes coding agent access.",
+      "links": [
+        { "label": "Managing Dependabot alerts", "url": "https://docs.github.com/code-security/dependabot/dependabot-alerts/viewing-and-updating-dependabot-alerts" }
+      ]
+    },
+    {
+      "id": "cl-95123",
+      "tier": "notable",
+      "section": "security",
+      "area": "code-security",
+      "tag": "Release",
+      "summary": "Organization admins and security managers can run a free Code Security risk assessment that summarizes vulnerabilities by severity, rule type and programming language, with remediation guidance that highlights where Copilot Autofix can suggest fixes, and help prioritizing high-impact repositories. It is available in GitHub Enterprise Cloud and GitHub Team, and will ship in GitHub Enterprise Server 3.22.",
+      "admin": "Start from the Assessments section under the organization's Security tab.",
+      "links": [
+        { "label": "Risk assessment documentation", "url": "https://docs.github.com/enterprise-cloud@latest/code-security/concepts/code-scanning/code-security-risk-assessment" },
+        { "label": "Blog post", "url": "https://github.blog/security/application-security/how-exposed-is-your-code-find-out-in-minutes-for-free/" }
+      ]
+    },
+    {
+      "id": "cl-95323",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Release",
+      "stage": "ga",
+      "summary": "Dependabot and code scanning support OIDC authentication for private registries configured at the organization level, removing the need to store long-lived credentials as repository secrets. Supported registries are AWS CodeArtifact, Azure DevOps Artifacts and JFrog Artifactory, with Cloudsmith and Google Artifact Registry to follow within four weeks of the announcement. It is generally available on github.com and will ship in GitHub Enterprise Server 3.22.",
+      "admin": "Organization administrators configure OIDC-based credentials for private registries centrally.",
+      "links": [
+        { "label": "Org-level private registry access", "url": "https://docs.github.com/en/code-security/how-tos/secure-at-scale/configure-organization-security/manage-usage-and-access/giving-org-access-private-registries" }
+      ]
+    },
+    {
+      "id": "bl-94975",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Announcement",
+      "summary": "GitHub outlines steps to secure GitHub Actions workflows against secret exfiltration: enable CodeQL for Actions workflows (free on public repositories), avoid triggering on pull_request_target, pin third-party Actions to full-length commit SHAs, and watch for script injection. It also covers OpenID Connect trusted publishing and malware scanning of every npm package version, and says GitHub is revisiting its Actions security roadmap and accelerating work already underway.",
+      "links": [
+        { "label": "Actions secure use reference", "url": "https://docs.github.com/actions/reference/security/secure-use" }
+      ]
+    },
+    {
+      "id": "bl-95093",
+      "tier": "notable",
+      "section": "events",
+      "area": "events",
+      "tag": "Announcement",
+      "title": "GitHub Universe is back: Call for Sessions is open",
+      "summary": "GitHub Universe '26 takes place October 28–29 at Fort Mason Center in San Francisco. The Call for Sessions is open through Friday, May 1 at 11:59 p.m. PT, and speakers can submit proposals or nominate someone else. A submission guide covers content tracks, session types and the anatomy of a good submission.",
+      "links": [
+        { "label": "Call for Sessions submission guide", "url": "https://reg.githubuniverse.com/flow/github/universe26/cfs/page/cfs-submissionguide" }
+      ]
+    },
+    {
+      "id": "next-posts-dsyme-lean-squad-automated-verification",
+      "tier": "notable",
+      "section": "research",
+      "area": "research",
+      "tag": "Research",
+      "title": "Lean Squad: Exploring automated software verification with near-zero human labour",
+      "summary": "Lean Squad is a GitHub Agentic Workflow that automates formal verification, from researching a codebase to writing specifications and proving theorems in Lean 4, with near-zero human involvement. Applied to three real-world codebases, it produced over 1,200 machine-checked theorems and found real bugs in a drone autopilot. The GitHub Next post links to a longer write-up on the blog of Principal Researcher Don Syme."
+    }
+  ],
+  "overrides": {
+    "vsc-1.117-01": { "drop": true, "dropReason": "Duplicate of cl-95475 (same bring-your-own language model key announcement)" },
+    "vsc-1.115-08": { "drop": true, "dropReason": "Verbatim repeat of the Edit Mode deprecation notice covered by vsc-1.114-08" },
+    "vsc-1.116-15": { "drop": true, "dropReason": "Verbatim repeat of the Edit Mode deprecation notice covered by vsc-1.114-08" },
+    "vsc-1.118-22": { "drop": true, "dropReason": "Verbatim repeat of the Edit Mode deprecation notice covered by vsc-1.114-08" },
+    "bl-95440": { "drop": true, "dropReason": "Duplicate of cl-95441 (same plan changes announcement; blog post is linked from it)" },
+    "bl-95258": { "drop": true, "dropReason": "Duplicate of cl-95123 (same Code Security risk assessment announcement; blog post is linked from it)" },
+    "vs-255987": { "drop": true, "dropReason": "Duplicate of cl-95641 (same Visual Studio April update; blog post is linked from it)" },
+    "next-posts-micro-new-site": { "drop": true, "dropReason": "Site refresh post with no product content" }
+  }
+}

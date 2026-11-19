@@ -1,0 +1,130 @@
+Agent tasks REST API now available for Copilot Pro, Pro+, and Max - GitHub Changelog 
+Skip to content 
+Skip to sidebar 
+/ 
+Blog 
+Changelog 
+Docs 
+Customer stories 
+Try GitHub Copilot app 
+See what's new 
+Search 
+Changelog 
+Docs 
+Customer stories 
+See what's new 
+Try GitHub Copilot app 
+Back to changelog 
+Release 
+June 4, 2026 •
+1 minute read 
+Agent tasks REST API now available for Copilot Pro, Pro+, and Max
+Copilot Pro, Pro+, and Max users can now programmatically start and track Copilot cloud agent tasks with the Agent tasks REST API, available in public preview.
+Copilot cloud agent works in the background in its own development environment, where it can make and validate code changes, then open a pull request.
+The API makes it easy to weave Copilot cloud agent into custom automations. For example, you could:
+Fan out refactors or migrations across many repositories from a simple script.
+Set up new repositories in one click from your company’s internal developer portal.
+Automatically prepare a new release each week, including release notes.
+Once you’ve started a task, you can also track progress through the API. The API supports authentication with personal access tokens (classic and fine-grained) and OAuth tokens.
+To learn more, head to the agent tasks REST API documentation .
+copilot 
+Share 
+Copied 
+Shared 
+Back to changelog 
+Related Posts
+Nov.04 Release 
+GitHub Copilot is now available in Xcode’s coding assistant 
+copilot 
+Nov.03 Improvement 
+BYOK and enterprise custom models in the Copilot usage API 
+account management 
+copilot 
+enterprise management tools 
+... 
++2 
+Nov.03 Release 
+GitHub Copilot is now available in JetBrains Air 
+copilot 
+Oct.28 Release 
+Route and orchestrate models with GitHub Copilot Fusion 
+copilot 
+enterprise management tools 
+universe26 
+... 
++2 
+Oct.28 Release 
+GitHub Copilot app, Universe releases 
+copilot 
+universe26 
+... 
++1 
+Oct.28 Release 
+GitHub Enterprise now includes access to GitHub Copilot 
+copilot 
+universe26 
+... 
++1 
+Oct.28 Release 
+Security extension for the GitHub Copilot app 
+application security 
+copilot 
+universe26 
+... 
++2 
+Oct.28 Release 
+GitHub intelligence puts your code, context, and history to work 
+copilot 
+universe26 
+... 
++1 
+Oct.28 Improvement 
+Build shared workflows for your team with Copilot Automations 
+copilot 
+universe26 
+... 
++1 
+Subscribe to our developer newsletter
+Discover tips, technical guides, and best practices in our biweekly newsletter just for devs. 
+Enter your email * 
+Subscribe 
+By submitting, I agree to let GitHub and its affiliates use my information for personalized communications, targeted advertising, and campaign effectiveness. See the GitHub Privacy Statement for more details. 
+Back to top 
+Site-wide Links
+Product
+Features 
+Security 
+Enterprise 
+Customer Stories 
+Pricing 
+Resources 
+Platform
+Developer API 
+Partners 
+Atom 
+Electron 
+GitHub Desktop 
+Support
+Docs 
+Community Forum 
+Training 
+Status 
+Contact 
+Company
+About 
+Blog 
+Careers 
+Press 
+Shop 
+© 2026 GitHub, Inc.
+Terms 
+Privacy 
+Manage Cookies 
+Do not share my personal information 
+GitHub on LinkedIn 
+GitHub on Instagram 
+GitHub on YouTube 
+GitHub on X 
+GitHub on TikTok 
+GitHub on Twitch 
+GitHub’s organization on GitHub

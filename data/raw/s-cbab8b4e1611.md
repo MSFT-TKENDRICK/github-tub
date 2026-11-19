@@ -1,0 +1,236 @@
+Visual Studio Code 1.133 
+Skip to content 
+Features
+AI development 
+Agents 
+Models 
+Customizations 
+Continuity 
+Editor 
+Write code 
+Enterprise 
+Extensibility 
+Release notes 
+Blog 
+Resources
+Help 
+Documentation 
+Learn 
+API 
+FAQ 
+Extensibility 
+Extension Marketplace 
+(opens in new tab) 
+MCP registry 
+(opens in new tab) 
+Connect 
+Events 
+(opens in new tab) 
+GitHub repository 
+(opens in new tab) 
+Download 
+Search 
+⌘ ⇧ P 
+Download 
+VS Code Insiders 
+Other platforms 
+Command line interface 
+CLI for Apple silicon 
+CLI for Intel 
+Command line interface 
+CLI for x64 
+CLI for Arm64 
+Command line interface 
+CLI for x64 
+CLI for Arm64 
+CLI for Arm32 
+By using VS Code, you agree to its
+license 
+and
+privacy statement .
+By using VS Code, you agree to
+License 
+&
+Privacy .
+GitHub Universe, on demand. Watch the VS Code session recordings. 
+A year of VS Code, wrapped. Explore the highlights. 
+Dismiss this update 
+Updates
+Insiders 
+1.145 
+1.144 
+1.143 
+1.142 
+1.141 
+1.140 
+1.139 
+1.138 
+1.137 
+1.136 
+1.135 
+1.134 
+1.133 
+1.132 
+1.131 
+View All Releases 
+Updates 
+Insiders 
+1.145 
+1.144 
+1.143 
+1.142 
+1.141 
+1.140 
+1.139 
+1.138 
+1.137 
+1.136 
+1.135 
+1.134 
+1.133 
+1.132 
+1.131 
+View All Releases 
+Visual Studio Code 1.133
+Follow us on LinkedIn , X , Bluesky 
+Release date: August 12, 2026 
+Downloads for 1.133.0
+Windows x64 Arm64 
+macOS Universal Intel Apple silicon 
+Linux .deb .rpm .tar.gz Arm instructions Snap 
+Welcome to the 1.133 release of Visual Studio Code. This release gives you more flexibility in Claude sessions, keeps long chats easier to follow, and refreshes local HTML previews as you work.
+Change model provider for Claude sessions : Switch providers between turns without reconfiguring the agent host.
+Agents window without GitHub sign-in : Use Claude with your existing API key when GitHub sign-in is unavailable.
+Auto-reload HTML files : Preview HTML changes immediately without manual refresh.
+Happy Coding!
+VS Code is rolling out gradually to all users. Use Check for Updates in VS Code to get the latest version immediately.
+To try new features as soon as possible, download the nightly Insiders build , which includes the latest updates as soon as they are available.
+In this update
+Agents 
+Chat 
+Editor Experience 
+Deprecated features and settings 
+Thank you 
+Navigation End -->
+Agents
+Agent host
+The agent host lets you connect to the same agent session from multiple VS Code windows. It runs agent harnesses in a dedicated process based on the Agent Host Protocol (AHP). The agent host's Copilot agent is powered by the Copilot SDK , which aligns its behavior and functionality with the Copilot CLI, the standalone GitHub Copilot app, and other Copilot products.
+We're actively developing the agent host. The screenshot below shows how to select the Copilot harness on the agent host in the editor window:
+You can learn more in our VS Code Agent Host documentation . If you have any feedback or requests, please let us know by filing an issue .
+Support for the Agent Plugins standard
+Plugins bundle agent customizations into something you can install in one step. The catch has been that every agent tool expected its own layout, so publishing the same skill and MCP server to several tools meant maintaining a separate package for each.
+Agent Plugins 1.0 replaces those per-tool layouts with one open standard, and VS Code was part of its launch on August 6 along with other agent clients. A plugin that follows the standard is a directory with a plugin.json manifest, skills in skills/ , and MCP server configuration in mcp.json .
+VS Code loads those portable components, and it also reads Copilot-specific components from the com.github.copilot namespace in the same package:
+my-plugin/ 
+plugin.json 
+skills/ # Portable across clients 
+mcp.json # Portable across clients 
+com.github.copilot/ # Read by VS Code, Copilot CLI, and the Copilot app 
+agents/ 
+commands/ 
+rules/ 
+hooks/ 
+hooks.json 
+Clients that don't implement the namespace ignore it. One package can therefore stay portable and still bring your custom agents, slash commands, rules, and hooks to VS Code, GitHub Copilot CLI, and the GitHub Copilot app.
+Learn more about agent plugins in VS Code .
+Mix Anthropic and Copilot models in Claude sessions
+Previously, a Claude session ran entirely through either your GitHub Copilot subscription or Claude's existing configuration, such as an API key. Switching providers required reconfiguring the agent host.
+Now, the model picker displays both groups, so you can switch providers between turns. The model you select is used for the next turn. Models under Anthropic bill your API key, and models under Copilot use your Copilot subscription.
+Open the Agents window without GitHub sign-in (Experimental)
+Setting : 
+chat.agentHost.allowSignedOutWhenUsable
+Open in VS Code 
+Open in VS Code Insiders 
+The Agents window used to open with a GitHub sign-in prompt you could not dismiss. That blocked anyone whose machine can't reach github.com or anyone who doesn't interact with GitHub. Users with Claude already configured with an API key who don't need GitHub sign-in had this extra step.
+Enable this setting to open the Agents window without signing in to GitHub. GitHub authentication is then associated with individual agents or models instead of the Agents window. In this release, this behavior only supports Claude. Support for Copilot with your own model keys and Codex is planned for future releases.
+Chat
+Sticky scroll for prompts
+Setting : 
+chat.stickyScroll.enabled
+Open in VS Code 
+Open in VS Code Insiders 
+When you scroll through a long conversation, you can lose track of which prompt a response belongs to. The prompt you have scrolled past now stays pinned to the top of the chat, similar to sticky scroll in the editor.
+The pinned prompt shows its position in the conversation. Select it to jump back to that prompt, or use the previous and next buttons beside it to step through your prompts.
+Editor Experience
+Auto-reload HTML files in the integrated browser
+Setting : 
+workbench.browser.autoReloadOnFileChange
+Open in VS Code 
+Open in VS Code Insiders 
+When a local HTML file is open in the integrated browser , it now refreshes automatically when the file changes on disk.
+This helps you see agent edits or your own saved changes immediately. You can toggle automatic reload for individual browser tabs and configure the default with the 
+workbench.browser.autoReloadOnFileChange
+Open in VS Code 
+Open in VS Code Insiders 
+setting.
+Deprecated features and settings
+None
+Thank you
+Contributions to vscode :
+@accnops (Arthur Cnops) 
+voice: explain why a voice connection failed PR #329453 
+Rename Voice Mode voices to approved names PR #329576 
+@benelog (Sanghyuk Jung) : Fix duplicated word in notebook.cellToolbarLocation setting description PR #328957 
+@Bosphoramus (Tony) : fix: add top gap for Modern UI floating panels when title bar is hidden PR #328688 
+@bstee615 (Benjamin Steenhoek) : Add optional rejected edit memory to diffpatch prompt PR #327367 
+@karthikkatu (Karthikeyan M) : Auto-reload Integrated Browser when previewed local file changes PR #324618 
+@lfraleigh (Lori Fraleigh) : Add missing Azure SDK for Go modules to GoModulesToLookFor PR #322786 
+@mateusabelli (Mateus Abelli) : Update Copilot extension links PR #329229 
+@rfeltis (Ralph Feltis) : Add Agents window startup A/A experiment trigger PR #328454 
+@ShehabSherif0 (Shehab Sherif) : Fix operator precedence in timeline pageSize calculation PR #303258 
+@SimonSiefke (Simon Siefke) : fix: memory leak in PerfModelContentProvider PR #328581 
+@SVOG23 (Suraj Vaghela) : docs: fix stale relative paths in Claude chat sessions AGENTS.md PR #327612 
+@Xaena53 (Bedirhan ÇETİN) : refactor: share the find input toggle navigation PR #329128 
+Issue tracking
+Contributions to our issue tracking:
+@gjsjohnmurray (John Murray) 
+@RedCMD (RedCMD) 
+@IllusionMH (Andrii Dieiev) 
+@albertosantini (Alberto Santini) 
+We really appreciate people trying our new features as soon as they are ready, so check back here often and learn what's new.
+If you'd like to read release notes for previous VS Code versions, go to Updates on code.visualstudio.com .
+On this page there are 5 sections On this page 
+Agents 
+Chat 
+Editor Experience 
+Deprecated features and settings 
+Thank you 
+Microsoft 
+Community
+GitHub 
+Reddit 
+X 
+Bluesky 
+LinkedIn 
+Watch & listen
+YouTube 
+Podcast 
+TikTok 
+Instagram 
+Legal
+Privacy 
+Terms of Use 
+Help
+Support 
+License 
+Community 
+GitHub 
+Reddit 
+X 
+Bluesky 
+LinkedIn 
+Watch & listen 
+YouTube 
+Podcast 
+TikTok 
+Instagram 
+Legal 
+Privacy 
+Terms of Use 
+Help 
+Support 
+License 
+Consumer Health Privacy 
+Manage Cookies 
+By using VS Code, you agree to its license and privacy statement .
+Your Privacy Choices

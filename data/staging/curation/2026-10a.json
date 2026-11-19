@@ -1,0 +1,344 @@
+{
+  "month": "2026-10",
+  "from": "2026-10-01",
+  "to": "2026-10-20",
+  "items": [
+    {
+      "id": "cl-99339",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "Local sandboxing for GitHub Copilot is generally available in Copilot CLI, the GitHub Copilot app, and VS Code sessions that use Agent Host. Commands and tools started by Copilot run with restricted access to the filesystem, network, credentials, and other system capabilities, based on policies set by the developer or their organization. Microsoft eXecution Container (MXC) translates a common sandbox policy into native controls on Windows, macOS, and Linux.",
+      "why": "Teams can adopt more autonomous agent workflows on developer machines while keeping clear boundaries around what Copilot can access.",
+      "stage": "ga",
+      "ides": ["cli", "vscode"],
+      "admin": "Included with GitHub Copilot at no additional cost. Enterprise-managed settings can require sandboxing and enforce policies that developers cannot weaken.",
+      "links": [
+        { "label": "About cloud and local sandboxes", "url": "https://docs.github.com/copilot/concepts/security-governance-and-network-settings/about-cloud-and-local-sandboxes" },
+        { "label": "Microsoft eXecution Container (MXC)", "url": "https://github.com/microsoft/mxc" },
+        { "label": "VS Code agent sandboxing docs", "url": "https://code.visualstudio.com/docs/agents/run/agent-sandboxing" }
+      ]
+    },
+    {
+      "id": "cl-99315",
+      "tier": "headline",
+      "section": "platform",
+      "area": "collaboration",
+      "tag": "Release",
+      "summary": "Stacked pull requests are generally available, so a large change can be split into smaller pull requests that are reviewed independently and merged together. Rebase stack now preserves approvals for unchanged code and signs the replacement commits it creates, and a stack enters and lands through the merge queue as a single merge group. It is available on all github.com plans and will be included in an upcoming GitHub Enterprise Server release.",
+      "why": "Large changes can be reviewed as small, focused pull requests and still land together, with approvals kept in place for unchanged code when a stack is rebased.",
+      "stage": "ga",
+      "ides": ["web", "cli"],
+      "admin": "Users with permission to bypass repository rules can use it to merge the lowest unmerged pull request in a stack. Auto-merge for stacks is rolling out over the next few weeks.",
+      "links": [
+        { "label": "Stacked pull requests documentation", "url": "https://gh.io/stacks" }
+      ]
+    },
+    {
+      "id": "cl-99519",
+      "tier": "headline",
+      "section": "security",
+      "area": "code-security",
+      "tag": "Release",
+      "title": "Agentic autofix for code scanning alerts is generally available",
+      "summary": "Agentic autofix for code scanning alerts is generally available to GitHub Code Security and GitHub Advanced Security customers on GitHub Enterprise Cloud, including data residency. When a code scanning alert on the default branch is assigned to Copilot, it explores the codebase, proposes a fix, reruns CodeQL to confirm the fix closes the alert, and opens a draft pull request for review. Up to 25 alerts can be fixed together in one pull request.",
+      "why": "Alert remediation can be delegated to an agent that checks its own fix with CodeQL before a person reviews the pull request.",
+      "stage": "ga",
+      "plans": ["Enterprise"],
+      "admin": "An enterprise administrator must enable the Agentic autofix policy, then an organization or repository administrator turns it on in Code Security settings. A Copilot billing method is required, and usage consumes AI Credits and GitHub Actions minutes.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "Agentic autofix documentation", "url": "https://docs.github.com/enterprise-cloud@latest/code-security/concepts/code-scanning/autofix-for-code-scanning" },
+        { "label": "Update a code scanning alert (REST API)", "url": "https://docs.github.com/enterprise-cloud@latest/rest/code-scanning/code-scanning#update-a-code-scanning-alert" },
+        { "label": "Copilot usage-based billing", "url": "https://docs.github.com/enterprise-cloud@latest/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises" }
+      ]
+    },
+    {
+      "id": "cl-99208",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "Dynamic workflows let developers define an orchestration in code that combines automated steps with the work of one or more agents, run in sequence or in parallel. A workflow can run commands, pass structured results from one stage to the next, and pause at a checkpoint so results can be reviewed before resuming. It is in public preview in Copilot CLI, the GitHub Copilot app, and the GitHub Copilot SDK.",
+      "stage": "preview",
+      "ides": ["cli"],
+      "admin": "Available on all Copilot plans. In Copilot CLI, enable experimental features with the --experimental option or /experimental on; the Copilot app needs no setup.",
+      "links": [
+        { "label": "Dynamic workflows documentation", "url": "https://docs.github.com/copilot/concepts/agents/dynamic-workflows" },
+        { "label": "Creating a dynamic workflow", "url": "https://docs.github.com/copilot/how-tos/use-copilot-agents/use-dynamic-workflows#creating-a-dynamic-workflow" }
+      ]
+    },
+    {
+      "id": "cl-99220",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "summary": "Computer use is in public preview in GitHub Copilot CLI and the GitHub Copilot app on macOS and Windows. Copilot can interact with desktop applications by reading accessible app content, clicking controls, entering text, pressing keys, scrolling, and dragging. That reaches legacy and GUI-only software that does not provide an API, command-line interface, or MCP integration.",
+      "stage": "preview",
+      "ides": ["cli"],
+      "admin": "Run /computer on in Copilot CLI, or turn on Enable Computer Use in the Copilot app settings. Copilot asks for approval before controlling an app, and organization-managed settings can disable the feature.",
+      "links": [
+        { "label": "Computer use documentation", "url": "https://docs.github.com/copilot/concepts/agents/computer-use" }
+      ]
+    },
+    {
+      "id": "cl-99544",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Deprecation",
+      "summary": "Claude Opus 4.8, Claude Opus 5, and GPT-5.6 Terra will be deprecated across all GitHub Copilot experiences on November 16, 2026. Suggested alternatives are Claude Opus 5.5 for both Claude models and GPT-6.1 Sol or GPT-6 Luna for GPT-5.6 Terra. Claude Opus 4.8 remains available to individual subscribers on annual plans.",
+      "admin": "Under default model enablement, the alternatives are enabled automatically for Copilot Enterprise and Copilot Business unless an administrator turned off the global default or disabled the model; otherwise, enable them in model policies.",
+      "effective": "2026-11-16",
+      "links": [
+        { "label": "Supported models", "url": "https://docs.github.com/copilot/reference/ai-models/supported-models" }
+      ]
+    },
+    {
+      "id": "cl-99451",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Improvement",
+      "summary": "Enterprise administrators can now require supported GitHub Copilot clients to retrieve current server-managed settings at startup instead of relying on a cached policy. With forceRemoteSettingsRefresh set to true, a client fails closed if it cannot confirm current policy. Minimum client version enforcement is also added to the sandbox key, so when that key is in managed settings, users pinned to older Copilot clients are forced to update.",
+      "ides": ["cli", "vscode"],
+      "admin": "Set forceRemoteSettingsRefresh to true through server-managed, MDM-managed, or file-based settings. It is supported in Copilot CLI, VS Code, and the GitHub Copilot app. Without it, clients keep using the managed-settings cache.",
+      "links": [
+        { "label": "Deploying enterprise managed settings", "url": "https://docs.github.com/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-for-enterprise/use-managed-settings/deploy-managed-settings#requiring-fresh-server-managed-settings-on-startup" },
+        { "label": "Minimum client version enforcement", "url": "https://docs.github.com/en/enterprise-cloud@latest/copilot/reference/enterprise-administrators/enterprise-managed-settings#minimum-client-version-enforcement-for-sandbox" }
+      ]
+    },
+    {
+      "id": "cl-99400",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "code-review",
+      "tag": "Improvement",
+      "summary": "Organization owners can now bill Copilot code reviews for members who have a Copilot license to the organization's cost center, instead of consuming those members' Copilot quotas. Organization owners and repository admins can also require that review requests come from people with a Copilot license provided by the organization or enterprise, which blocks requests made with an outside license such as a personal one.",
+      "admin": "Choose Member (default) or Organization billing in organization settings under Copilot, then Policies. Organization billing requires AI Credits paid usage. If the authorized-users setting is on at organization level, repository admins cannot turn it off.",
+      "links": [
+        { "label": "Reviews requested with an external Copilot license", "url": "https://docs.github.com/copilot/concepts/agents/code-review#reviews-requested-with-an-external-copilot-license" }
+      ]
+    },
+    {
+      "id": "cl-99263",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "code-review",
+      "tag": "Improvement",
+      "summary": "Copilot code review can now be requested through the REST and GraphQL APIs, with an optional review effort level for each request. Balanced is also now the default review effort level, a change that took effect on September 28, 2026, and explicit Lite selections were respected. These changes are generally available to Copilot Pro, Pro+, Max, Business, and Enterprise plans.",
+      "stage": "ga",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "admin": "The review effort level can be changed from Default to Lite in enterprise, organization, repository, or personal settings. Each level can override the one above it.",
+      "links": [
+        { "label": "Configuring code review", "url": "https://docs.github.com/copilot/how-tos/copilot-on-github/set-up-copilot/configure-code-review" }
+      ]
+    },
+    {
+      "id": "cl-99479",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "summary": "Gemini 4 Argon, Google's newest frontier model, is generally available in GitHub Copilot to Copilot Pro+, Max, Business, and Enterprise users. It is designed for complex coding, agentic, and reasoning tasks and is billed at provider list pricing under usage-based billing. It can be selected in the model picker in VS Code, Visual Studio, Copilot CLI, the Copilot coding agent, the GitHub Copilot app, JetBrains IDEs, Xcode, and Eclipse.",
+      "stage": "ga",
+      "plans": ["Pro+", "Business", "Enterprise"],
+      "ides": ["vscode", "visualstudio", "cli", "jetbrains", "xcode", "eclipse"],
+      "admin": "Administrators on Copilot Enterprise and Copilot Business manage access through the model policy. Under default model enablement it is enabled automatically unless the global default is off or the model is disabled. Rollout is gradual.",
+      "links": [
+        { "label": "Models and pricing for GitHub Copilot", "url": "https://docs.github.com/copilot/reference/copilot-billing/models-and-pricing" }
+      ]
+    },
+    {
+      "id": "cl-99370",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "summary": "Claude Haiku 5.5, Anthropic's newest lightweight model, is generally available in GitHub Copilot for Pro, Pro+, Max, Business, and Enterprise users. It is designed for fast, high-volume work such as subagents, quick edits, and terminal tasks, and is billed at provider list pricing under usage-based billing. It can be selected in the model picker in VS Code, Visual Studio, Copilot CLI, the GitHub Copilot app, github.com, GitHub Mobile, JetBrains IDEs, Xcode, and Eclipse.",
+      "stage": "ga",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "ides": ["vscode", "visualstudio", "cli", "jetbrains", "xcode", "eclipse", "web", "mobile"],
+      "admin": "Administrators on Copilot Enterprise and Copilot Business manage access through the model policy in Copilot settings. Under default model enablement it is enabled automatically unless the global default is off or the model is disabled. Rollout is gradual.",
+      "links": [
+        { "label": "Models and pricing for GitHub Copilot", "url": "https://docs.github.com/copilot/reference/copilot-billing/models-and-pricing" },
+        { "label": "Supported models", "url": "https://docs.github.com/copilot/reference/ai-models/supported-models" }
+      ]
+    },
+    {
+      "id": "cl-99440",
+      "tier": "notable",
+      "section": "jetbrains-others",
+      "area": "chat-ide",
+      "tag": "Improvement",
+      "summary": "GitHub Copilot for JetBrains adds enterprise-managed default models, a Fix action in diagnostic intention menus that opens inline chat, and a setting that disables automatic MCP server startup for Copilot and Claude. Chat messages are now grouped by turn, and signed-in accounts get clearer labels and a Switch Account action. Support for JetBrains IDE 2025.1 has ended, so JetBrains IDE 2025.2 or later is required.",
+      "ides": ["jetbrains"],
+      "admin": "Enterprise administrators can use managed settings to choose any available Copilot agent model as the default for new conversations; an explicit model picker choice is still preserved.",
+      "links": [
+        { "label": "GitHub Copilot plugin versions", "url": "https://plugins.jetbrains.com/plugin/17718-github-copilot--your-ai-pair-programmer/versions" }
+      ]
+    },
+    {
+      "id": "vsc-1.142-02",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Improvement",
+      "title": "Copilot harness rolls out as the default for new VS Code sessions",
+      "summary": "The Copilot harness, powered by the Copilot SDK, is progressively rolling out as the default harness for new sessions in VS Code. It runs sessions through the Agent Host, so sessions continue in the background and can be opened from both the editor window and the Agents window. Ask returns as a built-in agent in the Copilot harness, offering a dedicated read-only experience.",
+      "ides": ["vscode"],
+      "links": [
+        { "label": "Copilot harness documentation", "url": "https://code.visualstudio.com/docs/agents/run/agent-harnesses#use-the-copilot-harness" },
+        { "label": "Agent Host documentation", "url": "https://code.visualstudio.com/docs/agents/concepts/agent-host" }
+      ]
+    },
+    {
+      "id": "vsc-1.142-03",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Release",
+      "title": "Canvases for agent sessions in VS Code (Preview)",
+      "summary": "Canvases are interactive interfaces that open beside the chat, where a developer and the agent can inspect and update the same artifact instead of coordinating solely through prompts. A Kanban canvas, for example, lets a developer create and move cards while the agent breaks a feature into tasks and updates their status. Every canvas is provided by a canvas extension, and canvas extensions are also supported in the GitHub Copilot app.",
+      "stage": "preview",
+      "ides": ["vscode"],
+      "admin": "Available in Preview in the VS Code desktop app for local sessions that use the Copilot harness. Enable the chat.canvases.enabled setting, then start a new session with the Copilot harness.",
+      "links": [
+        { "label": "Use canvases with the Copilot harness", "url": "https://code.visualstudio.com/docs/agents/run/agent-harnesses#_use-canvases-with-the-copilot-harness" },
+        { "label": "Canvas extensions in the Copilot app", "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/working-with-canvas-extensions" }
+      ]
+    },
+    {
+      "id": "vs-257467",
+      "tier": "notable",
+      "section": "visualstudio",
+      "area": "other",
+      "tag": "Improvement",
+      "title": "Visual Studio adds an option to stop a solution build after the first failure",
+      "summary": "Visual Studio 2026 version 18.11 adds an opt-in setting that stops a solution build after the first project failure. When a project fails, Visual Studio stops starting queued projects and safely stops projects already building, and it still reports the build as failed rather than canceled. The setting, Stop solution build after first failure, is on the Build and Run options page.",
+      "ides": ["visualstudio"],
+      "links": [
+        { "label": "Build and Run options", "url": "https://learn.microsoft.com/visualstudio/ide/configure-build-run-options?view=visualstudio" }
+      ]
+    },
+    {
+      "id": "cl-99219",
+      "tier": "notable",
+      "section": "platform",
+      "area": "actions",
+      "tag": "Deprecation",
+      "summary": "The macOS 14 runner image will be retired on November 2, 2026, which covers the macos-14, macos-14-large, and macos-14-xlarge labels. Scheduled brownouts starting October 5 make jobs that use macOS 14 fail temporarily, and queue times may grow as capacity is reduced. Workflows should move to a supported macOS arm64 label before the retirement date.",
+      "admin": "Update workflow files to macos-latest (macos-26), macos-15, macos-latest-xlarge (macos-26-xlarge), or macos-15-xlarge.",
+      "effective": "2026-11-02",
+      "links": [
+        { "label": "Runner images repository", "url": "https://github.com/actions/runner-images" }
+      ]
+    },
+    {
+      "id": "cl-99283",
+      "tier": "notable",
+      "section": "platform",
+      "area": "apis",
+      "tag": "Deprecation",
+      "summary": "Stateless GitHub App installation tokens have finished rolling out, so newly minted tokens use the ghs_APPID_JWT format by default. They still start with ghs_ but are about 520 characters long instead of 40, with permissions, repository scoping, and the one-hour expiration unchanged. The temporary X-GitHub-Stateless-S2S-Token header will be deprecated on November 30, 2026, and after that all eligible apps always receive stateless tokens.",
+      "admin": "Before November 30, 2026, remove the temporary header from production code and confirm that every system treats installation tokens as opaque strings, not fixed 40-character values.",
+      "effective": "2026-11-30",
+      "links": [
+        { "label": "Generating an installation access token", "url": "https://docs.github.com/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app" }
+      ]
+    },
+    {
+      "id": "cl-99524",
+      "tier": "notable",
+      "section": "security",
+      "area": "code-security",
+      "tag": "Release",
+      "summary": "Code scanning AI Scan for pull requests is generally available. It complements CodeQL by finding vulnerabilities in pull request changes for languages and frameworks CodeQL does not currently cover, including PHP, Shell/Bash, Terraform configuration (HCL), Dockerfiles, JSP for Java, and Blazor for C#. Findings are advisory: they do not fail the code scanning check or block merges through rulesets, and AI Scan does not run on pull requests from forks or created by Dependabot.",
+      "stage": "ga",
+      "admin": "AI Scan is available for public repositories; private and internal organization-owned repositories require GitHub Code Security or GitHub Advanced Security. A Copilot license is not required, and usage consumes Code Security AI Credits.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "AI Scan for pull requests", "url": "https://docs.github.com/enterprise-cloud@latest/code-security/concepts/code-scanning/ai-powered-security-detections" },
+        { "label": "Billing for GitHub Advanced Security AI features", "url": "https://docs.github.com/billing/concepts/product-billing/github-advanced-security#how-ai-feature-usage-is-billed" }
+      ]
+    },
+    {
+      "id": "cl-99575",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Release",
+      "summary": "GitHub package firewall is an install-time policy gate that sits between coding agents or CI/CD hosts and upstream package registries. It inspects metadata requests and package downloads, with controls for a configurable cooldown period, GitHub Advisory Database checks, and attestation downgrades. The public preview supports only npm packages and is available to all GitHub Enterprise Cloud customers, including data residency.",
+      "stage": "preview",
+      "plans": ["Enterprise"],
+      "admin": "Free during the preview period; at general availability it will be charged on metered usage, similar to Actions billing.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "Protecting endpoints with package firewall", "url": "https://docs.github.com/enterprise-cloud@latest/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/protecting-endpoints-with-package-firewall" }
+      ]
+    },
+    {
+      "id": "cl-99443",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Release",
+      "summary": "GitHub Actions workflow dependency lockfiles are in public preview for GitHub Enterprise Cloud, including data residency, and for Team and Free plans. The gh actions-lock extension for GitHub CLI generates .github/workflows/actions.lock, and an onboarded workflow must have lockfile entries for its dependencies and runs the recorded commits even if a tag or branch moves. Locking does not determine whether a dependency is safe.",
+      "stage": "preview",
+      "plans": ["Free", "Enterprise"],
+      "ides": ["cli"],
+      "admin": "A Require lockfile policy is also in public preview, so enterprise, organization, and repository administrators can require workflows to use lockfiles. Dependabot regenerates the matching lockfile entry in the same pull request.",
+      "links": [
+        { "label": "Workflow dependency lockfiles", "url": "https://docs.github.com/actions/concepts/security/workflow-dependency-lockfiles" },
+        { "label": "gh-actions-lock repository", "url": "https://github.com/github/gh-actions-lock" }
+      ]
+    },
+    {
+      "id": "cl-99491",
+      "tier": "notable",
+      "section": "security",
+      "area": "supply-chain",
+      "tag": "Release",
+      "summary": "Open source license compliance is generally available for GitHub Enterprise Cloud customers, including data residency, for repositories with GitHub Code Security enabled. A ruleset condition, Require license compliance results before merging, enforces an enterprise-wide license policy on pull requests that add or change dependencies. A new Enterprise Open-Source License Manager role is for people who review and approve closure requests.",
+      "stage": "ga",
+      "plans": ["Enterprise"],
+      "admin": "Since the public preview in June, license policy changes emit audit log events, and new API endpoints download, update, and replace the enterprise license policy.",
+      "event": "evt-universe-2026",
+      "links": [
+        { "label": "About open source license compliance", "url": "https://docs.github.com/enterprise-cloud@latest/code-security/concepts/supply-chain-security/open-source-license-compliance" },
+        { "label": "REST API endpoints for dependency-graph", "url": "https://docs.github.com/rest/dependency-graph?apiVersion=2026-03-10" }
+      ]
+    },
+    {
+      "id": "cl-99342",
+      "tier": "notable",
+      "section": "security",
+      "area": "secrets",
+      "tag": "Release",
+      "summary": "A purpose-built model for secret detection reads surrounding code to identify likely credentials, including passwords without a recognizable token format. Customers with AI-detected Password alerts were upgraded to it automatically. AI-detected secrets in push protection is available in private preview, and AI-based secret scanning in the GitHub Copilot /security-review command is coming soon in private preview.",
+      "admin": "AI-detected secret alerts stay included in GitHub Secret Protection and GitHub Advanced Security at no additional charge. The opt-in push protection and /security-review checks will consume GitHub AI Credits; an administrator must enable AI push protection.",
+      "links": [
+        { "label": "Blog post: model for secret detection", "url": "https://github.blog/ai-and-ml/githubs-model-for-secret-detection-finding-more-secrets-with-less-noise/" },
+        { "label": "Blog post: secret protection must scale", "url": "https://github.blog/ai-and-ml/github-copilot/secret-protection-must-scale-with-software/" },
+        { "label": "Usage-based billing documentation", "url": "https://docs.github.com/enterprise-cloud@latest/copilot/concepts/billing-and-usage/organizations-and-enterprises/billing" }
+      ]
+    }
+  ],
+  "overrides": {
+    "vsc-1.141-01": { "drop": true, "dropReason": "VS Code release highlights boilerplate" },
+    "vsc-1.142-01": { "drop": true, "dropReason": "VS Code release highlights boilerplate" },
+    "vsc-1.141-18": { "drop": true, "dropReason": "Same announcement as headline cl-99339 (local sandboxing GA); VS Code sandboxing docs are linked there" },
+    "vsc-1.141-28": { "drop": true, "dropReason": "Duplicate of changelog entry cl-99450 (telemetry.capture.identity user attribution)" },
+    "vsc-1.142-23": { "drop": true, "dropReason": "Wrapper list that only repeats vsc-1.142-10 (Windows sandboxing for Local harness)" },
+    "bl-99310": { "drop": true, "dropReason": "Companion blog post for cl-99342; linked from that item" },
+    "bl-99413": { "drop": true, "dropReason": "Companion blog post for cl-99342; linked from that item" },
+    "vs-257344": { "drop": true, "dropReason": "Promotional post about an existing Visual Studio subscription benefit, no product change" },
+    "cl-99513": { "area": "models" },
+    "vsc-1.142-10": { "tag": "Deprecation" },
+    "vs-257481": { "tag": "Improvement" },
+    "bl-99192": { "section": "events", "area": "events", "tag": "Announcement" },
+    "vs-257442": { "section": "events", "area": "events", "tag": "Announcement" }
+  }
+}

@@ -1,0 +1,494 @@
+{
+  "month": "2026-09",
+  "items": [
+    {
+      "id": "cl-98598",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "code-review",
+      "tag": "Release",
+      "stage": "preview",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "summary": "GitHub Copilot code review can now approve pull requests, and the overview comment of every review includes an approval assessment. When approval is enabled, Copilot's approval counts toward the repository's required-approvals rule and is dismissed if new commits are pushed, as with a human reviewer; an assessment alone does not count toward merge requirements. Public preview on the Pro, Pro+, Max, Business and Enterprise plans.",
+      "why": "Copilot's approval can satisfy required-approvals rules, so admins at enterprise, organization and repository level control where an AI reviewer can count toward merge requirements.",
+      "admin": "Off by default. Enterprises can leave it off or let organizations decide; organizations can enable it org-wide, for specific repositories, or let repository admins decide; repositories can limit approval to chosen file paths.",
+      "links": [
+        { "label": "Copilot code review documentation", "url": "https://docs.github.com/copilot/how-tos/copilot-on-github/set-up-copilot/configure-code-review#customizing-copilot-code-review-1" }
+      ]
+    },
+    {
+      "id": "cl-98651",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Announcement",
+      "plans": ["Business", "Enterprise"],
+      "effective": "2026-10-01",
+      "summary": "GitHub Copilot Business and Copilot Enterprise sign-ups are gradually reopening over the next couple of weeks for customers paying by credit card or PayPal, with stronger account vetting and updated billing experiences. New seat assignments require payment for each seat before users gain access, and at the start of the next billing cycle all assigned seats incur an upfront charge, including for existing customers starting October 1, 2026.",
+      "why": "Existing Business and Enterprise customers paying by credit card or PayPal move to upfront per-seat charges from October 1, 2026, and new seats require payment before access.",
+      "admin": "If included usage is exceeded, additional payment may be required to keep using Copilot, and included usage may be prorated across the month to match seat-cost proration. Fully canceling Copilot and returning later may trigger updated vetting and billing.",
+      "links": [
+        { "label": "Copilot Quick Start documentation", "url": "https://docs.github.com/copilot/get-started/quickstart" }
+      ]
+    },
+    {
+      "id": "cl-99060",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Improvement",
+      "title": "Default enablement of Copilot features for Copilot Business and Enterprise",
+      "plans": ["Business", "Enterprise"],
+      "effective": "2026-10-22",
+      "summary": "A new global default policy for generally available GitHub Copilot features and supported client capabilities is available in enterprise and organization Copilot settings, with the options Enabled, Disabled and Let organizations decide. It can be configured for 28 days without affecting user access; starting October 22, eligible features left unconfigured follow the selected default, while explicit choices are preserved and preview features stay opt-in.",
+      "why": "Admins choose whether current and future eligible Copilot features are enabled, disabled or left to organizations by default, and the policy takes effect on October 22.",
+      "admin": "Set it under Default policy for new features on the AI Controls page, Copilot subpage; it also covers the Copilot Code Review and MCP servers policies. Disabled keeps current eligible features unavailable and requires approval for future ones.",
+      "links": [
+        { "label": "Default availability documentation", "url": "https://docs.github.com/copilot/concepts/enterprise/default-availability" }
+      ]
+    },
+    {
+      "id": "bl-98615",
+      "tier": "headline",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "stage": "preview",
+      "ides": ["cli"],
+      "summary": "Project HydraFusion is a research preview in GitHub Copilot CLI that orchestrates models per task: a single model, a cascade to a stronger one, or a draft reviewed by an independent critic. In offline evaluations on TerminalBench 2.1 it improved verified task quality by 4.9 percentage points at 67% lower estimated cost than Claude Opus 5. It is available on all plans through /experimental, at each model's standard rate.",
+      "why": "Previews multi-model orchestration in Copilot CLI, with offline results showing higher verified task quality at lower estimated cost on an agentic coding benchmark.",
+      "admin": "In Copilot CLI, run /experimental on and select HydraFusion (Research Preview) with /model. In VS Code and the Copilot app, Business and Enterprise administrators must enable preview features.",
+      "links": [
+        { "label": "Changelog: expansion to VS Code and the Copilot app", "url": "https://github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app" },
+        { "label": "HydraFusion documentation", "url": "https://docs.github.com/early-access/copilot/hydrafusion" }
+      ]
+    },
+    {
+      "id": "cl-98964",
+      "tier": "headline",
+      "section": "security",
+      "area": "other",
+      "tag": "Deprecation",
+      "effective": "2027-01-13",
+      "summary": "GitHub is removing RSA keys that use SHA-1 and the diffie-hellman-group-exchange-sha256 key exchange from SSH, requiring new RSA keys uploaded after October 14, 2026 to be at least 3072 bits and adding the post-quantum mlkem768x25519-sha256 key exchange. Brownouts run on November 4 and December 9, 2026, with removal on January 13, 2027. Only Git clients connecting over SSH are affected, not HTTPS remotes.",
+      "why": "Git clients over SSH that rely on SHA-1 RSA signatures or the removed key exchange will be affected, with the first brownout on November 4, 2026 and removal on January 13, 2027.",
+      "admin": "Existing RSA keys keep working if the SSH client supports RSA with SHA-2; Ed25519 is recommended for new keys. GitHub Enterprise Server gets these changes in 3.25, and the ML-KEM addition in 3.24."
+    },
+    {
+      "id": "cl-98574",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "stage": "ga",
+      "plans": ["Pro+", "Business", "Enterprise"],
+      "ides": ["vscode", "visualstudio", "cli", "web", "mobile", "jetbrains", "xcode", "eclipse"],
+      "summary": "Claude Fable 5.1, Anthropic's latest Mythos-class model, is generally available in GitHub Copilot for long-horizon autonomous coding and knowledge-work tasks, at provider list pricing under usage-based billing. Unlike other Claude models in Copilot, it requires data retention by default to operate Anthropic's safety classifiers, and retained data is not used to train Anthropic's models. Available on Pro+, Max, Business and Enterprise plans.",
+      "admin": "Off by default; administrators must enable the policy, which acknowledges data retention. Eligible enterprises get zero data retention through the end of the calendar year, then Enterprise Frontier Safeguards are required; contact the GitHub account team.",
+      "links": [
+        { "label": "Models and pricing", "url": "https://docs.github.com/copilot/reference/copilot-billing/models-and-pricing" },
+        { "label": "Anthropic data retention for Mythos-class models", "url": "https://support.claude.com/articles/15425996-data-retention-practices-for-mythos-class-models" }
+      ]
+    },
+    {
+      "id": "cl-98965",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "plans": ["Pro", "Pro+", "Business", "Enterprise"],
+      "ides": ["vscode", "visualstudio", "cli", "web", "mobile", "jetbrains", "xcode", "eclipse"],
+      "summary": "OpenAI's GPT-6 family in GitHub Copilot expands with GPT-6 Sol, a balanced model for interactive and agentic coding, and GPT-6 Luna, a lightweight, cost-efficient model that is the lowest-cost option in the family. They join the previously released GPT-6 Astra and are billed under usage-based billing. GPT-6 Sol is available on Pro+, Max, Business and Enterprise plans, and GPT-6 Luna also on Pro.",
+      "admin": "Business and Enterprise administrators manage access through the model policy in Copilot settings; under default model enablement, new models are enabled automatically unless the global default is off or the model is explicitly disabled.",
+      "links": [
+        { "label": "Supported models documentation", "url": "https://docs.github.com/copilot/reference/ai-models/supported-models" }
+      ]
+    },
+    {
+      "id": "cl-99152",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "stage": "ga",
+      "plans": ["Pro+", "Business", "Enterprise"],
+      "ides": ["vscode", "visualstudio", "cli", "web", "mobile", "jetbrains", "xcode", "eclipse"],
+      "summary": "GPT-6.1 Sol, the latest model from OpenAI, is now generally available and rolling out in GitHub Copilot for agentic coding and terminal workflows. In early testing it reliably completed tasks while using noticeably fewer tokens and steps than earlier models in the GPT-6 and GPT-5.6 families. It is billed at provider list pricing under usage-based billing and is available on Pro+, Max, Business and Enterprise plans.",
+      "admin": "Business and Enterprise administrators manage access through the model policy in Copilot settings; new models are enabled automatically unless the global default is off or the model is explicitly disabled.",
+      "links": [
+        { "label": "Models and pricing for GitHub Copilot", "url": "https://docs.github.com/copilot/reference/copilot-billing/models-and-pricing" }
+      ]
+    },
+    {
+      "id": "cl-98666",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Deprecation",
+      "effective": "2026-10-02",
+      "summary": "On October 2, 2026, GitHub Copilot deprecates Gemini 3.5 Flash, Gemini 3.6 Flash, Kimi K2.7 Code and Claude Opus 4.7 across all Copilot experiences, including Copilot Chat, inline edits, ask and agent modes, and code completions. Suggested replacements are Gemini 3.8 Flash for both Gemini models, Kimi K3 for Kimi K2.7 Code, and Claude Opus 5 for Claude Opus 4.7.",
+      "admin": "Copilot Enterprise and Business administrators may need to enable the replacement models through their model policies; no action is required to remove the deprecated models."
+    },
+    {
+      "id": "cl-98920",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Deprecation",
+      "effective": "2026-10-19",
+      "summary": "On October 19, 2026, GitHub Copilot deprecates Gemini 3.7 Flash, GPT-5.5, GPT-5.4, GPT-5.4 mini, GPT-5 mini and Grok 4.5. Suggested replacements are Gemini 3.8 Flash, GPT-5.6 Sol for GPT-5.5 and GPT-5.4, GPT-5.6 Luna for the two mini models, and Grok 4.6.",
+      "admin": "Replacement models are enabled automatically for Business and Enterprise unless the global default is off or the model is disabled; no action is needed to remove the deprecated models."
+    },
+    {
+      "id": "cl-98932",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "code-review",
+      "tag": "Improvement",
+      "stage": "ga",
+      "summary": "GitHub Copilot code review adds a refreshed overview comment that shows the current assessment, the review effort level and findings grouped as Open, Resolved since last review and Previously missed, plus a title on each review comment. Auto-resolution now honors replies that keep an issue open and can resolve comments as Won't Fix or Incorrect, and eligible batches of suggestions get generated commit titles and optional descriptions.",
+      "image": "https://github.com/user-attachments/assets/133fdb4e-abdb-4ee4-bc24-65a445ec433a"
+    },
+    {
+      "id": "cl-98829",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "models",
+      "tag": "Release",
+      "ides": ["vscode", "cli"],
+      "summary": "GitHub Copilot auto model selection now offers three tiers, efficiency, balance and intelligence, that let users choose how auto weighs cost, quality and response time for each prompt. All three tiers use the same set of available models, and auto still evaluates each prompt individually, so a simple task may use a small model even when optimizing for intelligence.",
+      "admin": "Rolling out in Visual Studio Code, Copilot CLI and the GitHub Copilot app. Usage is charged for the model auto selects, regardless of tier, and paid subscribers keep a 10% discount on usage billed through auto.",
+      "links": [
+        { "label": "Copilot auto model selection documentation", "url": "https://docs.github.com/copilot/concepts/models/auto-model-selection" }
+      ]
+    },
+    {
+      "id": "cl-98992",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Release",
+      "stage": "preview",
+      "summary": "Local sandboxing in the GitHub Copilot app, in public preview, limits access to files, network resources and credentials on the user's machine, with per-project filesystem, network and credential settings. Enterprise-managed settings can make the effective policy more restrictive, and if the operating system cannot enforce it, the sandboxed shell fails with an error rather than running without a sandbox.",
+      "admin": "Off by default: turn on Sandbox new sessions in the app settings for a project, or enter /sandbox on in an active local session. It does not apply to cloud sandbox or remote host sessions.",
+      "links": [
+        { "label": "Configuring local sandboxing in the GitHub Copilot app", "url": "https://gh.io/github-app-local-sandboxing" }
+      ]
+    },
+    {
+      "id": "cl-98464",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Improvement",
+      "stage": "ga",
+      "plans": ["Business", "Enterprise"],
+      "ides": ["vscode", "cli"],
+      "summary": "Administrators of GitHub Copilot Business or Enterprise can centrally set which agent operations are blocked, require approval or proceed without a prompt, covering shell commands, file reads and edits, and network domains. Managed restrictions cannot be weakened by user or workspace settings, auto-approval or saved approvals. Generally available in the GitHub Copilot app, Copilot CLI and VS Code sessions that use Agent Host.",
+      "links": [
+        { "label": "Enterprise managed permissions", "url": "https://docs.github.com/enterprise-cloud@latest/copilot/reference/enterprise-administrators/enterprise-managed-settings#deny-ask-allow" }
+      ]
+    },
+    {
+      "id": "cl-98885",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "admin",
+      "tag": "Release",
+      "stage": "ga",
+      "plans": ["Business", "Enterprise"],
+      "summary": "Members of GitHub Copilot Business and Enterprise who use all the AI credits available to them can now request more budget the moment they hit the limit, instead of being blocked from credit-consuming features. Organization owners, enterprise owners and billing managers review requests under Requests from members, set a new amount and select Approve and increase, which immediately restores access.",
+      "admin": "Not available for enterprises with managed users. Requests route to the account that pays for the budget, so organization-owned budgets show requests in organization settings and enterprise-owned budgets in enterprise settings.",
+      "links": [
+        { "label": "Managing requests for additional Copilot budget", "url": "https://docs.github.com/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-budget-requests" }
+      ]
+    },
+    {
+      "id": "bl-98713",
+      "tier": "notable",
+      "section": "copilot",
+      "area": "agents",
+      "tag": "Announcement",
+      "summary": "The GitHub Copilot agent runtime, which backs Copilot CLI, the Copilot app and the Copilot SDK, was rewritten from TypeScript on Node.js and V8 into more than 800,000 lines of production Rust, using the Copilot app and Copilot CLI. AI agents wrote most of the code across 128 pull requests that landed in main, runtime performance improved by orders of magnitude, and a single developer completed most of the work in a few months."
+    },
+    {
+      "id": "vsc-1.140-02",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Release",
+      "title": "Copilot harness in VS Code is powered by the Copilot SDK",
+      "ides": ["vscode"],
+      "summary": "The GitHub Copilot harness in VS Code is powered by the Copilot SDK, so its behavior and capabilities match the standalone Copilot app and Copilot CLI. It is selected from the harness picker in the chat input and, in this release, might already be the default. It runs in a dedicated agent host process based on the Agent Host Protocol (AHP), so one session can be connected from multiple VS Code windows.",
+      "links": [
+        { "label": "Agent harnesses documentation", "url": "https://code.visualstudio.com/docs/agents/run/agent-harnesses#copilot" },
+        { "label": "Agent host architecture blog post", "url": "https://code.visualstudio.com/blogs/2026/08/26/agent-host-architecture" },
+        { "label": "Agent host documentation", "url": "https://code.visualstudio.com/docs/agents/concepts/agent-host" }
+      ]
+    },
+    {
+      "id": "vsc-1.136-09",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Release",
+      "title": "Agent merge in VS Code (preview)",
+      "stage": "preview",
+      "summary": "Agent merge in VS Code asks an agent to address review feedback, fix failed checks and merge conflicts, and rerun workflows, repeating the process until the pull request is ready to merge. It is in preview and controlled by the chat.agentMerge.enabled setting. It can currently be enabled for a session only from the Agents window, using Enable Agent Merge for Active Session or the Agent Merge button in the title bar.",
+      "links": [
+        { "label": "Agent merge in the Agents window", "url": "https://code.visualstudio.com/docs/agents/run/agents-window#_finish-a-pull-request-with-agent-merge" }
+      ]
+    },
+    {
+      "id": "vsc-1.137-02",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Release",
+      "title": "Automations in VS Code (preview)",
+      "stage": "preview",
+      "summary": "Automations in VS Code run recurring agent tasks on an hourly, daily or weekly schedule, so routine work does not have to be started manually. Templates cover catching up on changes, triaging issues and finding bugs, and users can define their own prompt and schedule or run an automation on demand. Automations is in preview and rolling out gradually to all users; enable it with the chat.automations.enabled setting in the Agents window.",
+      "links": [
+        { "label": "Automations documentation", "url": "https://code.visualstudio.com/docs/agents/run/automations" }
+      ]
+    },
+    {
+      "id": "vsc-1.138-04",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "agents",
+      "tag": "Improvement",
+      "ides": ["vscode"],
+      "summary": "VS Code expands Codex support in the agent host: Codex can be used with a GitHub Copilot or a ChatGPT subscription, and users signed in to both can switch between Copilot-backed and ChatGPT-backed models from the model picker without losing the conversation. The same Codex session can move between the ChatGPT app and VS Code, and the Codex harness can reuse a computer use setup configured in the ChatGPT app.",
+      "admin": "Settings: chat.agentHost.codexAgent.enabled and chat.editor.codex.preferAgentHost. Using the Codex harness with only a ChatGPT subscription, without a GitHub Copilot sign-in, also requires chat.agentHost.allowSignedOutWhenUsable."
+    },
+    {
+      "id": "vsc-1.140-19",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "extensibility",
+      "tag": "Improvement",
+      "summary": "VS Code lets users add MCP servers to portable configuration files from the MCP: Add Server flow, so the same server configuration works across compatible GitHub Copilot tools without editing JSON manually. Choosing Copilot Global saves a global server to $COPILOT_HOME/mcp-config.json, or ~/.copilot/mcp-config.json when COPILOT_HOME is not set, and choosing .mcp.json saves a workspace server at the workspace root."
+    },
+    {
+      "id": "vscb-building-the-github-copilot-inline-suggestions-model-part-on",
+      "tier": "notable",
+      "section": "vscode",
+      "area": "chat-ide",
+      "tag": "Announcement",
+      "title": "Building the new GitHub Copilot inline suggestions model: Part One",
+      "ides": ["vscode"],
+      "summary": "GitHub Copilot inline suggestions in VS Code, previously served by separate models for completion-style ghost text, nearby next edit suggestions and long-distance edits, now run on a single 3-in-1 model. The unified model chooses the edit end-to-end instead of relying on programmatic logic to pick among models, and its multiple-edit output is cached for faster subsequent edits. This is Part One of a series on how the model was built.",
+      "links": [
+        { "label": "Part Two: inline suggestions model", "url": "https://code.visualstudio.com/blogs/2026/09/23/building-the-github-copilot-inline-suggestions-model-part-two" }
+      ]
+    },
+    {
+      "id": "vs-257283",
+      "tier": "notable",
+      "section": "visualstudio",
+      "area": "chat-ide",
+      "tag": "Release",
+      "title": "Visual Studio September update: bring your own model, fix NuGet vulnerabilities and explore pull requests",
+      "ides": ["visualstudio"],
+      "summary": "Bring Your Own Model in Visual Studio is in preview and enabled by default across the Community, Professional and Enterprise SKUs, letting users connect Microsoft Foundry, OpenAI, Anthropic or Ollama models to the new Agent (Preview), which is built on the GitHub Copilot SDK-powered harness. NuGet Audit warnings in the Error List get a sparkle Fixer action that asks GitHub Copilot to fix vulnerable packages, and the Git agent can explore pull requests.",
+      "admin": "Breaking change: the earlier bring-your-own-model experience in the previous Ask and Agent modes is no longer supported, and previously added Ollama models must be re-added after the update.",
+      "image": "https://devblogs.microsoft.com/visualstudio/wp-content/uploads/sites/4/2026/09/vs18.10_fix-nuget-vulnerabilities-error-list.webp"
+    },
+    {
+      "id": "cl-98989",
+      "tier": "notable",
+      "section": "jetbrains-others",
+      "area": "chat-ide",
+      "tag": "Release",
+      "ides": ["jetbrains"],
+      "summary": "GitHub Copilot for JetBrains 1.18.0 adds assisted approvals, in public preview, which automatically approve low-risk tool calls in Copilot agent sessions while higher-risk actions still prompt. Users can re-edit an earlier message so Copilot rewinds the conversation and file changes, agent sessions support organization and enterprise skills, and the Codex agent supports plan mode. A new setting turns the built-in GitHub MCP Server on or off.",
+      "admin": "Users of JetBrains IDE version 2025.1 see advance notice to upgrade to 2026.1 or later; support is unchanged in this release."
+    },
+    {
+      "id": "cl-98741",
+      "tier": "notable",
+      "section": "jetbrains-others",
+      "area": "admin",
+      "tag": "Release",
+      "stage": "preview",
+      "ides": ["jetbrains", "cli"],
+      "summary": "Enterprise administrators can centrally configure sandbox policies for GitHub Copilot in JetBrains IDEs, in public preview, including filesystem and network access, proxy settings and macOS Keychain access; managed restrictions override user settings. The update also adds cross-file cursor jumps in next edit suggestions, global project context in chat, enterprise policy diagnostics and, in public preview, an /ide command that connects Copilot CLI sessions to the IDE.",
+      "admin": "The Sandbox settings under GitHub Copilot appear only when the organization enables the Editor Preview feature flag or configures a managed setting to enable or disable the sandbox.",
+      "links": [
+        { "label": "Configuring local sandbox settings for GitHub Copilot", "url": "https://docs.github.com/copilot/how-tos/cloud-and-local-sandboxes/configuring-local-sandbox-settings" }
+      ],
+      "image": "https://github.com/user-attachments/assets/1598330c-508a-4483-a0ee-49c87ac3f0f4"
+    },
+    {
+      "id": "cl-98712",
+      "tier": "notable",
+      "section": "platform",
+      "area": "admin",
+      "tag": "Release",
+      "stage": "ga",
+      "summary": "GitHub Enterprise Server 3.22 is generally available, with a technical preview that lets administrators configure GitHub Copilot CLI to work with GHES in disconnected or air-gapped environments. It also makes enterprise teams generally available, lets repository rulesets bypass by individual users and adds a required reviewers rule with a minimum number of reviews per team. Secret scanning push protection bypass and dismissal requests can also be sorted by date.",
+      "links": [
+        { "label": "GitHub Enterprise Server 3.22 release notes", "url": "https://docs.github.com/enterprise-server@3.22/admin/release-notes" }
+      ]
+    },
+    {
+      "id": "cl-98610",
+      "tier": "notable",
+      "section": "platform",
+      "area": "admin",
+      "tag": "Release",
+      "stage": "ga",
+      "summary": "Enterprise Live Migrations (ELM) is generally available, enabling near-zero-downtime repository migrations from GitHub Enterprise Server to GitHub Enterprise Cloud with Data Residency. ELM continuously syncs data so developers keep working until a cutover that takes minutes, is built for the largest monorepos, and complements GitHub Enterprise Importer for repositories that need a zero-disruption approach. It is managed with the gh elm GitHub CLI extension.",
+      "admin": "Supported GHES versions are 3.17.18+, 3.18.12+, 3.19.9+, 3.20.3+, 3.21.3+ and 3.22.0+.",
+      "links": [
+        { "label": "Enterprise Live Migrations documentation", "url": "https://docs.github.com/migrations/elm/about-live-migrations" }
+      ]
+    },
+    {
+      "id": "cl-98955",
+      "tier": "notable",
+      "section": "platform",
+      "area": "collaboration",
+      "tag": "Release",
+      "stage": "ga",
+      "summary": "The refreshed repository pull requests page is generally available to all GitHub users. It adds content assist for filters, advanced search with AND and OR keywords and nested searches, a collapsible sidebar, a compact presentation mode, and more context such as status check counts, a stack indicator and unread-update indicators. Since the public preview it also gained bulk actions, milestones, linked issues, author badges and click-to-filter review status.",
+      "links": [
+        { "label": "About pull requests", "url": "https://docs.github.com/pull-requests/get-started/about-pull-requests" }
+      ]
+    },
+    {
+      "id": "cl-98899",
+      "tier": "notable",
+      "section": "platform",
+      "area": "actions",
+      "tag": "Release",
+      "title": "Ubuntu 26.04 runner image generally available and ubuntu-latest migration",
+      "stage": "ga",
+      "effective": "2026-10-19",
+      "summary": "The Ubuntu 26.04 runner image for GitHub Actions is out of public preview and fully supported for production workflows on both x64 and arm64. The ubuntu-latest label migrates gradually from Ubuntu 24.04 to 26.04 between October 19 and November 19, 2026, which can break builds that depend on tools or versions that changed between the images.",
+      "admin": "Test with runs-on: ubuntu-26.04 or ubuntu-26.04-arm before the migration begins, or pin workflows to ubuntu-24.04 to stay on the current image.",
+      "links": [
+        { "label": "Full list of changes", "url": "https://github.com/actions/runner-images/issues/14747" },
+        { "label": "GitHub-hosted runners documentation", "url": "https://docs.github.com/actions/reference/runners/github-hosted-runners" }
+      ]
+    },
+    {
+      "id": "cl-99144",
+      "tier": "notable",
+      "section": "platform",
+      "area": "actions",
+      "tag": "Deprecation",
+      "effective": "2026-09-29",
+      "summary": "The enforcement date for GitHub Actions minimum version requirements for self-hosted runners on GitHub Enterprise Cloud has moved: the change ships September 28, 2026 and full enforcement begins September 29, 2026. Runners below version 2.329.0 cannot register or reregister, and registered runners below the minimum runtime version stop running jobs. GitHub Enterprise Server is not affected, and enforcement for data residency began July 31, 2026.",
+      "admin": "Upgrade self-hosted runners before September 29, 2026; a new REST API for runner version deprecations shows the registration and runtime deprecation dates for any runner version.",
+      "links": [
+        { "label": "Self-hosted runner documentation", "url": "https://docs.github.com/actions/hosting-your-own-runners" }
+      ]
+    },
+    {
+      "id": "cl-98866",
+      "tier": "notable",
+      "section": "platform",
+      "area": "admin",
+      "tag": "Deprecation",
+      "effective": "2026-10-07",
+      "summary": "Beginning October 7, 2026, GitHub Enterprise Cloud with data residency stops accepting TLS connections from clients that offer only X25519 for key agreement. The affected endpoints continue to support the FIPS-approved P-256 and P-384 groups, and SSH connectivity is not affected. Applications, proxies and TLS libraries configured to offer only X25519 can no longer establish HTTPS connections after that date.",
+      "admin": "Before October 7, 2026, update the operating system, runtime, GitHub CLI, proxy and TLS libraries, remove any X25519-only configuration, and ensure P-256 is enabled."
+    },
+    {
+      "id": "cl-98897",
+      "tier": "notable",
+      "section": "platform",
+      "area": "actions",
+      "tag": "Release",
+      "stage": "ga",
+      "effective": "2026-12-02",
+      "summary": "Workflow execution protections in GitHub Actions, previously in public preview, are generally available for enterprises, organizations and repositories, adding workflow file targeting, Insights and a REST API to the actor and event allowlists. A new default rule disables pull_request_target in public repositories without an applicable event policy, running in evaluate mode first, with automatic enforcement for affected repositories on December 2, 2026.",
+      "admin": "Use Insights to see which workflow runs the default rule would block, then keep it or allow pull_request_target in an applicable Actions event policy. An October 21, 2026 editor's note updated the enforcement date.",
+      "links": [
+        { "label": "Control workflow execution", "url": "https://docs.github.com/actions/how-tos/administer/control-workflow-execution" },
+        { "label": "About Actions policies", "url": "https://docs.github.com/actions/concepts/about-actions-policies" },
+        { "label": "Actions policies REST API reference", "url": "https://docs.github.com/rest/actions/policies" }
+      ]
+    },
+    {
+      "id": "cl-98757",
+      "tier": "notable",
+      "section": "security",
+      "area": "secrets",
+      "tag": "Release",
+      "stage": "preview",
+      "summary": "A new repository ruleset rule, Require secret scanning alerts are resolved, blocks pull requests from merging while they introduce open secret scanning alerts, after checking that a secret scan has completed for the head commit. By default it blocks secrets found through provider patterns, and custom or generic patterns can be configured. It is in public preview for customers with GitHub Secret Protection or GitHub Advanced Security.",
+      "admin": "Enable it in a repository, organization or enterprise ruleset that targets the branches to protect; developers without bypass permissions must resolve each alert to merge. REST API rule type: require_secret_scanning_alert_resolution.",
+      "links": [
+        { "label": "Rulesets documentation", "url": "https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets" }
+      ]
+    },
+    {
+      "id": "cl-98864",
+      "tier": "notable",
+      "section": "security",
+      "area": "code-security",
+      "tag": "Improvement",
+      "stage": "preview",
+      "summary": "AI Scan for pull requests in code scanning now finds security vulnerabilities even when CodeQL default setup is not enabled on a repository, where it previously ran only with default setup configured. Code scanning and AI Scan must still be enabled at the repository, organization or enterprise level. In public preview for organization-owned and personal repositories on github.com for GitHub Advanced Security customers; GitHub Enterprise Server is not supported.",
+      "admin": "Organizations that already enabled AI Scan for pull requests see it run on all eligible repositories regardless of CodeQL default setup; there is no new setup step.",
+      "links": [
+        { "label": "AI-powered security detections documentation", "url": "https://docs.github.com/code-security/concepts/code-scanning/ai-powered-security-detections" }
+      ]
+    },
+    {
+      "id": "bl-98976",
+      "tier": "notable",
+      "section": "research",
+      "area": "research",
+      "tag": "Research",
+      "summary": "A survey of 1,039 U.S. GitHub users by GitHub and the Yale Program on Climate Change Communication found that 80% were interested in tools for writing more energy-efficient code, 78% in best practices and 74% in measuring the environmental impact of their software. Only 10% said how they write software has a large effect on their personal environmental impact. The non-probability sample covers only users who opted in to marketing emails.",
+      "links": [
+        { "label": "Yale Program on Climate Change Communication survey", "url": "https://climatecommunication.yale.edu/publications/github-survey/" }
+      ]
+    },
+    {
+      "id": "bl-98465",
+      "tier": "notable",
+      "section": "research",
+      "area": "research",
+      "tag": "Research",
+      "summary": "A GitHub Security Lab post describes the Fuzzing Taskflow, an autonomous fuzzing pipeline for C/C++ projects built on the Security Lab Taskflow Agent. Given a GitHub repository, it picks entrypoints, writes harnesses, runs AFL++, reads coverage, improves the harnesses, triages crashes and writes a report for each unique bug. It runs build commands directly on the host with no container, so it should be run only in a disposable environment.",
+      "links": [
+        { "label": "seclab-taskflows-fuzzing repository", "url": "https://github.com/GitHubSecurityLab/seclab-taskflows-fuzzing" }
+      ]
+    },
+    {
+      "id": "next-projects-chopin",
+      "tier": "notable",
+      "section": "research",
+      "area": "research",
+      "tag": "Research",
+      "title": "Chopin: a GitHub Next exploration of collaborative planning with agents",
+      "summary": "Chopin is a GitHub Next exploration of collaborative planning with agents, a real-time multiplayer environment where people and agents write plans together in an MDX-based editor, organized around GitHub repositories and shared with anyone who has repository access. It includes comment threads that steer agents, a persistent decision log, a chat room with the agent and an MCP server. GitHub Next calls it a very small, early research prototype and has open-sourced it.",
+      "links": [
+        { "label": "Chopin repository", "url": "https://github.com/githubnext/chopin" }
+      ]
+    }
+  ],
+  "overrides": {
+    "cl-98786": { "section": "platform", "area": "actions" },
+    "cl-98821": { "section": "copilot", "area": "admin" },
+    "bl-98105": { "section": "research", "area": "research", "tag": "Research" },
+    "cl-98806": { "drop": true, "dropReason": "Public preview announcement superseded by the generally available cl-98955." },
+    "vsc-1.140-03": { "drop": true, "dropReason": "Duplicate of the Project HydraFusion item bl-98615." },
+    "vsc-1.137-08": { "drop": true, "dropReason": "Repeats the agent host description covered by vsc-1.140-02." },
+    "vsc-1.138-01": { "drop": true, "dropReason": "Verbatim repeat of the agent host description covered by vsc-1.140-02." },
+    "vsc-1.139-02": { "drop": true, "dropReason": "Verbatim repeat of the agent host description covered by vsc-1.140-02." },
+    "vscb-building-the-github-copilot-inline-suggestions-model-part-tw": { "drop": true, "dropReason": "Part Two of the inline suggestions model series, linked from the Part One item." },
+    "vs-257295": { "drop": true, "dropReason": "VSLive! and learning promotion with no product content." },
+    "vsc-1.136-01": { "drop": true, "dropReason": "The Story of VS Code event promotion, not a product change." },
+    "vsc-1.137-01": { "drop": true, "dropReason": "The Story of VS Code event promotion, not a product change." },
+    "vsc-1.139-01": { "drop": true, "dropReason": "Release highlights boilerplate with no feature content." },
+    "vsc-1.140-01": { "drop": true, "dropReason": "Release highlights boilerplate with no feature content." },
+    "vsc-1.140-27": { "drop": true, "dropReason": "Social media links boilerplate with no product content." },
+    "vsc-1.139-09": { "drop": true, "dropReason": "Pet naming contest status update that repeats the pet feature already covered in vsc-1.137-05." }
+  }
+}
