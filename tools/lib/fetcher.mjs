@@ -130,7 +130,12 @@ async function firecrawlFetch(url, fetchImpl) {
     },
     body: JSON.stringify({ url, formats: ['markdown'], onlyMainContent: true }),
   });
-  if (!response.ok) throw new Error(`Firecrawl returned HTTP ${response.status}.`);
+  if (!response.ok) {
+    const keyless = !apiKey && [401, 402, 403, 429].includes(response.status);
+    throw new Error(keyless
+      ? `Firecrawl keyless tier refused the request (HTTP ${response.status}); set FIRECRAWL_API_KEY for higher limits.`
+      : `Firecrawl returned HTTP ${response.status}.`);
+  }
   const payload = await response.json();
   if (payload.success !== true || typeof payload.data?.markdown !== 'string') throw new Error('Firecrawl did not return a successful markdown scrape.');
   const metadata = payload.data.metadata || {};
@@ -150,6 +155,24 @@ async function firecrawlFetch(url, fetchImpl) {
   };
 }
 
+const DEFINITIVE = /is not allowlisted|outside its approved publisher domain|must be an HTTPS URL|HTTP (404|410)\b/;
+
+// Firecrawl cannot change a policy rejection or a real 404/410, so only retry blocked or transient fetches.
+export function definitiveRejection(error) {
+  const leaves = [];
+  const walk = (e) => {
+    if (e instanceof AggregateError) e.errors.forEach(walk);
+    else if (e?.cause) walk(e.cause);
+    else leaves.push(e);
+  };
+  walk(error);
+  return leaves.length > 0 && leaves.every((e) => [404, 410].includes(e?.status) || DEFINITIVE.test(String(e?.message)));
+}
+
+export function firecrawlEnabled(env = process.env) {
+  return String(env.TUB_FIRECRAWL || '').toLowerCase() !== 'off';
+}
+
 export async function fetchSource(input, { fetchImpl = globalThis.fetch, curlImpl = curlFetch, preferFirecrawl = false } = {}) {
   const url = canonicalUrl(input);
   if (typeof fetchImpl !== 'function') throw new Error('No Fetch API is available in this Node runtime.');
@@ -161,7 +184,7 @@ export async function fetchSource(input, { fetchImpl = globalThis.fetch, curlImp
       return await curlImpl(url, fetchError);
     }
   } catch (directError) {
-    if (!process.env.FIRECRAWL_API_KEY) throw directError;
+    if (!firecrawlEnabled() || definitiveRejection(directError)) throw directError;
     try { return await firecrawlFetch(url, fetchImpl); }
     catch (firecrawlError) { throw new AggregateError([directError, firecrawlError], `Could not ingest ${url} through direct fetch or Firecrawl.`); }
   }

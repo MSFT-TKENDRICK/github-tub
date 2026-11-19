@@ -99,6 +99,33 @@ test('direct fetching rejects a redirect to a different publisher domain', async
   await assert.rejects(fetchSource(sourceUrl, { fetchImpl, curlImpl: null }), /not allowlisted/);
 });
 
+test('blocked direct fetches fall back to keyless Firecrawl, but 404s do not', async () => {
+  const saved = process.env.FIRECRAWL_API_KEY;
+  delete process.env.FIRECRAWL_API_KEY;
+  try {
+    const calls = [];
+    const page = (status) => async (url, options) => {
+      calls.push(url);
+      if (url !== 'https://api.firecrawl.dev/v2/scrape') return new Response('', { status });
+      assert.equal(options.headers.authorization, undefined);
+      return new Response(JSON.stringify({
+        success: true,
+        data: { markdown: text, metadata: { sourceURL: JSON.parse(options.body).url, statusCode: 200 } },
+      }), { status: 200 });
+    };
+    const blocked = await fetchSource(sourceUrl, { fetchImpl: page(403), curlImpl: null });
+    assert.equal(blocked.via, 'firecrawl');
+    calls.length = 0;
+    await assert.rejects(fetchSource(sourceUrl, { fetchImpl: page(404), curlImpl: null }), /HTTP 404/);
+    assert.deepEqual(calls, [sourceUrl.replace(/\/$/, '')]);
+    const refused = async (url) => new Response('', { status: url.includes('firecrawl') ? 429 : 403 });
+    await assert.rejects(fetchSource(sourceUrl, { fetchImpl: refused, curlImpl: null }),
+      (error) => error.errors.some((e) => /keyless tier refused/.test(e.message)));
+  } finally {
+    if (saved !== undefined) process.env.FIRECRAWL_API_KEY = saved;
+  }
+});
+
 test('direct fetching preserves a same-domain redirect trailing slash', async () => {
   const calls = [];
   const fetchImpl = async (url) => {

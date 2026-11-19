@@ -48,6 +48,7 @@ jobs:
         run: node --test 'tests/*.test.mjs'
       - name: Refresh and publish due editions
         env:
+          # Optional: without the secret, the fetcher falls back to Firecrawl's keyless tier.
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           ASOF: ${{ inputs.asof }}
           DRY: ${{ inputs.dry }}
