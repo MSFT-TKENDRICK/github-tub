@@ -1,9 +1,9 @@
 {
  "source": "vscode-blog",
- "fetchedAt": "2026-11-12T23:14:52.427Z",
- "count": 19,
+ "fetchedAt": "2026-11-19T15:47:15.406Z",
+ "count": 20,
  "since": "2026-11-05",
- "until": "2026-11-12",
+ "until": "2026-11-19",
  "items": [
   {
    "id": "vscb-docfind",
@@ -776,6 +776,58 @@
     }
    ],
    "image": "https://code.visualstudio.com/assets/blogs/2026/10/28/social-image.png"
+  },
+  {
+   "id": "vscb-copilot-harness",
+   "source": "vscode-blog",
+   "date": "2026-11-18",
+   "title": "The Copilot harness: Building on a shared foundation",
+   "url": "https://code.visualstudio.com/blogs/2026/11/18/copilot-harness",
+   "lede": "The Copilot harness, built on the Copilot SDK, is now the default for new agent sessions in VS Code. Our goal is to keep the capabilities you love from VS Code's original, editor-specific Local harness and add the benefits of a runtime shared across Copilot products.",
+   "text": "On this page\n\nThe Copilot harness, built on the Copilot SDK, is now the default for new agent sessions in VS Code. Our goal is to keep the capabilities you love from VS Code's original, editor-specific Local harness and add the benefits of a runtime shared across Copilot products. By sharing fixes and optimizations instead of repeating work on separate harnesses, we can deliver improvements faster and focus more on important bugs, workflow gaps, and new capabilities.\n\nOver the last several months, we've progressively rolled out the Copilot harness as the default, while monitoring data and user feedback at every stage to improve the experience. The Local harness is now deprecated and remains available during a three-month transition period before removal in February 2027 (unless your organization restricts its use).\n\nTL;DR\n\n- Efficiency and reliability gains: We assess both aspects through everyday VS Code workflows and controlled evaluations:\n\n- In one online Business/Enterprise rollout comparison, the group defaulting to the Copilot harness used 14.2% fewer tokens per active device than those on the Local harness, with 9.6% lower estimated processing cost.\n\n- In offline side-by-side VS Code evaluations, the Copilot harness had fewer errors and interruptions during long coding tasks than the Local harness.\n\n- On repeatable tasks with the same model, published benchmarks found comparable task completion with fewer tokens in most tested configurations versus model-provider harnesses. They evaluated Copilot CLI, which shares the runtime VS Code integrates through the Copilot SDK.\n\n- Capabilities beyond the Local harness: The shared foundation enables features and protections beyond what the Local harness supports:\n\n- Copilot Fusion for multi-model work.\n\n- Copilot runtime-enforced enterprise permission and sandbox policies.\n\n- Agent Host sessions remain active after their project window closes, while VS Code remains running.\n\n- Your workflow and transition:\n\n- For local projects, the Copilot harness still runs on your machine in VS Code.\n\n- What we've shipped based on your feedback.\n\n- What's in progress or may need your attention below.\n\nWhy one shared harness\n\nAn agent harness supplies context and tools, coordinates actions such as edits and tests, and returns results to the model.\n\nWe first built the Local harness for interactive coding before a shared Copilot harness was available. That work shaped how you review agent edits and use tools supplied by VS Code extensions and MCP servers. We continually refined the harness with model providers and your feedback.\n\nThe Copilot harness uses the Copilot SDK to combine VS Code's supported editor integrations with the runtime shared by Copilot CLI, the GitHub Copilot app, and other Microsoft products. The runtime is included in VS Code and works with existing Copilot plans.\n\nFixes or optimizations to that shared runtime benefit VS Code and other Copilot clients. This provides a more consistent experience across clients, and leaves more engineering time for VS Code-specific features, fixes, and workflow improvements.\n\nWhat the data shows\n\nWe expanded the rollout of the Copilot harness as the default over several months, starting internally, then across Copilot plans, VS Code Insiders and Stable, and editor and Agents-window workflows. At each step, we reviewed key metrics alongside your feedback, and then used those findings to improve the product and plan further experiments.\n\nWe combine online evaluations, which show how the harness performs as people really work in VS Code, with offline evaluations, which run realistic development tasks under repeatable conditions. These offline evaluations include VS Code-specific comparisons and shared-runtime benchmarks. We'll next look at what these measurements tell us about efficiency, reliability, and task outcomes, then turn to how your feedback has shaped the experience.\n\nReal online workflows: the VS Code rollout\n\nEfficiency and processing cost\n\nAcross the Stable Business and Enterprise rollout stages we analyzed, estimates consistently pointed toward lower processing cost per active device with the Copilot harness as the default.",
+   "links": [
+    {
+     "text": "Copilot SDK",
+     "href": "https://github.com/github/copilot-sdk"
+    },
+    {
+     "text": "three-month transition period",
+     "href": "https://code.visualstudio.com/updates/v1_146#_copilot-harness-and-deprecation-of-the-local-harness"
+    },
+    {
+     "text": "published benchmarks",
+     "href": "https://github.blog/ai-and-ml/github-copilot/evaluating-performance-and-efficiency-of-the-github-copilot-agentic-harness-across-models-and-tasks/"
+    },
+    {
+     "text": "Copilot Fusion",
+     "href": "https://code.visualstudio.com/docs/agent-customization/language-models#_use-copilot-fusion"
+    },
+    {
+     "text": "Copilot runtime-enforced enterprise permission and sandbox policies",
+     "href": "https://code.visualstudio.com/docs/enterprise/manage-ai-settings"
+    },
+    {
+     "text": "Agent Host",
+     "href": "https://code.visualstudio.com/docs/agents/concepts/agent-host"
+    },
+    {
+     "text": "agent harness",
+     "href": "https://code.visualstudio.com/docs/agents/concepts/agent-harnesses"
+    },
+    {
+     "text": "Copilot CLI",
+     "href": "https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-cli"
+    },
+    {
+     "text": "GitHub Copilot app",
+     "href": "https://docs.github.com/en/copilot/concepts/copilot-surfaces/github-copilot-app"
+    },
+    {
+     "text": "other Microsoft products",
+     "href": "https://blogs.microsoft.com/blog/2026/10/28/introducing-the-microsoft-copilot-harness-unlocking-the-potential-of-truly-multi-model-agentic-work/"
+    }
+   ],
+   "image": "https://code.visualstudio.com/assets/blogs/2026/11/18/copilot-harness-social-image.png"
   }
  ]
 }

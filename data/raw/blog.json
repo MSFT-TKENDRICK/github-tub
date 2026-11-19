@@ -1,9 +1,9 @@
 {
  "source": "blog",
- "fetchedAt": "2026-11-12T23:14:47.098Z",
- "count": 203,
+ "fetchedAt": "2026-11-19T15:47:08.560Z",
+ "count": 206,
  "since": "2026-11-05",
- "until": "2026-11-12",
+ "until": "2026-11-19",
  "items": [
   {
    "id": "bl-93132",
@@ -7936,7 +7936,7 @@
    "source": "blog",
    "date": "2026-11-10",
    "publishedAt": "2026-11-10T18:00:00Z",
-   "modifiedAt": "2026-11-10T19:02:20Z",
+   "modifiedAt": "2026-11-18T01:31:36Z",
    "title": "Git security vulnerabilities announced",
    "url": "https://github.blog/open-source/git/git-security-vulnerabilities-announced-7/",
    "categories": [
@@ -7944,8 +7944,8 @@
     "Open Source",
     "Security"
    ],
-   "lede": "Git is releasing updates addressing six security vulnerabilities affecting recursive clones, reference handling, merges, binary patches, and imports. Here is what users need to know.",
-   "text": "Today, the Git project is releasing new versions to address six security vulnerabilities. These include arbitrary code execution when recursively cloning a malicious repository, writes to unintended files, and memory corruption when processing merges or binary patches.\n\nThe fixes are included in Git 2.56.1, with backports to Git 2.55.1, 2.54.1, 2.53.1, 2.52.1, 2.51.3, and 2.50.2. We recommend updating to Git 2.56.1 or the patched release for your maintenance series, and updating any applications that bundle Git.\n\nVulnerabilities in Git\n\nCVE-2026-111760: Code execution during recursive clones\n\nGit checks paths before writing files into a working tree, including rejecting paths that would overwrite its own repository metadata. However, an integer truncation in Git’s index handling can cause an extremely long path to pass validation under one name and then be written using a shorter name.\n\nAn attacker can use this discrepancy to replace a submodule’s .git file with a symbolic link pointing to a directory containing malicious configuration or hooks. When Git subsequently uses that directory, it can execute attacker-controlled code during a recursive clone.\n\nThe fix rejects extremely long index entry paths before their lengths can be truncated.\n\n[Advisory]\n\nCVE-2026-113408: Path traversal through a server’s advertised HEAD\n\nWhen cloning an empty repository using Git protocol v2, the server can advertise a HEAD symref pointing to an unborn branch (one that has no commits yet). Git did not validate the symref’s target before storing it locally.\n\nA malicious server can supply a name containing path-traversal components. With the files reference backend, a later operation that updates the branch can write outside the intended reference directory.\n\nGit now validates the advertised target before accepting it. The release also validates other reference names and symbolic-reference targets received through protocol v2.\n\n[Advisory]\n\nCVE-2026-114467: Stack corruption when removing signatures\n\nWhen stripping GPG signatures from a message, Git assumed there would be at most two signatures. A specially crafted message containing more than two signatures can cause Git to write past the end of a fixed-size stack array.\n\nThis can be triggered by merging a tag containing more than two signatures, causing memory corruption and a potential denial of service. Hosting services that perform these merges on behalf of users can also be affected.\n\nThe fix removes the fixed-size array and handles messages with any number of signatures.\n\n[Advisory]\n\nCVE-2026-114469: Out-of-bounds reads when applying binary patches\n\nGit rejects patches larger than approximately 1 GiB because its patch application code cannot safely handle larger inputs. However, this check only considered the size of the patch as supplied.\n\nBinary patches are compressed and encoded, so a relatively small patch can expand beyond that limit. A crafted patch can bypass the input-size check and cause an out-of-bounds read, crashing Git.\n\nGit now also checks the declared uncompressed size before processing a binary patch.\n\n[Advisory]\n\nCVE-2026-105437: Heap corruption during large merges\n\nGit’s merge machinery calculates how much memory it needs for a merge result before writing the output. That calculation can overflow when the result is very large, including when many conflicts are combined with a large conflict-marker-size attribute.\n\nThe overflow can cause Git to allocate a buffer that is too small, then write outside it, corrupting heap memory. This affects applications and hosting services that use Git to merge untrusted content, as well as local merges.\n\nThe fix uses size-appropriate types and checked arithmetic, rejecting merges whose output size cannot be represented safely.\n\n[Advisory]\n\nCVE-2026-114466: Filesystem access through fast-import streams\n\ngit fast-import reads a stream of commands to build a repository. Some commands can access files outside the repository, so Git already restricts them when they appear in an untrusted input stream.\n\nThree additional features lacked that protection.",
+   "lede": "Git is releasing updates addressing six security vulnerabilities affecting clones, reference handling, merges, binary patches, and imports. Here is what users need to know.",
+   "text": "Editor’s note (November 17, 2026): This post has been updated with additional CVE information and updated guidance for GitHub Enterprise Server users. Please see the release information below for the versions that include the fixes.\n\nToday, the Git project is releasing new versions to address six security vulnerabilities. These include arbitrary code execution when cloning a malicious repository, writes to unintended files, and memory corruption when processing merges or binary patches.\n\nThe fixes are included in Git 2.56.1, with backports to Git 2.55.1, 2.54.1, 2.53.1, 2.52.1, 2.51.3, and 2.50.2. We recommend updating to Git 2.56.1 or the patched release for your maintenance series, and updating any applications that bundle Git.\n\nVulnerabilities in Git\n\nCVE-2026-111760: Code execution when cloning malicious repositories\n\nGit checks paths before writing files into a working tree, including rejecting paths that would overwrite its own repository metadata. However, an integer truncation in Git’s index handling can cause an extremely long path to pass validation under one name and then be written using a shorter name.\n\nAn attacker-controlled Git server can exploit this discrepancy to replace a clone’s .git file or directory, redirecting Git to attacker-controlled configuration or hooks.\n\nFor recursive clones, this can execute attacker-controlled code during the clone. For non-recursive clones, an attacker can replace the top-level .git directory with a file pointing to attacker-controlled repository metadata. The clone can then report an error and recommend running git status in the resulting directory; following that advice can execute attacker-controlled code.\n\nThe fix rejects extremely long index entry paths before their lengths can be truncated.\n\n[Advisory]\n\nCVE-2026-113408: Path traversal through a server’s advertised HEAD\n\nWhen cloning an empty repository using Git protocol v2, the server can advertise a HEAD symref pointing to an unborn branch (one that has no commits yet). Git did not validate the symref’s target before storing it locally.\n\nA malicious server can supply a name containing path-traversal components. With the files reference backend, a later operation that updates the branch can write outside the intended reference directory.\n\nGit now validates the advertised target before accepting it. The release also validates other reference names and symbolic-reference targets received through protocol v2.\n\n[Advisory]\n\nCVE-2026-114467: Stack corruption when removing signatures\n\nWhen stripping GPG signatures from a message, Git assumed there would be at most two signatures. A specially crafted message containing more than two signatures can cause Git to write past the end of a fixed-size stack array.\n\nThis can be triggered by merging a tag containing more than two signatures, causing memory corruption and a potential denial of service. Hosting services that perform these merges on behalf of users can also be affected.\n\nThe fix removes the fixed-size array and handles messages with any number of signatures.\n\n[Advisory]\n\nCVE-2026-114469: Out-of-bounds reads when applying binary patches\n\nGit rejects patches larger than approximately 1 GiB because its patch application code cannot safely handle larger inputs. However, this check only considered the size of the patch as supplied.\n\nBinary patches are compressed and encoded, so a relatively small patch can expand beyond that limit. A crafted patch can bypass the input-size check and cause an out-of-bounds read, crashing Git.\n\nGit now also checks the declared uncompressed size before processing a binary patch.\n\n[Advisory]\n\nCVE-2026-105437: Heap corruption during large merges\n\nGit’s merge machinery calculates how much memory it needs for a merge result before writing the output. That calculation can overflow when the result is very large, including when many conflicts are combined with a large conflict-marker-size attribute.\n\nThe overflow can cause Git to allocate a buffer that is too small, then write outside it, corrupting heap memory. This affects applications and hosting services that use Git to merge untrusted content, as well as local merges.",
    "links": [
     {
      "text": "Git 2.56.1",
@@ -8040,6 +8040,147 @@
     }
    ],
    "image": "https://github.blog/wp-content/uploads/2026/11/5b5fed0ce69f241f469053d4f178383688adb2fb7ef44dff82c1a2dd6a626fa1-1920x1080-1.png?fit=1920%2C1080"
+  },
+  {
+   "id": "bl-100130",
+   "wpId": 100130,
+   "source": "blog",
+   "date": "2026-11-12",
+   "publishedAt": "2026-11-13T00:20:16Z",
+   "modifiedAt": "2026-11-13T00:20:19Z",
+   "title": "GitHub availability report: October 2026",
+   "url": "https://github.blog/news-insights/company-news/github-availability-report-october-2026/",
+   "categories": [
+    "Company news",
+    "News & insights"
+   ],
+   "lede": "In October, we experienced eight incidents that resulted in degraded performance across GitHub services.",
+   "text": "We continue to share monthly updates on the work behind GitHub’s availability and reliability.\n\nThe short version of October: we added substantial independently scalable Azure capacity and removed several ways that failures could escalate. However, write outages, monitoring gaps during data migrations, and a regional network disruption reinforced the need for capacity growth to be paired with safer operations, stronger isolation, and validated regional recovery.\n\nAs of November 9, 140 of 151 production services and 32 of 50 MySQL primaries were running in Azure Central US. Azure served 63% of migrated-service reads, 66% of monolith reads, and 52% of Git reads. We also completed a compute expansion across all nine Central US Kubernetes clusters, more than doubling capacity.\n\nThat capacity is already carrying real growth. Migrated-service traffic has increased 82% since March, with Central US absorbing the growth beyond the highest weekly-average load previously served from our existing datacenter. This gives GitHub more room to grow without pushing the original environment beyond its prior operating range.\n\nWe also made several targeted reliability improvements. Actions changes increased capacity for critical Azure control-plane requests. A separate NAT-gateway mitigation reduced usage by 85%; four production jobs failed during the change, compared with approximately 800 expected without the mitigation. Connection limits and other client improvements now also reduce the chance that a dependency interruption becomes a broader reconnect storm.\n\nWe removed concentrated sources of database load as well. A high-traffic GitHub Actions endpoint handling more than 250 million requests per day moved to a more efficient service path, reducing peak database reads by 85%. Requiring at least three characters before searching repository topics reduced slow or terminated queries for that pattern by approximately 98%.\n\nReliability was still not where it needed to be. The October 7 write outages exposed an unsafe interaction between database orchestration and production routing. An October 29 Azure network disruption affected all three Central US availability zones and at least 34,128 signed-in users. More details on these and other incidents follow.\n\nThe East US 3 buildout is about one week behind plan. The next phase starts with its first validated traffic ramp in the first week of December, while we continue hardening migration safety, dependency isolation, and regional recovery.\n\nThe principle remains the same: availability, then capacity, then features.\n\nOctober 05 19:11 UTC (lasting 3 hours and 38 minutes)\n\nDuration: approximately 3 hours and 45 minutes.\n\nCustomers may have seen GitHub Actions jobs on GitHub-hosted runners stay queued much longer than usual, and some workflow runs failed to start. During the worst stretch, which lasted about 90 minutes, most jobs on GitHub-hosted runners did not start within five minutes. Impact eased as we failed over to healthy regions and added capacity. Self-hosted runners were not affected. GitHub Pages sites that build with actions were slow to update, though existing sites continued to serve normally. Some customers also saw errors in repository lists, licensing and billing pages, and some Copilot features.\n\nWhat went wrong and why?\n\nActions jobs stayed queued or failed to start because the service that assigns jobs to GitHub-hosted runners stopped working reliably. A partial networking failure on our cloud provider’s side disrupted some of the connections between one of our datacenter regions and the cloud-hosted databases that service depends on. Instead of failing fast, the service waited for those calls to time out. The waiting calls piled up until the service ran out of memory and restarted.\n\nJobs then shifted to the same service in a healthy region, which did not have enough capacity for the extra demand and began failing too. At the same time, runners that went several minutes without receiving a job shut down and were slow to be replaced, so fewer runners were available to pick up jobs.\n\nHow did we respond?\n\n- A partial networking failure began, and actions jobs started backing up.",
+   "links": [
+    {
+     "text": "status page",
+     "href": "https://www.githubstatus.com/"
+    }
+   ],
+   "image": "https://github.blog/wp-content/uploads/2025/08/wallpaper-generic-.png?fit=1920%2C1080"
+  },
+  {
+   "id": "bl-100215",
+   "wpId": 100215,
+   "source": "blog",
+   "date": "2026-11-17",
+   "publishedAt": "2026-11-17T18:29:29Z",
+   "modifiedAt": "2026-11-17T19:39:55Z",
+   "title": "Maintainers don’t need more AI bug reports. They need fixes.",
+   "url": "https://github.blog/open-source/maintainers/maintainers-dont-need-more-ai-bug-reports-they-need-fixes/",
+   "categories": [
+    "Maintainers",
+    "Open Source"
+   ],
+   "lede": "In the Codename MDASH pilot, GitHub and Microsoft turned thousands of raw AI findings into 99 checked, private reports with suggested fixes for six widely used open source projects. Maintainers have already fixed more than half.",
+   "text": "AI has made finding potential vulnerabilities fast and cheap. Fixing them still takes human judgment, and in open source, that work falls to maintainers. Many are already flooded with AI-generated security findings, including duplicates and reports that aren’t vulnerabilities at all. Another raw scan doesn’t help them. Anyone pointing a new model at a project should ask its maintainers first and come with fixes, not just findings.\n\nMaintainers are under intense pressure from this flood of reports. As Christian Grobmeier, a maintainer of Log4j, has put it, the AI defending open source has to be better than the AI attacking it.\n\nAI shouldn’t add to maintainers’ workload. So, with maintainers, GitHub and Microsoft ran a pilot together: could AI help maintainers ship fixes instead of handing them more findings?\n\nGitHub and Microsoft are using Codename MDASH, Microsoft’s multi-model agentic scanning harness, to find and fix security vulnerabilities in widely used open source software, strengthening the foundation that much of the world’s code is built on.\n\nThe process\n\nOur pilot had two goals: send only findings that matter, and never send a maintainer an unverified finding. Here’s how it worked:\n\n- Find. Codename MDASH, an AI system from Microsoft Security, scanned each project using Microsoft’s MAI Cyber model and suggested fixes for what it found.\n\n- Filter. An AI triage agent from the GitHub Security Lab, built on tailored Copilot skills, removed duplicates, checked validity, and focused on high-impact bugs, so maintainers never had to review raw scan results.\n\n- Verify. Researchers from Microsoft FORGE Lab checked every remaining finding by hand.\n\n- Report privately. Reports reached maintainers through GitHub private vulnerability reporting, with a proof of concept and a suggested fix.\n\n- Fix. Maintainers decided what to fix, how to fix it, and when.\n\nReports and fixes stayed on GitHub, where maintainers already work.\n\nThe result: Codename MDASH, using Microsoft’s MAI Cyber model, flagged thousands of possible issues across the six projects. After AI triage and hand review by seven Microsoft FORGE Lab researchers, maintainers received 99 private reports. As of November 15, they had fixed 55, and 14 of those fixes were already in a release.\n\nParticipating projects\n\nSix projects took part, all alumni of the GitHub Secure Open Source Fund. Their maintainers agreed to the scan, received every report privately, decided what to fix, and shared what worked:\n\n- AutoGPT, an AI agent platform\n\n- Caddy, a web server\n\n- Express, a web framework for Node.js\n\n- FastMCP, a framework for building MCP servers\n\n- ImageMagick, image processing software\n\n- Netty, a networking framework for Java\n\nWhat we learned\n\nThese lessons come from what the six projects fixed and what their maintainers chose to share. Six projects is a small sample, so read them as early lessons.\n\n1. Fixes matter more than findings\n\nFixing is where maintainers spend their time. So every report arrived already checked, with a suggested fix to review, adapt, and merge. Maintainers started from a well-scoped patch, not a raw finding.\n\nThe first fixes shipped about a week after the initial scan. Caddy’s maintainers fixed all 22 of the reports they received in a week or less. Maintainers used the suggested fixes, some as written and some with changes.\n\nAutoGPT’s maintainers had recently shipped a new check, and it was broken. The report landed three days later and pointed at the right line. They took the fix further than the suggested patch, wrote it within a day, and had it in production less than a week later.\n\nFinding vulnerabilities is no longer our bottleneck. Fixing them is the hard part, and that depends on maintainers.\n\nNetty maintainer\n\n2. Codename MDASH, with researcher review, gave maintainers high-quality findings with fixes\n\nMaintainers got a short list, not a flood. Express maintainers said the reports cut through the noise. Caddy maintainers said they surfaced obscure bugs and filled gaps that earlier reports had missed. For FastMCP, the scan went beyond what AI scanners had given them before. ImageMagick, maintained by a two-person team, received 22 reports.",
+   "links": [
+    {
+     "text": "AI defending open source has to be better than the AI attacking it",
+     "href": "https://youtu.be/t74ClffSUW0?si=WYa9E6mKPSVhOW1O&t=1815"
+    },
+    {
+     "text": "Codename MDASH",
+     "href": "https://learn.microsoft.com/en-us/security-exposure-management/ai-code-security-overview"
+    },
+    {
+     "text": "Codename MDASH",
+     "href": "https://www.microsoft.com/en-us/security/blog/2026/05/12/defense-at-ai-speed-microsofts-new-multi-model-agentic-security-system-tops-leading-industry-benchmark/"
+    },
+    {
+     "text": "MAI Cyber model",
+     "href": "https://microsoft.ai/models/mai-cyber-1-1-flash/"
+    },
+    {
+     "text": "Researchers from Microsoft FORGE Lab",
+     "href": "https://forge-blog.github.io/"
+    },
+    {
+     "text": "GitHub Secure Open Source Fund",
+     "href": "https://github.com/open-source/github-secure-open-source-fund"
+    },
+    {
+     "text": "AutoGPT",
+     "href": "https://github.com/Significant-Gravitas/AutoGPT"
+    },
+    {
+     "text": "Caddy",
+     "href": "https://github.com/caddyserver/caddy"
+    },
+    {
+     "text": "Express",
+     "href": "https://github.com/expressjs/express"
+    },
+    {
+     "text": "Node.js",
+     "href": "https://github.com/nodejs/node"
+    }
+   ],
+   "image": "https://github.blog/wp-content/uploads/2026/11/image-17.png?fit=4800%2C2520"
+  },
+  {
+   "id": "bl-100309",
+   "wpId": 100309,
+   "source": "blog",
+   "date": "2026-11-17",
+   "publishedAt": "2026-11-17T18:20:40Z",
+   "modifiedAt": "2026-11-17T18:20:43Z",
+   "title": "Building the Agent Host Protocol for sessions that continue across devices",
+   "url": "https://github.blog/engineering/engineering-principles/building-the-agent-host-protocol-for-sessions-that-continue-across-devices/",
+   "categories": [
+    "Engineering",
+    "Engineering principles"
+   ],
+   "lede": "Discover how we built the open Agent Host Protocol to keep your agent sessions accessible across editors, apps, phones, and the cloud.",
+   "text": "Models are now good enough to work for hours or even days on their own. You don’t have to watch over every thing they do, but you still need to be able to check in, no matter where you are. An agent can’t live only inside one application. The work should continue even If you close a window or switch devices.\n\nIn GitHub Copilot you can start an agent session in one place and pick it up in another. This session continuity runs on the Agent Host Protocol (AHP), an open standard built first in VS Code and adopted across GitHub. Here’s how it works, what we learned building it, and how you can use it to bring your agents into your own apps and workflows.\n\nWhy one integration per client stopped working\n\nGitHub Copilot was first built in VS Code as an extension that bundled its own harness. This gave you access to your agents in VS Code, but it tied their lifetime to the editor. Extensions are attached to a single VS Code window. Close that window, and the agent is gone. Update VS Code, and every agent stops as the application restarts. Connect to a remote machine, and you get an entirely new extension host commit-locked against the version of the VS Code workbench you have.\n\nAt the same time, the Copilot app was being developed, alongside the existing GitHub mobile apps for iOS and Android. Each product was doing its own distinct integration with cloud-based agents to work towards delivering session continuity.\n\nEach of these integrations solved the problem for one product, but developers also still want to be able to pull their agents into their own workflows–whether that’s an editor, a terminal, a phone, or a tool they built themselves–and they can’t do that if every client needs its own one-off integration. That’s why developers needed a protocol: a standard, independently versioned language across versions of VS Code, the GitHub Copilot app, mobile apps, and any other client that might host an agent. A shared protocol means every client sees the same agents, history, and state without bespoke integrations, and you aren’t tied to one app’s idea of what an agent session is.\n\nDesigning a protocol for agents on every client\n\nThe protocol needed to allow multiple clients to interact with the same set of agents seamlessly. Start a session in the cloud from your phone, for example, then continue it from your laptop. It should tolerate network interruptions, reconnections, and concurrent client mutations. And it needed to be full-featured enough for you to do real work from each of your clients.\n\nAt the same time, the protocol needed to stay out of agent behavior. Unlike the domains that produced the Language Server Protocol and Debug Adapter Protocol, the world of agents is evolving quickly. That’s why AHP avoids encoding how agents work, and instead focuses on how you want to interact with them.\n\nYou also need the protocol to be simple enough to implement on your own client or server. While the full feature set would necessarily be extensive, the core protocol needed to be minimal.\n\nThe result of these requirements is the Agent Host Protocol (AHP). It is oriented around URI-identified “channels”, which are the coarsest unit of functionality in the protocol. Every server must implement the root, session, and chat channels, but can also implement more channels that provide terminal support, MCP additions, or OTel reporting, for example.\n\nWithin each channel is a reducer-based state object, which drives most of the logic for clients. The server is the arbiter of the state, and each client sends a sequence of actions that either mutate the state or trigger side effects, like sending a chat message. This provides a few very nice properties. Reconnection and replay in poor network conditions are easy: a client sends all queued actions, presents the right ‘loading’ state, and waits for the server to reconcile and acknowledge the actions before confirming them. Clients and servers are straightforward to debug. And reducer-based state also plays nicely with popular UI frameworks like React.\n\nShipping five clients and two hosts\n\nAdopting the Agent Host Protocol in VS Code required building a new harness and agentic stack underneath it.",
+   "links": [
+    {
+     "text": "Copilot app",
+     "href": "https://github.com/features/ai/github-app"
+    },
+    {
+     "text": "cloud-based agents",
+     "href": "https://docs.github.com/copilot/concepts/copilot-surfaces/copilot-on-github"
+    },
+    {
+     "text": "Language Server Protocol",
+     "href": "https://microsoft.github.io/language-server-protocol/"
+    },
+    {
+     "text": "Debug Adapter Protocol",
+     "href": "https://microsoft.github.io/debug-adapter-protocol/"
+    },
+    {
+     "text": "Agent Host Protocol",
+     "href": "https://microsoft.github.io/agent-host-protocol/"
+    },
+    {
+     "text": "Copilot SDK",
+     "href": "https://aka.ms/copilot-sdk/blog-2.0"
+    },
+    {
+     "text": "VS Code Server",
+     "href": "https://code.visualstudio.com/docs/remote/vscode-server"
+    },
+    {
+     "text": "work from anywhere with the new connected Copilot cloud experience",
+     "href": "https://github.blog/changelog/2026-10-28-work-from-anywhere-with-a-new-connected-copilot-cloud-experience/"
+    },
+    {
+     "text": "samples",
+     "href": "https://github.com/microsoft/agent-host-protocol-samples/"
+    },
+    {
+     "text": "on GitHub",
+     "href": "https://github.com/microsoft/agent-host-protocol"
+    }
+   ],
+   "image": "https://github.blog/wp-content/uploads/2026/11/agents-everywhere.png?fit=1536%2C1024"
   }
  ]
 }

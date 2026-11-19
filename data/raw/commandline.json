@@ -1,9 +1,9 @@
 {
  "source": "commandline",
- "fetchedAt": "2026-11-12T23:14:53.931Z",
- "count": 7,
+ "fetchedAt": "2026-11-19T15:47:16.711Z",
+ "count": 8,
  "since": "2026-11-05",
- "until": "2026-11-12",
+ "until": "2026-11-19",
  "items": [
   {
    "id": "cmd-squad-github-copilot-agent-teams-architecture-durable-memory",
@@ -395,6 +395,58 @@
     }
    ],
    "image": "https://commandline.microsoft.com/wp-content/uploads/2026/10/GHUNI26-2_CK_241-1024x683.jpg"
+  },
+  {
+   "id": "cmd-microsoft-copilot-sdk-2-0-github",
+   "source": "commandline",
+   "date": "2026-11-17",
+   "publishedAt": "2026-11-17T18:29:15.000Z",
+   "title": "Building modern agentic applications with Microsoft Copilot SDK 2.0",
+   "url": "https://commandline.microsoft.com/microsoft-copilot-sdk-2-0-github/",
+   "categories": [
+    "Deep Dive"
+   ],
+   "relevance": [
+    "11 GitHub Copilot mentions",
+    "6 GitHub mentions"
+   ],
+   "lede": "How we enhanced the Copilot runtime to support multi-tenanted, high performance architectures, and how you can choose the right architecture for your agentic use case.",
+   "text": "Today at Ignite, we’re announcing the new Microsoft Copilot SDK (previously named GitHub Copilot SDK). It gives you direct, programmatic access to the Microsoft Copilot harness powering products across our entire portfolio for coding, non-coding, and creative apps, platforms, and services. It can be used to build agents that run anywhere and can use any inference.\n\nSessions in isolation\n\nSince the Copilot SDK launch earlier this year, many teams across GitHub and Microsoft have adopted the runtime as a shared platform for Copilot agents across our services. For many use cases, hosting agents in a single container was and still is the right answer for their architectures. Most teams within Microsoft give every session its own sandbox, so data stays inside a managed boundary. If an agent compiles code, runs untrusted scripts, or needs a custom image, a hard container boundary remains an essential part of their infrastructure.\n\nThe problem was that, before today, the container was the only option, so its tradeoffs leaked into every implementation. Every session used a container whether it needed one or not. This meant that the first turn had to wait on infrastructure, cost scaled rapidly with sessions, and the session’s identity was the same as the process running it.\n\nFrom one container per session to one runtime, many sessions.\n\nVirtualizing an agent’s environment\n\nThe new Microsoft Copilot SDK removes the assumption that the runtime owns the machine it runs on. The shell, disk and the identity of whoever started the runtime were replaced with new abstraction layers that give developers the control they need to design and deploy performant agents from simple chat assistants to complex multi-agent software factories.\n\nA shared, multi-tenanted runtime\n\nThe first big change in 2.0 is a runtime that can host many sessions within a single process. Each session has its own state, credentials, tools, files, and history. No session can see another. Sessions become cheap and highly disposable. Creating one doesn’t need to start a container, a process, or a VM, which cuts both time to first token and operating cost. When users ask a simple question, the runtime can respond immediately with performant inference.\n\nThat only works if the runtime itself is lean, so we rebuilt it in Rust. On the same warmed workload, creating a client and a session and completing one turn went from 5.25 seconds on the TypeScript CLI to 55.3 milliseconds with the Rust core in-process. Scalability improved as well: 10 clients now use 126 MB of memory instead of 1,383 MB, and throughput rose from 7.55 to 120 sessions per second.\n\nThe multi-tenant runtime starts with a much lighter core.\n\nFrom the SDK, a shared runtime is just a connection. Many application instances can point at the same runtime service using our new empty mode:\n\nimport { CopilotClient } from \"@microsoft/copilot-sdk\";\n\nconst client = new CopilotClient({\nmode: \"empty\", // start from nothing: no ambient shell, files, or CLI defaults\n});\n\nIdentities scoped to sessions, not processes\n\nBefore 2.0, the runtime acted under the identity that instantiated it. Now, each session can run independently as the identity of the user who requested it. You pass that user’s credential when you create the session, and every model call and tool call the session makes is attributed to that user, not to your server.\n\nconst session = await client.createSession({\ngitHubToken: user.githubToken, // or gitHubTokenProvider for short-lived, rotating tokens\n});\n\nFor production services, a gitHubTokenProvider callback lets the runtime request a fresh token per session as tokens expire, so you never store long-lived credentials.\n\nHost-owned tools and policies\n\nA shared runtime is only safe if no session can reach the machine it runs on. mode: \"empty\" starts every session with minimal ambient capabilities: no host shell, no host file system, no default tools. You add back exactly what a session should have, and the tools you register run in your process, against your data, under your rules.",
+   "links": [
+    {
+     "text": "GitHub Copilot SDK",
+     "href": "https://github.blog/changelog/2026-10-28-github-copilot-sdk-is-becoming-microsoft-copilot-sdk/"
+    },
+    {
+     "text": "Microsoft Copilot harness",
+     "href": "https://blogs.microsoft.com/blog/2026/10/28/introducing-the-microsoft-copilot-harness-unlocking-the-potential-of-truly-multi-model-agentic-work/"
+    },
+    {
+     "text": "Copilot SDK",
+     "href": "https://github.blog/changelog/2026-06-02-copilot-sdk-is-now-generally-available/"
+    },
+    {
+     "text": "Agent Host Protocol (AHP) host",
+     "href": "https://aka.ms/ahp-1.0"
+    },
+    {
+     "text": "GitHub Copilot cloud sandboxes",
+     "href": "https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-sandboxes"
+    },
+    {
+     "text": "Microsoft Foundry managed agents",
+     "href": "https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/use-tools-skills-copilot-harness"
+    },
+    {
+     "text": "getting-started guide",
+     "href": "https://github.com/microsoft/copilot-sdk/blob/main/docs/getting-started.md"
+    },
+    {
+     "text": "Building modern agentic applications with Microsoft Copilot SDK 2.0",
+     "href": "https://commandline.microsoft.com/microsoft-copilot-sdk-2-0-github/"
+    }
+   ],
+   "image": "https://commandline.microsoft.com/wp-content/uploads/2026/11/fig-stack-1024x609.png"
   }
  ]
 }

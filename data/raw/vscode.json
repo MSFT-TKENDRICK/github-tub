@@ -1,7 +1,7 @@
 {
  "source": "vscode",
- "fetchedAt": "2026-11-12T23:14:50.563Z",
- "count": 680,
+ "fetchedAt": "2026-11-19T15:47:13.838Z",
+ "count": 711,
  "releases": [
   {
    "version": "1.108",
@@ -314,6 +314,14 @@
    "downloadVersion": "1.146.0",
    "title": "Visual Studio Code 1.146",
    "itemCount": 23
+  },
+  {
+   "version": "1.147",
+   "date": "2026-11-18",
+   "url": "https://code.visualstudio.com/updates/v1_147",
+   "downloadVersion": "1.147.0",
+   "title": "Visual Studio Code 1.147",
+   "itemCount": 31
   }
  ],
  "items": [
@@ -8590,6 +8598,388 @@
    "date": "2026-11-11",
    "source": "vscode",
    "url": "https://code.visualstudio.com/updates/v1_146"
+  },
+  {
+   "h2": "Release highlights",
+   "title": "Release highlights",
+   "text": "Have a task in mind but not ready to send it? This week, save requests as drafts or schedule them for later. When you're ready, let a model router match the task to your preferred model. And when a result is easier to show than explain, ask for a chart or mockup.\n- Send later (Experimental): Schedule local agent requests and follow-ups for later in the Agents window.\n- Browser integration (Preview): Let agents control your default browser, and preview remote HTML files without copying them to your machine.\n- Draft requests (Experimental): Keep multiple unsent requests with their context and configuration in the Agents window, ready to send when you are.\n- Customize assisted permissions: Tell the permission reviewer which actions you consider safe and which should need your approval.\n- Visual chat responses: Review reports, mockups, and charts inline in the Agents window with HTML previews and experimental native visuals.",
+   "links": [],
+   "id": "vsc-1.147-01",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Agent sessions",
+   "title": "Send Later for chat requests (Experimental)",
+   "text": "Setting: sessions.sendLater.enabled (Agents window only)\n\nSometimes you want an agent to run a request after some time has passed. You might want to check a build after it finishes, or follow up on a review in the morning. With the Send Later feature, you can postpone sending a chat request until a specific time.\n\nYou can schedule a chat request by using the Send Later menu on the send button in chat.\n\nFor a specific time, select Choose Date and Time, pick a day in the calendar and a time from the dropdown, and select Schedule.\n\nWhere the request waits depends on where you scheduled it:\n- New session: In the Drafts section of the sessions list.\n- Existing chat: In that chat's Scheduled area, with its send time. If the agent is still busy at the scheduled time, the request waits its turn instead of interrupting.",
+   "links": [
+    "https://code.visualstudio.com/docs/agents/run/agents-window#_send-a-request-later"
+   ],
+   "id": "vsc-1.147-02",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Agent sessions",
+   "title": "Save and resume drafts (Experimental)",
+   "text": "Setting: sessions.drafts.enabled\n\nPreviously, the new-session input held a single unsent request at a time. With drafts, you can keep several unsent requests side by side, each with its own workspace, agent, and configuration, and come back to any of them later.\n\nWhen you leave a new session that has content, VS Code saves it to the Drafts section of the sessions list. Nothing is sent, and no agent session starts. To jump right back, select Open Draft in the notification.\n\nEach draft keeps everything you set up: text, attachments, inline references, workspace, agent, model, and other configuration. Drafts survive reloads and restarts.\n\nFrom the Drafts list, you can preview, open, or delete a draft. When you send a draft, it's removed only after the request is accepted, so a failed send doesn't lose your work.\n\nTurning off the setting hides the Drafts section but keeps your saved drafts.",
+   "links": [],
+   "id": "vsc-1.147-03",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Agent sessions",
+   "title": "Share remote environments as GitHub Environments",
+   "text": "Share a remote as a GitHub Environment to pick up its agent sessions from another device or supported Copilot app, using your GitHub account.\n\nTo share a connected SSH host, WSL distribution, or Dev Tunnel, open the Remote Environments editor in the Agents window and select Share as GitHub Environment (GitHub icon) on the remote's row.\n\nA shared remote stays in its group and shows a GitHub icon after its name. Select the action again to stop sharing.\n\nLearn more about remote agent sessions.",
+   "links": [
+    "https://code.visualstudio.com/docs/agents/run/remote-agent-sessions"
+   ],
+   "id": "vsc-1.147-04",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Agent sessions",
+   "title": "Keep chat sessions across Dev Container rebuilds (Experimental)",
+   "text": "Settings: dev.containers.stateVolume.enabled, chat.agentHost.devContainer.stateVolume.enabled\n\nRebuilding a Dev Container used to remove the Copilot chat sessions stored inside it. When you enable these settings, VS Code stores the user and agent state of a new Dev Container on a Docker volume, preserving your chat sessions across rebuilds.\nImportant: A container gets the volume only when it's created with the setting enabled, so rebuild once to start keeping your sessions.",
+   "links": [],
+   "id": "vsc-1.147-05",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Agent sessions",
+   "title": "Inbox mode improvements (Experimental)",
+   "text": "Setting: sessions.list.inboxEnabled\n\nInbox mode groups your Agents window sessions by what needs your attention. You can switch to Inbox mode at any time with Grouping > Inbox Mode in the sessions list. The sessions.list.inboxEnabled setting makes it the default grouping.\n\nThis release builds on your feedback to make Inbox mode more useful and manageable:\n- Acknowledge sessions you've handled\n\nIf a session doesn't need your attention but isn't finished, you can mark it as acknowledged (eye icon). Acknowledging a session moves it out of the Inbox and into the Acknowledged section. The session isn't marked as read or done, archived, or closed.\n\nWhen there is new activity in the session, it returns to the Inbox. You can acknowledge several selected sessions at once.\n- Focus on one workspace or environment\n\nUse the workspace and environment pickers at the top of the sessions list to see only the sessions you care about right now.",
+   "links": [],
+   "id": "vsc-1.147-06",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Agent experience",
+   "title": "Decision model-based model routers (Experimental)",
+   "text": "Setting: chat.copilot.modelRouter.enabled\n\nWith a model router, you describe which model you want for which kind of work. A decision model, gpt-6-luna-decisions, then matches your request to one of your routes, and VS Code runs the chat on that route's model. A router is a YAML file in ~/.agents/model-routers/ that appears in the model picker in Copilot harness sessions.\n\nModel routers are at an early stage, and your feedback will help shape them. Tell us what works and what doesn't by filing an issue.\n\n``yaml\nversion: 1\ndescription: Opus to build, GPT-6 Luna for quick questions.\nroutes:\n- model: opus\nwhen: Building or changing code over many steps, such as a feature, a bug fix, or a refactor.\n- model: gpt-6-luna\nwhen: Quick answers and small chores, such as where something is or what a setting does.\n`\n\nTo try model routers, add \"chat.copilot.modelRouter.enabled\": true to your user settings.json file.",
+   "links": [
+    "https://code.visualstudio.com/docs/agents/run/agent-harnesses#_copilot",
+    "https://github.com/microsoft/vscode/issues",
+    "https://code.visualstudio.com/docs/configure/settings#_settings-json-file"
+   ],
+   "id": "vsc-1.147-07",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Agent experience",
+   "title": "Model comparison improvements (Preview)",
+   "text": "Model comparison lets you run the same prompt across models in the Agents window, so you can review, judge, and combine their results. This release makes comparisons easier to find and understand:\n- Comparisons stay with their chat: When you ask an agent to run a comparison, it appears beneath that chat in the sessions list. The agent's response includes an Open Comparison action to go straight to the results.\n- See how a comparison was set up: Hover over a comparison in the sessions list to see its original settings: repository, isolation, base branch, each attempt's model and effort level, judge, and synthesizer. You no longer need to open each attempt to check.",
+   "links": [
+    "https://code.visualstudio.com/docs/agents/run/compare-models",
+    "https://code.visualstudio.com/docs/agents/run/compare-models#_ask-an-agent-to-run-a-comparison"
+   ],
+   "id": "vsc-1.147-08",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Agent experience",
+   "title": "HTML previews and native visuals in agent responses",
+   "text": "Settings: chat.htmlPreview.enabled, chat.nativeComponents.enabled (Agents window only)\n\nSome agent responses are easier to review as a visual or a chart than as text, such as a comparison of approaches, a mockup, or build times before and after a change. In the Agents window, agents can show these inline in the response in two ways. Each has its own setting, which is off by default.\n- HTML previews: For free-form layouts, such as reports, diagrams, and mockups. Previews display HTML, CSS, tables, inline SVG, and expandable sections. Scripts, forms, external links, and external resources aren't supported. Enable chat.htmlPreview.enabled and use the built-in /html-preview skill in your request, for example /html-preview compare the two caching approaches.\n- Native visuals (Experimental): For data, such as key numbers and comparisons.",
+   "links": [
+    "https://code.visualstudio.com/docs/agents/run/agents-window",
+    "https://code.visualstudio.com/docs/agent-customization/agent-skills"
+   ],
+   "id": "vsc-1.147-09",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Agent experience",
+   "title": "Automations",
+   "text": "Automations allow you to define tasks that run automatically based on specific triggers and conditions. You can create, manage, and monitor automations from the Automations view in the Agents window. This release adds guided setup, end dates, and filters for automation runs:\n- Agent-guided automation creation\n\nCreating an automation with an agent is now a more guided experience. The agent helps you define what a successful result looks like, decide when the automation runs, and choose where it runs. To start, ask an agent to create an automation. You can also select Create with Agent in the Automations view to continue in chat.\n\nIf you prefer configuring everything yourself, open the dropdown next to Create with Agent and select Create Manually.\n- Set an end date for automations\n\nAutomations can stop automatically after a specified duration.",
+   "links": [],
+   "id": "vsc-1.147-10",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Agent experience",
+   "title": "More context for assisted permissions",
+   "text": "Setting: chat.permissions.assisted.instructions\n\nWith assisted permissions, an LLM reviewer assesses each tool call in Copilot harness sessions and approves low-risk calls for you. Previously, the reviewer relied only on its default guidance, so it couldn't account for what you consider safe or risky in your own work.\n\nUse chat.permissions.assisted.instructions to give the LLM reviewer your own instructions, for example:\n\n``text\nAlways ask before installing packages or pushing to a remote.\nRunning tests and read-only Git commands doesn't need my approval.\n``\n\nYour instructions take precedence over the reviewer's default guidance. Changes to the setting apply to sessions that are already open. They can't override permission rules, organization policy, or the sandbox, and they aren't sent to the agent.",
+   "links": [
+    "https://code.visualstudio.com/docs/agents/run/approvals#_permission-levels",
+    "https://code.visualstudio.com/docs/agents/run/automations"
+   ],
+   "id": "vsc-1.147-11",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Agent experience",
+   "title": "Arrange the Details panel around the editor (Experimental)",
+   "text": "Settings: sessions.experimental.detailsPosition, sessions.experimental.floatingDetails (Agents window only)\n\nIn the Agents window, you can position Files, Changes, and other Details views around the editor to make better use of the available space. Open View > Appearance > Details Position and choose Left, Right, Above Editor, Below Editor, or Floating. Right is the default.\n\nFloating Details overlays the editor instead of reserving space. Hover over or focus the widget to preview its contents, then select the pin control to keep it open. You can also drag and resize it.",
+   "links": [],
+   "id": "vsc-1.147-12",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Agent experience",
+   "title": "View extension info",
+   "text": "The Extensions section of Customizations shows the same detailed information about each installed extension, including its version, publisher, and available commands, as you can from the Extensions view in the editor window.",
+   "links": [],
+   "id": "vsc-1.147-13",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Chat",
+   "title": "Attach screenshots of other apps (Experimental)",
+   "text": "Setting: chat.appWindowScreenshots.enabled\n\nGive the agent a view of the app you're building, even when it runs in another application. Select Add Context > Screenshot App Window and choose a window, such as a browser or simulator.\n\nYou can also press kb(workbench.action.chat.attachAppWindowScreenshot) while another app is in the foreground to capture its window and attach it to the chat. From VS Code, the shortcut captures the app window you just left. You can mark up the image before sending.",
+   "links": [],
+   "id": "vsc-1.147-14",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Chat",
+   "title": "Capture and mark up images in chat",
+   "text": "Select Mark Up on any image attachment in the chat input to crop it, draw arrows or shapes, or add text before sending. This works with screenshots, pasted images, and images attached from files, so you can point out a layout problem or highlight the part you want changed.",
+   "links": [],
+   "id": "vsc-1.147-15",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Chat",
+   "title": "Inline chat attachment pills (Experimental)",
+   "text": "Setting: chat.inlineAttachments.enabled\n\nInline chat attachments show files, images, and other context as pills at the position where you added them in your prompt, so references stay next to the instructions they belong to. Recent updates make the pills more useful in the chat input and in sent requests:\n- Preview and open GitHub references: Hover over or focus a GitHub issue or pull request pill to see its title, status, and description. Select the pill to open the issue or pull request. In sent requests, where selecting a pill previously did nothing, this also works when inline attachments are off.\n- Rearrange pills by dragging: Drag a pill to a new position in the same chat input, rather than removing the context and attaching it again.\n- Clearer sent requests: Sent requests show attached images as thumbnails above the text, in addition to the inline pills. Pills and slash commands line up with the surrounding text.",
+   "links": [
+    "https://code.visualstudio.com/updates/v1_145#_inline-chat-attachments-experimental"
+   ],
+   "id": "vsc-1.147-16",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "MCP",
+   "title": "Skills over MCP",
+   "text": "Skills over MCP (SEP-2640) is now enabled by default, allowing MCP servers to automatically provide skills to the model.\n\nThe first time you connect to an MCP server that provides skills, you are asked to allow them into your model context. Afterwards, the model can interact with these skills and you can see them on the Skills tab of the Agent Customizations editor.\n\nYou can opt out of skills over MCP by disabling the chat.agentHost.mcpSkills.enabled setting.",
+   "links": [
+    "https://github.com/modelcontextprotocol/ext-skills"
+   ],
+   "id": "vsc-1.147-17",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Browser integration",
+   "title": "Let agents use your browser with browser use (Preview)",
+   "text": "Setting: chat.agentHost.browserUse.enabled\n\nBrowser Use lets agents interact directly with your default browser (Google Chrome or Microsoft Edge). This complements VS Code's integrated browser, for example by allowing agents to reuse existing authenticated sessions and interact with web pages outside of VS Code.\n\nBrowser Use requires the GitHub Copilot browser extension, a Copilot harness session that runs on your own machine, and Node.js 22 or later on your PATH.\n\nTo get started with Browser Use:\n\n1. Enable the chat.agentHost.browserUse.enabled setting and restart VS Code.\n1. Open a local Copilot session and enter /plugin enable browser-use to enable the browser-use plugin.\n1. Ask Copilot to perform a browser task, for example: Open my app at localhost:3000, check the navigation, and capture a screenshot.\n1. Approve site access when prompted; complete sign-in and sensitive steps yourself.\n1. Run /browser-use:doctor and follow its guidance to check your setup in case of any issues.",
+   "links": [
+    "https://chromewebstore.google.com/detail/github-copilot/hblomdgalaelcilcdepgohfcogjiijhe",
+    "https://code.visualstudio.com/docs/agents/run/agent-harnesses"
+   ],
+   "id": "vsc-1.147-18",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Browser integration",
+   "title": "Preview remote HTML files in the integrated browser (Preview)",
+   "text": "Setting: workbench.browser.enableRemoteProxy\n\nYou can now open HTML files from a remote workspace, such as SSH, WSL, or a Dev Container, in the integrated browser, just like local HTML files. In the Explorer, right-click an HTML file and select Open in Integrated Browser. The page keeps its file:// address, and the file and the resources it references, such as scripts, styles, images, and fonts, load from the remote workspace. Remote files only load from folders you trust.\n\nThis also works in the Agents window for sessions on a remote agent host, so you and the agent can preview a page the agent wrote without copying it to your machine.\n\nEnable workbench.browser.enableRemoteProxy to try it out, and file any issues you encounter in the VS Code repository.",
+   "links": [
+    "https://code.visualstudio.com/docs/debugtest/integrated-browser",
+    "https://code.visualstudio.com/updates/v1_134#_open-html-files-in-the-integrated-browser-by-default",
+    "https://code.visualstudio.com/docs/agents/run/remote-agent-sessions",
+    "https://github.com/microsoft/vscode/issues"
+   ],
+   "id": "vsc-1.147-19",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Browser integration",
+   "title": "Open non-localhost links in the integrated browser",
+   "text": "Setting: workbench.externalUriOpeners\n\nLocalhost links could already open in the integrated browser with workbench.browser.openLocalhostLinks. The integrated browser is now listed as an opener in the workbench.externalUriOpeners setting, so you can choose it for other links instead of using the default browser. For example, to open links to your company's sites in the integrated browser:\n\n``json\n\"workbench.externalUriOpeners\": {\n\"*.contoso.com\": \"workbench.integratedBrowser\"\n}\n`\n\nUse *` as the pattern to open every link there instead.",
+   "links": [],
+   "id": "vsc-1.147-20",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Browser integration",
+   "title": "Turn off dimming in the integrated browser",
+   "text": "Setting: workbench.browser.dimOnOverlay\n\nWhen something overlaps the integrated browser, such as a tab hover or a tooltip, the page pauses and dims. As hovers come and go, the page repeatedly darkens and returns to normal, which might appear as flicker and be uncomfortable for users who are sensitive to it.\n\nYou can now disable workbench.browser.dimOnOverlay to keep the page undimmed while it's paused. Notifications still dim the page.",
+   "links": [],
+   "id": "vsc-1.147-21",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Sandboxing",
+   "title": "Retry with updated permissions inside the sandbox",
+   "text": "If a terminal command fails because it can't access a file or folder, you can grant access at the session, workspace, or user level. With sandbox bypass enabled, Copilot can use that permission to retry the command inside the sandbox instead of asking to run it outside.\n\nUse the approval dropdown to choose where the permission applies:\n- Allow for This Session (default): Applies to all chats in this session, even after you resume it.\n- Allow for This Workspace (when available): Applies to sessions with the same workspace folders on the same Agent Host. The host saves the permission without changing your workspace settings.\n- Allow for This User: Saves the permission in your User settings so it applies across sessions and workspaces.\n\nThe command retries inside the sandbox. None of these options grants permission to run outside it.",
+   "links": [
+    "https://code.visualstudio.com/docs/agents/run/agent-sandboxing#_control-approval-and-fallback-behavior"
+   ],
+   "id": "vsc-1.147-22",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Accessibility",
+   "title": "Clearer focus and session attention",
+   "text": "In high-contrast themes, Agents window controls now use a dashed outline for pointer hover and a solid outline for keyboard focus and open or expanded states. This makes it easier to follow your focus when navigating.\n\nSessions that need input are also easier to spot: light themes use a clearer amber indicator, and high-contrast themes show a marker at the left edge of the session row. You can customize the color with agentSessionNeedsInput.foreground in workbench.colorCustomizations.",
+   "links": [],
+   "id": "vsc-1.147-23",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Editor Experience",
+   "title": "Customize panel corners and spacing",
+   "text": "Setting: workbench.sizeCustomizations\n\nCustomize panel corners and spacing in the editor window and in Agents windows with the Modern UI enabled. Set corner radii in whole pixels from 0 to 8 and spacing from 0 to 16. For example, you can use square panel corners, add space between panels, and give agent chat panels their own corners:\n\n``json\n{\n\"workbench.sizeCustomizations\": {\n\"panels.cornerRadius\": 0,\n\"panels.spacing\": 12,\n\"agentsWindow.chatPanels.cornerRadius\": 4\n}\n}\n``\n\nCompact layouts remain gapless, and the setting doesn't change controls, individual tabs, or native window corners.",
+   "links": [],
+   "id": "vsc-1.147-24",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Editor Experience",
+   "title": "Connected panel tabs (Experimental)",
+   "text": "With the Modern UI enabled, the connected tab style now extends from editor tabs to horizontal panel and side bar tabs. Selected views visually connect to their content, including when the Activity Bar is at the top or bottom. Choose connected (the default) or pill with workbench.experimental.modernUIEditorTabStyle. The default vertical Activity Bar is unchanged.",
+   "links": [],
+   "id": "vsc-1.147-25",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Editor Experience",
+   "title": "Edit Markdown tables cell by cell",
+   "text": "Editing a Markdown table in the source means keeping pipes and separator rows intact by hand. In the Markdown editor, tables stay rendered while you edit them, and you edit one cell at a time.",
+   "links": [],
+   "id": "vsc-1.147-26",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Editor Experience",
+   "title": "Collapsible details sections in the Markdown editor",
+   "text": "Long documents often hide optional content in ` sections. The Markdown editor now renders and as collapsible sections, like GitHub does. Sections with the open` attribute start expanded, and other sections start collapsed.",
+   "links": [],
+   "id": "vsc-1.147-27",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Enterprise",
+   "title": "Permit Claude and Codex alongside managed settings",
+   "text": "Previously, any Copilot enterprise-managed setting disabled the Claude and Codex harnesses, because they don't enforce those settings. An organization couldn't govern Copilot and still offer Claude or Codex to its developers.\n\nAdministrators can now permit one or both harnesses by listing them in vscode.allowedHarnesses:\n\n``json\n{\n\"permissions\": {\n\"disableBypassPermissionsMode\": \"disable\"\n},\n\"vscode\": {\n\"allowedHarnesses\": [\"claude\", \"codex\"]\n}\n}\n`\n- The list permits the harnesses it names and blocks the others, so an empty list blocks both. Without the setting, managed settings disable both harnesses, as before.\n- Valid entries are claude and codex, in lowercase. Other entries are ignored.\n- Permitting a harness only lifts this restriction. Other controls still apply, such as vscode.temporaryAllowLocalHarness: false`.\n- Set it in file-based or MDM-managed settings. Server-managed settings don't support it yet.\nNote: Permitting a harness doesn't make it enforce your managed settings.",
+   "links": [
+    "https://code.visualstudio.com/docs/enterprise/manage-ai-settings",
+    "https://code.visualstudio.com/docs/agents/run/agent-harnesses"
+   ],
+   "id": "vsc-1.147-28",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Enterprise",
+   "title": "Regular expressions in managed shell permission rules",
+   "text": "Previously, managed shell permission rules matched only exact text or * wildcards, so a single rule couldn't cover alternatives or word boundaries. In Copilot harness sessions, Shell(...), Bash(...), and PowerShell(...) rules in enterprise-managed settings accept a JavaScript regular expression written as /pattern/flags in permissions.deny, permissions.ask, and permissions.allow.\n\nFor example, require approval for commands that start with git push or git pull:\n\n``json\n{\n\"permissions\": {\n\"ask\": [\"Shell(/^git\\\\s+(push|pull)\\\\b/)\"]\n}\n}\n``",
+   "links": [
+    "https://code.visualstudio.com/docs/enterprise/manage-ai-settings"
+   ],
+   "id": "vsc-1.147-29",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Deprecated features and settings",
+   "title": "New deprecations in this release",
+   "text": "- VS Code desktop on macOS Ventura and macOS Sonoma is deprecated. For details, see the VS Code FAQ.\n- VS Code desktop on 32-bit ARM Linux is deprecated. For details, see the VS Code FAQ.\n- The experimental AI usage statistics in the Status Bar (editor.aiStats.enabled) are removed because of low usage.",
+   "links": [
+    "https://code.visualstudio.com/docs/supporting/faq#_can-i-run-vs-code-on-old-macos-versions",
+    "https://code.visualstudio.com/docs/supporting/faq#_can-i-run-vs-code-on-32-bit-arm-linux"
+   ],
+   "id": "vsc-1.147-30",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
+  },
+  {
+   "h2": "Deprecated features and settings",
+   "title": "Upcoming deprecations",
+   "text": "- The Local harness is deprecated and will be removed in February 2027.",
+   "links": [
+    "https://code.visualstudio.com/updates/v1_146#_copilot-harness-and-deprecation-of-the-local-harness"
+   ],
+   "id": "vsc-1.147-31",
+   "version": "1.147",
+   "date": "2026-11-18",
+   "source": "vscode",
+   "url": "https://code.visualstudio.com/updates/v1_147"
   }
  ]
 }
