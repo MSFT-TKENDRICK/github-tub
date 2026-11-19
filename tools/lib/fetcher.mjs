@@ -93,7 +93,7 @@ async function curlFetch(url, fetchError) {
   try {
     let current = url;
     for (let hop = 0; hop <= 5; hop += 1) {
-    const { stdout } = await exec('curl.exe', [
+    const { stdout } = await exec(process.platform === 'win32' ? 'curl.exe' : 'curl', [
       '--silent', '--show-error', '--max-time', '30',
       '--max-filesize', String(MAX_BYTES), '--user-agent', 'GitHub-TUB/1.0 (+source attribution; public pages only)',
       '--write-out', '\nTUB_STATUS:%{http_code}\nTUB_URL:%{url_effective}\nTUB_REDIRECT:%{redirect_url}',
