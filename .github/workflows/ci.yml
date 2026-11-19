@@ -20,6 +20,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: PowerPoint export dependency
+        run: python3 -m pip install --quiet python-pptx
       - name: Unit, provenance and pipeline tests
         run: node --test 'tests/*.test.mjs'
       - name: Published content validates
