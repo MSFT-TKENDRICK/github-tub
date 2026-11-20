@@ -1,10 +1,15 @@
 name: Weekly TUB refresh
 
-# Publishes the dated weekly edition (tub-YYYY-MM-DD tag on main) every Thursday at 17:00 US Central.
+# Publishes the dated weekly edition (tub-YYYY-MM-DD tag on main) every Thursday evening US Central.
 # The pipeline stops on any fetch, validation, provenance or git error; nothing is pushed unless every step passes.
+# GitHub may delay or drop scheduled runs at the top of the hour, so the primary slot is off the hour and two
+# backup slots follow. Re-runs are idempotent: once an edition is published they exit with nothing to do, and a
+# late run still publishes the missed Thursday edition.
 on:
   schedule:
-    - cron: '0 23 * * 4'
+    - cron: '23 23 * * 4'
+    - cron: '23 3 * * 5'
+    - cron: '23 15 * * 5'
   workflow_dispatch:
     inputs:
       asof:
